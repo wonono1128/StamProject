@@ -21,7 +21,7 @@
         <li>
           <a href="#" class="depth1 on">ABOUT</a>
           <ul class="depth2">
-            <li class="on"><a href="intro">Intro + Vision & Business</a></li>
+            <li class="on"><a href="intro">Intro + Vision & Business2</a></li>
             <li><a href="about_history">History</a></li>
             <li><a href="organizationChart">Organization Chart</a></li>
             <li><a href="withClient">With CLIENT</a></li>
