@@ -17,8 +17,13 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
-
+	<resources mapping="/resource/**" location="/resource/" />
+	<resources mapping="/resource/css/**" location="/resource/css/" />
+	<resources mapping="/css/**" location="/resource/css/" /> 
+	<resources mapping="/fonts/**" location="/resource/fonts/" />
+	<resources mapping="/images/**" location="/resource/mages/" /> 
+	<resources mapping="/js/**" location="/resource/js/" />
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -43,5 +48,6 @@
 		<beans:constructor-arg ref="sqlSessionFactory"/>
 	</beans:bean>
 		
+	
 	
 </beans:beans>

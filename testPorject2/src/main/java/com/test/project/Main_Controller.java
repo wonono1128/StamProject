@@ -1,15 +1,9 @@
 package com.test.project;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.test.project.Dao.Notice_Dao;
-import com.test.project.Dto.Notice_Dto;
 
 
 
@@ -27,28 +21,46 @@ public class Main_Controller {
 		return "/main";
 	}
 	
-	@RequestMapping("/insert")
-	public String insert() {
+	@RequestMapping("/intro")
+	public String intro() {
 		
-		return "/insert";
-	} 
-	
-	@RequestMapping("/insert_ok")
-	public String insert_ok(HttpServletRequest request,Notice_Dto ndto,Model model) throws Exception {
-		System.out.println("인서트");
-		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
-		System.out.println("인서트2");
-		String ntitle = request.getParameter("ntitle");
-		System.out.println(ntitle);
-		ndao.insert(ndto);
-		System.out.println("인서트3");
+		return "/intro";
+	}
+	@RequestMapping("/portfolio_2016")
+	public String portfolio_2016() {
 		
+		return "/portfolio_2016";
+	}
+	@RequestMapping("/portfolio_2017")
+	public String portfolio_2017() {
 		
+		return "/portfolio_2017";
+	}
+	@RequestMapping("/portfolio_2018")
+	public String portfolio_2018() {
 		
-		return "redirect:/";
-	} 
-	
-	
+		return "/portfolio_2018";
+	}
+	@RequestMapping("/portfolio_2019")
+	public String portfolio_2019() {
+		
+		return "/portfolio_2019";
+	}
+	@RequestMapping("/portfolio_2020")
+	public String portfolio_2020() {
+		
+		return "/portfolio_2020";
+	}
+	@RequestMapping("/portfolio_2021")
+	public String portfolio_2021() {
+		
+		return "/portfolio_2021";
+	}
 
+	@RequestMapping("/withClient")
+	public String withClient() {
+		
+		return "/withClient";
+	}
 	
 }
