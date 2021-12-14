@@ -19,7 +19,7 @@
  <nav class="navi_wrap">
       <ul class="navi">
         <li>
-          <a href="#" class="depth1 on">ABOUT</a>
+          <a href="#" class="depth1 on">ABOUT2</a>
           <ul class="depth2">
             <li class="on"><a href="intro">Intro + Vision & Business2</a></li>
             <li><a href="about_history">History</a></li>
