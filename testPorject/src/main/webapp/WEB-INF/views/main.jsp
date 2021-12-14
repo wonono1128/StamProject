@@ -8,6 +8,6 @@
 <title>메인 페이지</title>
 </head>
 <body>
-<a href="insert">작성하기</a>
+<a href="insert">작성하기q</a>
 </body>
 </html>
