@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td>
-				<button>보내기</button>
+				<button>보내기2</button>
 			</td>
 		</tr>
 	</table>
