@@ -18,7 +18,7 @@
 <body>
 <div class="wrapper">
   <header class="header item">
-    <h1 class="logo"><a href="#"><img src="resource/images/logo.png" alt="STAM"></a></h1>
+    <h1 class="logo"><a href="main"><img src="resource/images/logo.png" alt="STAM"></a></h1>
     <button class="btn_nav mo">
       <span></span><span></span><span></span>
     </button>
@@ -39,7 +39,7 @@
           <ul class="depth2">
             <li><a href="portfolio_2021.html">2021</a></li>
             <li><a href="portfolio_2020.html">2020</a></li>
-            <li class="on"><a href="portfolio_2019.html">2019</a></li>
+            <li class="on"><a href="portfolio_2019">2019</a></li>
             <li><a href="portfolio_2018.html">2018</a></li>
             <li><a href="portfolio_2017.html">2017</a></li>
             <li><a href="portfolio_2016.html">-2016</a></li>

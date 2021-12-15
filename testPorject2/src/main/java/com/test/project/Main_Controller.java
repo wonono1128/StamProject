@@ -15,7 +15,7 @@ public class Main_Controller {
 	private SqlSession sqlSession;
 
 
-	@RequestMapping("/")
+	@RequestMapping({"/","main"})
 	public String main() {
 		
 		return "/main";
@@ -61,6 +61,16 @@ public class Main_Controller {
 	public String withClient() {
 		
 		return "/withClient";
+	}
+	@RequestMapping("/about_history")
+	public String about_history() {
+		
+		return "/about_history";
+	}
+	@RequestMapping("/organizationChart")
+	public String organizationChart() {
+		
+		return "/organizationChart";
 	}
 	
 }
