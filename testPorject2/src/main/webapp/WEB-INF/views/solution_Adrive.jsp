@@ -3,49 +3,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>STAM</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link rel="stylesheet" href="resource/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resource/css/common.css">
 <link rel="stylesheet" href="resource/css/style.css">
-
 <script src="resource/js/jquery-3.2.1.min.js"></script>
 <script src="resource/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resource/js/common.js"></script>
 </head>
 <body>
 <div class="wrapper">
-  <jsp:include page="menu.jsp"/>
-  <div class="container item">
+<jsp:include page="menu.jsp"/>
+
+ <div class="container item">
     <p class="top_text">NO CROSS NO NO CROWN</p>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <!-- 2021 -->
+
+        <!-- aDrive-01 -->
         <div class="swiper-slide">
           <div class="loca_div mo">
-            <span class="loca">ABOUT > With Client</span>
+            <span class="loca">Solution > A.Drive</span>
             <span class="slogan">Strategy+Ambition</span>
           </div>
           <div class="subtitle_section item">
-            <h2>About STAM<br>With CLIENT</h2>
-            <div class="description mt30">
-              <p><em>고객의 미래를 함께 준비합니다.</em></p>
-              <p>에스티에이엠은 LTV(Life Time Value)를 위한<br>고객만족에 최선을 다하고 있습니다.<br>국내 우수 기업이 인정한 에스티에이엠의 가치.<br>귀사와 함께 평생 파트너가 되고 싶습니다.</p>
+            <h2>Solution<br>A.Drive</h2>
+            <div class="description">
+              <p>각 상영관의 외부 디스플레이에 제공될<br class="pc">
+              컨텐츠 관리 및 배포<br>
+              player별로 컨텐츠 등록<br>
+              자동 Schedule 작성<br>
+              컨텐츠 자동 배포<br>
+              Ex)<br class="pc">
+              ㆍ 극장 관리 시스템<br class="pc">
+              ㆍ 광고 관리 시스템</p>
             </div>
           </div>
-          <div class="contents item">
+          <div class="contents item aDrive">
             <div class="tit_div tit_div2">
-              <h3 class="mo">Client</h3>
-              <a href="javascript:void(0);" class="btn_open mo" data-target="client"></a>
+              <h3>A.Drive <br class="pc">소프트웨어 <br class="pc">구조도</h3>
+              <a href="javascript:void(0);" class="btn_open mo" data-target="aDrive01"></a>
             </div>
-            
-        
             <div class="cont">
-              <div class="img_div mb30"><img src="resource/images/img_client.jpg" alt=""></div>
+              <div class="conts_div">
+                <div class="img_div"><img src="resource/images/aDrive_01.jpg" alt=""></div>
+              </div>
+              <a href="#" class="mo close_layer">닫기</a>
             </div>
-         
           </div>
           <div class="num_div">
             <span class="num num0">0</span>
@@ -61,16 +66,20 @@
 
 </div>
 
-<div class="modal" id="client">
+<div class="modal" id="aDrive01">
   <div class="modal_wrap">
     <div class="modal_cont">
       <div class="m_content">
-        <div class="img_div mb30"><img src="resource/images/img_client.jpg" alt=""></div>
+        <div class="tit_div2"><h3>A.Drive 구조도 소프트웨어</h3></div>
+        <div class="conts_div">
+          <div class="img_div"><img src="resource/images/aDrive_01.jpg" alt=""></div>
+        </div>
       </div>
     </div>
     <button class="modal_close"></button>
   </div>
 </div>
+
 
 </body>
 <script type="text/javascript">

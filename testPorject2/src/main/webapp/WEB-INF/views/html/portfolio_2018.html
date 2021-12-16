@@ -1,23 +1,75 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>STAM</title>
-<link rel="stylesheet" href="resource/plugins/swiper/swiper-bundle.min.css"/>
-<link rel="stylesheet" href="resource/css/common.css">
-<link rel="stylesheet" href="resource/css/style.css">
+<link rel="stylesheet" href="../plugins/swiper/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/style.css">
 
-<script src="resource/js/jquery-3.2.1.min.js"></script>
-<script src="resource/plugins/swiper/swiper-bundle.min.js"></script>
-<script src="resource/js/common.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../plugins/swiper/swiper-bundle.min.js"></script>
+<script src="../js/common.js"></script>
+<!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
+
 <body>
 <div class="wrapper">
-  <jsp:include page="menu.jsp"/>
+  <header class="header item">
+    <h1 class="logo"><a href="#"><img src="../images/logo.png" alt="STAM"></a></h1>
+    <button class="btn_nav mo">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="btn_back mo"></button>
+    <nav class="navi_wrap">
+      <ul class="navi">
+        <li>
+          <a href="#" class="depth1">ABOUT</a>
+          <ul class="depth2">
+            <li><a href="#">Intro + Vision & Business</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Organization Chart</a></li>
+            <li><a href="#">With CLIENT</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1 on">IT portfolio</a>
+          <ul class="depth2">
+            <li><a href="#">2021</a></li>
+            <li><a href="#">2020</a></li>
+            <li><a href="#">2019</a></li>
+            <li class="on"><a href="#">2018</a></li>
+            <li><a href="#">2017</a></li>
+            <li><a href="#">-2016</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1">Brand</a>
+          <ul class="depth2">
+            <li><a href="#">Brand</a></li>
+            <li><a href="#">Promotion</a></li>
+            <li><a href="#">Edit</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1">SOLUTION</a>
+          <ul class="depth2">
+            <li><a href="#">A.Drive</a></li>
+            <li><a href="#">ST Framework</a></li>
+            <li><a href="#">통합 SNS 관리 시스템</a></li>
+            <li><a href="#">구간별 암호화 시스템</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
   <div class="container item">
     <p class="top_text">NO CROSS NO NO CROWN</p>
     <div class="swiper-container">
@@ -39,7 +91,7 @@
               이를 기반으로 지속 가능한<br>
               성장동력 확보와<br class="pc">
               공격적인 차별화 전략을 수행</p>
-              <p class="logo_img_div"><img src="resource/images/portfolio/logo_dalim.png" alt="대림B&Co 로고"></p>
+              <p class="logo_img_div"><img src="../images/portfolio/logo_dalim.png" alt="대림B&Co 로고"></p>
             </div>
           </div>
           <div class="contents item">
@@ -49,7 +101,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <img src="resource/images/portfolio/portfolio_2018_1.jpg" alt="">
+                <img src="../images/portfolio/portfolio_2018_1.jpg" alt="">
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -76,7 +128,7 @@
               매입/매출, 운송 등을<br>
               관리할 수 있는<br>
               주문관리시스템을 구축</p>
-              <p class="logo_img_div"><img src="resource/images/portfolio/logo_dalim.png" alt="대림B&Co 로고"></p>
+              <p class="logo_img_div"><img src="../images/portfolio/logo_dalim.png" alt="대림B&Co 로고"></p>
             </div>
           </div>
           <div class="contents item">
@@ -86,7 +138,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <img src="resource/images/portfolio/portfolio_2018_2.jpg" alt="">
+                <img src="../images/portfolio/portfolio_2018_2.jpg" alt="">
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -112,7 +164,7 @@
               애니메이션 효과 제공<br>
               데이터 공개를 위해 입력된<br>
               자료에 대한 권한 관리 제공</p>
-              <p class="logo_img_div"><img src="resource/images/portfolio/logo_cj.png" alt="CJ 로고">
+              <p class="logo_img_div"><img src="../images/portfolio/logo_cj.png" alt="CJ 로고">
               </p>
             </div>
           </div>
@@ -123,7 +175,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <img src="resource/images/portfolio/portfolio_2018_3.jpg" alt="">
+                <img src="../images/portfolio/portfolio_2018_3.jpg" alt="">
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -144,7 +196,7 @@
             <h2>펑타이 코리아<br>한국ING 개발 및 운영</h2>
             <div class="description">
               <p>한국 여행 글로벌 서비스 앱으로<br>모바일 페이지 개발 및 운영</p>
-              <p class="logo_img_div"><img src="resource/images/portfolio/logo_samsung.png" alt="삼성 로고">
+              <p class="logo_img_div"><img src="../images/portfolio/logo_samsung.png" alt="삼성 로고">
               </p>
             </div>
           </div>
@@ -155,7 +207,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <img src="resource/images/portfolio/portfolio_2018_4.jpg" alt="">
+                <img src="../images/portfolio/portfolio_2018_4.jpg" alt="">
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -179,7 +231,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="s_num_div mo"><span class="s_num s_num2018"></span></div>
-        <div class="img_div"><img src="resource/images/portfolio/portfolio_2018_1.jpg" alt=""></div>
+        <div class="img_div"><img src="../images/portfolio/portfolio_2018_1.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -191,7 +243,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="s_num_div mo"><span class="s_num s_num2018"></span></div>
-        <div class="img_div"><img src="resource/images/portfolio/portfolio_2018_2.jpg" alt=""></div>
+        <div class="img_div"><img src="../images/portfolio/portfolio_2018_2.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -203,7 +255,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="s_num_div mo"><span class="s_num s_num2018"></span></div>
-        <div class="img_div"><img src="resource/images/portfolio/portfolio_2018_3.jpg" alt=""></div>
+        <div class="img_div"><img src="../images/portfolio/portfolio_2018_3.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -215,14 +267,17 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="s_num_div mo"><span class="s_num s_num2018"></span></div>
-        <div class="img_div"><img src="resource/images/portfolio/portfolio_2018_4.jpg" alt=""></div>
+        <div class="img_div"><img src="../images/portfolio/portfolio_2018_4.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
   </div>
 </div>
+
+
 </body>
 <script type="text/javascript">
  contentsHeight();
 </script>
+
 </html>

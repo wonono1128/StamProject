@@ -73,4 +73,40 @@ public class Main_Controller {
 		return "/organizationChart";
 	}
 	
+	@RequestMapping("/brand")
+	public String brand() {
+		
+		return "/brand";
+	}
+	@RequestMapping("/brand_edit")
+	public String brand_edit() {
+		
+		return "/brand_edit";
+	}
+	@RequestMapping("/brand_promotion")
+	public String brand_promotion() {
+		
+		return "/brand_promotion";
+	}
+	
+	@RequestMapping("/solution_Adrive")
+	public String solution_Adrive() {
+		
+		return "/solution_Adrive";
+	}
+	@RequestMapping("/solution_ST_framework")
+	public String solution_ST_framework() {
+		
+		return "/solution_ST_framework";
+	}
+	@RequestMapping("/solution_system1")
+	public String solution_system1() {
+		
+		return "/solution_system1";
+	}
+	@RequestMapping("/solution_system2")
+	public String solution_system2() {
+		
+		return "/solution_system2";
+	}
 }

@@ -17,54 +17,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header item">
-    <h1 class="logo"><a href="main"><img src="resource/images/logo.png" alt="STAM"></a></h1>
-    <button class="btn_nav mo">
-      <span></span><span></span><span></span>
-    </button>
-    <button class="btn_back mo"></button>
-    <nav class="navi_wrap">
-      <ul class="navi">
-        <li>
-          <a href="#" class="depth1">ABOUT</a>
-          <ul class="depth2">
-            <li><a href="intro.html">Intro + Vision & Business</a></li>
-            <li><a href="about_history.html">History</a></li>
-            <li><a href="organizationChart.html">Organization Chart</a></li>
-            <li><a href="withClient.html">With CLIENT</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" class="depth1 on">IT portfolio</a>
-          <ul class="depth2">
-            <li><a href="portfolio_2021.html">2021</a></li>
-            <li><a href="portfolio_2020.html">2020</a></li>
-            <li class="on"><a href="portfolio_2019">2019</a></li>
-            <li><a href="portfolio_2018.html">2018</a></li>
-            <li><a href="portfolio_2017.html">2017</a></li>
-            <li><a href="portfolio_2016.html">-2016</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" class="depth1">Brand</a>
-          <ul class="depth2">
-            <li><a href="#">Brand</a></li>
-            <li><a href="#">Promotion</a></li>
-            <li><a href="#">Edit</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#" class="depth1">SOLUTION</a>
-          <ul class="depth2">
-            <li><a href="#">A.Drive</a></li>
-            <li><a href="#">ST Framework</a></li>
-            <li><a href="#">통합 SNS 관리 시스템</a></li>
-            <li><a href="#">구간별 암호화 시스템</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <jsp:include page="menu.jsp"/>
   <div class="container item">
     <p class="top_text">NO CROSS NO NO CROWN</p>
     <div class="swiper-container">

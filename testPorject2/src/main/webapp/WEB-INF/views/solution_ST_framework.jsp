@@ -3,49 +3,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>STAM</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link rel="stylesheet" href="resource/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resource/css/common.css">
 <link rel="stylesheet" href="resource/css/style.css">
-
 <script src="resource/js/jquery-3.2.1.min.js"></script>
 <script src="resource/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resource/js/common.js"></script>
 </head>
 <body>
 <div class="wrapper">
-  <jsp:include page="menu.jsp"/>
-  <div class="container item">
+<jsp:include page="menu.jsp"/>
+<div class="container item">
     <p class="top_text">NO CROSS NO NO CROWN</p>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <!-- 2021 -->
+
+        <!-- ST Framework-01 -->
         <div class="swiper-slide">
           <div class="loca_div mo">
-            <span class="loca">ABOUT > With Client</span>
+            <span class="loca">Solution > ST FRAMEWORK</span>
             <span class="slogan">Strategy+Ambition</span>
           </div>
           <div class="subtitle_section item">
-            <h2>About STAM<br>With CLIENT</h2>
-            <div class="description mt30">
-              <p><em>고객의 미래를 함께 준비합니다.</em></p>
-              <p>에스티에이엠은 LTV(Life Time Value)를 위한<br>고객만족에 최선을 다하고 있습니다.<br>국내 우수 기업이 인정한 에스티에이엠의 가치.<br>귀사와 함께 평생 파트너가 되고 싶습니다.</p>
+            <h2>SYSTEM<br>ST FRAMEWORK</h2>
+            <div class="description">
+              <p>STAM의 노하우를 기반으로<br>
+              웹 서비스 통합구축을 통하여 고객의<br>
+              특성에 맞게 서비스의 안정성과 유지관리의<br>
+              효율성을 향상과 관리 하실 수 있습니다.</p>
             </div>
           </div>
           <div class="contents item">
             <div class="tit_div tit_div2">
-              <h3 class="mo">Client</h3>
-              <a href="javascript:void(0);" class="btn_open mo" data-target="client"></a>
+              <h3>구성 상세</h3>
+              <a href="javascript:void(0);" class="btn_open mo" data-target="stFramework01"></a>
             </div>
-            
-        
             <div class="cont">
-              <div class="img_div mb30"><img src="resource/images/img_client.jpg" alt=""></div>
+              <div class="conts_div">
+                <div class="img_div"><img src="resource/images/st_framework_01.jpg" alt=""></div>
+              </div>
+              <a href="#" class="mo close_layer">닫기</a>
             </div>
-         
           </div>
           <div class="num_div">
             <span class="num num0">0</span>
@@ -61,17 +61,20 @@
 
 </div>
 
-<div class="modal" id="client">
+<div class="modal" id="stFramework01">
   <div class="modal_wrap">
     <div class="modal_cont">
       <div class="m_content">
-        <div class="img_div mb30"><img src="resource/images/img_client.jpg" alt=""></div>
+        <div class="tit_div2"><h3>구성 상세</h3></div>
+        <div class="conts_div">
+          <div class="img_div"><img src="resource/images/st_framework_01.jpg" alt=""></div>
+        </div>
       </div>
     </div>
     <button class="modal_close"></button>
   </div>
 </div>
-
+ 
 </body>
 <script type="text/javascript">
  contentsHeight();
