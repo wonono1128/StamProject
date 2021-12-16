@@ -74,4 +74,13 @@ $(function(){
     });
     //e.preventDefault();
   });
+
+  $(window).resize(function () {
+    if (document.body.clientWidth > 816) {
+        $('.modal').hide();
+    }else{
+       // $('.modal').show();
+    }
+    });
+
 });

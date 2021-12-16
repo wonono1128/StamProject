@@ -58,7 +58,8 @@ h1.logo.on a{border-right:2px solid #000;}
 .main_container{}
 .swiper-container{height:100vh;}
 .main_container .contents{height:100vh;}
-.media_div{width:74.8%;max-width:670px;height:376px;background:#000;}
+.media_div{width:74.8%;max-width:670px;/*height:376px;*/background:#000;object-fit:contain;}
+.media_div video{width:100%;height:100%;}
 
 .num_div{position:absolute;bottom: 11.6%;right: 59px;width:92px;}
 .num{width:92px;height:106px;display:block;text-indent:-9999px}
@@ -95,6 +96,7 @@ h1.logo.on a{border-right:2px solid #000;}
 /*Intro*/
 .contents .tit_div.tit_div2{padding:0;text-align:center;}
 .tit_div2 h3{color:#e6e6e6;font-size:30px;font-weight:bolder;line-height:1;display:inline-block;letter-spacing:-0.03em;text-align:left;}
+#mainWrapper .tit_div2 h3{color:#000;}
 .conts_div{width:670px;}
 .conts_div p{font-size:18px;text-align:left;}
 .conts_div p em{color:#21b8c5;}
@@ -141,6 +143,7 @@ h1.logo.on a{border-right:2px solid #000;}
 
 @media all and (min-width:816px) {
 	.mo{display:none!important;}
+
 } 
 
 @media all and (max-width:815px) {
@@ -171,7 +174,7 @@ h1.logo.on a{border-right:2px solid #000;}
 	.btn_back span{display:none;}
 	.navi{display:none}
 	.container{width:100%;max-width:100%;border:0;display:block;z-index:50}
-	.top_text{display:none}
+	.top_text{left:-30px;bottom:120px;top:initial;right:initial;transform: rotate(-90deg);font-size:8px;}
 	.bottom_text{display:none}
 	
 	.subtitle_section{width:auto;padding:0;min-height:auto;margin-top:10px;}
@@ -191,7 +194,7 @@ h1.logo.on a{border-right:2px solid #000;}
 	.num{width:11px;height:auto;background-size:contain;display:inline-block;}
 	.num +.num{margin-top:0;margin-left:1px;}
 	.contents .tit_div{position:relative;z-index:10;}
-	.contents .tit_div:after{content:'';display:block;border-bottom:0.044rem dashed #000;position:absolute;top:14px;left:42px;right:22px;z-index:5}
+	.contents .tit_div:after{content:'';display:block;border-bottom:0.044rem dashed #000;position:absolute;top:14px;left:30px;right:22px;z-index:5}
 	.tit_div2 h3{font-size:12px;font-weight:bolder;color:#000;position:absolute;top:7px;left:0;z-index:10;background:#fff;padding-right:5px;display:block;box-sizing:unset;}
 	.s_num{filter:invert(100%);width:36px;background-size:contain;position:absolute;top:9px;left:0;z-index:10}
 	.tit_div .btn_open{background:#fff url(../images/btn_open.png) no-repeat center center;background-size:18px 18px;width:30px;height:30px;display:block;border:0.0313rem solid #000;border-radius:50%;position:absolute;right:17px;z-index:10}
@@ -204,6 +207,8 @@ h1.logo.on a{border-right:2px solid #000;}
 	.subtitle_section h2::before{content:'';display:block;background:#000;width:0.063rem;height:48px;position:absolute;left:-0.063rem;top:6px;z-index: 15;}
 	.subtitle_section h2::after{display:none}
 	.contents .cont{display:none;}
+
+	.media_div{width:100%;}
 
 	.modal{position:fixed;width:100%;height:100%;top:0px;left:0px;z-index:999;display:none;transition:transform .3s ease-out;background:#fff;}
 	/*.modal_cont{-ms-overflow-style:none;scrollbar-width:none;}
@@ -244,6 +249,8 @@ h1.logo.on a{border-right:2px solid #000;}
 	.navi .depth2 li{margin-bottom:2px}
 	.navi .depth2 li a{font-size:1rem;}
 	.subtitle_section h2{font-size:1.438rem;}
+	
+
 
 	
 }
@@ -255,6 +262,19 @@ h1.logo.on a{border-right:2px solid #000;}
 	.navi .depth2 li{margin-bottom:0}
 	.navi .depth2 li a{font-size:15px;}
 	.subtitle_section h2{font-size:1.313rem;}
+
+	.swiper-wrapper{width:calc(100% - 50px);margin-left:50px;}
+	.swiper-slide{padding-top:17px;padding-left:10px;}
+	.subtitle_section h2{margin-left:-10px;}
+	.num_div{left:-44px;width:34px;}
+	.num +.num{margin-left:0;}
+	.loca_div .loca{font-size:0.875rem;letter-spacing:-0.07em;}
+	.loca_div .slogan{font-size:0.438rem;}
+	.navi_wrap.open{width:calc(100% - 50px);}
+	.container.moveRight{margin-right:50px;}
+	.navi_wrap.open{width:calc(100% - 50px);}
+	.modal_cont{width:calc(100% - 50px);margin-left:50px;}
+	.modal_close{left:14px;}
 	
 }
 
@@ -266,3 +286,8 @@ h1.logo.on a{border-right:2px solid #000;}
 .scrollDisable{ overflow:hidden !important; touch-action:none;}
 
 .mt45{margin-top:45px;}
+
+
+@media all and (min-width:816px) {
+
+}
