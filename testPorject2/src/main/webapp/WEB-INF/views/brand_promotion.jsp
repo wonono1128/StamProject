@@ -14,7 +14,54 @@
 </head>
 <body>
 <div class="wrapper">
-<jsp:include page="menu.jsp"/>
+<header class="header item">
+    <h1 class="logo"><a href="main"><img src="resource/images/logo.png" alt="STAM"></a></h1>
+    <button class="btn_nav mo">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="btn_back mo"></button>
+    <nav class="navi_wrap">
+      <ul class="navi">
+        <li>
+          <a href="#" class="depth1">ABOUT</a>
+          <ul class="depth2">
+            <li><a href="intro">Intro + Vision & Business</a></li>
+            <li><a href="about_history">History</a></li>
+            <li><a href="organizationChart">Organization Chart</a></li>
+            <li><a href="withClient">With CLIENT</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1">IT portfolio</a>
+          <ul class="depth2">
+            <li><a href="portfolio_2021">2021</a></li>
+            <li><a href="portfolio_2020">2020</a></li>
+            <li><a href="portfolio_2019">2019</a></li>
+            <li><a href="portfolio_2018">2018</a></li>
+            <li><a href="portfolio_2017">2017</a></li>
+            <li><a href="portfolio_2016">-2016</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1 on">Brand</a>
+          <ul class="depth2">
+            <li><a href="brand">Brand</a></li>
+            <li class="on"><a href="brand_promotion">Promotion</a></li>
+            <li><a href="brand_edit">Edit</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1">SOLUTION</a>
+          <ul class="depth2">
+            <li><a href="solution_Adrive">A.Drive</a></li>
+            <li><a href="solution_ST_framework">ST Framework</a></li>
+            <li><a href="solution_system1">통합 SNS 관리 시스템</a></li>
+            <li><a href="solution_system2">구간별 암호화 시스템</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
  <div class="container item">
     <p class="top_text">NO CROSS NO NO CROWN</p>
@@ -36,7 +83,7 @@
               한국을 대표로 하는 작가들과 대중들의 질의<br>
               응답 시간도 가지며 더욱 뜻 깊은 자리를<br>
               만들었습니다.</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_kyobo.png" alt="교보문고 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_kyobo.png" alt="교보문고 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -46,7 +93,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_01.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_01.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -70,7 +117,7 @@
               열었습니다. 우리투자증권의 프리미엄 블루로<br class="pc">
               럭셔리를 지키며,<br class="mo"> 쎄시봉 캐리커쳐를 활용하여<br>
               7080세대의 향수를 불러 일으켰습니다.</p>
-               <p class="logo_img_div"><img src="../images/portfolio/logo_woori.png" alt="우리은행 로고"></p>
+               <p class="logo_img_div"><img src="resource/images/portfolio/logo_woori.png" alt="우리은행 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -80,7 +127,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_02.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_02.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -105,7 +152,7 @@
                 관련 컨텐츠 기획, 게임 개발을 진행하였습니다.<br class="pc">
                 또한 시스템을 이용한 SMS/SNS와 연계를 통해<br class="pc">
                 고객과 소통 할 수 있는 환경을 구성하였습니다.</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_kra.png" alt="한국마사회 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_kra.png" alt="한국마사회 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -115,7 +162,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_03.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_03.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -141,7 +188,7 @@
               영화로 제작 하였습니다<br>
               제작 후 시사회를 통해 기업과 고객이 직접적인<br>
               소통의 자리를 만들었습니다</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_chungjungone.png" alt="청정원 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_chungjungone.png" alt="청정원 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -151,7 +198,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_04.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_04.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -176,7 +223,7 @@
               그러나 2009년 기점으로 지원자 수가 약 330%<br>
               상승하였으며, 4년 연속 연간 진행하였습니다.<br>
               현재 대학생 3대 캠페인으로 선정되었습니다.</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_kyobo.png" alt="교보문고 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_kyobo.png" alt="교보문고 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -186,7 +233,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_05.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_05.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -210,7 +257,7 @@
                 강연을 열었습니다.<br>
                 연간으로 진행하면서 고객들의 호평을 받았으며,<br>
                 교보문고 브랜드 이미지상승을 가지고 왔습니다.</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_kyobo.png" alt="교보문고 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_kyobo.png" alt="교보문고 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -220,7 +267,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_06.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_06.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -244,7 +291,7 @@
                 캐리비안베이에서 게임을 통해 시식과<br class="pc">
                 제품을 증정하면서 고객의 시선을 잡고,<br class="pc">
                 공연을 통해 시원한 홍보를 펼쳤습니다.</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_nongshim.png" alt="농심 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_nongshim.png" alt="농심 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -254,7 +301,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_07.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_07.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -282,7 +329,7 @@
                 신세계 백화점과 함께 신제품 프로모션 진행<br>
                 [사랑나눔콘서트]<br>
                 연간 올림픽경기장에서 사랑나눔콘서트 진행</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_nongshim.png" alt="농심 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_nongshim.png" alt="농심 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -292,7 +339,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_08.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_08.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -318,7 +365,7 @@
                 그래서 각분야 전문가를 초청하여<br>
                 대학생 대상으로 비전 강연회 프로모션을<br class="pc">
                 진행했습니다.</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_gmarket.png" alt="지마켓 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_gmarket.png" alt="지마켓 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -328,7 +375,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/promotion_09.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/promotion_09.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -354,7 +401,7 @@
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Brand + AD + Promotion</h3></div>
         <div class="conts_div">
-          <div class="img_div"><img src="../images/promotion_01.jpg" alt=""></div>
+          <div class="img_div"><img src="resource/images/promotion_01.jpg" alt=""></div>
         </div>
       </div>
     </div>
@@ -367,7 +414,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Brand + AD + Promotion</h3></div>
-        <div class="img_div"><img src="../images/promotion_02.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/promotion_02.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -379,7 +426,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Promotion + Video + Contents</h3></div>
-        <div class="img_div"><img src="../images/promotion_03.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/promotion_03.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -391,7 +438,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Promotion</h3></div>
-        <div class="img_div"><img src="../images/promotion_04.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/promotion_04.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -403,7 +450,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>AD / EDIT / WEB / Promotion</h3></div>
-        <div class="img_div"><img src="../images/promotion_05.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/promotion_05.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -415,7 +462,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Brand / EDIT / Promotion</h3></div>
-        <div class="img_div"><img src="../images/promotion_06.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/promotion_06.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -427,7 +474,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Promotion</h3></div>
-        <div class="img_div"><img src="../images/promotion_07.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/promotion_07.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -439,7 +486,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Promotion</h3></div>
-        <div class="img_div"><img src="../images/promotion_08.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/promotion_08.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -451,7 +498,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Promotion</h3></div>
-        <div class="img_div"><img src="../images/promotion_09.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/promotion_09.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>

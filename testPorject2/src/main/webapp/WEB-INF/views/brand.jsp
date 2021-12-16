@@ -14,7 +14,54 @@
 </head>
 <body>
 <div class="wrapper">
-  <jsp:include page="menu.jsp"/>
+  <header class="header item">
+    <h1 class="logo"><a href="main"><img src="resource/images/logo.png" alt="STAM"></a></h1>
+    <button class="btn_nav mo">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="btn_back mo"></button>
+    <nav class="navi_wrap">
+      <ul class="navi">
+        <li>
+          <a href="#" class="depth1">ABOUT</a>
+          <ul class="depth2">
+            <li><a href="intro">Intro + Vision & Business</a></li>
+            <li><a href="about_history">History</a></li>
+            <li><a href="organizationChart">Organization Chart</a></li>
+            <li><a href="withClient">With CLIENT</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1">IT portfolio</a>
+          <ul class="depth2">
+            <li><a href="portfolio_2021">2021</a></li>
+            <li><a href="portfolio_2020">2020</a></li>
+            <li><a href="portfolio_2019">2019</a></li>
+            <li><a href="portfolio_2018">2018</a></li>
+            <li><a href="portfolio_2017">2017</a></li>
+            <li><a href="portfolio_2016">-2016</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1 on">Brand</a>
+          <ul class="depth2">
+            <li class="on"><a href="brand">Brand</a></li>
+            <li><a href="brand_promotion">Promotion</a></li>
+            <li><a href="brand_edit">Edit</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="depth1">SOLUTION</a>
+          <ul class="depth2">
+            <li><a href="solution_Adrive">A.Drive</a></li>
+            <li><a href="solution_ST_framework">ST Framework</a></li>
+            <li><a href="solution_system1">통합 SNS 관리 시스템</a></li>
+            <li><a href="solution_system2">구간별 암호화 시스템</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
   <div class="container item">
     <p class="top_text">NO CROSS NO NO CROWN</p>
     <div class="swiper-container">
@@ -57,7 +104,7 @@
                 <p>브랜드 핵심가치 및 포지셔닝의 적합성, 네임의 전달력, 디자인 차별성, 브랜딩 채널의 효율성 등을 체크하여 기존의 아이덴티티를 전면교체 또는 부분개선 등의 방향성을 제시합니다.</p>
 
                 <h4 class="mt">Brand Identity Diagnosis Process</h4>
-                <div class="img_div"><img src="../images/brand_01.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/brand_01.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -101,7 +148,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/brand_02.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/brand_02.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -122,7 +169,7 @@
             <h2>JTBC<br>Brand &amp; System Design</h2>
             <div class="description">
               <p>JTBC의 새로운 광고 채널 브랜드 Medios 및<br>시스템 디자인 구축</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_jtbc.png" alt="JTBC 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_jtbc.png" alt="JTBC 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -132,7 +179,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/brand_03.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/brand_03.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -160,7 +207,7 @@
               이를 브랜드에 반영하기 위하여<br class="pc">
               전체 밸런스는 장미 윗 본 모습,<br class="pc">
               라인은 확신에 찬 주먹으로 표현하였습니다.</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_gori.png" alt="CJ Gori 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_gori.png" alt="CJ Gori 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -170,7 +217,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/brand_04.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/brand_04.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -195,7 +242,7 @@
                 앞으로도 무한 성장 할 브랜드입니다.<br>
                 이를 바탕으로 메비우스띠와 시간을 접목하여<br>
                 심볼화하였습니다.</p>
-              <p class="logo_img_div"><img src="../images/portfolio/logo_zen.png" alt="ZEN 로고"></p>
+              <p class="logo_img_div"><img src="resource/images/portfolio/logo_zen.png" alt="ZEN 로고"></p>
             </div>
           </div>
           <div class="contents item brand">
@@ -205,7 +252,7 @@
             </div>
             <div class="cont">
               <div class="conts_div">
-                <div class="img_div"><img src="../images/brand_05.jpg" alt=""></div>
+                <div class="img_div"><img src="resource/images/brand_05.jpg" alt=""></div>
               </div>
               <a href="#" class="mo close_layer">닫기</a>
             </div>
@@ -233,7 +280,7 @@
         <div class="conts_div">
           <p>브랜드 핵심가치 및 포지셔닝의 적합성, 네임의 전달력, 디자인 차별성, 브랜딩 채널의 효율성 등을 체크하여 기존의 아이덴티티를 전면교체 또는 부분개선 등의 방향성을 제시합니다.<br><br></p>
           <h4 class="mt20">Brand Identity Diagnosis Process</h4>
-          <div class="img_div"><img src="../images/brand_01.jpg" alt=""></div>
+          <div class="img_div"><img src="resource/images/brand_01.jpg" alt=""></div>
         </div>
       </div>
     </div>
@@ -246,7 +293,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Visual Branding Process</h3></div>
-        <div class="img_div"><img src="../images/brand_02.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/brand_02.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -258,7 +305,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>Medios Brand Design</h3></div>
-        <div class="img_div"><img src="../images/brand_03.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/brand_03.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -270,7 +317,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>GORI Brand Design</h3></div>
-        <div class="img_div"><img src="../images/brand_04.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/brand_04.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>
@@ -282,7 +329,7 @@
     <div class="modal_cont">
       <div class="m_content">
         <div class="tit_div2 mo"><h3>ZEN Brand Design</h3></div>
-        <div class="img_div"><img src="../images/brand_05.jpg" alt=""></div>
+        <div class="img_div"><img src="resource/images/brand_05.jpg" alt=""></div>
       </div>
     </div>
     <button class="modal_close"></button>

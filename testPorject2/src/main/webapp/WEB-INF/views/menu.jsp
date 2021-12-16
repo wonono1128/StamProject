@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script>
+window.onload = function(){
+	console.log("url : "+$(location).attr('href'));
+}
+
+$(document).ready(function () { 
+	// 마우스 오버시 add 추가 
+			$(".intro").click(function () { 
+				console.log("url : "+$(location).attr('href'));
+				$(this).toggleClass("on"); 
+				console.log($(this).hasClass("on")); 
+				$(location).attr("href", "intro")
+				}); 
+			});
+
+</script>
+
 <header class="header item">
     <h1 class="logo"><a href="main"><img src="resource/images/logo.png" alt="STAM"></a></h1>
     <button class="btn_nav mo">
@@ -11,7 +28,7 @@
         <li>
           <a href="#" class="depth1">ABOUT</a>
           <ul class="depth2">
-            <li><a href="intro">Intro + Vision & Business</a></li>
+            <li class="intro"><a>Intro + Vision & Business</a></li>
             <li><a href="about_history">History</a></li>
             <li><a href="organizationChart">Organization Chart</a></li>
             <li><a href="withClient">With CLIENT</a></li>
