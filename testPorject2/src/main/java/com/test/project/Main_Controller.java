@@ -20,12 +20,14 @@ public class Main_Controller {
 		
 		return "/main";
 	}
+
 	
 	@RequestMapping("/intro")
 	public String intro() {
 		
 		return "/intro";
 	}
+
 	@RequestMapping("/portfolio_2016")
 	public String portfolio_2016() {
 		

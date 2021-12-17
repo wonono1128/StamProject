@@ -23,7 +23,7 @@
     <nav class="navi_wrap">
       <ul class="navi">
         <li>
-          <a href="#" class="depth1">ABOUT</a>
+          <a href="intro" class="depth1">ABOUT</a>
           <ul class="depth2">
             <li><a href="intro">Intro + Vision & Business</a></li>
             <li><a href="about_history">History</a></li>
@@ -32,7 +32,7 @@
           </ul>
         </li>
         <li>
-          <a href="#" class="depth1">IT portfolio</a>
+          <a href="portfolio_2021" class="depth1">IT portfolio</a>
           <ul class="depth2">
             <li><a href="portfolio_2021">2021</a></li>
             <li><a href="portfolio_2020">2020</a></li>
@@ -43,7 +43,7 @@
           </ul>
         </li>
         <li>
-          <a href="#" class="depth1 on">Brand</a>
+          <a href="brand" class="depth1 on">Brand</a>
           <ul class="depth2">
             <li><a href="brand">Brand</a></li>
             <li><a href="brand_promotion">Promotion</a></li>
@@ -51,7 +51,7 @@
           </ul>
         </li>
         <li>
-          <a href="#" class="depth1">SOLUTION</a>
+          <a href="solution_Adrive" class="depth1">SOLUTION</a>
           <ul class="depth2">
             <li><a href="solution_Adrive">A.Drive</a></li>
             <li><a href="solution_ST_framework">ST Framework</a></li>
@@ -92,7 +92,8 @@
               <div class="conts_div">
                 <div class="img_div"><img src="resource/images/edit_01.jpg" alt=""></div>
               </div>
-              <a href="#" class="mo close_layer">닫기</a>
+             <!--  <a href="#" class="mo close_layer">닫기</a>--> 
+     
             </div>
           </div>
           <div class="num_div">
