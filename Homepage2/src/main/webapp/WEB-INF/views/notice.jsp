@@ -15,8 +15,49 @@
 <script src="resource/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resource/js/common.js"></script>
 <style>
-	#notice-table{
-		 border: 2px solid black;
+.notice-div{
+  position: relative;
+}
+	.notice-table{
+		 width:1135px;
+		 height:640px;
+		 text-align: center;
+		 display:flex;
+		 justify-content: center;
+		 flex-direction: column;
+		 position:absolute;
+		 left:200px;
+		 bottom:300px;
+	}
+	.notice-td ,.notice-th {
+	 border: 1px solid black;
+	}
+	.notice-td{
+		height:85px;
+	}
+	.td-num{
+		width: 150px;
+		height:110px
+	}
+	
+	.td-mangager{
+		width: 295px;
+		height:110px
+	}
+	.Td-Title{
+		width: 560px;
+		height:110px
+	}
+	.Td-Select{
+		width:130px;
+		height:110px;
+	}
+	.notice-span{
+		display:flex;
+		position:absolute;
+		left:200px;
+		bo:60px;
+		font-size:60px;
 	}
 </style>
 </head>
@@ -75,7 +116,7 @@
   </header>
 
   <div class="container item">
-    <p class="top_text">NO CROSS NO NO CROWN</p>
+
     <div class="swiper-container">
       <div class="swiper-wrapper">
 
@@ -84,15 +125,23 @@
             <span class="loca">HOME</span>
             <span class="slogan">Strategy+Ambition</span>
           </div>
+          <div class="notice-div">
+          	<span class="notice-span">Notice</span>
        		<table class="notice-table">
-       			<tr>
-       				<td>번호</td>
-       				<td>작성자</td>
-       				<td>제목</td>
-       				<td>선택</td>
+       			<tr class="notice-tr top-tr">
+       				<td class="notice-th td-num">번호</td>
+       				<td class="notice-th td-mangager">작성자</td>
+       				<td class="notice-th Td-Title">제목</td>
+       				<td class="notice-th Td-Select">선택</td>
+       			</tr>
+       			<tr class="notice-tr">
+       				<td class="notice-td">번호</td>
+       				<td class="notice-td">작성자</td>
+       				<td class="notice-td">제목</td>
+       				<td class="notice-td">선택</td>
        			</tr>
        		</table>
-          
+          </div>
 
       </div><!-- //swiper-wrapper -->
       <div class="swiper-pagination"></div>
@@ -101,7 +150,7 @@
   </div><!-- //container -->
 
 </div>
-
+</div>
 
 
 </body>
