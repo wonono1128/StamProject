@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,19 +129,85 @@
           <div class="notice-div">
           	<span class="notice-span">Notice</span>
        		<table class="notice-table">
+       		<tr> <!-- 검색행 -->
+		      <td colspan="4">
+		        <form method="post" action="notice">
+		                        선택 <select name="cla">
+		             <option value="title"> 제목 </option>
+		             <option value="name"> 작성자 </option>
+		             <option value="content"> 내용 </option>            
+		            </select>
+		                         검색어 <input type="text" name="sword">
+		          <input type="submit" value="검색">
+		        </form>
+		      </td>
+		     </tr>
        			<tr class="notice-tr top-tr">
        				<td class="notice-th td-num">번호</td>
        				<td class="notice-th td-mangager">작성자</td>
        				<td class="notice-th Td-Title">제목</td>
        				<td class="notice-th Td-Select">선택</td>
        			</tr>
+       			<c:forEach var="ndto" items="${nlist}">
        			<tr class="notice-tr">
-       				<td class="notice-td">번호</td>
-       				<td class="notice-td">작성자</td>
-       				<td class="notice-td">제목</td>
-       				<td class="notice-td">선택</td>
+       				<td class="notice-td">${ndto.nid }</td>
+       				<td class="notice-td">${ndto.nwriter }</td>
+       				<td class="notice-td">${ndto.ntitle }</td>
+       				<td class="notice-td">${ndto.regdate }</td>
        			</tr>
-       			
+       			</c:forEach>
+       			<tr>
+      <td colspan="4" align="center">
+       <!-- 이전 페이지 이동 -->
+         <!-- 10페이지 이전 이동 시작 -->
+          <c:if test="${pstart != 1}">
+           <a href="notice?page=${pstart-1}&sword=${sword}"> << </a>
+          </c:if>
+          <c:if test="${pstart == 1}">
+           <<
+          </c:if>
+         <!-- 10페이지 이전 이동 끝 -->
+         
+         <!-- 1페이지 이전 이동 (현재페이지에서 1페이지 이전) -->
+         <c:if test="${page > 1}">
+          <a href="notice?page=${page-1}&sword=${sword}"> < </a>  
+         </c:if>
+         <c:if test="${page == 1}"> 
+          <      
+         </c:if>
+         <!-- 1페이지 이전 이동 끝 -->
+       <!-- 이전 페이지 이동 끝 -->
+       <c:forEach begin="${pstart}" end="${pend}" var="i">
+        <c:if test="${page == i}">
+         <a href="notice?page=${i}&sword=${sword}" style="color:red;"> ${i} </a>
+        </c:if>
+        <c:if test="${page != i}">
+         <a href="notice?page=${i}&sword=${sword}"> ${i} </a>
+        </c:if>
+       </c:forEach>
+       
+       <!-- 다음 페이지 이동 -->
+        <!-- 다음 1페이지 이동 -->
+        <c:if test="${page != pagecnt }">
+         <a href="notice?page=${page+1}&sword=${sword}"> > </a>
+        </c:if>
+        <c:if test="${page == pagecnt}"> 
+         >
+        </c:if>
+        <!-- 다음 1페이지 이동 끝 -->
+        
+        <!-- 다음 10페이지 이동 시작 -->
+        <c:if test="${pend != pagecnt }">
+         <a href="notice?page=${pend+1}&sword=${sword}"> >> </a>
+        </c:if>
+        <c:if test="${pend == pagecnt}">
+          >>
+        </c:if>
+        <!-- 다음 10페이지 이동 끝 -->
+       <!-- 다음 페이지 이동 끝 -->
+      </td>
+     </tr>
+	     
        			<tr>
 	       			<td><a href="insert">추가</a></td>
 	       			<td><a href="delete">제거</a></td>

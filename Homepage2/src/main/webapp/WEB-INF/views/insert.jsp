@@ -127,7 +127,8 @@
           </div>
           <div class="notice-div">
           	<span class="notice-span">Notice Insert</span>
-          	<form method="post" action="insert_ok">
+  
+          	<form method="post"action="insert_ok" >
 	       		<table class="notice-table">
 	       			<tr>
 	       				<td>제목</td>
@@ -139,8 +140,8 @@
 	       			</tr>
 	       			
 	       			<tr>
-		       				<td><button>추가</button></td>
-		       				<td><a href="notice">목록</a></td>
+		       			<td><button>추가</button></td>
+		       			<td><a href="notice">목록</a></td>
 		       		</tr>
 	       		</table>
        		</form>
