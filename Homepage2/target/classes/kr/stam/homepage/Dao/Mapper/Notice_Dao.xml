@@ -2,4 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.stam.homepage.Dao.Notice_Dao">
 
+	<insert id="insert" parameterType="kr.stam.homepage.Dto.Notice_Dto">
+		insert into notice(ntitle,ncontent,nwriter,regdate) values(#{ntitle}, #{ncontent}, #{nwriter}, now())
+	</insert>
 </mapper>

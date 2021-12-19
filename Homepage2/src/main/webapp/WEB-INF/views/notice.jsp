@@ -142,8 +142,8 @@
        			</tr>
        			
        			<tr>
-	       				<td><a href="insert">추가</a></td>
-	       				<td><a href="delete">제거</a></td>
+	       			<td><a href="insert">추가</a></td>
+	       			<td><a href="delete">제거</a></td>
 	       		</tr>
        		</table>
        		

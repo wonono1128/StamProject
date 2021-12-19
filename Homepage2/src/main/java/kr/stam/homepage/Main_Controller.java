@@ -111,15 +111,5 @@ public class Main_Controller {
 		
 		return "/solution_System2";
 	}
-	
-	@RequestMapping("/notice")
-	public String notice() {
-		
-		return "/notice";
-	}
-	@RequestMapping("/insert")
-	public String insert() {
-		
-		return "/insert";
-	}
+
 }

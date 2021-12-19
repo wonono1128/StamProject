@@ -126,26 +126,24 @@
             <span class="slogan">Strategy+Ambition</span>
           </div>
           <div class="notice-div">
-          	<span class="notice-span">Notice</span>
-       		<table class="notice-table">
-       			<tr class="notice-tr top-tr">
-       				<td class="notice-th td-num">번호</td>
-       				<td class="notice-th td-mangager">작성자</td>
-       				<td class="notice-th Td-Title">제목</td>
-       				<td class="notice-th Td-Select">선택</td>
-       			</tr>
-       			<tr class="notice-tr">
-       				<td class="notice-td">번호</td>
-       				<td class="notice-td">작성자</td>
-       				<td class="notice-td">제목</td>
-       				<td class="notice-td">선택</td>
-       			</tr>
-       			
-       			<tr>
-	       				<td><a href="insert">추가</a></td>
-	       				<td><a href="delete">제거</a></td>
-	       		</tr>
-       		</table>
+          	<span class="notice-span">Notice Insert</span>
+          	<form method="post" action="insert_ok">
+	       		<table class="notice-table">
+	       			<tr>
+	       				<td>제목</td>
+	       				<td><input type="text" placeholder="제품명을 입력해주세요." name="ntitle"></td>	
+	       			</tr>
+	       			<tr>
+	      			 	<td>내용</td>
+	       				<td><textarea placeholder="내용을 입력해주세요" name="ncontent"></textarea></td>	
+	       			</tr>
+	       			
+	       			<tr>
+		       				<td><button>추가</button></td>
+		       				<td><a href="notice">목록</a></td>
+		       		</tr>
+	       		</table>
+       		</form>
        		
           </div>
 
