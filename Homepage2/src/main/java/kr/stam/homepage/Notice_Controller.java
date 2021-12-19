@@ -92,4 +92,41 @@ public class Notice_Controller {
 		ndao.insert(ndto);
 		return "redirect:/notice";
 	}
+	
+	@RequestMapping("/content")
+	public String content(HttpServletRequest request,Notice_Dto ndto,Model model) throws Exception {
+		int nid = Integer.parseInt(request.getParameter("nid"));
+		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
+		ndto = ndao.content(nid);
+		model.addAttribute("ndto",ndto);
+		return "/content";
+	}
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request,Notice_Dto ndto,Model model) throws Exception {
+		int nid = Integer.parseInt(request.getParameter("nid"));
+		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
+		ndao.delete(nid);
+
+		return "redirect:/notice";
+	}
+	@RequestMapping("update")
+	public String update(HttpServletRequest request,Notice_Dto ndto,Model model) {
+		int nid = Integer.parseInt(request.getParameter("nid"));
+		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
+		ndto = ndao.content(nid);
+		model.addAttribute("ndto",ndto);
+		return "/update";
+	}
+	@RequestMapping("update_ok")
+	public String update_ok(HttpServletRequest request,Notice_Dto ndto) {
+
+		int nid = Integer.parseInt(request.getParameter("nid"));
+		String ntitle = request.getParameter("ntitle");
+		String ncontent =request.getParameter("ncontent");
+
+		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
+		ndao.update(ndto);
+		
+		return "redirect:/notice";
+	}
 }

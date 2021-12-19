@@ -14,5 +14,16 @@
 	  <select id="get_pagecnt" resultType="Integer">
 	    select ceil(count(*)/10) from notice where ${param1} like concat('%',#{param2},'%')
 	  </select>
-
+<!-- 공지사항 상세페이지 -->
+	<select id="content" resultType="kr.stam.homepage.Dto.Notice_Dto">
+		select * from notice where nid = #{nid}
+	</select>
+<!-- 공지사항 삭제 -->	
+	<delete id="delete">
+		delete from notice where nid=#{nid}
+	</delete>
+<!-- 공지사항 수정 -->	
+	<update id="update" parameterType="kr.stam.homepage.Dto.Notice_Dto">
+		update notice set ntitle = #{ntitle} , ncontent = #{ncontent}, regdate=now() where nid = #{nid}
+	</update>
 </mapper>
