@@ -117,4 +117,9 @@ public class Main_Controller {
 		
 		return "/notice";
 	}
+	@RequestMapping("/insert")
+	public String insert() {
+		
+		return "/insert";
+	}
 }
