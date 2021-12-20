@@ -105,7 +105,7 @@
        			<tr class="notice-tr top-tr">
        				<td class="notice-th td-num">번호</td>
        				<td class="notice-th td-mangager">작성자</td>
-       				<td class="notice-th Td-Title">제목</td>
+       				<td class="notice-th Td-Title" colspan="2">제목</td>
        				<td class="notice-th Td-Regdate">날짜</td>
        			</tr>
        		
@@ -113,14 +113,14 @@
 	       			<tr class="notice-tr">
 	       				<td class="notice-td">${ndto.notice_num }</td>
 	       				<td class="notice-td">${ndto.manager_name }</td>
-	       				<td class="notice-td"><a href="content?notice_num=${ndto.notice_num }">${ndto.notice_title }</a></td>
+	       				<td colspan="2" class="notice-td notice_select_td"><a href="content?notice_num=${ndto.notice_num }">${ndto.notice_title }</a></td>
 	       				<td class="notice-td">${ndto.notice_day }</td>
 	       			</tr>
        			</c:forEach>
        		 
 <!-- 페이징 html -->
        			<tr class="notice_paging_tr">
-			      <td colspan="3" align="center" >
+			      <td colspan="4" align="center" >
 			       <!-- 이전 페이지 이동 -->
 			         <!-- 10페이지 이전 이동 시작 -->
 			          <c:if test="${pstart != 1}">
@@ -169,7 +169,11 @@
 			        <!-- 다음 10페이지 이동 끝 -->
 			       <!-- 다음 페이지 이동 끝 -->
 			      </td>
-			      <td class="notice_insert"><a href="insert" class="notice_insert_a"><span class="notice_insert_span">추가</span></a></td>
+			      <td>
+			      	<div class="notice_flex_insert">
+			      		<a href="insert" class="notice_insert_a"><span class="notice_insert_span">추가</span></a>
+			      	</div>
+			      </td>
 			    </tr>
 <!-- 페이징 html 끝 -->
      
