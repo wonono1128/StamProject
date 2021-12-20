@@ -1,18 +1,99 @@
 @charset "UTF-8";
+
+
+
+.notice-table{
+	display:flex;
+}
+.notice_insert_td{
+	padding-right:60px;
+}
+#notice_insert_title{
+	width:1000px;
+}
+.notice_insert_input{
+	width:500px;
+}
+#notice_insert_text{
+	resize: none; 
+	height:650px;
+	}
+
+.notice-div{
+	  position: relative;
+	}
+
+.notice-th{
+	border: 1px solid rgba(0,0,0,0.2);
+	}
+.td-num{
+	
+	height:80px
+	}
+	
+.td-mangager{
+
+	height:65px
+}
+.Td-Title{
+
+	height:65px
+}
+.Td-Regdate{
+
+	height:65px
+}
+.notice-span{
+	display:flex;
+	position:absolute;
+	font-size:60px;
+	white-space: nowrap
+}
+.notice_select_td{
+	position:relative;
+}
+.notice_select{
+    position: absolute;
+    left: 250px;
+    top: -100px;
+    white-space: nowrap
+}
+.notice_paging_tr{
+	position: relative;
+   	top: 15px;
+}
+.notice_insert{
+	border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 45%;
+
+}
+.notice_insert_a{
+		heigth:50px;
+		width:50px;
+	    position: relative;
+}
+.notice_insert_span{
+	position: absolute;
+    top: -20px;
+    left: 8px;
+}
+		
+
+/* 1711px보다 큰 화면 일경우 동작*/
 @media (min-width: 1711px){
 	
 	.notice-table{
-		 max-width: 1200px;
-		 text-align: center;
-		 display:flex;
-		 justify-content: center;
-		 flex-direction: column;
-		 flex-wrap: wrap;
-		 position:absolute;
-		 left:150px;
-		 top:100px;
-		 margin-top:20px;
-		 table-layout: fixed;
+	 max-width: 1200px;
+	 text-align: center;
+	 display:flex;
+	 justify-content: center;
+	 flex-direction: column;
+	 flex-wrap: wrap;
+	 position:absolute;
+	 left:150px;
+	 top:100px;
+	 margin-top:20px;
+	 table-layout: fixed;
 	}
 	.notice-td {
 	 border: 1px solid rgba(0,0,0,0.2);
@@ -25,62 +106,74 @@
 	 white-space: nowrap
 	}
 }
-.notice-div{
-	  position: relative;
+/* 1710px보다 작은 화면 일경우 동작*/
+@media (max-width: 1710px)   { 
+ 	.notice-table{
+	 max-width: 600px;
+	 text-align: center;
+	 display:flex;
+	 justify-content: center;
+	 flex-direction: column;
+	 flex-wrap: wrap;
+	 position:absolute;
+	 left:150px;
+	 top:100px;
+	 margin-top:20px;
+	 table-layout: fixed;
 	}
+	.notice-td {
+	 border: 1px solid rgba(0,0,0,0.2);
+	 min-height: 60px;
+	 table-layout: fixed;
+	 width:auto;
+	 flex-basis: 150px;
+     flex-grow: 1;
+     height:60px;
+	 white-space: nowrap
+	}
+	#notice_insert_title{
+	width:600px;
+	}
+	
+	
 
-	.notice-th{
-	border: 1px solid rgba(0,0,0,0.2);
+ /* 816px보다 작은 화면 일경우 동작*/
+@media  (max-width: 816px) { 
+ 	.notice-table{
+	 max-width: 300px;
+	 text-align: center;
+	 display:flex;
+	 justify-content: center;
+	 flex-direction: column;
+	 flex-wrap: wrap;
+	 left:0px;
+	 position:absolute;
+	 top:100px;
+	 margin-top:20px;
+	 table-layout: fixed;
 	}
-	.td-num{
-	
-		height:80px
+	.notice-td {
+	 border: 1px solid rgba(0,0,0,0.2);
+	 min-height: 60px;
+	 table-layout: fixed;
+	 width:auto;
+	 flex-basis: 150px;
+     flex-grow: 1;
+     height:60px;
+	 white-space: nowrap
 	}
-	
-	.td-mangager{
+	#notice_insert_title{
+	width:300px;
+	}	
+	#notice_insert_text{
+	resize: none; 
+	height:450px;
+	}
+ }
+ 
+ 
 
-		height:65px
-	}
-	.Td-Title{
-	
-		height:65px
-	}
-	.Td-Regdate{
-	
-		height:65px
-	}
-	.notice-span{
-		display:flex;
-		position:absolute;
-		font-size:60px;
-		white-space: nowrap
-	}
-	.notice_select_td{
-		position:relative;
-	}
-	.notice_select{
-	    position: absolute;
-	    left: 250px;
-	    top: -100px;
-	    white-space: nowrap
-	}
-	.notice_paging_tr{
-		position: relative;
-    	top: 15px;
-	}
-	.notice_insert{
-		border: 1px solid rgba(0,0,0,0.2);
-	    border-radius: 45%;
 
-	}
-	.notice_insert_a{
-			heigth:50px;
-			width:50px;
-		    position: relative;
-	}
-	.notice_insert_span{
-		position: absolute;
-	    top: -20px;
-	    left: 8px;
-	}
-			
+
+
+

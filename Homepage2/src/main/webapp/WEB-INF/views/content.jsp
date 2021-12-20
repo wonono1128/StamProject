@@ -92,7 +92,7 @@
 	       			</tr>
 	       			<tr>
 	      			 	<td>내용</td>
-	       				<td>${ndto.notice_contents}</td>	
+	       				<td><pre>${ndto.notice_contents}</pre></td>	
 	       			</tr>
 	       			
 	       			<tr>
