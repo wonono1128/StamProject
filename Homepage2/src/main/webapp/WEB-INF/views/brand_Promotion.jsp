@@ -26,7 +26,7 @@
           <a href="intro" class="depth1">ABOUT</a>
           <ul class="depth2">
             <li><a href="intro">Intro + Vision & Business</a></li>
-            <li><a href="about_history">History</a></li>
+            <li><a href="about_History">History</a></li>
             <li><a href="organizationChart">Organization Chart</a></li>
             <li><a href="withClient">With CLIENT</a></li>
           </ul>
@@ -46,8 +46,8 @@
           <a href="brand" class="depth1 on">Brand</a>
           <ul class="depth2">
             <li><a href="brand">Brand</a></li>
-            <li class="on"><a href="brand_promotion">Promotion</a></li>
-            <li><a href="brand_edit">Edit</a></li>
+            <li class="on"><a href="brand_Promotion">Promotion</a></li>
+            <li><a href="brand_Edit">Edit</a></li>
           </ul>
         </li>
         <li>
@@ -55,8 +55,8 @@
           <ul class="depth2">
             <li><a href="solution_Adrive">A.Drive</a></li>
             <li><a href="solution_ST_framework">ST Framework</a></li>
-            <li><a href="solution_system1">통합 SNS 관리 시스템</a></li>
-            <li><a href="solution_system2">구간별 암호화 시스템</a></li>
+            <li><a href="solution_System1">통합 SNS 관리 시스템</a></li>
+            <li><a href="solution_System2">구간별 암호화 시스템</a></li>
           </ul>
         </li>
       </ul>

@@ -54,7 +54,7 @@ public class Notice_Controller {
 		   
 		   String cla,sword;
 		   if(request.getParameter("cla")==null)
-			   cla="ntitle";
+			   cla="notice_title";
 		   else
 		       cla=request.getParameter("cla");
 		   
@@ -85,8 +85,8 @@ public class Notice_Controller {
 	@RequestMapping("/insert_ok")
 	public String insert_ok(HttpServletRequest request,Notice_Dto ndto,Model model) throws Exception {
 		Notice_Dao ndao=sqlSession.getMapper(Notice_Dao.class);
-		String nwriter = "包府磊";
-		ndto.setNwriter(nwriter);
+		String manager_name = "包府磊";
+		ndto.setManager_name(manager_name);
 		model.addAttribute("ndto",ndto);
 
 		ndao.insert(ndto);
@@ -95,34 +95,34 @@ public class Notice_Controller {
 	
 	@RequestMapping("/content")
 	public String content(HttpServletRequest request,Notice_Dto ndto,Model model) throws Exception {
-		int nid = Integer.parseInt(request.getParameter("nid"));
+		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
-		ndto = ndao.content(nid);
+		ndto = ndao.content(notice_num);
 		model.addAttribute("ndto",ndto);
 		return "/content";
 	}
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request,Notice_Dto ndto,Model model) throws Exception {
-		int nid = Integer.parseInt(request.getParameter("nid"));
+		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
-		ndao.delete(nid);
+		ndao.delete(notice_num);
 
 		return "redirect:/notice";
 	}
 	@RequestMapping("update")
 	public String update(HttpServletRequest request,Notice_Dto ndto,Model model) {
-		int nid = Integer.parseInt(request.getParameter("nid"));
+		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
-		ndto = ndao.content(nid);
+		ndto = ndao.content(notice_num);
 		model.addAttribute("ndto",ndto);
 		return "/update";
 	}
 	@RequestMapping("update_ok")
 	public String update_ok(HttpServletRequest request,Notice_Dto ndto) {
 
-		int nid = Integer.parseInt(request.getParameter("nid"));
-		String ntitle = request.getParameter("ntitle");
-		String ncontent =request.getParameter("ncontent");
+		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
+		String notice_title = request.getParameter("notice_title");
+		String notice_contents =request.getParameter("notice_contents");
 
 		Notice_Dao ndao = sqlSession.getMapper(Notice_Dao.class);
 		ndao.update(ndto);

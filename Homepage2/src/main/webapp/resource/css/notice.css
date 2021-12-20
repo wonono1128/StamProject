@@ -1,49 +1,86 @@
 @charset "UTF-8";
-
-.notice-div{
-	  position: relative;
-	}
+@media (min-width: 1711px){
+	
 	.notice-table{
-		 width:1135px;
-		 height:660px;
+		 max-width: 1200px;
 		 text-align: center;
 		 display:flex;
 		 justify-content: center;
 		 flex-direction: column;
+		 flex-wrap: wrap;
 		 position:absolute;
-		 left:200px;
-		 bottom:170px;
+		 left:150px;
+		 top:100px;
+		 margin-top:20px;
+		 table-layout: fixed;
 	}
-	.notice-td ,.notice-th {
-	 border: 1px solid black;
+	.notice-td {
+	 border: 1px solid rgba(0,0,0,0.2);
+	 min-height: 60px;
+	 table-layout: fixed;
+	 width:auto;
+	 flex-basis: 150px;
+     flex-grow: 1;
+     height:60px;
+	 white-space: nowrap
 	}
-	.notice-td{
-		height:60px;
+}
+.notice-div{
+	  position: relative;
+	}
+
+	.notice-th{
+	border: 1px solid rgba(0,0,0,0.2);
 	}
 	.td-num{
-		width: 150px;
-		height:65px
+	
+		height:80px
 	}
 	
 	.td-mangager{
-		width: 295px;
+
 		height:65px
 	}
 	.Td-Title{
-		width: 560px;
+	
 		height:65px
 	}
 	.Td-Regdate{
-		width:130px;
+	
 		height:65px
 	}
 	.notice-span{
 		display:flex;
 		position:absolute;
-		left:200px;
-		bottom:60px;
 		font-size:60px;
+		white-space: nowrap
+	}
+	.notice_select_td{
+		position:relative;
+	}
+	.notice_select{
+	    position: absolute;
+	    left: 250px;
+	    top: -100px;
+	    white-space: nowrap
+	}
+	.notice_paging_tr{
+		position: relative;
+    	top: 15px;
 	}
 	.notice_insert{
-		
+		border: 1px solid rgba(0,0,0,0.2);
+	    border-radius: 45%;
+
 	}
+	.notice_insert_a{
+			heigth:50px;
+			width:50px;
+		    position: relative;
+	}
+	.notice_insert_span{
+		position: absolute;
+	    top: -20px;
+	    left: 8px;
+	}
+			

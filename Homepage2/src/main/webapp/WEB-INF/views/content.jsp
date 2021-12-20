@@ -31,7 +31,7 @@
           <a href="intro" class="depth1">ABOUT</a>
           <ul class="depth2">
             <li><a href="intro">Intro + Vision & Business</a></li>
-            <li><a href="about_history">History</a></li>
+            <li><a href="about_History">History</a></li>
             <li><a href="organizationChart">Organization Chart</a></li>
             <li><a href="withClient">With CLIENT</a></li>
           </ul>
@@ -51,8 +51,8 @@
           <a href="brand" class="depth1">Brand</a>
           <ul class="depth2">
             <li><a href="brand">Brand</a></li>
-            <li><a href="brand_promotion">Promotion</a></li>
-            <li><a href="brand_edit">Edit</a></li>
+            <li><a href="brand_Promotion">Promotion</a></li>
+            <li><a href="brand_Edit">Edit</a></li>
           </ul>
         </li>
         <li>
@@ -60,8 +60,8 @@
           <ul class="depth2">
             <li><a href="solution_Adrive">A.Drive</a></li>
             <li><a href="solution_ST_framework">ST Framework</a></li>
-            <li><a href="solution_system1">통합 SNS 관리 시스템</a></li>
-            <li><a href="solution_system2">구간별 암호화 시스템</a></li>
+            <li><a href="solution_System1">통합 SNS 관리 시스템</a></li>
+            <li><a href="solution_System2">구간별 암호화 시스템</a></li>
           </ul>
         </li>
         <li>
@@ -88,16 +88,16 @@
 	       		<table class="notice-table">
 	       			<tr>
 	       				<td>제목</td>
-	       				<td>${ndto.ntitle}</td>	
+	       				<td>${ndto.notice_title}</td>	
 	       			</tr>
 	       			<tr>
 	      			 	<td>내용</td>
-	       				<td>${ndto.ncontent}</td>	
+	       				<td>${ndto.notice_contents}</td>	
 	       			</tr>
 	       			
 	       			<tr>
-		       			<td><a href="update?nid=${ndto.nid }">수정</a></td>
-		       			<td><a href="delete?nid=${ndto.nid }">삭제</a></td>
+		       			<td><a href="update?notice_num=${ndto.notice_num }">수정</a></td>
+		       			<td><a href="delete?notice_num=${ndto.notice_num }">삭제</a></td>
 		       			<td><a href="notice">목록</a></td>
 		       		</tr>
 	       		</table>

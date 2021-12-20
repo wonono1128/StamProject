@@ -1,41 +1,48 @@
 package kr.stam.homepage.Dto;
 
 public class Notice_Dto {
-	int nid;
-	String ntitle,ncontent,nwriter,regdate;
+	int notice_num,manager_num;
+	String notice_title,notice_contents,manager_name,notice_day;
+
 	
-	public int getNid() {
-		return nid;
+	public int getNotice_num() {
+		return notice_num;
 	}
-	public void setNid(int nid) {
-		this.nid = nid;
+	public void setNotice_num(int notice_num) {
+		this.notice_num = notice_num;
 	}
-	public String getNtitle() {
-		return ntitle;
+	public int getManager_num() {
+		return manager_num;
 	}
-	public void setNtitle(String ntitle) {
-		this.ntitle = ntitle;
+	public void setManager_num(int manager_num) {
+		this.manager_num = manager_num;
 	}
-	public String getNcontent() {
-		return ncontent;
+	public String getNotice_title() {
+		return notice_title;
 	}
-	public void setNcontent(String ncontent) {
-		this.ncontent = ncontent;
+	public void setNotice_title(String notice_title) {
+		this.notice_title = notice_title;
 	}
-	public String getNwriter() {
-		return nwriter;
+	public String getNotice_contents() {
+		return notice_contents;
 	}
-	public void setNwriter(String nwriter) {
-		this.nwriter = nwriter;
+	public void setNotice_contents(String notice_contents) {
+		this.notice_contents = notice_contents;
 	}
-	public String getRegdate() {
-		return regdate;
+	public String getManager_name() {
+		return manager_name;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setManager_name(String manager_name) {
+		this.manager_name = manager_name;
+	}
+	public String getNotice_day() {
+		return notice_day;
+	}
+	public void setNotice_day(String notice_day) {
+		this.notice_day = notice_day;
 	}
 	
-	
+
 	
 	
 }

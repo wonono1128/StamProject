@@ -29,7 +29,7 @@
           <a href="intro" class="depth1">ABOUT</a>
           <ul class="depth2">
             <li><a href="intro">Intro + Vision & Business</a></li>
-            <li><a href="about_history">History</a></li>
+            <li><a href="about_History">History</a></li>
             <li><a href="organizationChart">Organization Chart</a></li>
             <li><a href="withClient">With CLIENT</a></li>
           </ul>
@@ -49,8 +49,8 @@
           <a href="brand" class="depth1">Brand</a>
           <ul class="depth2">
             <li><a href="brand">Brand</a></li>
-            <li><a href="brand_promotion">Promotion</a></li>
-            <li><a href="brand_edit">Edit</a></li>
+            <li><a href="brand_Promotion">Promotion</a></li>
+            <li><a href="brand_Edit">Edit</a></li>
           </ul>
         </li>
         <li>
@@ -58,8 +58,8 @@
           <ul class="depth2">
             <li><a href="solution_Adrive">A.Drive</a></li>
             <li><a href="solution_ST_framework">ST Framework</a></li>
-            <li><a href="solution_system1">통합 SNS 관리 시스템</a></li>
-            <li><a href="solution_system2">구간별 암호화 시스템</a></li>
+            <li><a href="solution_System1">통합 SNS 관리 시스템</a></li>
+            <li><a href="solution_System2">구간별 암호화 시스템</a></li>
           </ul>
         </li>
         <li>
@@ -69,7 +69,7 @@
     </nav>
   </header>
 
-  <div class="container item">
+<div class="container item">
     <p class="top_text">NO CROSS NO NO CROWN</p>
     <div class="swiper-container">
       <div class="swiper-wrapper">
@@ -108,7 +108,7 @@
             </div>
             <div class="cont">
               <div class="media_div">
-                <video muted autoplay loop src="resource/images/.mp4" type="video/mp4"></video>
+                <video muted autoplay loop src="resource/images/media.mp4" type="video/mp4"></video><!-- 수정 -->
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@
         <div class="tit_div2"><h3>STAM COMPANY PROFILE</h3></div>
         <div class="conts_div">
           <div class="media_div">
-            <video muted autoplay loop src="resource/images/.mp4" type="video/mp4"></video>
+            <video muted autoplay loop src="resource/images/media.mp4" type="video/mp4"></video><!-- 수정 -->
           </div>
         </div>
       </div>
@@ -142,5 +142,10 @@
   </div>
 </div>
 
+
 </body>
+<script type="text/javascript">
+ contentsHeight();
+</script>
+
 </html>
