@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="resource/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resource/css/common.css">
 <link rel="stylesheet" href="resource/css/style.css">
-<link rel="stylesheet" href="resource/css/insert.css">
+<link rel="stylesheet" href="resource/css/notice/insert.css">
 <script src="resource/js/jquery-3.2.1.min.js"></script>
 <script src="resource/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resource/js/common.js"></script>
@@ -81,24 +81,25 @@
             <span class="slogan">Strategy+Ambition</span>
           </div>
           <div class="notice-div">
+          <div class="notice-div-span">
           	<span class="notice-span">Notice Update</span>
-  
+  		  </div>
           	<form method="post"action="update_ok" >
           	
           		<table class="notice-table">
 	       			<tr>
 	       				<td><input style="display:none" type="text"  name="notice_num" value="${ndto.notice_num }"></td>
 	       			</tr>
-	       			<tr>
+	       			<tr class="notice-insert-tr">
 	       				<td class="notice_insert_td">제목</td>
 	       				<td  colspan="2"><input type="text" value="${ndto.notice_title }"name="notice_title" id="notice_insert_title"></td>	
 	       			</tr>
-	       			<tr>
+	       			<tr class="notice-insert-tr">
 	      			 	<td class="notice_insert_td">내용</td>
 	       				<td  colspan="2"><textarea name="notice_contents" id="notice_insert_text">${ndto.notice_contents }</textarea></td>	
 	       			</tr>
-	       			<tr>
-	       				<td></td>
+	       			<tr class="notice-insert-tr notice-insert-btn">
+	       				
 		       			<td class="notice_insert_input"><button id="notice_insert_btn">수정</button></td>
 		       			<td class="notice_insert_input"><a href="notice" id="notice_insert_list">목록</a></td>
 		       		</tr>
@@ -110,7 +111,7 @@
       </div><!-- //swiper-wrapper -->
       <div class="swiper-pagination"></div>
     </div><!-- //swiper-container -->
-    <p class="bottom_text">Strategy + Ambition</p>
+
   </div><!-- //container -->
 
 </div>

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="resource/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resource/css/common.css">
 <link rel="stylesheet" href="resource/css/style.css">
+<link rel="stylesheet" href="resource/css/notice/content.css">
 
 <script src="resource/js/jquery-3.2.1.min.js"></script>
 <script src="resource/plugins/swiper/swiper-bundle.min.js"></script>
@@ -79,36 +80,39 @@
         <div class="swiper-slide">
           <div class="loca_div mo">
             <span class="loca">HOME</span>
-            <span class="slogan">Strategy+Ambition</span>
           </div>
           <div class="notice-div">
-          	<span class="notice-span">Notice Insert</span>
-  
-      
+          		<span class="notice-span">Notice Content</span>
+         	<div class="notice-content-div">
 	       		<table class="notice-table">
-	       			<tr>
-	       				<td>제목</td>
-	       				<td>${ndto.notice_title}</td>	
+	       			<tr class="notice-content-tr ">
+	       				<td class="notice-content-td" colspan="2">${ndto.notice_title}</td>	
+	       		
+	       			</tr>
+	       			<tr class="notice-content-tr ">
+	       		
+	       				<td class="notice-td-day notice-content-td"colspan="2">${ndto.notice_day }</td>
 	       			</tr>
 	       			<tr>
-	      			 	<td>내용</td>
-	       				<td><pre>${ndto.notice_contents}</pre></td>	
+	      			 	
+	       				<td colspan="2" class="notice-content-td notice-content-textarea"><pre class="notice-content-pre">${ndto.notice_contents}</pre></td>	
 	       			</tr>
-	       			
 	       			<tr>
-		       			<td><a href="update?notice_num=${ndto.notice_num }">수정</a></td>
-		       			<td><a href="delete?notice_num=${ndto.notice_num }">삭제</a></td>
-		       			<td><a href="notice">목록</a></td>
+		       			<td class="notice-btn-td">
+			       			<a href="update?notice_num=${ndto.notice_num }" class="notice-btn-a"><span class="notice-btn-span">수정</span></a>
+			  		     	<a href="delete?notice_num=${ndto.notice_num }" class="notice-btn-a"><span class="notice-btn-span">삭제</span></a>
+			       			<a href="notice" class="notice-btn-a"><span class="notice-btn-span">목록</span></a>
+		       			</td>
 		       		</tr>
 	       		</table>
-       		
+       		</div>
        		
           </div>
 
       </div><!-- //swiper-wrapper -->
       <div class="swiper-pagination"></div>
     </div><!-- //swiper-container -->
-    <p class="bottom_text">Strategy + Ambition</p>
+
   </div><!-- //container -->
 
 </div>

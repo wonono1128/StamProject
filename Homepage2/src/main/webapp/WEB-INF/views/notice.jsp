@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resource/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resource/css/common.css">
 <link rel="stylesheet" href="resource/css/style.css">
-<link rel="stylesheet" href="resource/css/notice.css">
+<link rel="stylesheet" href="resource/css/notice/notice.css">
 <script src="resource/js/jquery-3.2.1.min.js"></script>
 <script src="resource/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resource/js/common.js"></script>
@@ -90,6 +90,7 @@
        		 
 		      <td colspan="4" class="notice_select_td">  
 		        <form method="post" action="notice" class="notice_select">
+		        	<div class="notice_select_div">
 		                        선택
 		             <select style="width:auto;" name="cla">
 			             <option value="notice_title"> 제목 </option>
@@ -97,7 +98,8 @@
 			             <option value="notice_contents"> 내용 </option>            
 		            </select>
 		            검색어 <input type="text" style="width:auto;"name="sword">
-		          <input type="submit" value="검색">
+			        <input type="submit" value="검색">
+			        </div>
 		        </form>
 		      </td>
 		     </tr>
@@ -120,56 +122,58 @@
        		 
 <!-- 페이징 html -->
        			<tr class="notice_paging_tr">
-			      <td colspan="4" align="center" >
-			       <!-- 이전 페이지 이동 -->
-			         <!-- 10페이지 이전 이동 시작 -->
-			          <c:if test="${pstart != 1}">
-			           <a href="notice?page=${pstart-1}&sword=${sword}"> << </a>
-			          </c:if>
-			          <c:if test="${pstart == 1}">
-			           <<
-			          </c:if>
-			         <!-- 10페이지 이전 이동 끝 -->
-			         
-			         <!-- 1페이지 이전 이동 (현재페이지에서 1페이지 이전) -->
-			         <c:if test="${page > 1}">
-			          <a href="notice?page=${page-1}&sword=${sword}"> < </a>  
-			         </c:if>
-			         <c:if test="${page == 1}"> 
-			          <      
-			         </c:if>
-			         <!-- 1페이지 이전 이동 끝 -->
-			       <!-- 이전 페이지 이동 끝 -->
-			       <c:forEach begin="${pstart}" end="${pend}" var="i">
-			        <c:if test="${page == i}">
-			         <a href="notice?page=${i}&sword=${sword}" style="color:red;"> ${i} </a>
-			        </c:if>
-			        <c:if test="${page != i}">
-			         <a href="notice?page=${i}&sword=${sword}"> ${i} </a>
-			        </c:if>
-			       </c:forEach>
-			       
-			       <!-- 다음 페이지 이동 -->
-			        <!-- 다음 1페이지 이동 -->
-			        <c:if test="${page != pagecnt }">
-			         <a href="notice?page=${page+1}&sword=${sword}"> > </a>
-			        </c:if>
-			        <c:if test="${page == pagecnt}"> 
-			         >
-			        </c:if>
-			        <!-- 다음 1페이지 이동 끝 -->
-			        
-			        <!-- 다음 10페이지 이동 시작 -->
-			        <c:if test="${pend != pagecnt }">
-			         <a href="notice?page=${pend+1}&sword=${sword}"> >> </a>
-			        </c:if>
-			        <c:if test="${pend == pagecnt}">
-			          >>
-			        </c:if>
-			        <!-- 다음 10페이지 이동 끝 -->
-			       <!-- 다음 페이지 이동 끝 -->
+			      <td colspan="4" align="center" class="notice_paging_td">
+			      	<div class="notice_paging_div">
+				       <!-- 이전 페이지 이동 -->
+				         <!-- 10페이지 이전 이동 시작 -->
+				          <c:if test="${pstart != 1}">
+				           <a href="notice?page=${pstart-1}&sword=${sword}"> << </a>
+				          </c:if>
+				          <c:if test="${pstart == 1}">
+				           <<
+				          </c:if>
+				         <!-- 10페이지 이전 이동 끝 -->
+				         
+				         <!-- 1페이지 이전 이동 (현재페이지에서 1페이지 이전) -->
+				         <c:if test="${page > 1}">
+				          <a href="notice?page=${page-1}&sword=${sword}"> < </a>  
+				         </c:if>
+				         <c:if test="${page == 1}"> 
+				          <      
+				         </c:if>
+				         <!-- 1페이지 이전 이동 끝 -->
+				       <!-- 이전 페이지 이동 끝 -->
+				       <c:forEach begin="${pstart}" end="${pend}" var="i">
+				        <c:if test="${page == i}">
+				         <a href="notice?page=${i}&sword=${sword}" style="color:red;"> ${i} </a>
+				        </c:if>
+				        <c:if test="${page != i}">
+				         <a href="notice?page=${i}&sword=${sword}"> ${i} </a>
+				        </c:if>
+				       </c:forEach>
+				       
+				       <!-- 다음 페이지 이동 -->
+				        <!-- 다음 1페이지 이동 -->
+				        <c:if test="${page != pagecnt }">
+				         <a href="notice?page=${page+1}&sword=${sword}"> > </a>
+				        </c:if>
+				        <c:if test="${page == pagecnt}"> 
+				         >
+				        </c:if>
+				        <!-- 다음 1페이지 이동 끝 -->
+				        
+				        <!-- 다음 10페이지 이동 시작 -->
+				        <c:if test="${pend != pagecnt }">
+				         <a href="notice?page=${pend+1}&sword=${sword}"> >> </a>
+				        </c:if>
+				        <c:if test="${pend == pagecnt}">
+				          >>
+				        </c:if>
+				        <!-- 다음 10페이지 이동 끝 -->
+				       <!-- 다음 페이지 이동 끝 -->
+				      </div>
 			      </td>
-			      <td>
+			      <td class="notice_insert_td">
 			      	<div class="notice_flex_insert">
 			      		<a href="insert" class="notice_insert_a"><span class="notice_insert_span">추가</span></a>
 			      	</div>

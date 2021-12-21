@@ -64,6 +64,10 @@
         </li>
         <li>
         	 <a href="notice" class="depth1">Notice</a>
+        	
+        </li>
+        <li>
+        	 <a href="login" class="depth1">ManageMent</a>
         </li>
       </ul>
     </nav>

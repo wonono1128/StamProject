@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="resource/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resource/css/common.css">
 <link rel="stylesheet" href="resource/css/style.css">
-<link rel="stylesheet" href="resource/css/insert.css">
+<link rel="stylesheet" href="resource/css/notice/insert.css">
 
 <script src="resource/js/jquery-3.2.1.min.js"></script>
 <script src="resource/plugins/swiper/swiper-bundle.min.js"></script>
@@ -83,20 +83,21 @@
           
           </div>
           <div class="notice-div">
-		<span class="notice-span">Notice Insert</span>
+	        <div class="notice-div-span">
+				<span class="notice-span">Notice Insert</span>
+			</div>
           	<form method="post"action="insert_ok" >
 	       		<table class="notice-table">
-	       	
-	       			<tr>
+	       			<tr class="notice-insert-tr">
 	       				<td class="notice_insert_td">제목</td>
 	       				<td  colspan="2"><input type="text" placeholder="제품명을 입력해주세요." name="notice_title" id="notice_insert_title"></td>	
 	       			</tr>
-	       			<tr>
+	       			<tr class="notice-insert-tr">
 	      			 	<td class="notice_insert_td">내용</td>
 	       				<td  colspan="2"><textarea placeholder="내용을 입력해주세요" name="notice_contents" id="notice_insert_text"></textarea></td>	
 	       			</tr>
-	       			<tr>
-	       				<td></td>
+	       			<tr class="notice-insert-tr notice-insert-btn">
+	       		
 		       			<td class="notice_insert_input"><button id="notice_insert_btn">추가</button></td>
 		       			<td class="notice_insert_input"><a href="notice" id="notice_insert_list">목록</a></td>
 		       		</tr>
