@@ -75,12 +75,12 @@ public class NoticeController {
 				pend=pagecnt;
 			}
 			model.addAttribute("pend",pend);	
-		return "/notice";
+		return "notice/notice";
 	}
 	@RequestMapping("/insert")
 	public String insert() {
 		
-		return "/insert";
+		return "notice/insert";
 	}
 	@RequestMapping("/insert_ok")
 	public String insert_ok(HttpServletRequest request,NoticeDto ndto,Model model) throws Exception {
@@ -99,7 +99,7 @@ public class NoticeController {
 		NoticeDao ndao = sqlSession.getMapper(NoticeDao.class);
 		ndto = ndao.content(notice_num);
 		model.addAttribute("ndto",ndto);
-		return "/content";
+		return "notice/content";
 	}
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request,NoticeDto ndto,Model model) throws Exception {
@@ -115,7 +115,7 @@ public class NoticeController {
 		NoticeDao ndao = sqlSession.getMapper(NoticeDao.class);
 		ndto = ndao.content(notice_num);
 		model.addAttribute("ndto",ndto);
-		return "/update";
+		return "notice/update";
 	}
 	@RequestMapping("update_ok")
 	public String update_ok(HttpServletRequest request,NoticeDto ndto) {

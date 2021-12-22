@@ -23,7 +23,7 @@ public @Configuration @EnableTransactionManagement class DataUtil {
 	    	dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
 	        dataSourceBuilder.url("jdbc:mysql://localhost:3306/stam?serverTimezone=UTC");
 	        dataSourceBuilder.username("root");
-	        dataSourceBuilder.password("px6546px!");
+	        dataSourceBuilder.password("asdzxc12!@");
 	        return dataSourceBuilder.build();
 	    }
     @Bean

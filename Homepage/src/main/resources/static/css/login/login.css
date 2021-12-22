@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+*{
+    box-sizing: border-box;
+}
+
+h2{
+    color: gray;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+
+#manager_id, #manager_pw{
+    border: black solid 1px;
+    border-radius: 1rem;
+    width: 200px;
+    height: 25px;
+    margin-top: 20px;
+    margin-left: 25px;
+    text-align: center;
+    font-size: 5px;
+}
+
+#login_btn{
+	width: 250px;
+	height: 70px;
+	margin-top: 30px;
+	border: black solid 1px;
+	border-radius: 1rem;
+	background-color: black;
+	color: white;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+#div_pw > div{
+	font-weight: lighter;
+	font-size: 10px;
+	margin-top: 20px;
+}
+
+#login_div{
+	display: flex;
+	justify-content: center;
+}
+
+.header{
+	width: 20.8%;
+    max-width: 400px;
+    height: 100%;
+    text-align: right;
+    padding-top: 10px;
+    min-width: 250px;
+    position: relative;
+    z-index: 30;
+}
+.item {flex-basis: auto;}
+
+
+a {
+    display: inline-block;
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 18px;
+}
+
+.logout{
+	font-style: NotoSansKR-Thin.otf;
+	font-size: 13px;
+	margin-right: 20px;
+}
+
+.fail_message{
+	font-size: 10px;
+	text-align: center;
+	margin-top: 20px;
+}

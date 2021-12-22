@@ -4,7 +4,21 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.stam.homepage.dao.MemberDao">
+<!-- 관리자 정보 -->
    <select id="getList" resultType="kr.stam.homepage.dto.MemberDto">
       select * from manager
    </select>
+   
+<!-- 비밀번호 암호화 insert --> 
+   <insert id="insertPsswd" parameterType="kr.stam.homepage.dto.MemberDto">
+   		insert into manager(manager_id, manager_pw, manager_name)
+   		values(#{manager_id}, #{manager_pw}, #{manager_name})
+   </insert>
+   
+<!-- 로그인 로그 --> 
+	<insert id="addLog" parameterType="kr.stam.homepage.dto.LogDto">
+		insert into login_log(manager_num, manager_id, manager_name, login_date)
+		values(#{manager_num}, #{manager_id}, #{manager_name}, now())
+	</insert>
+
 </mapper>
