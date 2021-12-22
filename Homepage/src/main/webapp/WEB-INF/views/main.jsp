@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +66,12 @@
          <li>
           <a href="login" class="depth1">ManageMent</a>
           <ul class="depth2">
+         <c:if test="${level != 1 }">
             <li><a href="login">Login</a></li>
+         </c:if>
+         <c:if test="${level == 1 }">
+         	<li><a href="logout">Logout</a></li>
+         </c:if>
             <li><a href="notice">Notice</a></li>
 
           </ul>

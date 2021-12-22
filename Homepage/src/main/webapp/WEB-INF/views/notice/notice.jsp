@@ -173,11 +173,13 @@
 				       <!-- 다음 페이지 이동 끝 -->
 				      </div>
 			      </td>
+			     <c:if test="${level == 1 }">
 			      <td class="notice_insert_td">
 			      	<div class="notice_flex_insert">
 			      		<a href="insert" class="notice_insert_a"><span class="notice_insert_span">추가</span></a>
 			      	</div>
 			      </td>
+			      </c:if>
 			    </tr>
 <!-- 페이징 html 끝 -->
      

@@ -3,6 +3,7 @@ package kr.stam.homepage.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class LoginController {
 	   
 	   
 	   @RequestMapping(value="loginChk" , method = RequestMethod.POST)
-	   public ModelAndView loginChk(String manager_id, MemberDto mdto, LogDto ldto, HttpServletRequest request) {
+	   public ModelAndView loginChk(String manager_id, MemberDto mdto, LogDto ldto, HttpServletRequest request,HttpSession session) {
 		   ModelAndView mav = new ModelAndView();
 
 			// DB 비밀번호 암호화 (sha256)
@@ -60,21 +61,35 @@ public class LoginController {
 			request.setAttribute("encry",encryPassword2);
 		   	System.out.println("입력한 아이디: " + manager_id);
 			System.out.println("입력한 비밀번호 : " + encryPassword2);
-		
-		   	if(mId.equals(manager_id) && mPsswd.equals(encryPassword2)) {
-		   		mav.setViewName("main");
-				ldto.setManager_num(mNum);
-				ldto.setManager_name(mName);
-				md.addLog(ldto);	
-		   	}else {
-		   		mav.setViewName("login/login");
-		   		mav.addObject("message", "error");
-		   	}
-		   	
-			// 암호화된 비밀번호 insert
-//			mdto.setManager_name(mName);
-//			md.insertPsswd(mdto);
-			
+			System.out.println(mNum);
+	
+	   		
+			   	if(mId.equals(manager_id) && mPsswd.equals(encryPassword2)) {
+			   		mav.setViewName("main");
+					ldto.setManager_num(mNum);
+					ldto.setManager_name(mName);
+					session.setAttribute("level", 1);
+					md.addLog(ldto);	
+			   	}else {
+			   		mav.setViewName("login/login");
+			   		mav.addObject("message", "error");
+			   	
+	   		}
+		 //암호화된 비밀번호 insert
+//		mdto.setManager_name(mName);
+//		md.insertPsswd(mdto);
+//			
 		   	return mav;
 	   } 
+	   
+	   
+	   
+	   @RequestMapping("logout")
+	   public String loginout(HttpSession session) {
+		   session.invalidate();
+	      return "redirect:/main";
+	   }
+	   
+	
+	   
 }

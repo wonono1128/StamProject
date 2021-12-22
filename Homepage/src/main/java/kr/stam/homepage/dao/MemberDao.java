@@ -9,5 +9,5 @@ public interface MemberDao {
 	 public List<MemberDto> getList();
 	 public void insertPsswd(MemberDto mdto);
 	 public void addLog(LogDto ldto);
-	 
+
 }

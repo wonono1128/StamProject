@@ -67,7 +67,7 @@ body{
 }
 
 
-@media (max_width: 1320px)   { 
+@media (max-width: 1320px)   { 
 	.notice_table {
 	    height: 100vh;
 	    display: flex;
@@ -95,7 +95,7 @@ body{
 
 
 
-@media (max_width: 817px)   { 
+@media (max-width: 817px)   { 
 	#notice_insert_text {
     resize: none;
     height: 450px;

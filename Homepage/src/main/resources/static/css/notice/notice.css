@@ -76,7 +76,7 @@ body{
     top: 30px;
 }
 
-@media (max_width: 1300px)   { 
+@media (max-width: 1300px)   { 
 		.notice_div{
 		display: flex;
 	    flex-direction: column;
@@ -114,7 +114,7 @@ body{
 }
 	
 	
-@media (max_width: 817px)   { 
+@media (max-width: 817px)   { 
 		.notice_div{
 		display: flex;
 	    flex-direction: column;

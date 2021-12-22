@@ -100,9 +100,25 @@
 	       			</tr>
 	       			<tr>
 		       			<td class="notice_btn_td">
+		       		
+		       		<c:choose>
+		       			<c:when test="${level == 1}">
+		       			<div  class="notice_flex_insert">
 			       			<a href="update?notice_num=${ndto.notice_num }" class="notice_btn_a"><span class="notice_btn_span">수정</span></a>
+			       		</div>
+			       		<div  class="notice_flex_insert">
 			  		     	<a href="delete?notice_num=${ndto.notice_num }" class="notice_btn_a"><span class="notice_btn_span">삭제</span></a>
-			       			<a href="notice" class="notice_btn_a"><span class="notice_btn_span">목록</span></a>
+			  		     </div>
+			  		     <div  class="notice_flex_insert">
+			  		     	<a href="notice" class="notice_btn_a"><span class="notice_btn_span">목록</span></a>
+			  		     </div>
+			  		     </c:when>
+			  		     <c:otherwise>
+			  		     <div  class="notice_btn_otherwise">
+			  		     	<a href="notice" class="notice_btn_a"><span class="notice_btn_span">목록</span></a>
+			  		     </div>
+			  		     </c:otherwise>
+			       	</c:choose>
 		       			</td>
 		       		</tr>
 	       		</table>

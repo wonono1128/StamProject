@@ -21,4 +21,5 @@
 		values(#{manager_num}, #{manager_id}, #{manager_name}, now())
 	</insert>
 
+
 </mapper>
