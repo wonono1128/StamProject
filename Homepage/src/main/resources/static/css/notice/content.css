@@ -5,60 +5,60 @@ body{
 	height:100vh;
 	
 }
-.notice-span{
+.notice_span{
 	font-size:60px;
 	white-space: nowrap
 }
-.notice-div-span{
+.notice_div_span{
 	
 }
-.notice-div{
+.notice_div{
 	display: flex;
     flex-direction: column;
     align-items: center;
 	width:100vw;
 	margin-top: 30px;
 }
-.notice-content-td{
+.notice_content_td{
 	color:rgba(0,0,0,0.5)
 }
 
-.notice-content-textarea::-webkit-scrollbar {
+.notice_content_textarea::-webkit-scrollbar {
     display: none; 
 }
-.notice-content-textarea{
+.notice_content_textarea{
 	height: 600px;
     position: relative;
     overflow: scroll;
 }
-.notice-content-pre{
+.notice_content_pre{
 	position: absolute;
     top: 0;
 }
-.notice-td-day{
+.notice_td_day{
 	border-bottom:1px solid rgba(0,0,0,0.3);
 	text-align: end;
 }
 
-.notice-table{
+.notice_table{
 	position: absolute;
     height: 80vh;
 	
 }
-.notice-content-div{
+.notice_content_div{
     position: relative;
     width: 50vw;
 }
-.notice-content-tr{
+.notice_content_tr{
 	height: 50px;
 }
-.notice-btn-td{
+.notice_btn_td{
 	display: flex;
     justify-content: center;
     width: 80vw;
 	
 }
-.notice-btn-a{
+.notice_btn_a{
     border-radius: 30px;
     border: 1px solid rgba(0,0,0,0.3);
     width: 83px;
@@ -67,7 +67,7 @@ body{
     position: relative;
     margin-right: 30px;
 }
-.notice-btn-span{
+.notice_btn_span{
 	position: absolute;
     top: 5px;
     left: 23px;
@@ -76,27 +76,27 @@ body{
 
 
  /* 816px보다 작은 화면 일경우 동작*/
-@media  (max-width: 1190px) { 
+@media  (max_width: 1190px) { 
 	
-	.notice-div {
+	.notice_div {
     display: flex;
     flex-direction: column;
     width: 100vw;
     margin-top: 30px;
-    margin-left: -120px;
+    margin-left: _120px;
 	}
 }
 
  /* 816px보다 작은 화면 일경우 동작*/
-@media  (max-width: 817px) { 
-	.notice-span {
+@media  (max_width: 817px) { 
+	.notice_span {
     font-size: 30px;
     white-space: nowrap;
 }
-	.notice-content-textarea {
+	.notice_content_textarea {
     height: 50vh;
     position: relative;
-        overflow: scroll;
+    overflow: scroll;
 }
 
 }

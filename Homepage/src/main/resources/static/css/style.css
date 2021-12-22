@@ -8,7 +8,7 @@ h1.logo{position:absolute;right:0;z-index:10;}
 h1.logo a{width:172px;width:168px;/*height:36px;*/display:block;display:inline-block;padding-right:20px;box-sizing:initial;margin-right:-2px}
 h1.logo a img{width:100%;}
 h1.logo.on a{border-right:2px solid #000;}
-.navi{margin-top:100px;}
+.navi{margin-top:80px;}
 .navi>li{margin-bottom:10px}
 .navi .depth1{font-size: 28px;font-weight:500;line-height: 28px;padding-right:18px;letter-spacing:-0.02em;text-transform:uppercase;}
 .navi .depth1.on{font-weight:700;border-right:2px solid #000;margin-right:-2px;}

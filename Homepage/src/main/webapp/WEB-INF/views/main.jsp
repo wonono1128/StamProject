@@ -62,13 +62,15 @@
             <li><a href="solution_System2">구간별 암호화 시스템</a></li>
           </ul>
         </li>
-        <li>
-        	 <a href="notice" class="depth1">Notice</a>
-        	
+         <li>
+          <a href="login" class="depth1">ManageMent</a>
+          <ul class="depth2">
+            <li><a href="login">Login</a></li>
+            <li><a href="notice">Notice</a></li>
+
+          </ul>
         </li>
-        <li>
-        	 <a href="login" class="depth1">ManageMent</a>
-        </li>
+     
       </ul>
     </nav>
   </header>

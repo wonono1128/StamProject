@@ -82,13 +82,13 @@
             <span class="loca">HOME</span>
           
           </div>
-          <div class="notice-div">
-	        <div class="notice-div-span">
-				<span class="notice-span">Notice Insert</span>
+          <div class="notice_div">
+	        <div class="notice_div_span">
+				<span class="notice_span">Notice Insert</span>
 			</div>
           	<form method="post"action="insert_ok" >
-	       		<table class="notice-table">
-	       			<tr class="notice-insert-tr">
+	       		<table class="notice_table">
+	       			<tr class="notice_insert_tr">
 	       				<td class="notice_insert_td">제목</td>
 	       				<td  colspan="2"><input type="text" placeholder="제품명을 입력해주세요." name="notice_title" id="notice_insert_title"></td>	
 	       			</tr>
@@ -96,7 +96,7 @@
 	      			 	<td class="notice_insert_td">내용</td>
 	       				<td  colspan="2"><textarea placeholder="내용을 입력해주세요" name="notice_contents" id="notice_insert_text"></textarea></td>	
 	       			</tr>
-	       			<tr class="notice-insert-tr notice-insert-btn">
+	       			<tr class="notice_insert_tr notice_insert_btn">
 	       		
 		       			<td class="notice_insert_input"><button id="notice_insert_btn">추가</button></td>
 		       			<td class="notice_insert_input"><a href="notice" id="notice_insert_list">목록</a></td>

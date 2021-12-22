@@ -80,13 +80,13 @@
             <span class="loca">HOME</span>
             <span class="slogan">Strategy+Ambition</span>
           </div>
-          <div class="notice-div">
-          <div class="notice-div-span">
-          	<span class="notice-span">Notice Update</span>
+          <div class="notice_div">
+          <div class="notice_div_span">
+          	<span class="notice_span">Notice Update</span>
   		  </div>
           	<form method="post"action="update_ok" >
           	
-          		<table class="notice-table">
+          		<table class="notice_table">
 	       			<tr>
 	       				<td><input style="display:none" type="text"  name="notice_num" value="${ndto.notice_num }"></td>
 	       			</tr>
@@ -98,7 +98,7 @@
 	      			 	<td class="notice_insert_td">내용</td>
 	       				<td  colspan="2"><textarea name="notice_contents" id="notice_insert_text">${ndto.notice_contents }</textarea></td>	
 	       			</tr>
-	       			<tr class="notice-insert-tr notice-insert-btn">
+	       			<tr class="notice_insert_tr notice_insert_btn">
 	       				
 		       			<td class="notice_insert_input"><button id="notice_insert_btn">수정</button></td>
 		       			<td class="notice_insert_input"><a href="notice" id="notice_insert_list">목록</a></td>

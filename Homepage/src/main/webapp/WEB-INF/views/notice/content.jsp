@@ -72,6 +72,7 @@
     </nav>
   </header>
 
+  
   <div class="container item">
 
     <div class="swiper-container">
@@ -81,27 +82,27 @@
           <div class="loca_div mo">
             <span class="loca">HOME</span>
           </div>
-          <div class="notice-div">
-          		<span class="notice-span">Notice Content</span>
-         	<div class="notice-content-div">
-	       		<table class="notice-table">
-	       			<tr class="notice-content-tr ">
-	       				<td class="notice-content-td" colspan="2">${ndto.notice_title}</td>	
+          <div class="notice_div">
+          		<span class="notice_span">Notice Content</span>
+         	<div class="notice_content_div">
+	       		<table class="notice_table">
+	       			<tr class="notice_content_tr ">
+	       				<td class="notice_content_td" colspan="2">${ndto.notice_title}</td>	
 	       		
 	       			</tr>
-	       			<tr class="notice-content-tr ">
+	       			<tr class="notice_content_tr ">
 	       		
-	       				<td class="notice-td-day notice-content-td"colspan="2">${ndto.notice_day }</td>
+	       				<td class="notice_td_day notice_content_td"colspan="2">${ndto.notice_day }</td>
 	       			</tr>
 	       			<tr>
 	      			 	
-	       				<td colspan="2" class="notice-content-td notice-content-textarea"><pre class="notice-content-pre">${ndto.notice_contents}</pre></td>	
+	       				<td colspan="2" class="notice_content_td notice_content_textarea"><pre class="notice_content_pre">${ndto.notice_contents}</pre></td>	
 	       			</tr>
 	       			<tr>
-		       			<td class="notice-btn-td">
-			       			<a href="update?notice_num=${ndto.notice_num }" class="notice-btn-a"><span class="notice-btn-span">수정</span></a>
-			  		     	<a href="delete?notice_num=${ndto.notice_num }" class="notice-btn-a"><span class="notice-btn-span">삭제</span></a>
-			       			<a href="notice" class="notice-btn-a"><span class="notice-btn-span">목록</span></a>
+		       			<td class="notice_btn_td">
+			       			<a href="update?notice_num=${ndto.notice_num }" class="notice_btn_a"><span class="notice_btn_span">수정</span></a>
+			  		     	<a href="delete?notice_num=${ndto.notice_num }" class="notice_btn_a"><span class="notice_btn_span">삭제</span></a>
+			       			<a href="notice" class="notice_btn_a"><span class="notice_btn_span">목록</span></a>
 		       			</td>
 		       		</tr>
 	       		</table>

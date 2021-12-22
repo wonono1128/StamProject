@@ -4,24 +4,24 @@ body{
 	width:100vw;
 	height:100vh;
 }
-.notice-div{
+.notice_div{
 	display: flex;
     flex-direction: column;
     width: 100vw;
 }
 
-.notice-div-span{
+.notice_div_span{
 	position: relative;
     height: 100px;
     margin-top: 30px;
     text-align: center;
 }
 
-.notice-span{
+.notice_span{
     font-size: 60px;
     white-space: nowrap;
 }
-.notice-table{
+.notice_table{
 	height: 100vh;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@ body{
 	height:600px;
 	}
 	
-.notice-insert-tr{
+.notice_insert_tr{
 	height:50px;
 }
 #notice_insert_title{
@@ -47,7 +47,7 @@ body{
 	background-color: white;
     color: black;
 }
-.notice-insert-btn{
+.notice_insert_btn{
 	display: flex;
     flex-direction: row;
     justify-content: center;
@@ -67,8 +67,8 @@ body{
 }
 
 
-@media (max-width: 1320px)   { 
-	.notice-table {
+@media (max_width: 1320px)   { 
+	.notice_table {
 	    height: 100vh;
 	    display: flex;
 	    flex-direction: column;
@@ -76,7 +76,7 @@ body{
 	    border-spacing: 0px 30px;
 	
 	}
-	.notice-insert-btn {
+	.notice_insert_btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -86,7 +86,7 @@ body{
 #notice_insert_title {
     width: 420px;
 }
-.notice-div {
+.notice_div {
     display: flex;
     flex-direction: column;
     width: 60vw;
@@ -95,7 +95,7 @@ body{
 
 
 
-@media (max-width: 817px)   { 
+@media (max_width: 817px)   { 
 	#notice_insert_text {
     resize: none;
     height: 450px;
@@ -110,7 +110,7 @@ body{
     border-radius: 40px;
     margin-right: 20px;
 }
-.notice-table {
+.notice_table {
     height: 100vh;
     display: flex;
     flex-direction: column;

@@ -83,9 +83,9 @@
             <span class="loca">HOME</span>
         
           </div>
-          <div class="notice-div">
-			<span class="notice-span">Notice</span>
-       		<table class="notice-table">
+          <div class="notice_div">
+			<span class="notice_span">Notice</span>
+       		<table class="notice_table">
        		<tr> <!-- 검색행 -->
        		 
 		      <td colspan="4" class="notice_select_td">  
@@ -105,18 +105,18 @@
 		     </tr>
 	
        			<tr class="notice-tr top-tr">
-       				<td class="notice-th td-num">번호</td>
-       				<td class="notice-th td-mangager">작성자</td>
-       				<td class="notice-th Td-Title" colspan="2">제목</td>
-       				<td class="notice-th Td-Regdate">날짜</td>
+       				<td class="notice_th td_num">번호</td>
+       				<td class="notice_th td_mangager">작성자</td>
+       				<td class="notice_th td_title" colspan="2">제목</td>
+       				<td class="notice_th td_regdate">날짜</td>
        			</tr>
        		
        			<c:forEach var="ndto" items="${nlist}">
-	       			<tr class="notice-tr">
-	       				<td class="notice-td">${ndto.notice_num }</td>
-	       				<td class="notice-td">${ndto.manager_name }</td>
-	       				<td colspan="2" class="notice-td notice_select_td"><a href="content?notice_num=${ndto.notice_num }">${ndto.notice_title }</a></td>
-	       				<td class="notice-td">${ndto.notice_day }</td>
+	       			<tr class="notice_tr">
+	       				<td class="notice_td">${ndto.notice_num }</td>
+	       				<td class="notice_td">${ndto.manager_name }</td>
+	       				<td colspan="2" class="notice_td notice_select_td"><a href="content?notice_num=${ndto.notice_num }">${ndto.notice_title }</a></td>
+	       				<td class="notice_td">${ndto.notice_day }</td>
 	       			</tr>
        			</c:forEach>
        		 

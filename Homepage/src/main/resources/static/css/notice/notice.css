@@ -5,13 +5,13 @@ body{
 	height:100vh;
 	
 }
-.notice-div{
+.notice_div{
 	display: flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
 }
-.notice-table{
+.notice_table{
 	width: 70%;
     text-align: center;
 }
@@ -19,7 +19,7 @@ body{
 	position: relative;
 }
 .notice_flex_insert {
-border-radius: 30px;
+	border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,11 +33,11 @@ border-radius: 30px;
 	height:50px;
 	padding-top:10px;
 }
-.notice-th{
+.notice_th{
 	border: 1px solid rgba(0,0,0,0.2);
 	height: 60px;
 }
-.notice-td{
+.notice_td{
 	border: 1px solid rgba(0,0,0,0.2);
 	height:50px;
 	color: rgba(0,0,0,0.5);
@@ -63,7 +63,7 @@ border-radius: 30px;
     right: 100px;
 	white-space: nowrap
 }
-.notice-span{
+.notice_span{
 	font-size:60px;
     margin: 0 0 20px 0;
 }		
@@ -76,14 +76,14 @@ border-radius: 30px;
     top: 30px;
 }
 
-@media (max-width: 1300px)   { 
-		.notice-div{
+@media (max_width: 1300px)   { 
+		.notice_div{
 		display: flex;
 	    flex-direction: column;
 	    position: relative;
 	    width: 100vw;
 	}
-		.notice-table{
+		.notice_table{
 	    width: 50%;
 	    text-align: center;
 	    position: absolute;
@@ -92,7 +92,7 @@ border-radius: 30px;
 	}
 		.notice_select_div{
 		position: absolute;
-	    right: -30px;
+	    right: _30px;
 	    white-space: nowrap;
 	}
 		.notice_paging_div {
@@ -114,14 +114,14 @@ border-radius: 30px;
 }
 	
 	
-@media (max-width: 817px)   { 
-		.notice-div{
+@media (max_width: 817px)   { 
+		.notice_div{
 		display: flex;
 	    flex-direction: column;
 	    position: relative;
 	    width: 100vw;
 	}
-		.notice-table{
+		.notice_table{
 	    width: 60%;
 	    text-align: center;
 	    position: absolute;
@@ -130,7 +130,7 @@ border-radius: 30px;
 	}
 		.notice_select_div{
 		position: absolute;
-	    right: -80px;
+	    right: _80px;
 	    white-space: nowrap;
 	}
 		.notice_paging_div {
