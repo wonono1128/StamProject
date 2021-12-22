@@ -3,6 +3,7 @@ package kr.stam.homepage.controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class NoticeController {
 
 	
 	@RequestMapping("/notice")
-	public String notice(NoticeDto ndto ,HttpServletRequest request,Model model) {
+	public String notice(NoticeDto ndto ,HttpServletRequest request,Model model,HttpSession session) {
 		NoticeDao ndao=sqlSession.getMapper(NoticeDao.class);
 		 int index; // 1페이지=>0, 2페이지는 10
 		   int page;
@@ -69,6 +70,8 @@ public class NoticeController {
 		model.addAttribute("page",page);
 		model.addAttribute("sword",sword);
 		Integer pagecnt=ndao.get_pagecnt(cla,sword); // cla,sword적용
+		System.out.println("총 페이지는" + pagecnt);
+		session.setAttribute("pagecnt", pagecnt);
 		model.addAttribute("pagecnt",pagecnt);
 		// 출력될 pend값이 총페이지보다 클경우는 pend에 총페이지값을 전달
 			if(pend > pagecnt) {

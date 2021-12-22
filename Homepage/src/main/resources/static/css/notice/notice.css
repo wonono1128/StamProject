@@ -60,8 +60,12 @@ body{
 }
 .notice_select_div{
 	position: absolute;
-    right: 100px;
-	white-space: nowrap
+    right: 10px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 20px;
 }
 .notice_span{
 	font-size:60px;
@@ -74,6 +78,12 @@ body{
 	position: absolute;
     right: 250px;
     top: 30px;
+}
+
+.no_notice_page{
+	font-size: 30px;
+
+    height: 100px;
 }
 
 @media (max-width: 1300px)   { 
@@ -92,8 +102,8 @@ body{
 	}
 		.notice_select_div{
 		position: absolute;
-	    right: _30px;
-	    white-space: nowrap;
+	    right: 30px;
+	   	white-space: nowrap;
 	}
 		.notice_paging_div {
 	    position: absolute;
@@ -130,8 +140,18 @@ body{
 	}
 		.notice_select_div{
 		position: absolute;
-	    right: _80px;
 	    white-space: nowrap;
+	    display: flex;
+    	white-space: nowrap;
+        flex-direction: column;
+         right: 0px;
+             top: 0px; 
+	}
+	.notice_div_firstchild{
+	    margin-bottom: 10px;
+	}
+	.select_box{
+		height:auto;
 	}
 		.notice_paging_div {
 	    position: absolute;

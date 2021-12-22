@@ -86,7 +86,7 @@ public class LoginController {
 	   
 	   @RequestMapping("logout")
 	   public String loginout(HttpSession session) {
-		   session.invalidate();
+		   session.removeAttribute("level");
 	      return "redirect:/main";
 	   }
 	   

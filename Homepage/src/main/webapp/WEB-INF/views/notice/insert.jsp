@@ -91,11 +91,11 @@
 	       		<table class="notice_table">
 	       			<tr class="notice_insert_tr">
 	       				<td class="notice_insert_td">제목</td>
-	       				<td  colspan="2"><input type="text" placeholder="제품명을 입력해주세요." name="notice_title" id="notice_insert_title"></td>	
+	       				<td  colspan="2"><input type="text" placeholder="제품명을 입력해주세요." name="notice_title" id="notice_insert_title" required maxlength="30"></td>	
 	       			</tr>
 	       			<tr class="notice-insert-tr">
 	      			 	<td class="notice_insert_td">내용</td>
-	       				<td  colspan="2"><textarea placeholder="내용을 입력해주세요" name="notice_contents" id="notice_insert_text"></textarea></td>	
+	       				<td  colspan="2"><textarea placeholder="내용을 입력해주세요" name="notice_contents" id="notice_insert_text" required minlength="20" maxlength="200"></textarea></td>	
 	       			</tr>
 	       			<tr class="notice_insert_tr notice_insert_btn">
 	       		
