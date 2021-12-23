@@ -129,8 +129,13 @@
 	       			<tr class="notice_tr">
 	       				<td class="notice_td">${ndto.noticeNum }</td>
 	       				<td class="notice_td">${ndto.managerName }</td>
-	       				<td colspan="2" class="notice_td notice_select_td"><a href="content?noticeNum=${ndto.noticeNum }">${ndto.noticeTitle }</a></td>
-	       				<td class="notice_td">${ndto.noticeDay }</td>
+	       				<td colspan="2" class="notice_td notice_select_td">
+	       					<a href="content?noticeNum=${ndto.noticeNum }" class="notice_td_a">
+	       						<span id="notice_td_a_first">${ndto.noticeTitle}</span>
+	       						<span id="notice_td_a_span">${ndto.noticeTitle }</span>
+	       					</a>
+	       				</td>
+	       				<td class="notice_td notice_td_day">${ndto.noticeDay }</td>
 	       			</tr>
        			</c:forEach>
        		</c:if>
@@ -223,6 +228,7 @@
 
 
 </body>
+
   		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

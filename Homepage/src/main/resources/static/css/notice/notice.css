@@ -41,10 +41,36 @@ body{
 	border: 1px solid rgba(0,0,0,0.2);
 	height:50px;
 	color: rgba(0,0,0,0.5);
-	overflow : hidden;
 	white-space: nowrap;
-	text-overflow: ellipsis;
+
 	}
+.notice_td_a{
+	text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+}
+
+.notice_td_a:hover #notice_td_a_first{
+	display:none;
+}
+#notice_td_a_span{
+	display:none;
+}
+.notice_td_a:hover .notice_td_day{
+	display:none;
+}
+
+.notice_td_a:hover{
+	 overflow: visible;
+}
+.notice_td_a:hover #notice_td_a_span{
+
+	display:block;
+	z-index:100;
+	text-decoration:none;
+	overflow: visible;
+	font-weight:600;
+}
 
 .notice_insert{
 	border: 1px solid rgba(0,0,0,0.2);
@@ -53,6 +79,8 @@ body{
 }
 .notice_select_td{
 	color: black;
+	text-overflow: ellipsis;
+    text-align: left;
 }
 .notice_select{
 	margin: 0 0 70px 0;
