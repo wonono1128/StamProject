@@ -12,14 +12,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.stam.homepage.dao.NoticeDao;
+import kr.stam.homepage.dao.NoticeLogDao;
 import kr.stam.homepage.dto.NoticeDto;
+import kr.stam.homepage.dto.NoticeLogDto;
 
 
 
 
 
 @Controller
-public class NoticeController {
+public class NoticeController{
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -27,8 +29,11 @@ public class NoticeController {
 
 	
 	@RequestMapping("/notice")
-	public String notice(NoticeDto ndto ,HttpServletRequest request,Model model,HttpSession session) {
+	public String notice(NoticeDto ndto ,HttpServletRequest request,Model model,HttpSession session ) {
 		NoticeDao ndao=sqlSession.getMapper(NoticeDao.class);
+	
+		Integer nextNum = ndao.nextNum();
+		session.setAttribute("nextNum", nextNum);
 		 int index; // 1페이지=>0, 2페이지는 10
 		   int page;
 		   
@@ -55,7 +60,7 @@ public class NoticeController {
 		   
 		   String cla,sword;
 		   if(request.getParameter("cla")==null)
-			   cla="notice_title";
+			   cla="noticeTitle";
 		   else
 		       cla=request.getParameter("cla");
 		   
@@ -63,11 +68,15 @@ public class NoticeController {
 			   sword="";
 		   else
 		       sword=request.getParameter("sword");
+	
 		ArrayList<NoticeDto> nlist = ndao.nlist(cla,sword,index);
 		
+		System.out.println(nlist);
+	
 		model.addAttribute("nlist",nlist);
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("page",page);
+		
 		model.addAttribute("sword",sword);
 		Integer pagecnt=ndao.get_pagecnt(cla,sword); // cla,sword적용
 		System.out.println("총 페이지는" + pagecnt);
@@ -86,50 +95,77 @@ public class NoticeController {
 		return "notice/insert";
 	}
 	@RequestMapping("/insert_ok")
-	public String insert_ok(HttpServletRequest request,NoticeDto ndto,Model model) throws Exception {
+	public String insert_ok(HttpServletRequest request,NoticeDto ndto,Model model ,NoticeLogDto nLDto,HttpSession session) throws Exception {
 		NoticeDao ndao=sqlSession.getMapper(NoticeDao.class);
-		String manager_name = "관리자";
-		ndto.setManager_name(manager_name);
+		NoticeLogDao nLDao=sqlSession.getMapper(NoticeLogDao.class);
+		
+		int nextNum = (int) session.getAttribute("nextNum");
+		String managerId = (String) session.getAttribute("mId");
+		String managerName = (String) session.getAttribute("mName");
+		
+		ndto.setManagerName(managerName);
+		nLDto.setNoticeNum(nextNum+1);
+		nLDto.setManagerId(managerId);
+		nLDto.setManagerName(managerName);
+		nLDto.setLogType("Insert");
+		
 		model.addAttribute("ndto",ndto);
-
+		
 		ndao.insert(ndto);
+		nLDao.insert(nLDto);
 		return "redirect:/notice";
 	}
 	
 	@RequestMapping("/content")
 	public String content(HttpServletRequest request,NoticeDto ndto,Model model) throws Exception {
-		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
+		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 		NoticeDao ndao = sqlSession.getMapper(NoticeDao.class);
-		ndto = ndao.content(notice_num);
+		ndto = ndao.content(noticeNum);
 		model.addAttribute("ndto",ndto);
 		return "notice/content";
 	}
 	@RequestMapping("/delete")
-	public String delete(HttpServletRequest request,NoticeDto ndto,Model model) throws Exception {
-		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
+	public String delete(HttpServletRequest request,NoticeDto ndto,Model model,NoticeLogDto nLDto,HttpSession session) throws Exception {
+		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 		NoticeDao ndao = sqlSession.getMapper(NoticeDao.class);
-		ndao.delete(notice_num);
-
+		NoticeLogDao nLDao=sqlSession.getMapper(NoticeLogDao.class);
+		
+	
+		String managerId = (String) session.getAttribute("mId");
+		String managerName = (String) session.getAttribute("mName");
+		
+	
+		nLDto.setManagerId(managerId);
+		nLDto.setManagerName(managerName);
+		nLDto.setLogType("Delete");
+		ndao.delete(noticeNum);
+		nLDao.insert(nLDto);
 		return "redirect:/notice";
 	}
 	@RequestMapping("update")
 	public String update(HttpServletRequest request,NoticeDto ndto,Model model) {
-		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
+		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
 		NoticeDao ndao = sqlSession.getMapper(NoticeDao.class);
-		ndto = ndao.content(notice_num);
+		ndto = ndao.content(noticeNum);
 		model.addAttribute("ndto",ndto);
 		return "notice/update";
 	}
 	@RequestMapping("update_ok")
-	public String update_ok(HttpServletRequest request,NoticeDto ndto) {
-
-		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
-		String notice_title = request.getParameter("notice_title");
-		String notice_contents =request.getParameter("notice_contents");
-
-		NoticeDao ndao = sqlSession.getMapper(NoticeDao.class);
-		ndao.update(ndto);
+	public String update_ok(HttpServletRequest request,NoticeDto ndto,NoticeLogDto nLDto,HttpSession session) {
 		
+		NoticeDao ndao = sqlSession.getMapper(NoticeDao.class);
+		NoticeLogDao nLDao=sqlSession.getMapper(NoticeLogDao.class);
+		
+		
+		String managerId = (String) session.getAttribute("mId");
+		String managerName = (String) session.getAttribute("mName");
+		
+	
+		nLDto.setManagerId(managerId);
+		nLDto.setManagerName(managerName);
+		nLDto.setLogType("Update");
+		ndao.update(ndto);
+		nLDao.insert(nLDto);
 		return "redirect:/notice";
 	}
 }

@@ -66,9 +66,18 @@
             <li><a href="solution_System2">구간별 암호화 시스템</a></li>
           </ul>
         </li>
-        <li>
-        	 <a href="notice" class="depth1">Notice</a>
-        </li>
+         <li>
+          <a href="login" class="depth1">ManageMent</a>
+          <ul class="depth2">
+            <c:if test="${level != 1 }">
+            	<li><a href="login">Login</a></li>
+	         </c:if>
+	         <c:if test="${level == 1 }">
+	         	<li><a href="logout">Logout</a></li>
+	         </c:if>
+            <li class="on"><a href="notice">Notice</a></li>
+          </ul>
+        </li>  
       </ul>
     </nav>
   </header>
@@ -94,9 +103,9 @@
 		        	<div class="notice_div_firstchild">
 		             <span>선택</span>
 		             <select  style="width:auto; height:auto;" name="cla" id="select_box">
-			             <option value="notice_title"> 제목 </option>
-			             <option value="manager_name"> 작성자 </option>
-			             <option value="notice_contents"> 내용 </option>            
+			             <option value="noticeTitle"> 제목 </option>
+			             <option value="managerName"> 작성자 </option>
+			             <option value="noticeContents"> 내용 </option>            
 		            </select>
 		            </div>
 		            <div>
@@ -118,10 +127,10 @@
        		<c:if test="${pagecnt != 0 }">
        			<c:forEach var="ndto" items="${nlist}">
 	       			<tr class="notice_tr">
-	       				<td class="notice_td">${ndto.notice_num }</td>
-	       				<td class="notice_td">${ndto.manager_name }</td>
-	       				<td colspan="2" class="notice_td notice_select_td"><a href="content?notice_num=${ndto.notice_num }">${ndto.notice_title }</a></td>
-	       				<td class="notice_td">${ndto.notice_day }</td>
+	       				<td class="notice_td">${ndto.noticeNum }</td>
+	       				<td class="notice_td">${ndto.managerName }</td>
+	       				<td colspan="2" class="notice_td notice_select_td"><a href="content?noticeNum=${ndto.noticeNum }">${ndto.noticeTitle }</a></td>
+	       				<td class="notice_td">${ndto.noticeDay }</td>
 	       			</tr>
        			</c:forEach>
        		</c:if>

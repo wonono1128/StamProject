@@ -16,7 +16,7 @@
 <body>
 <div id="container">
 	<header class="header item">
-		<h1 class="logo"><a href="login"><img src="resources/static/images/logo.png" alt="STAM"></a></h1>
+		<h1 class="logo"><a href="main"><img src="resources/static/images/logo.png" alt="STAM"></a></h1>
 	</header>
 		
 	<div id="login_div">
@@ -24,10 +24,10 @@
 			<h2>Login</h2>
 		    <div id="div_id">
 		    	<input id="manager_db_id" name="manager_db_id" value="">
-		    	<input id="manager_id" name="manager_id" placeholder="관리자 아이디를 입력하세요">
+		    	<input id="manager_id" name="managerId" placeholder="관리자 아이디를 입력하세요">
 		    </div>
 		    <div id="div_pw">
-		    	<input type="password" id="manager_pw" name="manager_pw" placeholder="관리자 비밀번호를 입력하세요"> <br>
+		    	<input type="password" id="manager_pw" name="managerPw" placeholder="관리자 비밀번호를 입력하세요"> <br>
 		    </div>
 		    <c:if test="${message == 'error'}">
 				<div class="fail_message">아이디 또는 비밀번호가 일치하지 않습니다.</div>

@@ -65,9 +65,18 @@
             <li><a href="solution_System2">구간별 암호화 시스템</a></li>
           </ul>
         </li>
-        <li>
-        	 <a href="notice" class="depth1">Notice</a>
-        </li>
+         <li>
+          <a href="login" class="depth1">ManageMent</a>
+          <ul class="depth2">
+            <c:if test="${level != 1 }">
+            	<li><a href="login">Login</a></li>
+	         </c:if>
+	         <c:if test="${level == 1 }">
+	         	<li><a href="logout">Logout</a></li>
+	         </c:if>
+            <li class="on"><a href="notice">Notice</a></li>
+          </ul>
+        </li>  
       </ul>
     </nav>
   </header>
@@ -87,16 +96,16 @@
          	<div class="notice_content_div">
 	       		<table class="notice_table">
 	       			<tr class="notice_content_tr ">
-	       				<td class="notice_content_td" colspan="2">${ndto.notice_title}</td>	
+	       				<td class="notice_content_td" colspan="2">${ndto.noticeTitle}</td>	
 	       		
 	       			</tr>
 	       			<tr class="notice_content_tr ">
 	       		
-	       				<td class="notice_td_day notice_content_td"colspan="2">${ndto.notice_day }</td>
+	       				<td class="notice_td_day notice_content_td"colspan="2">${ndto.noticeDay }</td>
 	       			</tr>
 	       			<tr>
 	      			 	
-	       				<td colspan="2" class="notice_content_td notice_content_textarea"><pre class="notice_content_pre">${ndto.notice_contents}</pre></td>	
+	       				<td colspan="2" class="notice_content_td notice_content_textarea"><pre class="notice_content_pre">${ndto.noticeContents}</pre></td>	
 	       			</tr>
 	       			<tr>
 		       				<td class="notice_btn_td">
@@ -104,12 +113,12 @@
 		       			<c:when test="${level == 1}">
 			       		
 			       			<div  class="notice_flex_insert">
-				       			<a href="update?notice_num=${ndto.notice_num }" class="notice_btn_a"><span class="notice_btn_span">수정</span></a>
+				       			<a href="update?noticeNum=${ndto.noticeNum }" class="notice_btn_a"><span class="notice_btn_span">수정</span></a>
 				       		</div>
 				       
 				       
 				       		<div  class="notice_flex_insert">
-				  		     	<a href="delete?notice_num=${ndto.notice_num }" class="notice_btn_a"><span class="notice_btn_span">삭제</span></a>
+				  		     	<a href="delete?noticeNum=${ndto.noticeNum }" class="notice_btn_a"><span class="notice_btn_span">삭제</span></a>
 				  		     </div>
 				  		 
 				  		   

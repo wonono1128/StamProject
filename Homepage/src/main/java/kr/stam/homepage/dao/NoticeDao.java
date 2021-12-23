@@ -8,7 +8,8 @@ public interface NoticeDao {
 	public void insert(NoticeDto ndto);
 	public ArrayList nlist(String cla,String sword,int index);
 	public Integer get_pagecnt(String cla,String sword);
-	public NoticeDto content(int notice_num);
-	public void delete(int notice_num);
+	public Integer nextNum();
+	public NoticeDto content(int noticeNum);
+	public void delete(int noticeNum);
 	public void update(NoticeDto ndto);
 }

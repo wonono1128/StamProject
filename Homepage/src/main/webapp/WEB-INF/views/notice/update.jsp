@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,9 +64,18 @@
             <li><a href="solution_System2">구간별 암호화 시스템</a></li>
           </ul>
         </li>
-        <li>
-        	 <a href="notice" class="depth1">Notice</a>
-        </li>
+          <li>
+          <a href="login" class="depth1">ManageMent</a>
+          <ul class="depth2">
+            <c:if test="${level != 1 }">
+            	<li><a href="login">Login</a></li>
+	         </c:if>
+	         <c:if test="${level == 1 }">
+	         	<li><a href="logout">Logout</a></li>
+	         </c:if>
+            <li class="on"><a href="notice">Notice</a></li>
+          </ul>
+        </li>  
       </ul>
     </nav>
   </header>
@@ -88,15 +98,15 @@
           	
           		<table class="notice_table">
 	       			<tr>
-	       				<td><input style="display:none" type="text"  name="notice_num" value="${ndto.notice_num }"></td>
+	       				<td><input style="display:none" type="text"  name="noticeNum" value="${ndto.noticeNum }"></td>
 	       			</tr>
 	       			<tr class="notice-insert-tr">
 	       				<td class="notice_insert_td">제목</td>
-	       				<td  colspan="2"><input type="text" value="${ndto.notice_title }"name="notice_title" id="notice_insert_title" required maxlength="30"></td>	
+	       				<td  colspan="2"><input type="text" value="${ndto.noticeTitle }"name="noticeTitle" id="notice_insert_title" required maxlength="30"></td>	
 	       			</tr>
 	       			<tr class="notice-insert-tr">
 	      			 	<td class="notice_insert_td">내용</td>
-	       				<td  colspan="2"><textarea name="notice_contents" id="notice_insert_text" required minlength="20" maxlength="200">${ndto.notice_contents }</textarea></td>	
+	       				<td  colspan="2"><textarea name="noticeContents" id="notice_insert_text" required minlength="20" maxlength="200">${ndto.noticeContents }</textarea></td>	
 	       			</tr>
 	       			<tr class="notice_insert_tr notice_insert_btn">
 	       				
