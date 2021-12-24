@@ -4,21 +4,29 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.stam.homepage.dao.LoginDao">
-<!-- 관리자 정보 -->
-   <select id="getList" resultType="kr.stam.homepage.dto.LoginDto" >
-      select * from manager
-   </select>
-   
-<!-- 비밀번호 암호화 insert --> 
-   <insert id="insertPsswd" parameterType="kr.stam.homepage.dto.LoginDto">
-   		insert into manager(managerId, managerPw, managerName)
-   		values(#{managerId}, #{managerPw}, #{managerName})
-   </insert>
-   
-<!-- 로그인 로그 --> 
-	<insert id="addLog" parameterType="kr.stam.homepage.dto.LogDto">
-		insert into login_log(managerId, managerName, loginDate)
-		values( #{managerId}, #{managerName}, now())
+	<!-- 관리자 아이디,패스워드 일치 여부 -->
+	<select id="getList" resultType="String">
+		select managerName from manager
+		where managerId='${param1}' and managerPw='${param2}'
+	</select>
+
+	<!-- 관리자 이름 출력 -->
+	<select id="getName" resultType="String">
+		select managerName from manager
+	</select>
+
+	<!-- 비밀번호 암호화 insert -->
+	<insert id="insertPsswd"
+		parameterType="kr.stam.homepage.dto.LoginDto">
+		insert into manager(managerId, managerPw, managerName)
+		values(#{managerId}, #{managerPw}, #{managerName})
 	</insert>
 
+	<!-- 로그인 로그 -->
+	<insert id="addLog" parameterType="kr.stam.homepage.dto.LogDto">
+		insert into
+		login_log(managerId, managerName, loginDate)
+		values(#{managerId},
+		#{managerName}, now())
+	</insert>
 </mapper>

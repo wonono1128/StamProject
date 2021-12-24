@@ -1,8 +1,9 @@
 package kr.stam.homepage.dto;
 
 public class LoginDto {
-
-	String managerId,managerPw,managerName;
+	String managerId;
+	String managerPw;
+	String managerName;
 
 	public String getManagerId() {
 		return managerId;
@@ -28,6 +29,4 @@ public class LoginDto {
 		this.managerName = managerName;
 	}
 
-	
-	
 }
