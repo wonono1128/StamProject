@@ -102,7 +102,7 @@ public class NoticeController{
 	}
 	@RequestMapping("/insert_ok")
 	public String insert_ok(HttpServletRequest request,NoticeDto ndto,Model model ,NoticeLogDto nLDto,HttpSession session) throws Exception {
-		
+	
 		if(session.getAttribute("nextNum") != null) {
 			int nextNum = (int) session.getAttribute("nextNum");
 			nLDto.setNoticeNum(nextNum+1);
