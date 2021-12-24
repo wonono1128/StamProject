@@ -33,8 +33,8 @@ public class LoginController {
 	   }
 	   
 	   @RequestMapping(value="loginChk" , method = RequestMethod.POST)
-	   public ModelAndView loginChk(String managerId, LoginDto mdto, LogDto ldto, HttpServletRequest request, HttpSession session) {
-		   ModelAndView mav = new ModelAndView();
+	   public ModelAndView loginChk(String managerId, LoginDto mdto, LogDto ldto, HttpServletRequest request, HttpSession session,ModelAndView mav) {
+		   
 
 			// DB 비밀번호 암호화 (sha256)
 		   	String mPsswd = "";
