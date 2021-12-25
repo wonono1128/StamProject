@@ -113,6 +113,10 @@ public class MainController {
 
 		return "solution/solution_System2";
 	}
+	@RequestMapping("/test")
+	public String test() {
 
- 
+		return "/test";
+	}
+
 }
