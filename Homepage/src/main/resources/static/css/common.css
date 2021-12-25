@@ -132,6 +132,10 @@ textarea:-moz-placeholder{color:#999;}
 
 .posi_R{position:relative;}
 
+.icon-left-padding{
+    margin-right: 15px;
+}
+
 .ov_f{overflow:hidden;}
 .scroll_y{overflow-y:auto;overflow-x:hidden;}
 .mb10{margin-bottom:10px;}

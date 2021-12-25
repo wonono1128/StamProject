@@ -11,7 +11,7 @@ h1.logo.on a{border-right:2px solid #000;}
 .navi{margin-top:80px;}
 .navi>li{margin-bottom:10px}
 .navi .depth1{font-size: 28px;font-weight:500;line-height: 28px;padding-right:18px;letter-spacing:-0.02em;text-transform:uppercase;}
-.navi .depth1.on{font-weight:700;border-right:2px solid #000;margin-right:-2px;}
+.navi .depth1.on{font-weight:700;/*border-right:2px solid #000;*/margin-right:-2px;}
 .navi .depth2{padding-right:20px;margin-top:6px;}
 .navi .depth2 li{margin-bottom:4px;}
 .navi .depth2 li a{font-size: 16px;color:#9fa0a0;font-weight:normal;line-height:21px}
