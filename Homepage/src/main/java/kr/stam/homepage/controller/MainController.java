@@ -31,6 +31,11 @@ public class MainController {
 		model.addAttribute("listPort",listPort);
 		model.addAttribute("listBrand",listBrand);
 		model.addAttribute("listSol",listSol);
+		
+		session.setAttribute("listPort", listPort);
+		session.setAttribute("listBrand", listBrand);
+		session.setAttribute("listAbout", listAbout);
+		session.setAttribute("listSol", listSol);
 		return "/main";
 	}
 
