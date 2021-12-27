@@ -11,12 +11,16 @@
 <link rel="stylesheet" href="resources/static/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resources/static/css/common.css">
 <link rel="stylesheet" href="resources/static/css/style.css">
-<link rel="stylesheet" href="resources/static/css/notice/insert.css">
+<link rel="stylesheet" href="resources/static/css/depth/depth_insert.css">
+<script src="https://kit.fontawesome.com/070c967850.js"crossorigin="anonymous"></script>
 <script src="resources/static/js/jquery-3.2.1.min.js"></script>
 <script src="resources/static/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resources/static/js/common.js"></script>
-<script src="https://kit.fontawesome.com/070c967850.js"crossorigin="anonymous"></script>
-<script src="resources/static/js/btyeChk.js"></script>
+
+<style>
+
+ 
+</style>
 </head>
 <body>
 <div class="wrapper" id="mainWrapper">
@@ -102,55 +106,50 @@
 								<li><a href="solution_System1">통합 SNS 관리 시스템</a></li>
 								<li><a href="solution_System2">구간별 암호화 시스템</a></li>
 							</ul></li>
-						<li><a href="login" class="depth1 on">ManageMent</a>
+						<li><a href="login" class="depth1">ManageMent</a>
 							<ul class="depth2">
 								<li><a href="logout">Logout</a></li>
-								<li class="on"><a href="notice">Notice</a></li>
+								<li><a href="notice">Notice</a></li>
 							</ul></li>
 					</ul>
 				</c:if>
-			</nav>  
-		</header>
+			</nav>
+  </header>
 
   <div class="container item">
-
     <div class="swiper-container">
       <div class="swiper-wrapper">
-
         <div class="swiper-slide">
           <div class="loca_div mo">
             <span class="loca">HOME</span>
-            <span class="slogan">Strategy+Ambition</span>
+          
           </div>
-          <div class="notice_div">
-          <div class="notice_div_span">
-          	<span class="notice_span">Notice Update</span>
-  		  </div>
-          	<form method="post"action="update_ok" >
-          	
-          		<table class="notice_table">
-	       			<tr>
-	       				<td><input style="display:none" type="text"  name="noticeNum" value="${ndto.noticeNum }"></td>
+          <div class="insert_div">
+	        <div class="insert_title_div">
+				<span class="insert_title_span">Depth Insert</span>
+			</div>
+          	<form method="post"action="depth_insert_ok" >
+	       		<table class="insert_table">
+	       			<tr class="insert_tr">
+	       				<td class="insert_td_name">메뉴명</td>
+	       				<td class="insert_td_input"><input type="text" placeholder="메뉴명을 입력해주세요" name="menuParents" value=${MenuParents }></td>
 	       			</tr>
-	       			<tr class="notice-insert-tr">
-	       				<td class="notice_insert_td">제목</td>
-	       				<td  colspan="2"><input type="text" value="${ndto.noticeTitle }"name="noticeTitle" id="notice_insert_title" required maxlength="30"></td>	
+	       			<tr class="insert_tr">
+	       				<td class="insert_td_name">소제목</td>
+	       				<td class="insert_td_input"><input type="text" placeholder="소제목을 입력해주세요" name="menuContents"></td>
 	       			</tr>
-	       			<tr class="notice-insert-tr">
-	      			 	<td class="notice_insert_td">내용</td>
-	       				<td  colspan="2">
-		       				<textarea name="noticeContents" id="notice_insert_text" required minlength="20" maxlength="200"onkeyup="fn_checkByte(this)">${ndto.noticeContents }</textarea>
-		       				<sup>(<span id="nowByte">0</span>/1000bytes)</sup>
-		       			</td>	
+	       			
+	       			<tr class="insert_tr">
+						<td class="insert_td_btn">
+							<button style="margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가</button>
+						</td>
+						<td>
+							<button onclick="depth_go(event)"style="margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">목록</button>
+						</td>
 	       			</tr>
-	       			<tr class="notice_insert_tr notice_insert_btn">
-	       				
-		       			<td class="notice_insert_input"><button id="notice_insert_btn">수정</button></td>
-		       			<td class="notice_insert_input"><a href="notice" id="notice_insert_list">목록</a></td>
-		       		</tr>
 	       		</table>
+	       			
        		</form>
-       		
           </div>
 
       </div><!-- //swiper-wrapper -->
@@ -164,5 +163,11 @@
 
 
 </body>
+<script type="text/javascript"> 
+	function depth_go(event) { 
+		event.preventDefault(); 
+		location.href="depth";
+		} 
+</script>
 
 </html>

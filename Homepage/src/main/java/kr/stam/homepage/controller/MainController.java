@@ -1,18 +1,35 @@
 package kr.stam.homepage.controller;
 
+
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.stam.homepage.dao.DepthDao;
+import kr.stam.homepage.dto.DepthDto;
 
 @Controller
 public class MainController {
-
+	
+	@Autowired
+	private DepthDao dDao;
+	
 	@RequestMapping({ "/", "main" })
-	public String main() {
-
+	public String main(HttpSession session,Model model) {
+		System.out.println("메인");
+		String MenuParents = (String) session.getAttribute("MenuParent");
+		ArrayList<DepthDto> list = dDao.list(MenuParents);
+		model.addAttribute("list",list);
 		return "/main";
 	}
 
-	@RequestMapping("/intro")
+	@RequestMapping({"/intro","Intro + Vision & Business"})
 	public String intro() {
 
 		return "about/intro";

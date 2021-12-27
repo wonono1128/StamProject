@@ -5,20 +5,21 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,maximum-scale=1.0,minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>STAM</title>
 <link rel="stylesheet" href="resources/static/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resources/static/css/common.css">
 <link rel="stylesheet" href="resources/static/css/style.css">
-<link rel="stylesheet" href="resources/static/css/notice/insert.css">
+<link rel="stylesheet" href="resources/static/css/notice/notice.css">
 <script src="resources/static/js/jquery-3.2.1.min.js"></script>
 <script src="resources/static/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resources/static/js/common.js"></script>
 <script src="https://kit.fontawesome.com/070c967850.js"crossorigin="anonymous"></script>
-<script src="resources/static/js/btyeChk.js"></script>
+
+
 </head>
-<body>
+ <body class="sb-nav-fixed">
 <div class="wrapper" id="mainWrapper">
  <header class="header item">
     <h1 class="logo"><a href="main"><img src="resources/static/images/logo.png" alt="STAM"></a></h1>
@@ -102,15 +103,15 @@
 								<li><a href="solution_System1">통합 SNS 관리 시스템</a></li>
 								<li><a href="solution_System2">구간별 암호화 시스템</a></li>
 							</ul></li>
-						<li><a href="login" class="depth1 on">ManageMent</a>
+						<li><a href="login" class="depth1">ManageMent</a>
 							<ul class="depth2">
 								<li><a href="logout">Logout</a></li>
-								<li class="on"><a href="notice">Notice</a></li>
+								<li><a href="notice">Notice</a></li>
 							</ul></li>
 					</ul>
 				</c:if>
-			</nav>  
-		</header>
+			</nav>
+  </header>
 
   <div class="container item">
 
@@ -120,36 +121,50 @@
         <div class="swiper-slide">
           <div class="loca_div mo">
             <span class="loca">HOME</span>
-            <span class="slogan">Strategy+Ambition</span>
+        
           </div>
           <div class="notice_div">
-          <div class="notice_div_span">
-          	<span class="notice_span">Notice Update</span>
-  		  </div>
-          	<form method="post"action="update_ok" >
-          	
-          		<table class="notice_table">
-	       			<tr>
-	       				<td><input style="display:none" type="text"  name="noticeNum" value="${ndto.noticeNum }"></td>
+			<span class="notice_span">${MenuParents }</span>
+       		<table class="notice_table">
+       		<tr> <!-- 검색행 -->
+       		 
+		     
+		     </tr>
+	
+       			<tr class="notice-tr top-tr">
+       				<td class="notice_th td_num">번호</td>
+       				<td class="notice_th td_mangager">소제목</td>
+       			</tr>
+       		<c:choose>	
+ 			 <c:when test="${nextNum == 1 }">
+       		 	<tr class="notice_tr"> 
+       		 		<td colspan="5" class="no_notice_page"> 작성된 공지사항이 없습니다.</td>
+       		 	</tr>
+       		 </c:when>
+       		  <c:otherwise>
+       		  	<c:forEach var="dDto" items="${list}">
+	       			<tr class="notice_tr">
+	       				<td class="notice_td">${dDto.menuCode}</td>
+
+	       				<td class="notice_td notice_select_td">
+	       					<a href="depth_content?menuCode=${dDto.menuCode }" class="notice_td_a">
+	       						<span>${dDto.menuContents}</span>
+
+	       					</a>
+	       				</td>
 	       			</tr>
-	       			<tr class="notice-insert-tr">
-	       				<td class="notice_insert_td">제목</td>
-	       				<td  colspan="2"><input type="text" value="${ndto.noticeTitle }"name="noticeTitle" id="notice_insert_title" required maxlength="30"></td>	
-	       			</tr>
-	       			<tr class="notice-insert-tr">
-	      			 	<td class="notice_insert_td">내용</td>
-	       				<td  colspan="2">
-		       				<textarea name="noticeContents" id="notice_insert_text" required minlength="20" maxlength="200"onkeyup="fn_checkByte(this)">${ndto.noticeContents }</textarea>
-		       				<sup>(<span id="nowByte">0</span>/1000bytes)</sup>
-		       			</td>	
-	       			</tr>
-	       			<tr class="notice_insert_tr notice_insert_btn">
-	       				
-		       			<td class="notice_insert_input"><button id="notice_insert_btn">수정</button></td>
-		       			<td class="notice_insert_input"><a href="notice" id="notice_insert_list">목록</a></td>
-		       		</tr>
-	       		</table>
-       		</form>
+       			</c:forEach>
+       		  </c:otherwise>
+       		 </c:choose>
+    
+       			
+       	
+       	
+			<tr>	
+				<td><a href="depth_insert">추가하기</a></td>
+			</tr>
+   
+       		</table>
        		
           </div>
 
@@ -165,4 +180,8 @@
 
 </body>
 
+  		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
 </html>

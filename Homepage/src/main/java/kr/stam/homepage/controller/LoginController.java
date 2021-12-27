@@ -1,5 +1,7 @@
 package kr.stam.homepage.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.stam.homepage.UserSha256;
+import kr.stam.homepage.dao.DepthDao;
 import kr.stam.homepage.dao.LoginDao;
+import kr.stam.homepage.dto.DepthDto;
 import kr.stam.homepage.dto.LogDto;
 
 @Controller
@@ -19,6 +23,8 @@ public class LoginController {
 	
 	@Autowired
 	private LoginDao ld;
+	@Autowired
+	private DepthDao dDao;
 
 	@RequestMapping("login")
 	public String login(Model model) {
@@ -29,6 +35,15 @@ public class LoginController {
 	public ModelAndView loginChk(String managerId, LogDto ldto, HttpServletRequest request, HttpSession session,
 			ModelAndView mav) {
 
+		ArrayList<DepthDto> Flist = dDao.Flist();
+		
+		for(int i=0; i<Flist.size(); i++) { //for문을 통한 전체출력
+		
+			String MenuParent = Flist.get(i).getMenuParents();
+			session.setAttribute("MenuParent",MenuParent);
+		   System.out.println("로그인시 동작"+Flist.get(i).getMenuParents()); 
+		}
+		
 		// 암호화
 		String managerPw = UserSha256.encrypt(request.getParameter("managerPw"));
 		request.setAttribute("encry", managerPw);

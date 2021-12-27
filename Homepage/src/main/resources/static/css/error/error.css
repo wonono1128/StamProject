@@ -6,7 +6,7 @@
 }
 /**/
 body {
-  background: var(--main-color);
+  background: white;
 }
 .go_main{
 	text-decoration: none; 
