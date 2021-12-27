@@ -29,7 +29,7 @@
 		    <div id="div_pw">
 		    	<input type="password" id="manager_pw" name="managerPw" placeholder="관리자 비밀번호를 입력하세요"> <br>
 		    </div>
-		    <c:if test="${message == 'error'}">
+		    <c:if test="${error == 'error'}">
 				<div class="fail_message">아이디 또는 비밀번호가 일치하지 않습니다.</div>
 			</c:if>
 		    <button id="login_btn">Login</button>
@@ -37,4 +37,5 @@
 	</div>
 </div>
 </body>
+
 </html>

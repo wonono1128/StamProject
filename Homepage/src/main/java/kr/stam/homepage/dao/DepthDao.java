@@ -12,5 +12,9 @@ public interface DepthDao {
 	public void insert(DepthDto dDto);
 	public Integer nextNum();
 	public ArrayList Flist();
+	public ArrayList listAbout();
+	public ArrayList listBrand();
+	public ArrayList listSol();
+	public ArrayList listPort();
 	public ArrayList list(String MenuParents);
 }

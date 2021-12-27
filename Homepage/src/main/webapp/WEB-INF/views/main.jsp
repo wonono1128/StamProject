@@ -80,36 +80,31 @@
 							class="depth1" class="icon-left-padding"><i
 								class="far fa-edit"></i></a>
 							<ul class="depth2">
-							<c:forEach var="dDto" items="${list}">
+							<c:forEach var="dDto" items="${listAbout}">
 								<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
-					
 							</c:forEach>
 							</ul>
 						</li>
 						<li><a href="depth?MenuParents=PORTFOLIO" class="depth1">IT portfolio</a><a
 							class="depth1"><i class="far fa-edit"></i></a>
 							<ul class="depth2">
-								<li><a href="portfolio_2021">2021</a></li>
-								<li><a href="portfolio_2020">2020</a></li>
-								<li><a href="portfolio_2019">2019</a></li>
-								<li><a href="portfolio_2018">2018</a></li>
-								<li><a href="portfolio_2017">2017</a></li>
-								<li><a href="portfolio_2016">-2016</a></li>
+							<c:forEach var="dDto" items="${listPort}">
+								<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+							</c:forEach>
 							</ul></li>
 						<li><a href="depth?MenuParents=BRAND" class="depth1">Brand</a><a class="depth1"><i
 								class="far fa-edit"></i></a>
 							<ul class="depth2">
-								<li><a href="brand">Brand</a></li>
-								<li><a href="brand_Promotion">Promotion</a></li>
-								<li><a href="brand_Edit">Edit</a></li>
+							<c:forEach var="dDto" items="${listBrand}">
+								<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+							</c:forEach>
 							</ul></li>
 						<li><a href="depth?MenuParents=SOLUTION" class="depth1">SOLUTION</a><a class="depth1"><i
 								class="far fa-edit"></i></a>
 							<ul class="depth2">
-								<li><a href="solution_Adrive">A.Drive</a></li>
-								<li><a href="solution_ST_framework">ST Framework</a></li>
-								<li><a href="solution_System1">통합 SNS 관리 시스템</a></li>
-								<li><a href="solution_System2">구간별 암호화 시스템</a></li>
+							<c:forEach var="dDto" items="${listSol}">
+								<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+							</c:forEach>
 							</ul></li>
 						<li><a href="#" class="depth1">ManageMent</a>
 							<ul class="depth2">

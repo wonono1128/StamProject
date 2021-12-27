@@ -16,7 +16,25 @@
 	
 	<!-- 뎁스 목록 -->	
 	<select id="list" resultType="kr.stam.homepage.dto.DepthDto">
-	   select * from menu  where menuParents=#{MenuParents} order by menuCode desc 
+	   select * from menu  where menuParents=#{MenuParents} order by menuCode 
+	</select>
+	
+	
+		<!-- 뎁스 목록 -->	
+	<select id="listAbout" resultType="kr.stam.homepage.dto.DepthDto">
+	   select * from menu  where menuParents="ABOUT" order by menuCode 
+	</select>
+		<!-- 뎁스 목록 -->	
+	<select id="listPort" resultType="kr.stam.homepage.dto.DepthDto">
+	   select * from menu  where menuParents="PORTFOLIO" order by menuCode 
+	</select>
+		<!-- 뎁스 목록 -->	
+	<select id="listBrand" resultType="kr.stam.homepage.dto.DepthDto">
+	   select * from menu  where menuParents="BRAND" order by menuCode 
+	</select>
+		<!-- 뎁스 목록 -->	
+	<select id="listSol" resultType="kr.stam.homepage.dto.DepthDto">
+	   select * from menu  where menuParents="SOLUTION" order by menuCode 
 	</select>
 	
 	<!-- 뎁스 목록 -->	

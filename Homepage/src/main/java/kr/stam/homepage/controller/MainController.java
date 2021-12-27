@@ -23,9 +23,14 @@ public class MainController {
 	@RequestMapping({ "/", "main" })
 	public String main(HttpSession session,Model model) {
 		System.out.println("메인");
-		String MenuParents = (String) session.getAttribute("MenuParent");
-		ArrayList<DepthDto> list = dDao.list(MenuParents);
-		model.addAttribute("list",list);
+		ArrayList<DepthDto> listAbout = dDao.listAbout();
+		ArrayList<DepthDto> listPort = dDao.listPort();
+		ArrayList<DepthDto> listBrand = dDao.listBrand();
+		ArrayList<DepthDto> listSol = dDao.listSol();
+		model.addAttribute("listAbout",listAbout);
+		model.addAttribute("listPort",listPort);
+		model.addAttribute("listBrand",listBrand);
+		model.addAttribute("listSol",listSol);
 		return "/main";
 	}
 
@@ -77,7 +82,7 @@ public class MainController {
 		return "about/withClient";
 	}
 
-	@RequestMapping("/about_History")
+	@RequestMapping({"/about_History","/History"})
 	public String about_History() {
 
 		return "about/about_History";
