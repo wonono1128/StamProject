@@ -20,19 +20,19 @@
 	</select>
 	
 	
-		<!-- 뎁스 목록 -->	
+	<!-- 뎁스 목록 -->	
 	<select id="listAbout" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents="ABOUT" order by menuCode 
 	</select>
-		<!-- 뎁스 목록 -->	
+	<!-- 뎁스 목록 -->	
 	<select id="listPort" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents="PORTFOLIO" order by menuCode 
 	</select>
-		<!-- 뎁스 목록 -->	
+	<!-- 뎁스 목록 -->	
 	<select id="listBrand" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents="BRAND" order by menuCode 
 	</select>
-		<!-- 뎁스 목록 -->	
+	<!-- 뎁스 목록 -->	
 	<select id="listSol" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents="SOLUTION" order by menuCode 
 	</select>
@@ -41,4 +41,20 @@
 	<select id="Flist" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu   order by menuCode desc 
 	</select>
+	
+	<!-- 뎁스 삭제 -->	
+	<update id="depth_delete" parameterType="kr.stam.homepage.dto.DepthDto">
+		update menu set menuState = 2  where menuCode = #{menuCode}
+	</update>
+	
+	<!-- 뎁스 수정 -->	
+	<update id="update" parameterType="kr.stam.homepage.dto.DepthDto">
+		update menu set menuParents = #{menuParents} ,menuContents = #{menuContents} where menuCode = #{menuCode}
+	</update>
+	
+		<!-- 뎁스 상세페이지 -->
+	<select id="content" resultType="kr.stam.homepage.dto.DepthDto">
+		select * from menu where menuCode = #{menuCode}
+	</select>
+	
 </mapper>

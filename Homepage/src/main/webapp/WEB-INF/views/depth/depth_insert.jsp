@@ -132,7 +132,7 @@
 	       		<table class="insert_table">
 	       			<tr class="insert_tr">
 	       				<td class="insert_td_name">메뉴명</td>
-	       				<td class="insert_td_input"><input type="text" placeholder="메뉴명을 입력해주세요" name="menuParents" value=${MenuParents }></td>
+	       				<td class="insert_td_input"><input type="text" placeholder="메뉴명을 입력해주세요"  class="MenuParents" name="menuParents" value=${MenuParents }></td>
 	       			</tr>
 	       			<tr class="insert_tr">
 	       				<td class="insert_td_name">소제목</td>
@@ -166,7 +166,8 @@
 <script type="text/javascript"> 
 	function depth_go(event) { 
 		event.preventDefault(); 
-		location.href="depth";
+		 const MenuParents = document.querySelector(".MenuParents").value;
+		 location.href = "/homepage/depth?MenuParents="+ MenuParents;
 		} 
 </script>
 

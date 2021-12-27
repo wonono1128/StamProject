@@ -2,7 +2,7 @@ package kr.stam.homepage.dto;
 
 public class DepthDto {
 
-	int menuCode;
+	int menuCode,menuState;
 	String menuParents,menuContents;
 	public int getMenuCode() {
 		return menuCode;
@@ -21,6 +21,12 @@ public class DepthDto {
 	}
 	public void setMenuContents(String menuContents) {
 		this.menuContents = menuContents;
+	}
+	public int getMenuState() {
+		return menuState;
+	}
+	public void setMenuState(int menuState) {
+		this.menuState = menuState;
 	}
 
 	

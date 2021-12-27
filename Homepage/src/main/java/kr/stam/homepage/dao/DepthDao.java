@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import kr.stam.homepage.dto.DepthDto;
+import kr.stam.homepage.dto.NoticeDto;
 @Repository
 @Mapper
 public interface DepthDao {
@@ -17,5 +18,7 @@ public interface DepthDao {
 	public ArrayList listSol();
 	public ArrayList listPort();
 	public ArrayList list(String MenuParents);
-
+	public void depth_delete(DepthDto dDto);
+	public void update(DepthDto dDto);
+	public DepthDto content(int menuCode);
 }
