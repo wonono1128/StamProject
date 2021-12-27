@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>STAM</title>
 <link rel="stylesheet" href="resources/static/plugins/swiper/swiper-bundle.min.css"/>
-<link rel="stylesheet" href="resources/static/css/common.css">
+<link rel="stylesheet" href="resources/static/css/depth/common.css">
 <link rel="stylesheet" href="resources/static/css/style.css">
 <link rel="stylesheet" href="resources/static/css/notice/notice.css">
 <script src="resources/static/js/jquery-3.2.1.min.js"></script>
@@ -17,6 +17,11 @@
 <script src="resources/static/js/common.js"></script>
 <script src="https://kit.fontawesome.com/070c967850.js"crossorigin="anonymous"></script>
 
+<style>
+	.update_btn{
+		
+	}
+</style>
 
 </head>
  <body class="sb-nav-fixed">
@@ -125,15 +130,15 @@
           </div>
           <div class="notice_div">
 			<span class="notice_span">${MenuParents }</span>
+
        		<table class="notice_table">
-       		<tr> <!-- 검색행 -->
-       		 
-		     
+       		<tr> <!-- 검색행 -->    
 		     </tr>
 	
        			<tr class="notice-tr top-tr">
        				<td class="notice_th td_num">번호</td>
        				<td class="notice_th td_mangager">소제목</td>
+       				<td class="notice_th td_chk">선택</td>
        			</tr>
        		<c:choose>	
  			 <c:when test="${nextNum == 1 }">
@@ -145,27 +150,37 @@
        		  	<c:forEach var="dDto" items="${list}">
 	       			<tr class="notice_tr">
 	       				<td class="notice_td">${dDto.menuCode}</td>
-
-	       				<td class="notice_td notice_select_td">
-	       					<a href="depth_content?menuCode=${dDto.menuCode }" class="notice_td_a">
-	       						<span>${dDto.menuContents}</span>
-
-	       					</a>
-	       				</td>
+						<td class="notice_td notice_select_td"
+							style="display: flex; justify-content: space-between; align-items: center;">
+							<a href="depth_content?menuCode=${dDto.menuCode }"
+							class="notice_td_a" id="${dDto.menuContents}"> <span class="depth_menuContents">${dDto.menuContents}</span>
+							</a> 
+							<a href="#" onclick="depth_update(event)" class="icon-left-padding update_btn" style="margin-left: 20px;">
+								<i class="far fa-edit"></i>
+							</a>
+						</td>
+				
+						<td class="notice_td"><input type="checkbox" value=${dDto.menuCode } name="delete_chk"></td>
+						<td style="display:none"><input type="text" value="" id="chk_num"></td>
 	       			</tr>
+	       	
        			</c:forEach>
        		  </c:otherwise>
        		 </c:choose>
-    
-       			
-       	
-       	
-			<tr>	
-				<td><a href="depth_insert">추가하기</a></td>
+ 
+			<tr style="position: relative;">	
+				<td></td>
+				<td colspan="2"
+					style="display: flex; justify-content: end; width: 450px; align-items: center; position: absolute; right: 0px;">
+					<button onclick="go_insert()"
+						style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가하기</button>
+					<button onclick="go_delete()"
+						style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">삭제하기</button>
+				</td>
 			</tr>
    
        		</table>
-       		
+
           </div>
 
       </div><!-- //swiper-wrapper -->
@@ -180,6 +195,39 @@
 
 </body>
 
+<script>
+
+function go_delete(){
+	var array = new Array(); // 배열 선언
+	$('input:checkbox[name=delete_chk]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+	    array.push(this.value);
+	});
+				
+	$("#chk_num").val(array);
+	
+	for(int i=0; i<array.size; i++){
+		alert($("#chk_num").val(array).[i]);
+	}
+
+	
+	} 
+
+
+
+	function go_insert(){
+		  location.href = "depth_insert";
+	}
+	
+	
+
+	
+	function depth_update(event){
+		event.preventDefault();
+
+
+	}
+
+</script>
   		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
