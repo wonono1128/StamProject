@@ -51,7 +51,7 @@
 							</ul></li>
 						<li><a href="brand" class="depth1">Brand</a>
 							<ul class="depth2">
-								<li><a href="brand">Brand</a></li>
+								<li><a href="brand_Brand">Brand</a></li>
 								<li><a href="brand_Promotion">Promotion</a></li>
 								<li><a href="brand_Edit">Edit</a></li>
 							</ul></li>
@@ -66,8 +66,6 @@
 							<ul class="depth2">
 
 								<li><a href="login">Login</a></li>
-
-
 								<li><a href="notice">Notice</a></li>
 
 							</ul></li>

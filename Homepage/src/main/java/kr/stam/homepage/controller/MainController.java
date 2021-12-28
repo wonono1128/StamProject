@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.stam.homepage.dao.DepthDao;
@@ -23,100 +24,33 @@ public class MainController {
 	@RequestMapping({ "/", "main" })
 	public String main(HttpSession session,Model model) {
 		System.out.println("메인");
-		ArrayList<DepthDto> listAbout = dDao.listAbout();
-		ArrayList<DepthDto> listPort = dDao.listPort();
-		ArrayList<DepthDto> listBrand = dDao.listBrand();
-		ArrayList<DepthDto> listSol = dDao.listSol();
-		model.addAttribute("listAbout",listAbout);
-		model.addAttribute("listPort",listPort);
-		model.addAttribute("listBrand",listBrand);
-		model.addAttribute("listSol",listSol);
+		ArrayList<DepthDto> Flist = dDao.Flist();
+
+		model.addAttribute("Flist",Flist);
 		
-		session.setAttribute("listPort", listPort);
-		session.setAttribute("listBrand", listBrand);
-		session.setAttribute("listAbout", listAbout);
-		session.setAttribute("listSol", listSol);
+	
 		return "/main";
 	}
+	@RequestMapping({"/portfolio_{year}"})
+	public String portfolio(@PathVariable String year) {
 
-	@RequestMapping({"/intro","Intro + Vision & Business"})
-	public String intro() {
+		return "portfolio/portfolio_" + year;
+	}
+	
+	
+	@RequestMapping("/{about}")
+	public String about(@PathVariable String about) {
 
-		return "about/intro";
+		return "about/"+about;
 	}
 
-	@RequestMapping("/portfolio_2016")
-	public String portfolio_2016() {
+	@RequestMapping("/brand_{brand}")
+	public String brand(@PathVariable String brand) {
 
-		return "portfolio/portfolio_2016";
+		return "brand/brand_"+brand;
 	}
 
-	@RequestMapping("/portfolio_2017")
-	public String portfolio_2017() {
-
-		return "portfolio/portfolio_2017";
-	}
-
-	@RequestMapping("/portfolio_2018")
-	public String portfolio_2018() {
-
-		return "portfolio/portfolio_2018";
-	}
-
-	@RequestMapping("/portfolio_2019")
-	public String portfolio_2019() {
-
-		return "portfolio/portfolio_2019";
-	}
-
-	@RequestMapping("/portfolio_2020")
-	public String portfolio_2020() {
-
-		return "portfolio/portfolio_2020";
-	}
-
-	@RequestMapping("/portfolio_2021")
-	public String portfolio_2021() {
-
-		return "portfolio/portfolio_2021";
-	}
-
-	@RequestMapping("/withClient")
-	public String withClient() {
-
-		return "about/withClient";
-	}
-
-	@RequestMapping({"/about_History","/History"})
-	public String about_History() {
-
-		return "about/about_History";
-	}
-
-	@RequestMapping("/organizationChart")
-	public String organizationChart() {
-
-		return "about/organizationChart";
-	}
-
-	@RequestMapping("/brand")
-	public String brand() {
-
-		return "brand/brand";
-	}
-
-	@RequestMapping("/brand_Edit")
-	public String brand_Edit() {
-
-		return "brand/brand_Edit";
-	}
-
-	@RequestMapping("/brand_Promotion")
-	public String brand_Promotion() {
-
-		return "brand/brand_Promotion";
-	}
-
+	
 	@RequestMapping("/solution_Adrive")
 	public String solution_Adrive() {
 

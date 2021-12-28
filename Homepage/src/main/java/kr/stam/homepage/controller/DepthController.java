@@ -34,15 +34,9 @@ public class DepthController {
 		if (session.getAttribute("level") != null) {
 			Integer nextNum = dDao.nextNum();
 			session.setAttribute("nextNum", nextNum);
-			
-			ArrayList<DepthDto> listAbout = dDao.listAbout();
-			ArrayList<DepthDto> listPort = dDao.listPort();
-			ArrayList<DepthDto> listBrand = dDao.listBrand();
-			ArrayList<DepthDto> listSol = dDao.listSol();
-			model.addAttribute("listAbout",listAbout);
-			model.addAttribute("listPort",listPort);
-			model.addAttribute("listBrand",listBrand);
-			model.addAttribute("listSol",listSol);
+			ArrayList<DepthDto> Flist = dDao.Flist();
+			model.addAttribute("Flist",Flist);
+
 
 			ArrayList<DepthDto> list = dDao.list(MenuParents);
 			session.setAttribute("MenuParents", MenuParents);
@@ -59,12 +53,9 @@ public class DepthController {
 		System.out.println("인서트페이지");
 		
 		if (session.getAttribute("level") != null) {
-
 			return "depth/depth_insert";
 		}
-
 		else {
-
 			return "redirect:/main";
 		}
 	}
@@ -75,14 +66,9 @@ public class DepthController {
 		if (session.getAttribute("nextNum") != null) {
 			int nextNum = (int) session.getAttribute("nextNum");
 
-		}
-
-		
-
+		}		
 		model.addAttribute("ndto", dDto);
-
 		dDao.insert(dDto);
-
 		return "redirect:depth?MenuParents=" + menuParents;
 	}
 

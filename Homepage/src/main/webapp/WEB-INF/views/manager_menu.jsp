@@ -8,36 +8,44 @@
 			href="depth?MenuParents=ABOUT" class="depth1"
 			class="icon-left-padding"><i class="far fa-edit"></i></a>
 			<ul class="depth2">
-				<c:forEach var="dDto" items="${listAbout}">
-					<c:if test="${dDto.menuState ==1 }">
-						<li><a href="product?menuContents=${dDto.menuContents}" class="test_1234">${dDto.menuContents}</a></li>
+				<c:forEach var="dDto" items="${Flist}">
+					<c:if test="${dDto.menuParents == 'ABOUT' }">
+						<c:if test="${dDto.menuState ==1 }">
+							<li><a href="#">${dDto.menuContents}</a></li>
+						</c:if>
 					</c:if>
 				</c:forEach>
 			</ul></li>
 		<li><a href="depth?MenuParents=PORTFOLIO" class="depth1">IT
-				portfolio</a><a class="depth1"><i class="far fa-edit"></i></a>
+				PORTFOLIO</a><a class="depth1"><i class="far fa-edit"></i></a>
 			<ul class="depth2">
-				<c:forEach var="dDto" items="${listPort}">
-					<c:if test="${dDto.menuState ==1 }">
-						<li><a href="product?menuContents=${dDto.menuContents}">${dDto.menuContents}</a></li>
+				<c:forEach var="dDto" items="${Flist}">
+					<c:if test="${dDto.menuParents == 'PORTFOLIO' }">
+						<c:if test="${dDto.menuState ==1 }">
+							<li><a href="product?menuContents=${dDto.menuContents}">${dDto.menuContents}</a></li>
+						</c:if>
 					</c:if>
 				</c:forEach>
 			</ul></li>
-		<li><a href="depth?MenuParents=BRAND" class="depth1">Brand</a><a
+		<li><a href="depth?MenuParents=BRAND" class="depth1">BRAND</a><a
 			class="depth1"><i class="far fa-edit"></i></a>
 			<ul class="depth2">
-				<c:forEach var="dDto" items="${listBrand}">
-					<c:if test="${dDto.menuState ==1 }">
-						<li><a href="product?menuContents=${dDto.menuContents}">${dDto.menuContents}</a></li>
+				<c:forEach var="dDto" items="${Flist}">
+					<c:if test="${dDto.menuParents == 'BRAND' }">
+						<c:if test="${dDto.menuState ==1 }">
+							<li><a href="product?menuContents=${dDto.menuContents}">${dDto.menuContents}</a></li>
+						</c:if>
 					</c:if>
 				</c:forEach>
 			</ul></li>
 		<li><a href="depth?MenuParents=SOLUTION" class="depth1">SOLUTION</a><a
 			class="depth1"><i class="far fa-edit"></i></a>
 			<ul class="depth2">
-				<c:forEach var="dDto" items="${listSol}">
-					<c:if test="${dDto.menuState ==1 }">
-						<li><a href="product?menuContents=${dDto.menuContents}">${dDto.menuContents}</a></li>
+				<c:forEach var="dDto" items="${Flist}">
+					<c:if test="${dDto.menuParents == 'SOLUTION' }">
+						<c:if test="${dDto.menuState ==1 }">
+							<li><a href="#">${dDto.menuContents}</a></li>
+						</c:if>
 					</c:if>
 				</c:forEach>
 			</ul></li>
