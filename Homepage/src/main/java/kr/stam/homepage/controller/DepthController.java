@@ -33,7 +33,7 @@ public class DepthController {
 		
 		if (session.getAttribute("level") != null) {
 			Integer nextNum = dDao.nextNum();
-			session.setAttribute("nextNum", nextNum);
+			session.setAttribute("nextNum", nextNum+1);
 			ArrayList<DepthDto> Flist = dDao.Flist();
 			model.addAttribute("Flist",Flist);
 

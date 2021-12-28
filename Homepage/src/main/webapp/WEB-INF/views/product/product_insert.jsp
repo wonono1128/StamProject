@@ -32,8 +32,57 @@
 				<jsp:include page="../manager_menu.jsp"/>
 			</nav>
   </header>
-  
-  
+  <div class="container item">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="loca_div mo">
+            <span class="loca">HOME</span>
+          
+          </div>
+          <div class="insert_div">
+	        <div class="insert_title_div">
+				<span class="insert_title_span">Depth Insert</span>
+			</div>
+          	<form method="post"action="depth_insert_ok" >
+	       		<table class="insert_table">
+	       			<tr class="insert_tr">
+	       				<td class="insert_td_name">메뉴명</td>
+	       				<td class="insert_td_input">
+		       				<select name="menuParents">
+							    <option value="ABOUT" selected>ABOUT</option>
+							    <option value="PORTFOLIO">PORTFOLIO</option>
+							    <option value="BRAND">BRAND</option>
+							    <option value="SOLUTION">SOLUTION</option>
+							</select>
+						</td>
+<!-- 	       				<td class="insert_td_input"><input type="text" placeholder="메뉴명을 입력해주세요"  class="MenuParents" name="menuParents" value=${MenuParents }></td> -->
+	       			</tr>
+	       			<tr class="insert_tr">
+	       				<td class="insert_td_name">소제목</td>
+	       				<td class="insert_td_input"><input type="text" placeholder="소제목을 입력해주세요" name="menuContents"></td>
+	       			</tr>
+	       			
+	       			<tr class="insert_tr">
+						<td class="insert_td_btn">
+							<button style="margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가</button>
+						</td>
+						<td>
+							<button onclick="depth_go(event)"style="margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">목록</button>
+						</td>
+	       			</tr>
+	       		</table>
+	       			
+       		</form>
+                </div><!-- //swiper-wrapper -->
+      <div class="swiper-pagination"></div>
+    </div><!-- //swiper-container -->
+
+  </div><!-- //container -->
+
+</div>
+</div>
+  </div>
   </div>
 </body>
 </html>

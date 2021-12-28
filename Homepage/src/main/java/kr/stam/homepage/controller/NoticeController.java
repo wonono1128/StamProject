@@ -38,8 +38,6 @@ public class NoticeController {
 	public String notice(NoticeDto ndto, HttpServletRequest request, Model model, HttpSession session) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
 		model.addAttribute("Flist",Flist);
-		Integer nextNum = ndao.nextNum();
-		session.setAttribute("nextNum", nextNum);
 	
 		int index; // 1페이지=>0, 2페이지는 10
 		int page;

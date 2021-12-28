@@ -37,6 +37,12 @@ public class MainController {
 		model.addAttribute("Flist", Flist);
 		return "portfolio/portfolio_" + year;
 	}
+	@RequestMapping({ "/portfolio" })
+	public String portfolio(HttpSession session, Model model) {
+		ArrayList<DepthDto> Flist = dDao.Flist();
+		model.addAttribute("Flist", Flist);
+		return "portfolio/portfolio";
+	}
 
 	@RequestMapping("/about_{about}")
 	public String about(@PathVariable String about,HttpSession session, Model model) {

@@ -65,7 +65,7 @@
 	       			<tr class="notice_tr">
 	       				<td class="notice_td">${pDto.productCode}</td>
 						<td class="notice_td">${pDto.companyName}</td>
-						<td class="notice_td"><a href="portfolio_${pDto.menuContents}">${pDto.productName}</a></td>
+						<td class="notice_td"><a href="product_content?productCode=${pDto.productCode}">${pDto.productName}</a></td>
 						<td class="notice_td"><input type="checkbox"></input></td>
 	       			</tr>
        			</c:forEach>

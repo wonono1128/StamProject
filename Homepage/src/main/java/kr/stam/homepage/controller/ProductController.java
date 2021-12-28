@@ -27,31 +27,24 @@ public class ProductController {
 	public String product(HttpServletRequest request,Model model,HttpSession session,String menuContents) {
 		System.out.println("포트폴리오 페이지");
 		Integer nextNum = pd.nextNum();
-		session.setAttribute("nextNum", nextNum);
+		session.setAttribute("nextNum", nextNum+1);
+		System.out.println(nextNum);
 		ArrayList<DepthDto> Flist = dDao.Flist();
-
 		model.addAttribute("Flist",Flist);
 		System.out.println("포트폴리오 내용" + menuContents );
+		
 		ArrayList<ProductDto> list = pd.list(menuContents);
-	
-		if(menuContents == null) {
-				session.setAttribute("MenuContents",menuContents);
-				System.out.println("세션없음");
-		}
-		else {
-	
-				session.setAttribute("MenuContents",menuContents);
-				System.out.println("세션있음");
-		}
-		
-		
+		session.setAttribute("MenuContents",menuContents);
 		model.addAttribute("list",list);
+		
 		return "product/product";
 	}
 	
 	@RequestMapping("/product_insert")
 	public String depth_insert(HttpServletRequest request,Model model,HttpSession session ) {
 		System.out.println("인서트페이지");
+		ArrayList<DepthDto> Flist = dDao.Flist();
+		model.addAttribute("Flist",Flist);
 	if(session.getAttribute("level") != null ) {
 				
 				return "product/product_insert";
@@ -61,5 +54,13 @@ public class ProductController {
 				
 				return "redirect:/product";
 			}
+	}
+	
+	@RequestMapping("/product_content")
+	public String content(HttpServletRequest request, ProductDto pDto, Model model) throws Exception {
+		int productCode = Integer.parseInt(request.getParameter("productCode"));
+		pDto = pd.content(productCode);
+		model.addAttribute("pDto", pDto);
+		return "product/product_content";
 	}
 }

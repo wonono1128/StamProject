@@ -18,5 +18,8 @@
 	<select id="list" resultType="kr.stam.homepage.dto.ProductDto">
 	  select * from product where menuContents=#{menuContents} order by productCode
 	</select>
-	
+	<!-- 상세페이지 -->
+	<select id="content" resultType="kr.stam.homepage.dto.ProductDto">
+		select * from product where productCode = #{productCode}
+	</select>
 </mapper>
