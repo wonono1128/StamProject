@@ -14,33 +14,33 @@
 		insert into menu(menuParents,menuContents) values(#{menuParents}, #{menuContents})
 	</insert>
 	
-	<!-- 뎁스 목록 -->	
+	<!-- 최초 메뉴불러와서 세션값 부여 -->	
+	<select id="Flist" resultType="kr.stam.homepage.dto.DepthDto">
+	   select * from menu   order by menuCode desc 
+	</select>
+	
+	<!-- 메뉴 수정페이지 불러오기 -->	
 	<select id="list" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents=#{MenuParents} order by menuCode 
 	</select>
-	
-	
-	<!-- 뎁스 목록 -->	
+	<!-- 메뉴 ABOUT 하위 불러오기-->	
 	<select id="listAbout" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents="ABOUT" order by menuCode 
 	</select>
-	<!-- 뎁스 목록 -->	
+	<!-- 메뉴 PORTFOLIO 하위 불러오기 -->	
 	<select id="listPort" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents="PORTFOLIO" order by menuCode 
 	</select>
-	<!-- 뎁스 목록 -->	
+	<!-- 메뉴 BRAND 하위 불러오기 -->	
 	<select id="listBrand" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents="BRAND" order by menuCode 
 	</select>
-	<!-- 뎁스 목록 -->	
+	<!-- 메뉴 SOLUTION 하위 불러오기 -->	
 	<select id="listSol" resultType="kr.stam.homepage.dto.DepthDto">
 	   select * from menu  where menuParents="SOLUTION" order by menuCode 
 	</select>
 	
-	<!-- 뎁스 목록 -->	
-	<select id="Flist" resultType="kr.stam.homepage.dto.DepthDto">
-	   select * from menu   order by menuCode desc 
-	</select>
+
 	
 	<!-- 뎁스 삭제 -->	
 	<update id="depth_delete" parameterType="kr.stam.homepage.dto.DepthDto">
@@ -52,7 +52,7 @@
 		update menu set menuParents = #{menuParents} ,menuContents = #{menuContents} where menuCode = #{menuCode}
 	</update>
 	
-		<!-- 뎁스 상세페이지 -->
+	<!-- 뎁스 상세페이지 -->
 	<select id="content" resultType="kr.stam.homepage.dto.DepthDto">
 		select * from menu where menuCode = #{menuCode}
 	</select>

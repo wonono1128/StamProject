@@ -22,123 +22,119 @@ import kr.stam.homepage.dto.DepthDto;
 
 
 @Controller
-public class DepthController{
-	
+public class DepthController {
+
 	@Autowired
 	private DepthDao dDao;
-	
-	
+
 	
 	@RequestMapping("/depth")
-	public String depth(HttpServletRequest request,Model model,HttpSession session,String MenuParents ) {
-		System.out.println("뎁스페이지");
-		Integer nextNum = dDao.nextNum();
-		session.setAttribute("nextNum", nextNum);
-		System.out.println("메뉴부모" +MenuParents );
-		ArrayList<DepthDto> list = dDao.list(MenuParents);
-	
-	
-		if(MenuParents == null) {
-				session.setAttribute("MenuParents",MenuParents);
-				System.out.println("세션없ㅇ음");
-		}
-		else {
-	
-				session.setAttribute("MenuParents",MenuParents);
-				System.out.println("세션있음");
-		}
+	public String depth(HttpServletRequest request, Model model, HttpSession session, String MenuParents) {
 		
-		
-		model.addAttribute("list",list);
-		return"depth/depth";
-	}
-	
-	@RequestMapping("/depth_insert")
-	public String depth_insert(HttpServletRequest request,Model model,HttpSession session ) {
-		System.out.println("인서트페이지");
-	if(session.getAttribute("level") != null ) {
-				
-				return "depth/depth_insert";
-			}
+		if (session.getAttribute("level") != null) {
+			Integer nextNum = dDao.nextNum();
+			session.setAttribute("nextNum", nextNum);
 			
-			else{
-				
-				return "redirect:/main";
-			}
+			ArrayList<DepthDto> listAbout = dDao.listAbout();
+			ArrayList<DepthDto> listPort = dDao.listPort();
+			ArrayList<DepthDto> listBrand = dDao.listBrand();
+			ArrayList<DepthDto> listSol = dDao.listSol();
+			model.addAttribute("listAbout",listAbout);
+			model.addAttribute("listPort",listPort);
+			model.addAttribute("listBrand",listBrand);
+			model.addAttribute("listSol",listSol);
+
+			ArrayList<DepthDto> list = dDao.list(MenuParents);
+			session.setAttribute("MenuParents", MenuParents);
+
+			model.addAttribute("list", list);
+			return "depth/depth";
+		} else {
+			return "redirect:/main";
+		}
 	}
-	
-	@RequestMapping("/depth_insert_ok")
-	public String depth_insert_ok(HttpServletRequest request,Model model,HttpSession session,DepthDto dDto ) {
+
+	@RequestMapping("/depth_insert")
+	public String depth_insert(HttpServletRequest request, Model model, HttpSession session) {
+		System.out.println("인서트페이지");
 		
-		if(session.getAttribute("nextNum") != null) {
-			int nextNum = (int) session.getAttribute("nextNum");
-		
+		if (session.getAttribute("level") != null) {
+
+			return "depth/depth_insert";
 		}
 
-		String MenuParents = (String) session.getAttribute("MenuParents");
+		else {
 
-		model.addAttribute("ndto",dDto);
+			return "redirect:/main";
+		}
+	}
+
+	@RequestMapping("/depth_insert_ok")
+	public String depth_insert_ok(HttpServletRequest request, Model model, HttpSession session, DepthDto dDto,String menuParents ) {
+
+		if (session.getAttribute("nextNum") != null) {
+			int nextNum = (int) session.getAttribute("nextNum");
+
+		}
+
 		
+
+		model.addAttribute("ndto", dDto);
+
 		dDao.insert(dDto);
 
-		return"redirect:depth?MenuParents="+MenuParents;
+		return "redirect:depth?MenuParents=" + menuParents;
 	}
-	
+
 	@RequestMapping(value = "/depth_delete", method = RequestMethod.POST)
 	@ResponseBody
-	public int deleteCart(HttpSession session,
-	     @RequestParam(value = "chbox[]") List<String> chArr, DepthDto dDto) throws Exception {
+	public int deleteCart(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, DepthDto dDto)
+			throws Exception {
 
-	System.out.println("백단 접근");
-	
-		 int result = 0;
-		 int menuCode = 0;
-		  for(String i : chArr) {   
-			  System.out.println("백단 포문");
-		   menuCode = Integer.parseInt(i);
-		   dDto.setMenuCode(menuCode);
-		   dDao.depth_delete(dDto);
-		  }   
-		  System.out.println("백단 포문완료");
-		  result = 1;
-	 
-		 return result;  
+		int result = 0;
+		int menuCode = 0;
+		for (String i : chArr) {
+			menuCode = Integer.parseInt(i);
+			dDto.setMenuCode(menuCode);
+			dDao.depth_delete(dDto);
 		}
-	
+
+		result = 1;
+
+		return result;
+	}
 
 	@RequestMapping("/depth_update")
-	public String depth_update(HttpServletRequest request,Model model,HttpSession session,int menuCode,DepthDto dDto ) {
+	public String depth_update(HttpServletRequest request, Model model, HttpSession session, int menuCode,
+			DepthDto dDto) {
 		System.out.println("수정페이지");
-	if(session.getAttribute("level") != null ) {
-		dDto = dDao.content(menuCode);
-		model.addAttribute("dDto", dDto);
-				return "depth/depth_update";
-			}
-			
-			else{
-				
-				return "redirect:/main";
-			}
+		if (session.getAttribute("level") != null) {
+			dDto = dDao.content(menuCode);
+			model.addAttribute("dDto", dDto);
+			return "depth/depth_update";
+		}
+
+		else {
+
+			return "redirect:/main";
+		}
 	}
-	
+
 	@RequestMapping("/depth_update_ok")
-	public String depth_update_ok(HttpServletRequest request,Model model,HttpSession session,DepthDto dDto,int menuCode) {
-		
-		if(session.getAttribute("nextNum") != null) {
+	public String depth_update_ok(HttpServletRequest request, Model model, HttpSession session, DepthDto dDto,
+			int menuCode) {
+
+		if (session.getAttribute("nextNum") != null) {
 			int nextNum = (int) session.getAttribute("nextNum");
-		
+
 		}
 		String MenuParents = (String) session.getAttribute("MenuParents");
-		
 
-		model.addAttribute("ndto",dDto);
-		
+		model.addAttribute("ndto", dDto);
+
 		dDao.update(dDto);
 
-		return"redirect:depth?MenuParents="+MenuParents;
-	}
-	
+		return "redirect:depth?MenuParents=" + MenuParents;
 	}
 
-
-
+}

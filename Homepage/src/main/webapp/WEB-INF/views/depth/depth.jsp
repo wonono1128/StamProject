@@ -109,21 +109,21 @@
        		  <c:otherwise>
        		  	<c:forEach var="dDto" items="${list}">
        		   		<c:if test="${dDto.menuState == 1}">
-	       			<tr class="notice_tr">
-	       				<td class="notice_td">${dDto.menuCode}</td>
-						<td class="notice_td notice_select_td"
-							style="display: flex; justify-content: space-between; align-items: center;">
-							<a href="depth_update?menuCode=${dDto.menuCode }"
-							class="notice_td_a" id="${dDto.menuContents}"> <span class="depth_menuContents">${dDto.menuContents}</span>
-							</a> 
-							<a href="depth_update?menuCode=${dDto.menuCode }" id="img_btn"class="icon-left-padding update_btn" style="margin-left: 20px;">
-								<i class="far fa-edit"></i>
-							</a>
-						</td>
-						<td class="notice_td"><input type="checkbox" value=${dDto.menuCode } name="delete_chk" data-cartNum="${dDto.menuCode}" class="delete_chk"></td>
-						<td style="display:none"><input type="text" value="" id="chk_num"></td>
-	       			</tr>
-	       		</c:if>
+		       			<tr class="notice_tr">
+		       				<td class="notice_td">${dDto.menuCode}</td>
+							<td class="notice_td notice_select_td"
+								style="display: flex; justify-content: space-between; align-items: center;">
+								<a href="depth_update?menuCode=${dDto.menuCode }"
+								class="notice_td_a" id="${dDto.menuContents}"> <span class="depth_menuContents">${dDto.menuContents}</span>
+								</a> 
+								<a href="depth_update?menuCode=${dDto.menuCode }" id="img_btn"class="icon-left-padding update_btn" style="margin-left: 20px;">
+									<i class="far fa-edit"></i>
+								</a>
+							</td>
+							<td class="notice_td"><input type="checkbox" value=${dDto.menuCode } name="delete_chk" data-cartNum="${dDto.menuCode}" class="delete_chk"></td>
+							<td style="display:none"><input type="text" value="" id="chk_num"></td>
+		       			</tr>
+		       		</c:if>
        			</c:forEach>
        		  </c:otherwise>
        		 </c:choose>
@@ -157,6 +157,8 @@
 
 <script>
 
+
+
 	function go_insert(){
 		  location.href = "depth_insert";
 	}
@@ -166,7 +168,6 @@
 
 		
 	}
-
 
 
 
