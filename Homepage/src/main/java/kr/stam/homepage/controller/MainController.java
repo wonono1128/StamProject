@@ -22,45 +22,43 @@ public class MainController {
 	private DepthDao dDao;
 	
 	@RequestMapping({ "/", "main" })
-	public String main(HttpSession session,Model model) {
+	public String main(HttpSession session, Model model) {
 		System.out.println("메인");
 		ArrayList<DepthDto> Flist = dDao.Flist();
 
-		model.addAttribute("Flist",Flist);
-		
-	
+		model.addAttribute("Flist", Flist);
+
 		return "/main";
 	}
-	@RequestMapping({"/portfolio_{year}"})
+
+	@RequestMapping({ "/portfolio_{year}" })
 	public String portfolio(@PathVariable String year) {
 
 		return "portfolio/portfolio_" + year;
 	}
-	
-	
-	@RequestMapping("/{about}")
+
+	@RequestMapping("/about_{about}")
 	public String about(@PathVariable String about) {
 
-		return "about/"+about;
+		return "about/about_" + about;
 	}
 
 	@RequestMapping("/brand_{brand}")
 	public String brand(@PathVariable String brand) {
 
-		return "brand/brand_"+brand;
+		return "brand/brand_" + brand;
 	}
+
 	@RequestMapping("/solution_{solution}")
 	public String solution(@PathVariable String solution) {
 
-		return "solution/solution_"+solution;
+		return "solution/solution_" + solution;
 	}
-	
-	
+
 	@RequestMapping("/test")
 	public String test() {
 
 		return "/test";
 	}
-	
 
 }

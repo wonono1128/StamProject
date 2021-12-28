@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.stam.homepage.dao.DepthDao;
 import kr.stam.homepage.dao.NoticeDao;
 import kr.stam.homepage.dao.NoticeLogDao;
+import kr.stam.homepage.dto.DepthDto;
 import kr.stam.homepage.dto.NoticeDto;
 import kr.stam.homepage.dto.NoticeLogDto;
 
@@ -23,7 +25,8 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeLogDao nLDao;
-
+	@Autowired
+	private DepthDao dDao;
 	/*
 	nextNum = 다음 글 번호
 	cla = 검색 주제
@@ -33,9 +36,11 @@ public class NoticeController {
 	 */
 	@RequestMapping("/notice")
 	public String notice(NoticeDto ndto, HttpServletRequest request, Model model, HttpSession session) {
-
+		ArrayList<DepthDto> Flist = dDao.Flist();
+		model.addAttribute("Flist",Flist);
 		Integer nextNum = ndao.nextNum();
 		session.setAttribute("nextNum", nextNum);
+	
 		int index; // 1페이지=>0, 2페이지는 10
 		int page;
 
