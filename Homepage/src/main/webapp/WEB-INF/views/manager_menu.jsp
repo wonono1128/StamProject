@@ -10,7 +10,7 @@
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${listAbout}">
 					<c:if test="${dDto.menuState ==1 }">
-						<li><a href="${dDto.menuContents}" class="test_1234">${dDto.menuContents}</a></li>
+						<li><a href="product?menuContents=${dDto.menuContents}" class="test_1234">${dDto.menuContents}</a></li>
 					</c:if>
 				</c:forEach>
 			</ul></li>
@@ -19,7 +19,7 @@
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${listPort}">
 					<c:if test="${dDto.menuState ==1 }">
-						<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+						<li><a href="product?menuContents=${dDto.menuContents}">${dDto.menuContents}</a></li>
 					</c:if>
 				</c:forEach>
 			</ul></li>
@@ -28,7 +28,7 @@
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${listBrand}">
 					<c:if test="${dDto.menuState ==1 }">
-						<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+						<li><a href="product?menuContents=${dDto.menuContents}">${dDto.menuContents}</a></li>
 					</c:if>
 				</c:forEach>
 			</ul></li>
@@ -37,7 +37,7 @@
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${listSol}">
 					<c:if test="${dDto.menuState ==1 }">
-						<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+						<li><a href="product?menuContents=${dDto.menuContents}">${dDto.menuContents}</a></li>
 					</c:if>
 				</c:forEach>
 			</ul></li>
