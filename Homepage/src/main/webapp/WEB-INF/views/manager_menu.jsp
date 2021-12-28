@@ -17,7 +17,7 @@
 				</c:forEach>
 			</ul></li>
 		<li><a href="depth?MenuParents=PORTFOLIO" class="depth1">IT
-				PORTFOLIO</a><a class="depth1"><i class="far fa-edit"></i></a>
+				PORTFOLIO</a><a class="depth1" href="depth?MenuParents=PORTFOLIO"><i class="far fa-edit"></i></a>
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'PORTFOLIO' }">
@@ -28,7 +28,7 @@
 				</c:forEach>
 			</ul></li>
 		<li><a href="depth?MenuParents=BRAND" class="depth1">BRAND</a><a
-			class="depth1"><i class="far fa-edit"></i></a>
+			class="depth1" href="depth?MenuParents=BRAND"><i class="far fa-edit"></i></a>
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'BRAND' }">
@@ -39,7 +39,7 @@
 				</c:forEach>
 			</ul></li>
 		<li><a href="depth?MenuParents=SOLUTION" class="depth1">SOLUTION</a><a
-			class="depth1"><i class="far fa-edit"></i></a>
+			class="depth1"href="depth?MenuParents=SOLUTION"><i class="far fa-edit"></i></a>
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'SOLUTION' }">

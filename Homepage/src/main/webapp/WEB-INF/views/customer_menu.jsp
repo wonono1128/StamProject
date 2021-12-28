@@ -9,7 +9,7 @@
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'ABOUT' }">
 						<c:if test="${dDto.menuState ==1 }">
-							<li><a href="javascript:void(0);" onclick="about_click();">${dDto.menuContents}</a></li>
+							<li><a href="#"onclick="about_click(this)">${dDto.menuContents}</a></li>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -20,7 +20,7 @@
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'PORTFOLIO' }">
 						<c:if test="${dDto.menuState ==1 }">
-							<li><a href="portfolio_${dDto.menuContents}">${dDto.menuContents}</a></li>
+							<li><a href="#"onclick="port_click(this)">${dDto.menuContents}</a></li>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -30,7 +30,7 @@
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'BRAND' }">
 						<c:if test="${dDto.menuState ==1 }">
-							<li><a href="brand_${dDto.menuContents}">${dDto.menuContents}</a></li>
+							<li><a href="#"onclick="brand_click(this)">${dDto.menuContents}</a></li>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -40,7 +40,7 @@
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'SOLUTION' }">
 						<c:if test="${dDto.menuState ==1 }">
-							<li><a href="solution_${dDto.menuContents}">${dDto.menuContents}</a></li>
+							<li><a href="#"onclick="sol_click(this)">${dDto.menuContents}</a></li>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -56,11 +56,37 @@
 
 
 <script type="text/javascript">
-function about_click(){
-
-	String about_url = "test";
-	alert(about_url);
+function about_click(ths){
+	var hello = $(ths).text();
+    hello = hello.replace(/ /g,"");
+    
+    
+    location.href = "/homepage/about_"+ hello;
 }
 	
+	
+function brand_click(ths){
+	var hello = $(ths).text();
+    hello = hello.replace(/ /g,"");
+    
+    
+    location.href = "/homepage/brand_"+ hello;
+}
+
+function port_click(ths){
+	var hello = $(ths).text();
+    hello = hello.replace(/ /g,"");
+    hello = hello.replace("-","");
+    
+    location.href = "/homepage/portfolio_"+ hello;
+}
+
+function sol_click(ths){
+	var hello = $(ths).text();
+    hello = hello.replace(/ /g,"");
+    hello = hello.replace("","");
+    
+    location.href = "/homepage/solution_"+ hello;
+}
 </script>
 
