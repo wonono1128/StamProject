@@ -49,31 +49,13 @@ public class MainController {
 
 		return "brand/brand_"+brand;
 	}
+	@RequestMapping("/solution_{solution}")
+	public String solution(@PathVariable String solution) {
 
+		return "solution/solution_"+solution;
+	}
 	
-	@RequestMapping("/solution_Adrive")
-	public String solution_Adrive() {
-
-		return "solution/solution_Adrive";
-	}
-
-	@RequestMapping("/solution_ST_framework")
-	public String solution_ST_framework() {
-
-		return "solution/solution_ST_framework";
-	}
-
-	@RequestMapping("/solution_System1")
-	public String solution_System1() {
-
-		return "solution/solution_System1";
-	}
-
-	@RequestMapping("/solution_System2")
-	public String solution_System2() {
-
-		return "solution/solution_System2";
-	}
+	
 	@RequestMapping("/test")
 	public String test() {
 
