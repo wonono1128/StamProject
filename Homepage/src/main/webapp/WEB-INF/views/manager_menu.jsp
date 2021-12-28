@@ -9,7 +9,9 @@
 								class="far fa-edit"></i></a>
 							<ul class="depth2">
 							<c:forEach var="dDto" items="${listAbout}">
-								<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+								<c:if test="${dDto.menuState ==1 }">
+									<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+								</c:if>
 							</c:forEach>
 							</ul>
 						</li>
@@ -17,21 +19,27 @@
 							class="depth1"><i class="far fa-edit"></i></a>
 							<ul class="depth2">
 							<c:forEach var="dDto" items="${listPort}">
-								<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+								<c:if test="${dDto.menuState ==1 }">
+									<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+								</c:if>
 							</c:forEach>
 							</ul></li>
 						<li><a href="depth?MenuParents=BRAND" class="depth1">Brand</a><a class="depth1"><i
 								class="far fa-edit"></i></a>
 							<ul class="depth2">
 							<c:forEach var="dDto" items="${listBrand}">
-								<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+								<c:if test="${dDto.menuState ==1 }">
+									<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+								</c:if>
 							</c:forEach>
 							</ul></li>
 						<li><a href="depth?MenuParents=SOLUTION" class="depth1">SOLUTION</a><a class="depth1"><i
 								class="far fa-edit"></i></a>
 							<ul class="depth2">
 							<c:forEach var="dDto" items="${listSol}">
-								<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+								<c:if test="${dDto.menuState ==1 }">
+									<li><a href="${dDto.menuContents}">${dDto.menuContents}</a></li>
+								</c:if>
 							</c:forEach>
 							</ul></li>
 						<li><a href="#" class="depth1">ManageMent</a>
