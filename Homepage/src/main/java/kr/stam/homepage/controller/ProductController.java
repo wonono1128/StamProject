@@ -95,6 +95,8 @@ public class ProductController {
 		if (session.getAttribute("level") != null) {
 			int productCode = Integer.parseInt(request.getParameter("productCode"));
 			String menuContents = (String) session.getAttribute("menuContents");
+			Integer listCount = pd.listCount(menuContents);
+			pDto.setListCount(listCount);
 			ArrayList<DepthDto> Flist = dDao.Flist();
 			model.addAttribute("Flist", Flist);
 			pDto = pd.content(productCode);

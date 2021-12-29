@@ -33,7 +33,7 @@
 		</header>
 
 		<div class="container item">
-			<p class="top_text">NO CROSS NO NO CROWN</p>
+			<p class="top_text">NO CROSS NO CROWN</p>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
 

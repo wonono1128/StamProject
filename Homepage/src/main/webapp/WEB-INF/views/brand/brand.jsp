@@ -32,11 +32,11 @@
 			</nav>
 		</header>
 		<div class="container item">
-			<p class="top_text">NO CROSS NO NO CROWN</p>
+			<p class="top_text">NO CROSS NO CROWN</p>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
 
-					<c:forEach var="pDto" items="${list}">
+					<c:forEach var="pDto" items="${list}" varStatus="status">
 						<c:if test="${pDto.productState == 1}">
 							<!-- Brand-01 -->
 							<div class="swiper-slide">
@@ -67,7 +67,7 @@
 									</div>
 								</div>
 								<div class="num_div">
-									<span class="num num0">0</span> <span class="num num1">1</span>
+									<span class="num num0">0</span> <span class="num num${status.count }">${status.count }</span>
 								</div>
 							</div>
 						</c:if>

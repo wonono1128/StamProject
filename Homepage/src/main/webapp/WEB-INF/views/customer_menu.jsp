@@ -84,7 +84,7 @@
 		<li><a href="login" class="depth1">ManageMent</a>
 			<ul class="depth2">
 				<li><a href="login">login</a></li>
-				<li <c:if test="${nDto.menuContents eq url }">class="on" </c:if>><a
+				<li <c:if test="${url == 'notice' }">class="on" </c:if>><a
 					href="notice">Notice</a></li>
 			</ul></li>
 	</ul>
