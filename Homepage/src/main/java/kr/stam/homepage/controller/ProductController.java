@@ -69,10 +69,11 @@ public class ProductController {
 	@RequestMapping(value="/product_insert_ok", method=RequestMethod.POST)
 	public String product_insert_ok(ProductDto pdto, HttpSession session, MultipartFile[] pLogo, MultipartFile[] pImg) {
 		String menuContents = (String) session.getAttribute("menuContents");
+		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
+		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
 		
-
-		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
-		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
+//		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+//		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
 		for(MultipartFile multipartFile : pLogo) {
 			System.out.println("---------------------------로고 파일------------------------------------");
 			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
@@ -142,12 +143,15 @@ public class ProductController {
 	}
 
 	@RequestMapping("/product_update")
-	public String product_update(HttpServletRequest request, Model model, HttpSession session) {
+	public String product_update(HttpServletRequest request, Model model, HttpSession session,ProductDto pDto) {
 
 		ArrayList<DepthDto> Flist = dDao.Flist();
 		model.addAttribute("Flist", Flist);
 		if (session.getAttribute("level") != null) {
-
+			int productCode = Integer.parseInt(request.getParameter("productCode"));
+		
+			pDto = pd.content(productCode);
+			model.addAttribute("pDto", pDto);
 			return "product/product_update";
 		}
 
@@ -155,5 +159,56 @@ public class ProductController {
 
 			return "redirect:/main";
 		}
+	}
+	
+	@RequestMapping("product_update_ok")
+	public String update_ok(HttpServletRequest request, ProductDto pDto, HttpSession session, MultipartFile[] pLogo, MultipartFile[] pImg) {
+		
+		String companyName = request.getParameter("companyName");
+		String productName = request.getParameter("productName");
+		String productContents = request.getParameter("productContents");
+		
+		String menuContents = request.getParameter("menuContents");
+		String brandExplain = request.getParameter("brandExplain");
+		String brandContents = request.getParameter("brandContents");
+		
+		System.out.println(companyName+productName+productContents+menuContents+brandExplain+brandContents);
+		
+		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
+
+		
+		for(MultipartFile multipartFile : pLogo) {
+			System.out.println("---------------------------로고 파일------------------------------------");
+			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size : " + multipartFile.getSize());
+			pDto.setCompanyLogo(multipartFile.getOriginalFilename());
+			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+			
+			try {
+				multipartFile.transferTo(saveFile);
+				
+			}catch (Exception e) {
+				System.out.println("저장 실패");
+			}
+		}
+		
+		for(MultipartFile multipartFile : pImg) {
+			System.out.println("---------------------------제품이미지 파일------------------------------------");
+			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size : " + multipartFile.getSize());
+			pDto.setProductImg(multipartFile.getOriginalFilename());
+			File saveFile = new File(uploadFolder2, multipartFile.getOriginalFilename());
+			
+			try {
+				multipartFile.transferTo(saveFile);
+			}catch (Exception e) {
+				System.out.println("저장 실패");
+			}
+		}
+		
+		pd.update(pDto);
+		
+		return "redirect:/product?menuContents=" + menuContents;
 	}
 }

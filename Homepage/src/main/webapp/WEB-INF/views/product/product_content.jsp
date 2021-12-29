@@ -132,11 +132,8 @@
 		location.href = "/homepage/product?menuContents=" + menuContents;
 	}
 	function product_update() {
-		const productCode = $
-		{
-			pDto.productCode
-		}
-		;
+		const productCode = ${pDto.productCode};
+		alert(productCode);
 		location.href = "/homepage/product_update?productCode=" + productCode;
 	}
 	contentsHeight();

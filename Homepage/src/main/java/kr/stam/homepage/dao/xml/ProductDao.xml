@@ -49,4 +49,15 @@
 		select count(*) from product
 		where menuContents=#{menuContents}
 	</select>
+
+	<!-- 제품 수정 -->
+	<update id="update"
+		parameterType="kr.stam.homepage.dto.ProductDto">
+		update product set companyName = #{companyName} ,
+		productName = #{productName}, productContents=#{productContents} ,
+		companyLogo=#{companyLogo}, menuContents=#{menuContents},
+		brandExplain=#{brandExplain} , brandContents=#{brandContents},
+		productImg=#{productImg} where productCode =
+		#{productCode}
+	</update>
 </mapper>

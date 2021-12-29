@@ -15,4 +15,5 @@ public interface ProductDao {
 	public void insert(ProductDto pdto);
 	public void delete(ProductDto pdto);
 	public Integer listCount(String menuContents);
+	public void update(ProductDto pDto);
 }

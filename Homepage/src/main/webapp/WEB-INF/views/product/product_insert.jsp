@@ -87,10 +87,6 @@
 													<option value="Brand">Brand</option>
 													<option value="Promotion">Promotion</option>
 													<option value="Edit">Edit</option>
-													<option value="A.Drive">A.Drive</option>
-													<option value="ST Framework">ST Framework</option>
-													<option value="통합 SNS 관리시스템">통합 SNS 관리시스템</option>
-													<option value="구간별 암호화 시스템">구간별 암호화 시스템</option>
 											</select></td>
 										</tr>
 										<tr class="insert_tr">
