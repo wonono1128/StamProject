@@ -52,7 +52,7 @@
           </div>
           <div class="contents item">
             <div class="tit_div s_num_div">
-              <span class="s_num s_num2021"></span>
+              <span class="s_num s_num2021"> ${pDto.menuContents }</span>
               <a href="javascript:void(0);" class="btn_open mo" data-target="portfolio2021_1"></a>
             </div>
             <div class="cont">

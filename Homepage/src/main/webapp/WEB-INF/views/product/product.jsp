@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/static/plugins/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="resources/static/css/common.css">
 <link rel="stylesheet" href="resources/static/css/style.css">
-<link rel="stylesheet" href="resources/static/css/notice/notice.css">
+<link rel="stylesheet" href="resources/static/css/produdct/product_delete.css">
 <script src="https://kit.fontawesome.com/070c967850.js"
 	crossorigin="anonymous"></script>
 
@@ -41,43 +41,48 @@
         
           </div>
           <div class="notice_div">
-			<span class="notice_span">IT Portfolio</span>
-       		<table class="notice_table">
-       		<tr> <!-- 검색행 -->
-       		 
-		     
-		     </tr>
-	
-       			<tr class="notice-tr top-tr">
-       				<td class="notice_th td_num">번호</td>
-       				<td class="notice_th td_mangager">회사명</td>
-       				<td class="notice_th td_mangager">제품명</td>
-       				<td class="notice_th td_mangager">선택</td>
-       			</tr>
-       		<c:choose>	
- 			 <c:when test="${nextNum == 1 }">
-       		 	<tr class="notice_tr"> 
-       		 		<td colspan="5" class="no_notice_page"> 작성된 공지사항이 없습니다.</td>
-       		 	</tr>
-       		 </c:when>
-       		  <c:otherwise>
-       		  	<c:forEach var="pDto" items="${list}">
-	       			<tr class="notice_tr">
-	       				<td class="notice_td">${pDto.productCode}</td>
-						<td class="notice_td">${pDto.companyName}</td>
-						<td class="notice_td"><a href="product_content?productCode=${pDto.productCode}">${pDto.productName}</a></td>
-						<td class="notice_td"><input type="checkbox"></input></td>
-	       			</tr>
-       			</c:forEach>
-       		  </c:otherwise>
-       		 </c:choose>
-			<tr>	
-				<td><a href="product_insert">추가</a></td>
-				<td><a href="product_delete">삭제</a></td>
-			</tr>
-       		</table>
-       		
+         <span class="notice_span">${MenuParents}</span>
+             <table class="notice_table">
+             <tr> <!-- 검색행 -->
+              
+           </tr>
+            <tr   style="display:none">
+               <td><input type="text" value=${menuContents } class="menuContents"></td>
+            </tr>
+                <tr class="notice-tr top-tr">
+                   <td class="notice_th td_num">번호</td>
+                   <td class="notice_th td_mangager">회사명</td>
+                   <td class="notice_th td_mangager">제품명</td>
+                   <td class="notice_th td_mangager">선택</td>
+                </tr>
+             <c:choose>   
+           <c:when test="${nextNum == 1 }">
+                 <tr class="notice_tr"> 
+                    <td colspan="5" class="no_notice_page"> 작성된 공지사항이 없습니다.</td>
+                 </tr>
+              </c:when>
+               <c:otherwise>   
+                  <c:forEach var="pDto" items="${list}">
+                   <tr class="notice_tr">
+                      <td class="notice_td">${pDto.productCode}</td>
+                  <td class="notice_td">${pDto.companyName}</td>
+                  <td class="notice_td"><a href="portfolio_${pDto.menuContents}">${pDto.productName}</a></td>
+                  <td class="notice_td"><input type="checkbox" name="deleteChk" class="deleteChk" data-cartNum="${pDto.productCode}" value="${pDto.productCode }"></input></td>
+                   </tr>
+                </c:forEach>
+               </c:otherwise>
+              </c:choose>
+              
+              <tr style="position: relative;">   
+            <td></td>
+            <td class="insertdel_td" colspan="2">
+               <button class="product_insert_btn" onclick="location.href='./product_insert';">추가</button>
+               <button class="product_delete_btn">삭제</button>
+            </td>
+         </tr>
+             </table>
           </div>
+
 
       </div><!-- //swiper-wrapper -->
       <div class="swiper-pagination"></div>
@@ -89,6 +94,35 @@
 </div>
 	
 </body>
+
+<script>
+$(".delete_btn").click(function(){
+   const menuContents = document.querySelector(".menuContents").value;
+   var confirm_val = confirm("정말 삭제하시겠습니까?");
+     
+     if(confirm_val) {
+      var checkArr = new Array();
+      
+      $("input[class='deleteChk']:checked").each(function(){
+       checkArr.push($(this).attr("data-cartNum"));
+      });
+      $.ajax({
+       url : "/homepage/product_delete",
+       type : "post",
+       data : { chbox : checkArr },
+       success : function(result){
+          if(result == 1){
+             alert("삭제 성공");
+              location.href = "/homepage/product?menuContents="+ menuContents;
+          }else{
+             alert("삭제 실패");       
+          }
+       }
+      });
+     } 
+    });
+</script>
+
 
 <!--   		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>

@@ -22,4 +22,15 @@
 	<select id="content" resultType="kr.stam.homepage.dto.ProductDto">
 		select * from product where productCode = #{productCode}
 	</select>
+	<!-- 제품 추가 -->
+   <insert id="insert" parameterType="kr.stam.homepage.dto.ProductDto">
+      insert into product(companyName, productName, productContents, companyLogo, menuContents, brandExplain, brandContents, productImg) 
+      values(#{companyName}, #{productName}, #{productContents}, #{companyLogo}, #{menuContents}, #{brandExplain}, #{brandContents}, #{productImg})
+   </insert>
+   
+   <!-- 제품 삭제 -->
+   <update id="delete" parameterType="kr.stam.homepage.dto.ProductDto">
+      update product set productState = 2 where productCode = #{productCode}
+   </update>
+	
 </mapper>

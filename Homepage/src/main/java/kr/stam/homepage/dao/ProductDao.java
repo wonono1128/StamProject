@@ -12,4 +12,6 @@ public interface ProductDao {
 	public Integer nextNum();
 	public ArrayList list(String menuContents);
 	public ProductDto content(int productCode);
+	public void insert(ProductDto pdto);
+	public void delete(ProductDto pdto);
 }

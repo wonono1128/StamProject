@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="resources/static/css/common.css">
 <link rel="stylesheet" href="resources/static/css/style.css">
 <link rel="stylesheet" href="resources/static/css/depth/depth_insert.css">
+
 <script src="https://kit.fontawesome.com/070c967850.js"crossorigin="anonymous"></script>
 <script src="resources/static/js/jquery-3.2.1.min.js"></script>
 <script src="resources/static/plugins/swiper/swiper-bundle.min.js"></script>

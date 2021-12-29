@@ -59,7 +59,7 @@
 function about_click(ths){
 	var hello = $(ths).text();
     hello = hello.replace(/ /g,"");
-    
+    $( ths ).parent( 'li' ).toggleClass( 'on' );
     
     location.href = "/homepage/about_"+ hello;
 }
