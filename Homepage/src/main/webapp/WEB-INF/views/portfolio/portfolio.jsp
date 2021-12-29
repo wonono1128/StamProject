@@ -54,7 +54,7 @@
 										${pDto.productContents }
 										<p class="logo_img_div">
 											<img
-												src="resources/static/images/portfolio/${pDto.companyLogo }"
+												src="resources/static/images/${pDto.companyLogo }"
 												alt="CJ 로고">
 										</p>
 									</div>

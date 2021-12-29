@@ -1,5 +1,6 @@
 package kr.stam.homepage.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.stam.homepage.dao.DepthDao;
 import kr.stam.homepage.dao.ProductDao;
@@ -64,11 +66,43 @@ public class ProductController {
 		}
 	}
 
-	@RequestMapping("/product_insert_ok")
-	public String product_insert_ok(ProductDto pdto, HttpSession session) {
+	@RequestMapping(value="/product_insert_ok", method=RequestMethod.POST)
+	public String product_insert_ok(ProductDto pdto, HttpSession session, MultipartFile[] pLogo, MultipartFile[] pImg) {
 		String menuContents = (String) session.getAttribute("menuContents");
-		pd.insert(pdto);
+		
 
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
+		for(MultipartFile multipartFile : pLogo) {
+			System.out.println("---------------------------로고 파일------------------------------------");
+			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size : " + multipartFile.getSize());
+			pdto.setCompanyLogo(multipartFile.getOriginalFilename());
+			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+			
+			try {
+				multipartFile.transferTo(saveFile);
+				
+			}catch (Exception e) {
+				System.out.println("저장 실패");
+			}
+		}
+		
+		for(MultipartFile multipartFile : pImg) {
+			System.out.println("---------------------------제품이미지 파일------------------------------------");
+			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size : " + multipartFile.getSize());
+			pdto.setProductImg(multipartFile.getOriginalFilename());
+			File saveFile = new File(uploadFolder2, multipartFile.getOriginalFilename());
+			
+			try {
+				multipartFile.transferTo(saveFile);
+			}catch (Exception e) {
+				System.out.println("저장 실패");
+			}
+		}
+		
+		pd.insert(pdto);
 		return "redirect:/product?menuContents=" + menuContents;
 	}
 
