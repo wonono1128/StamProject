@@ -10,7 +10,7 @@ import kr.stam.homepage.dto.DepthDto;
 @Mapper
 public interface DepthDao {
 	public void insert(DepthDto dDto);
-	public Integer nextNum();
+	public Integer DepthNextNum();
 	public ArrayList Flist();
 	public ArrayList list(String MenuParents);
 	public void depth_delete(DepthDto dDto);

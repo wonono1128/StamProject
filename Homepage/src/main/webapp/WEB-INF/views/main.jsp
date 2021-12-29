@@ -31,8 +31,12 @@
 			</button>
 			<button class="btn_back mo"></button>
 			<nav class="navi_wrap">
-				<jsp:include page="customer_menu.jsp"/>
-				<jsp:include page="manager_menu.jsp"/>
+				<c:if test="${level != 1 }">
+					<jsp:include page="customer_menu.jsp" />
+				</c:if>
+				<c:if test="${level == 1 }">
+					<jsp:include page="manager_menu.jsp" />
+				</c:if>
 			</nav>
 		</header>
 
@@ -102,7 +106,7 @@
 
 
 <script type="text/javascript">
- contentsHeight();
+	contentsHeight();
 </script>
 
 </html>

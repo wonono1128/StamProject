@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+body{
+	width:100vw;
+	height:100vh;
+}
+.product_div_btn{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}

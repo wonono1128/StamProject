@@ -4,115 +4,94 @@ body{
 	width:100vw;
 	height:100vh;
 }
-.notice_div{
+
+.insert_table{
+	border-collapse: separate;
+}
+
+.insert_tr{
 	display: flex;
-    flex-direction: column;
-    width: 100vw;
-}
-
-.notice_div_span{
-	position: relative;
-    height: 100px;
-    text-align: center;
-}
-
-.notice_span{
-    font-size: 60px;
-    white-space: nowrap;
-}
-.notice_table{
-	height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-spacing: 0px 20px;
-}
-#notice_insert_text{
-	resize: none; 
-	height: 300px;
-	}
-#notice_insert_title{
-	width:800px;
-	height: 30px;
-}
-.notice_insert_td{
-	width:80px;
-	font-size: 15px;
-	height: 30px;
-}
-
-#notice_insert_btn{
-	background-color: white;
-    color: black;
-}
-.notice_insert_btn{
-	display: flex;
-    flex-direction: row;
     justify-content: center;
+    width: 100%;
     align-items: center;
+    margin-bottom: 20px;
 }
 
-.notice_insert_input{
-    width: 180px;
-    text-align: center;
-    border: 1px solid rgba(0,0,0,0.3);
-    border-radius: 40px;
-     margin-right: 20px;
-}
-#notice_insert_list{
-    height: 50px;
-    padding-top: 10px;
-}
-
-
-@media (max-width: 1320px)   { 
-	.notice_table {
-	    height: 100vh;
-	    display: flex;
-	    flex-direction: column;
-	    margin-left: 80px;
-	    border-spacing: 0px 30px;
+.insert_td_btn {
+	margin-right: 25px; 
+	width: 120px; 
+	border-radius: 20px; 
+	background-color: white; 
+	color: black; 
+	border: 1px solid black;
 	
-	}
-	.notice_insert_btn {
+}
+
+.delete_btn{
+	margin-left: 300px; 
+	width: 120px; 
+	border-radius: 20px; 
+	background-color: white; 
+	color: black; 
+	border: 1px solid black;
+	margin-left: 950px;
+	margin-top: -127px;
+}
+
+.insert_td_name{
+	margin-right: 95px;
+}
+
+.insert_td_input{
+	width: 35%;
+}
+
+.insert_td_input > input {
+	height: 30px;
+}
+
+.insert_td_input > select {
+	height: 30px;
+	margin-left: 20px;
+}
+
+.insert_div{
+	position: relative;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    height: 900px;
 }
-#notice_insert_title {
-    width: 420px;
+
+.insert_contain {
+	margin-top: 150px;
 }
-.notice_div {
-    display: flex;
-    flex-direction: column;
-    width: 60vw;
+
+.insert_title_div{
+	position: absolute;
+    top: 40px;
 }
+.insert_title_span{
+	
+	font-size: xxx-large;
+    font-weight: 600;
+}
+
+.insert_td_btn{
+	margin-left:250px;
+}
+
+.pcInput{
+	height: 300px;
 }
 
 
 
 @media (max-width: 817px)   { 
-	#notice_insert_text {
-    resize: none;
-    height: 300px;
-}
-	#notice_insert_title {
-    width: 330px;
-}
-.notice_insert_input {
-    width: 100px;
-    text-align: center;
-    border: 1px solid rgba(0,0,0,0.3);
-    border-radius: 40px;
-    margin-right: 20px;
-}
-.notice_table {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin-left: 150px;
-    border-spacing: 0px 30px;
-}
+	.insert_td_input {
+    	width: 45%;
+	}
+	.insert_td_btn {
+   		margin-left: 0px;
+	}
 }

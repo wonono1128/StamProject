@@ -28,7 +28,7 @@
 			</button>
 			<button class="btn_back mo"></button>
 			<nav class="navi_wrap">
-				<jsp:include page="../customer_menu.jsp"/>
+				<jsp:include page="../customer_menu.jsp" />
 			</nav>
 		</header>
 
@@ -109,6 +109,6 @@
 
 </body>
 <script type="text/javascript">
- contentsHeight();
+	contentsHeight();
 </script>
 </html>

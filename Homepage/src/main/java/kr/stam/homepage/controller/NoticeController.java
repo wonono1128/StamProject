@@ -27,18 +27,16 @@ public class NoticeController {
 	private NoticeLogDao nLDao;
 	@Autowired
 	private DepthDao dDao;
+
 	/*
-	nextNum = 다음 글 번호
-	cla = 검색 주제
-	sword =  검색단어
-	pagecnt = 페이지 계산한 값
-	index,page,pstart,pend = 페이징 변수
+	 * nextNum = 다음 글 번호 cla = 검색 주제 sword = 검색단어 pagecnt = 페이지 계산한 값
+	 * index,page,pstart,pend = 페이징 변수
 	 */
 	@RequestMapping("/notice")
 	public String notice(NoticeDto ndto, HttpServletRequest request, Model model, HttpSession session) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
-		model.addAttribute("Flist",Flist);
-	
+		model.addAttribute("Flist", Flist);
+		model.addAttribute("url", "notice");
 		int index; // 1페이지=>0, 2페이지는 10
 		int page;
 
@@ -93,9 +91,8 @@ public class NoticeController {
 		return "notice/notice";
 	}
 
-	
 	/*
-	 level =  회원 로그인 구분 세션
+	 * level = 회원 로그인 구분 세션
 	 */
 	@RequestMapping("/insert")
 	public String insert(HttpSession session) {
@@ -109,11 +106,9 @@ public class NoticeController {
 			return "redirect:/notice";
 		}
 	}
-	
+
 	/*
-	nextNum = 다음 글 번호
-	managerId = 관리자 아이디
-	managerName = 관리자 닉네임
+	 * nextNum = 다음 글 번호 managerId = 관리자 아이디 managerName = 관리자 닉네임
 	 */
 	@RequestMapping("/insert_ok")
 	public String insert_ok(HttpServletRequest request, NoticeDto ndto, Model model, NoticeLogDto nLDto,
@@ -140,7 +135,7 @@ public class NoticeController {
 	}
 
 	/*
-	noticeNum = 글 번호
+	 * noticeNum = 글 번호
 	 */
 	@RequestMapping("/content")
 	public String content(HttpServletRequest request, NoticeDto ndto, Model model) throws Exception {
@@ -149,11 +144,10 @@ public class NoticeController {
 		model.addAttribute("ndto", ndto);
 		return "notice/content";
 	}
+
 	/*
-	level =  회원 로그인 구분 세션
-	noticeNum = 글 번호
-	managerId = 관리자 아이디
-	managerName = 관리자 닉네임
+	 * level = 회원 로그인 구분 세션 noticeNum = 글 번호 managerId = 관리자 아이디 managerName = 관리자
+	 * 닉네임
 	 */
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request, NoticeDto ndto, Model model, NoticeLogDto nLDto,
@@ -180,8 +174,7 @@ public class NoticeController {
 	}
 
 	/*
-	level =  회원 로그인 구분 세션
-	noticeNum = 글 번호
+	 * level = 회원 로그인 구분 세션 noticeNum = 글 번호
 	 */
 	@RequestMapping("update")
 	public String update(HttpServletRequest request, NoticeDto ndto, Model model, HttpSession session) {
@@ -197,8 +190,7 @@ public class NoticeController {
 	}
 
 	/*
-	managerId = 관리자 아이디
-	managerName = 관리자 닉네임
+	 * managerId = 관리자 아이디 managerName = 관리자 닉네임
 	 */
 	@RequestMapping("update_ok")
 	public String update_ok(HttpServletRequest request, NoticeDto ndto, NoticeLogDto nLDto, HttpSession session) {

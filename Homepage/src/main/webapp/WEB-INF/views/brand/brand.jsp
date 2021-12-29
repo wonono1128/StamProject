@@ -4,16 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>STAM</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link rel="stylesheet"
 	href="resources/static/plugins/swiper/swiper-bundle.min.css" />
 <link rel="stylesheet" href="resources/static/css/common.css">
-<link rel="stylesheet" href="resources/static/css/product/style.css">
-
+<link rel="stylesheet" href="resources/static/css/style.css">
 <script src="resources/static/js/jquery-3.2.1.min.js"></script>
 <script src="resources/static/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resources/static/js/common.js"></script>
@@ -42,34 +38,30 @@
 
 					<c:forEach var="pDto" items="${list}">
 						<c:if test="${pDto.productState == 1}">
-							<!-- 2021-01 -->
+							<!-- Brand-01 -->
 							<div class="swiper-slide">
 								<div class="loca_div mo">
-									<span class="loca">IT portfolio > ${MenuContents } </span> <span
-										class="slogan">Strategy+Ambition</span>
+									<span class="loca">Brand > Brand</span> <span class="slogan">Strategy+Ambition</span>
 								</div>
 								<div class="subtitle_section item">
 									<h2>${pDto.companyName }<br>${pDto.productName }</h2>
-									<div class="description">
-										${pDto.productContents }
-										<p class="logo_img_div">
-											<img
-												src="resources/static/images/portfolio/${pDto.companyLogo }"
-												alt="CJ 로고">
-										</p>
-									</div>
+									<div class="description">${pDto.productContents }</div>
 								</div>
-								<div class="contents item">
-									<div class="tit_div s_num_div">
-										<span class="s_num">${pDto.menuContents }</span> <a
-											href="javascript:void(0);" class="btn_open mo"
-											data-target="portfolio2021_1"></a>
+								<div class="contents item brand">
+									<div class="tit_div tit_div2">
+										<h3>${pDto.menuContents }</h3>
+										<a href="javascript:void(0);" class="btn_open mo"
+											data-target="brand01"></a>
 									</div>
 									<div class="cont">
 										<div class="conts_div">
-											<img
-												src="resources/static/images/portfolio/${pDto.productImg }"
-												alt="">
+											<p>${pDto.brandContents }</p>
+
+											<h4 class="mt">Brand Identity Diagnosis Process</h4>
+											<div class="img_div">
+												<img src="resources/static/images/${pDto.productImg }"
+													alt="">
+											</div>
 										</div>
 										<a href="#" class="mo close_layer">닫기</a>
 									</div>
@@ -80,8 +72,6 @@
 							</div>
 						</c:if>
 					</c:forEach>
-
-
 				</div>
 				<!-- //swiper-wrapper -->
 				<div class="swiper-pagination"></div>
@@ -92,18 +82,24 @@
 		<!-- //container -->
 
 	</div>
+
 	<c:forEach var="pDto" items="${list}">
 		<c:if test="${pDto.productState == 1}">
-			<div class="modal" id="portfolio2021_1">
+			<div class="modal" id="brand01">
 				<div class="modal_wrap">
 					<div class="modal_cont">
 						<div class="m_content">
-							<div class="s_num_div mo">
-								<span class="s_num s_num2021"></span>
+							<div class="tit_div2 mo">
+								<h3>${pDto.brandExplain }</h3>
 							</div>
-							<div class="img_div">
-								<img src="resources/static/images/portfolio/${pDto.productImg }"
-									alt="">
+							<div class="conts_div">
+								<p>${pDto.brandContents }<br>
+									<br>
+								</p>
+								<h4 class="mt20">Brand Identity Diagnosis Process</h4>
+								<div class="img_div">
+									<img src="resources/static/images/${pDto.productImg }" alt="">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -113,11 +109,9 @@
 		</c:if>
 	</c:forEach>
 
-
-
 </body>
+
 <script type="text/javascript">
 	contentsHeight();
 </script>
-
 </html>

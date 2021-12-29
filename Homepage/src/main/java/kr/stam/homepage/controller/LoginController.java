@@ -19,22 +19,22 @@ import kr.stam.homepage.dto.LogDto;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private LoginDao ld;
 	@Autowired
 	private DepthDao dDao;
 
 	@RequestMapping("login")
-	public String login(Model model,HttpSession session,HttpServletRequest request) {
-		String referer = (String)request.getHeader("REFERER");
-		referer = referer.substring(referer.length()-5, referer.length());
+	public String login(Model model, HttpSession session, HttpServletRequest request) {
+		String referer = (String) request.getHeader("REFERER");
+		referer = referer.substring(referer.length() - 5, referer.length());
 		System.out.println(referer);
-		if(referer.equals("login")) {
+		if (referer.equals("login")) {
 			System.out.println("같다");
-		}else {
+		} else {
 			String error = (String) session.getAttribute("error");
-			System.out.println("에러내용은?"+error);
+			System.out.println("에러내용은?" + error);
 			session.removeAttribute("error");
 			System.out.println("이전페이지가 로그인이아님");
 		}
@@ -42,18 +42,17 @@ public class LoginController {
 	}
 
 	@PostMapping(value = "loginChk")
-	public String loginChk(String managerId, LogDto ldto, HttpServletRequest request, HttpSession session
-			) {
+	public String loginChk(String managerId, LogDto ldto, HttpServletRequest request, HttpSession session) {
 
 		ArrayList<DepthDto> Flist = dDao.Flist();
 
-		for(int i=0; i<Flist.size(); i++) { //for문을 통한 전체출력
-		
+		for (int i = 0; i < Flist.size(); i++) { // for문을 통한 전체출력
+
 			String MenuParent = Flist.get(i).getMenuParents();
-			session.setAttribute("MenuParent",MenuParent);
-		   System.out.println("로그인시 동작"+Flist.get(i).getMenuParents()); 
+			session.setAttribute("MenuParent", MenuParent);
+			System.out.println("로그인시 동작" + Flist.get(i).getMenuParents());
 		}
-		
+
 		// 암호화
 		String managerPw = UserSha256.encrypt(request.getParameter("managerPw"));
 		request.setAttribute("encry", managerPw);
@@ -61,7 +60,7 @@ public class LoginController {
 		System.out.println("입력한 비밀번호 : " + managerPw);
 
 		// 로그인 성공 여부
-		//maname으로 불러와서 체크하기
+		// maname으로 불러와서 체크하기
 		String mName = ld.getList(managerId, managerPw);
 		System.out.println("겟리스트 성공");
 		session.setAttribute("mName", mName);
@@ -76,19 +75,18 @@ public class LoginController {
 			System.out.println("else문 동작");
 			String error = "error";
 			session.setAttribute("error", error);
-			System.out.println("에러내용은?"+error);
+			System.out.println("에러내용은?" + error);
 			return "redirect:/login";
 		}
 
-		
 	}
-	
-	   @RequestMapping("logout")
-	   public String loginout(HttpSession session) {
-		   session.removeAttribute("level");
-		   session.removeAttribute("mId");
-		   session.removeAttribute("mName");
-	      return "redirect:/main";
-	   }
+
+	@RequestMapping("logout")
+	public String loginout(HttpSession session) {
+		session.removeAttribute("level");
+		session.removeAttribute("mId");
+		session.removeAttribute("mName");
+		return "redirect:/main";
+	}
 
 }

@@ -3,12 +3,12 @@
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.stam.homepage.dao.NoticeLogDao">
+<mapper namespace="kr.stam.homepage.dao.DepthLogDao">
 	<!-- 공지사항 입력 -->
 	<insert id="insert"
-		parameterType="kr.stam.homepage.dto.NoticeLogDto">
+		parameterType="kr.stam.homepage.dto.DepthLogDto">
 		insert into
-		notice_log(noticeNum,managerId,managerName,logType,logTime)
-		values(#{noticeNum},#{managerId}, #{managerName}, #{logType}, now())
+		depth_log(menuCode,managerId,managerName,logType,logTime)
+		values(#{menuCode},#{managerId}, #{managerName}, #{logType}, now())
 	</insert>
 </mapper>

@@ -5,41 +5,48 @@
 
 <mapper namespace="kr.stam.homepage.dao.DepthDao">
 	<!-- 다음 게시판 글 번호 알아보기 -->
-	<select id="nextNum" resultType="Integer">
-	    select max(menuCode) from menu; 
+	<select id="DepthNextNum" resultType="Integer">
+		select max(menuCode) from menu;
 	</select>
-	
+
 	<!-- 뎁스 입력 -->
-	<insert id="insert" parameterType="kr.stam.homepage.dto.DepthDto">
-		insert into menu(menuParents,menuContents) values(#{menuParents}, #{menuContents})
+	<insert id="insert"
+		parameterType="kr.stam.homepage.dto.DepthDto">
+		insert into menu(menuParents,menuContents)
+		values(#{menuParents}, #{menuContents})
 	</insert>
-	
-	<!-- 최초 메뉴불러와서 세션값 부여 -->	
+
+	<!-- 최초 메뉴불러와서 세션값 부여 -->
 	<select id="Flist" resultType="kr.stam.homepage.dto.DepthDto">
-	   select * from menu   order by menuCode 
+		select * from menu order by menuCode desc
 	</select>
-	
-	<!-- 메뉴 수정페이지 불러오기 -->	
+
+	<!-- 메뉴 수정페이지 불러오기 -->
 	<select id="list" resultType="kr.stam.homepage.dto.DepthDto">
-	   select * from menu  where menuParents=#{MenuParents} order by menuCode 
+		select * from menu where menuParents=#{MenuParents} order by menuCode desc
 	</select>
 
-	
 
-	
-	<!-- 뎁스 삭제 -->	
-	<update id="depth_delete" parameterType="kr.stam.homepage.dto.DepthDto">
-		update menu set menuState = 2  where menuCode = #{menuCode}
+
+
+	<!-- 뎁스 삭제 -->
+	<update id="depth_delete"
+		parameterType="kr.stam.homepage.dto.DepthDto">
+		update menu set menuState = 2 where menuCode =
+		#{menuCode}
 	</update>
-	
-	<!-- 뎁스 수정 -->	
-	<update id="update" parameterType="kr.stam.homepage.dto.DepthDto">
-		update menu set menuParents = #{menuParents} ,menuContents = #{menuContents} where menuCode = #{menuCode}
+
+	<!-- 뎁스 수정 -->
+	<update id="update"
+		parameterType="kr.stam.homepage.dto.DepthDto">
+		update menu set menuParents = #{menuParents}
+		,menuContents = #{menuContents} where menuCode = #{menuCode}
 	</update>
-	
+
 	<!-- 뎁스 상세페이지 -->
 	<select id="content" resultType="kr.stam.homepage.dto.DepthDto">
-		select * from menu where menuCode = #{menuCode}
+		select * from menu where
+		menuCode = #{menuCode}
 	</select>
-	
+
 </mapper>

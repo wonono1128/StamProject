@@ -23,72 +23,101 @@ import kr.stam.homepage.dto.ProductDto;
 public class ProductController {
 	@Autowired
 	private ProductDao pd;
-	
+
 	@Autowired
 	private DepthDao dDao;
-	
+
 	@RequestMapping("product")
-	public String product(HttpServletRequest request,Model model,HttpSession session,String menuContents) {
-		System.out.println("포트폴리오 페이지");
-		Integer nextNum = pd.nextNum();
-		session.setAttribute("nextNum", nextNum+1);
-		
-		ArrayList<DepthDto> Flist = dDao.Flist();
-		model.addAttribute("Flist",Flist);
-		
-		
-		ArrayList<ProductDto> list = pd.list(menuContents);
-		session.setAttribute("MenuContents",menuContents);
-		model.addAttribute("list",list);
-		
-		return "product/product";
+	public String product(HttpServletRequest request, Model model, HttpSession session, String menuContents,
+			String menuParents) {
+		if (session.getAttribute("level") != null) {
+			Integer nextNum = pd.nextNum();
+			session.setAttribute("nextNum", nextNum + 1);
+
+			ArrayList<DepthDto> Flist = dDao.Flist();
+			model.addAttribute("Flist", Flist);
+
+			ArrayList<ProductDto> list = pd.list(menuContents);
+			session.setAttribute("MenuContents", menuContents);
+			session.setAttribute("menuParents", menuParents);
+			model.addAttribute("list", list);
+
+			return "product/product";
+		} else {
+			return "redirect:/main";
+		}
 	}
-	
+
 	@RequestMapping("/product_insert")
-	public String depth_insert(HttpServletRequest request,Model model,HttpSession session ) {
-		
+	public String depth_insert(HttpServletRequest request, Model model, HttpSession session) {
+		String menuParents = (String) session.getAttribute("menuParents");
 		ArrayList<DepthDto> Flist = dDao.Flist();
-		model.addAttribute("Flist",Flist);
-	if(session.getAttribute("level") != null ) {
-				
-				return "product/product_insert";
-			}
-			
-			else{
-				
-				return "redirect:/product";
-			}
+		model.addAttribute("Flist", Flist);
+		if (session.getAttribute("level") != null) {
+
+			return "product/product_insert";
+		}
+
+		else {
+
+			return "redirect:/product";
+		}
 	}
-	   @RequestMapping("/product_insert_ok")
-	   public String product_insert_ok(ProductDto pdto, HttpSession session) {
-	      String menuContents = (String) session.getAttribute("menuContents");
-	      pd.insert(pdto);
 
-	      return "redirect:/product?menuContents=" + menuContents;
-	   }
+	@RequestMapping("/product_insert_ok")
+	public String product_insert_ok(ProductDto pdto, HttpSession session) {
+		String menuContents = (String) session.getAttribute("menuContents");
+		pd.insert(pdto);
 
-	   @ResponseBody
-	   @RequestMapping(value = "/product_delete", method = RequestMethod.POST)
-	   public int product_delete(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, ProductDto pDto)
-	         throws Exception {
-	      int result = 0;
-	      int productCode = 0;
-	      for (String i : chArr) {
-	         productCode = Integer.parseInt(i);
-	         pDto.setProductCode(productCode);
-	         pd.delete(pDto);
-	      }
+		return "redirect:/product?menuContents=" + menuContents;
+	}
 
-	      result = 1;
+	@ResponseBody
+	@RequestMapping(value = "/product_delete", method = RequestMethod.POST)
+	public int product_delete(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, ProductDto pDto)
+			throws Exception {
+		int result = 0;
+		int productCode = 0;
+		for (String i : chArr) {
+			productCode = Integer.parseInt(i);
+			pDto.setProductCode(productCode);
+			pd.delete(pDto);
+		}
 
-	      return result;
-	   }
+		result = 1;
+
+		return result;
+	}
 
 	@RequestMapping("/product_content")
-	public String content(HttpServletRequest request, ProductDto pDto, Model model) throws Exception {
-		int productCode = Integer.parseInt(request.getParameter("productCode"));
-		pDto = pd.content(productCode);
-		model.addAttribute("pDto", pDto);
-		return "product/product_content";
+	public String content(HttpServletRequest request, ProductDto pDto, Model model, HttpSession session)
+			throws Exception {
+		if (session.getAttribute("level") != null) {
+			int productCode = Integer.parseInt(request.getParameter("productCode"));
+			String menuContents = (String) session.getAttribute("menuContents");
+			ArrayList<DepthDto> Flist = dDao.Flist();
+			model.addAttribute("Flist", Flist);
+			pDto = pd.content(productCode);
+			model.addAttribute("pDto", pDto);
+			return "product/product_content";
+		} else {
+			return "redirect:/main";
+		}
+	}
+
+	@RequestMapping("/product_update")
+	public String product_update(HttpServletRequest request, Model model, HttpSession session) {
+
+		ArrayList<DepthDto> Flist = dDao.Flist();
+		model.addAttribute("Flist", Flist);
+		if (session.getAttribute("level") != null) {
+
+			return "product/product_update";
+		}
+
+		else {
+
+			return "redirect:/main";
+		}
 	}
 }
