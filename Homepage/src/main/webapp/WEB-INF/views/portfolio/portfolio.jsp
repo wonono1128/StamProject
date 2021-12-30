@@ -54,7 +54,7 @@
 										${pDto.productContents }
 										<p class="logo_img_div">
 											<img
-												src="resources/static/images/${pDto.companyLogo }"
+												src="resources/static/images/logo/${pDto.companyLogo }"
 												alt="CJ 로고">
 										</p>
 									</div>
@@ -68,7 +68,7 @@
 									<div class="cont">
 										<div class="conts_div">
 											<img
-												src="resources/static/images/portfolio/${pDto.productImg }"
+												src="resources/static/images/product/${pDto.productImg }"
 												alt="">
 										</div>
 										<a href="#" class="mo close_layer">닫기</a>
@@ -102,7 +102,7 @@
 								<span class="s_num s_num2021"></span>
 							</div>
 							<div class="img_div">
-								<img src="resources/static/images/portfolio/${pDto.productImg }"
+								<img src="resources/static/images/product/${pDto.productImg }"
 									alt="">
 							</div>
 						</div>

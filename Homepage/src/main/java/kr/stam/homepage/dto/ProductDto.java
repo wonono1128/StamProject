@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ProductDto {
 	private int productCode,productState,listCount;
-	private String companyName, productName, productContents, brandExplain,brandContents,companyLogo, menuContents, productImg,menuParents;
+	private String companyName, productName, productContents, brandExplain,brandContents,companyLogo, menuContents, productImg;
 	
 
 	

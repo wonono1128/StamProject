@@ -151,6 +151,7 @@ public class ProductController {
 			int productCode = Integer.parseInt(request.getParameter("productCode"));
 		
 			pDto = pd.content(productCode);
+			session.setAttribute("productCode",productCode);
 			model.addAttribute("pDto", pDto);
 			return "product/product_update";
 		}
@@ -164,24 +165,20 @@ public class ProductController {
 	@RequestMapping("product_update_ok")
 	public String update_ok(HttpServletRequest request, ProductDto pDto, HttpSession session, MultipartFile[] pLogo, MultipartFile[] pImg) {
 		
-		String companyName = request.getParameter("companyName");
-		String productName = request.getParameter("productName");
-		String productContents = request.getParameter("productContents");
-		
+		int productCode = (int) session.getAttribute("productCode");
+		pDto.setProductCode(productCode);
 		String menuContents = request.getParameter("menuContents");
-		String brandExplain = request.getParameter("brandExplain");
-		String brandContents = request.getParameter("brandContents");
+
 		
-		System.out.println(companyName+productName+productContents+menuContents+brandExplain+brandContents);
 		
-		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
-		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
+		
+		
+		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
 
 		
 		for(MultipartFile multipartFile : pLogo) {
 			System.out.println("---------------------------로고 파일------------------------------------");
-			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
-			System.out.println("Upload File Size : " + multipartFile.getSize());
 			pDto.setCompanyLogo(multipartFile.getOriginalFilename());
 			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
 			
@@ -195,8 +192,6 @@ public class ProductController {
 		
 		for(MultipartFile multipartFile : pImg) {
 			System.out.println("---------------------------제품이미지 파일------------------------------------");
-			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
-			System.out.println("Upload File Size : " + multipartFile.getSize());
 			pDto.setProductImg(multipartFile.getOriginalFilename());
 			File saveFile = new File(uploadFolder2, multipartFile.getOriginalFilename());
 			

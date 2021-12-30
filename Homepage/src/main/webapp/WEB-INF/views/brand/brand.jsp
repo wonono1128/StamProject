@@ -59,7 +59,7 @@
 
 											<h4 class="mt">Brand Identity Diagnosis Process</h4>
 											<div class="img_div">
-												<img src="resources/static/images/${pDto.productImg }"
+												<img src="resources/static/images/product/${pDto.productImg }"
 													alt="">
 											</div>
 										</div>
@@ -98,7 +98,7 @@
 								</p>
 								<h4 class="mt20">Brand Identity Diagnosis Process</h4>
 								<div class="img_div">
-									<img src="resources/static/images/${pDto.productImg }" alt="">
+									<img src="resources/static/images/product/${pDto.productImg }" alt="">
 								</div>
 							</div>
 						</div>
