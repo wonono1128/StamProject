@@ -9,7 +9,7 @@ import kr.stam.homepage.dto.ProductDto;
 @Repository
 @Mapper
 public interface ProductDao {
-	public Integer nextNum();
+	public Integer ProductnextNum();
 	public ArrayList list(String menuContents);
 	public ProductDto content(int productCode);
 	public void insert(ProductDto pdto);

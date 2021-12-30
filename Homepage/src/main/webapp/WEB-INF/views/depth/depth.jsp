@@ -111,9 +111,9 @@
 									<td colspan="2"
 										style="display: flex; justify-content: end; width: 450px; align-items: center; position: absolute; right: 0px;">
 										<button onclick="go_insert()"
-											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가하기</button>
+											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가</button>
 										<button class="delete_btn"
-											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">삭제하기</button>
+											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">삭제</button>
 									</td>
 								</tr>
 

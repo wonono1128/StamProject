@@ -95,9 +95,10 @@ public class NoticeController {
 	 * level = 회원 로그인 구분 세션
 	 */
 	@RequestMapping("/insert")
-	public String insert(HttpSession session) {
+	public String insert(HttpSession session,Model model) {
 		if (session.getAttribute("level") != null) {
-
+			ArrayList<DepthDto> Flist = dDao.Flist();
+			model.addAttribute("Flist", Flist);
 			return "notice/insert";
 		}
 
@@ -108,16 +109,21 @@ public class NoticeController {
 	}
 
 	/*
-	 * nextNum = 다음 글 번호 managerId = 관리자 아이디 managerName = 관리자 닉네임
+	 * nextNum = 다음 글 번호, managerId = 관리자 아이디, managerName = 관리자 닉네임
+	 * ndto = 게시판 DTO   , nLDto = 게시판 로그 DTO
 	 */
 	@RequestMapping("/insert_ok")
 	public String insert_ok(HttpServletRequest request, NoticeDto ndto, Model model, NoticeLogDto nLDto,
 			HttpSession session) throws Exception {
-
+		//입력시 로그테이블에 게시글번호를 준다.		
 		if (session.getAttribute("nextNum") != null) {
 			int nextNum = (int) session.getAttribute("nextNum");
 			nLDto.setNoticeNum(nextNum + 1);
+		}else {
+			int nextNum = 1;
+			nLDto.setNoticeNum(nextNum);
 		}
+		
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
 
@@ -140,6 +146,8 @@ public class NoticeController {
 	@RequestMapping("/content")
 	public String content(HttpServletRequest request, NoticeDto ndto, Model model) throws Exception {
 		int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+		ArrayList<DepthDto> Flist = dDao.Flist();
+		model.addAttribute("Flist", Flist);
 		ndto = ndao.content(noticeNum);
 		model.addAttribute("ndto", ndto);
 		return "notice/content";
@@ -180,6 +188,8 @@ public class NoticeController {
 	public String update(HttpServletRequest request, NoticeDto ndto, Model model, HttpSession session) {
 		if (session.getAttribute("level") != null) {
 			int noticeNum = Integer.parseInt(request.getParameter("noticeNum"));
+			ArrayList<DepthDto> Flist = dDao.Flist();
+			model.addAttribute("Flist", Flist);
 			ndto = ndao.content(noticeNum);
 			model.addAttribute("ndto", ndto);
 			return "notice/update";

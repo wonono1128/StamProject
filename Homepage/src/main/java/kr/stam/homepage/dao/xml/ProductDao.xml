@@ -6,7 +6,7 @@
 <mapper namespace="kr.stam.homepage.dao.ProductDao">
 
 	<!-- 다음 게시판 글 번호 알아보기 -->
-	<select id="nextNum" resultType="Integer">
+	<select id="ProductnextNum" resultType="Integer">
 		select max(productCode) from
 		product
 	</select>

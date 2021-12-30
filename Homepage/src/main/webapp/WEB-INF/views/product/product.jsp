@@ -86,7 +86,8 @@
 												<td class="notice_td pCode_td">${pDto.productCode}</td>
 												<td class="notice_td">${pDto.companyName}</td>
 												<td class="notice_td"><a class="pName_a"
-													href="product_content?productCode=${pDto.productCode}">${pDto.productName}</a></td>
+													href="product_content?productCode=${pDto.productCode}">${pDto.productName}</a>
+												</td>
 												<td class="notice_td"><input type="checkbox"
 													name="deleteChk" class="deleteChk"
 													data-cartNum="${pDto.productCode}"

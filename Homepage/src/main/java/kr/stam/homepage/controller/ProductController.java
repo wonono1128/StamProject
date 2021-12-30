@@ -38,8 +38,8 @@ public class ProductController {
 	public String product(HttpServletRequest request, Model model, HttpSession session, String menuContents,
 			String menuParents) {
 		if (session.getAttribute("level") != null) {
-			Integer nextNum = pd.nextNum();
-			session.setAttribute("nextNum", nextNum + 1);
+			Integer ProductnextNum = pd.ProductnextNum();
+			session.setAttribute("ProductnextNum", ProductnextNum + 1);
 
 			ArrayList<DepthDto> Flist = dDao.Flist();
 			model.addAttribute("Flist", Flist);
@@ -80,6 +80,9 @@ public class ProductController {
 			int ProductnextNum = (int) session.getAttribute("ProductnextNum");
 			System.out.println("인서터 세션 :" + ProductnextNum);
 			pLdto.setProductCode(ProductnextNum + 1);
+		}else {
+			int ProductnextNum = 1;
+			pLdto.setProductCode(ProductnextNum);
 		}
 		
 		
@@ -128,7 +131,7 @@ public class ProductController {
 		pLdto.setManagerName(managerName);
 
 		pLdto.setPLogType("Insert");
-
+		
 		pLDao.insert(pLdto);
 		return "redirect:/product?menuContents=" + menuContents;
 	}

@@ -72,7 +72,7 @@
 										<td class="notice_insert_td">내용</td>
 										<td colspan="2"><textarea name="noticeContents"
 												id="notice_insert_text" required minlength="20"
-												maxlength="200" onkeyup="fn_checkByte(this)">${ndto.noticeContents }</textarea>
+												 onkeyup="fn_checkByte(this)">${ndto.noticeContents }</textarea>
 											<sup>(<span id="nowByte">0</span>/1000bytes)
 										</sup></td>
 									</tr>

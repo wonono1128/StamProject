@@ -67,6 +67,9 @@ public class DepthController {
 		if (session.getAttribute("DepthNextNum") != null) {
 			int DepthNextNum = (int) session.getAttribute("DepthNextNum");
 			dLDto.setMenuCode(DepthNextNum + 1);
+		}else {
+			int DepthNextNum = 1;
+			dLDto.setMenuCode(DepthNextNum);
 		}
 		model.addAttribute("ndto", dDto);
 		dDto.setMenuParents(menuParents);
