@@ -45,7 +45,10 @@
 								</div>
 								<div class="subtitle_section item">
 									<h2>${pDto.companyName }<br>${pDto.productName }</h2>
-									<div class="description">${pDto.productContents }</div>
+									<div class="description">
+									<pre style="font-size:15px;">${pDto.productContents }</pre>
+									  <p class="logo_img_div"><c:if test="${not empty pDto.companyLogo} "><img src="resources/static/images/${pDto.companyLogo }" alt="ZEN 로고">	 </c:if></p></div>
+								
 								</div>
 								<div class="contents item brand">
 									<div class="tit_div tit_div2">

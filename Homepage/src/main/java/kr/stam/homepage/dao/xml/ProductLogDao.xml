@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.stam.homepage.dao.ProductLogDao">
+	<!-- 공지사항 입력 -->
+	<insert id="insert"
+		parameterType="kr.stam.homepage.dto.ProductLogDto">
+		insert into product_log
+		(managerId, managerName, productCode, pLogType, pLogTime)
+		values(#{managerId}, #{managerName}, #{productCode}, #{pLogType}, now())
+	</insert>
+</mapper>

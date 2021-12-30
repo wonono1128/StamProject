@@ -51,7 +51,7 @@
 								<div class="subtitle_section item">
 									<h2>${pDto.companyName }<br>${pDto.productName }</h2>
 									<div class="description">
-										${pDto.productContents }
+									<pre style="font-size:15px;">${pDto.productContents }</pre>
 										<p class="logo_img_div">
 											<img
 												src="resources/static/images/logo/${pDto.companyLogo }"

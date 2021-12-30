@@ -60,10 +60,15 @@
 											value="${dDto.menuCode }"></td>
 									</tr>
 									<tr class="insert_tr">
-										<td class="insert_td_name">메뉴명2</td>
-										<td class="insert_td_input"><input type="text"
-											placeholder="메뉴명을 입력해주세요" class="MenuParents"
-											name="menuParents" value="${MenuParents }"></td>
+										<td class="insert_td_name">메뉴명</td>
+										<td class="insert_td_input">	
+											<select name="menuParents">
+													<option value="ABOUT" selected>ABOUT</option>
+													<option value="PORTFOLIO">PORTFOLIO</option>
+													<option value="BRAND">BRAND</option>
+													<option value="SOLUTION">SOLUTION</option>
+											</select>
+										</td>
 									</tr>
 									<tr class="insert_tr">
 										<td class="insert_td_name">소제목</td>
@@ -101,11 +106,11 @@
 
 
 </body>
-<script type="text/javascript">
+<script>
 	function depth_go(event) {
 		event.preventDefault();
-		const MenuParents = document.querySelector(".MenuParents").value;
-		location.href = "/homepage/depth?MenuParents=" + MenuParents;
+		const menuParents = "${dDto.menuParents}";
+		location.href = "/homepage/depth?MenuParents=" + menuParents;
 	}
 </script>
 
