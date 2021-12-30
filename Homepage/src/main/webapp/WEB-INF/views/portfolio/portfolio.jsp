@@ -32,7 +32,12 @@
 			</button>
 			<button class="btn_back mo"></button>
 			<nav class="navi_wrap">
-				<jsp:include page="../customer_menu.jsp" />
+				<c:if test="${level != 1 }">
+					<jsp:include page="../customer_menu.jsp" />
+				</c:if>
+				<c:if test="${level == 1 }">
+					<jsp:include page="../manager_menu.jsp" />
+				</c:if>
 			</nav>
 		</header>
 		<div class="container item">
@@ -45,16 +50,15 @@
 							<!-- 2021-01 -->
 							<div class="swiper-slide">
 								<div class="loca_div mo">
-									<span class="loca">IT portfolio > ${MenuContents } </span> <span
+									<span class="loca">IT portfolio > ${menuContents } </span> <span
 										class="slogan">Strategy+Ambition</span>
 								</div>
 								<div class="subtitle_section item">
 									<h2>${pDto.companyName }<br>${pDto.productName }</h2>
 									<div class="description">
-									<pre style="font-size:15px;">${pDto.productContents }</pre>
+										<pre style="font-size: 15px;">${pDto.productContents }</pre>
 										<p class="logo_img_div">
-											<img
-												src="resources/static/images/logo/${pDto.companyLogo }"
+											<img src="resources/static/images/logo/${pDto.companyLogo }"
 												alt="CJ 로고">
 										</p>
 									</div>
@@ -75,7 +79,8 @@
 									</div>
 								</div>
 								<div class="num_div">
-									<span class="num num0">0</span> <span class="num num${status.count}">${status.count}</span>
+									<span class="num num0">0</span> <span
+										class="num num${status.count}">${status.count}</span>
 								</div>
 							</div>
 						</c:if>

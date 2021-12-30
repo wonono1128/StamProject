@@ -28,7 +28,12 @@
 			</button>
 			<button class="btn_back mo"></button>
 			<nav class="navi_wrap">
-				<jsp:include page="../customer_menu.jsp" />
+				<c:if test="${level != 1 }">
+					<jsp:include page="../customer_menu.jsp" />
+				</c:if>
+				<c:if test="${level == 1 }">
+					<jsp:include page="../manager_menu.jsp" />
+				</c:if>
 			</nav>
 		</header>
 		<div class="container item">
@@ -46,9 +51,15 @@
 								<div class="subtitle_section item">
 									<h2>${pDto.companyName }<br>${pDto.productName }</h2>
 									<div class="description">
-									<pre style="font-size:15px;">${pDto.productContents }</pre>
-									  <p class="logo_img_div"><c:if test="${not empty pDto.companyLogo} "><img src="resources/static/images/${pDto.companyLogo }" alt="ZEN 로고">	 </c:if></p></div>
-								
+										<pre style="font-size: 15px;">${pDto.productContents }</pre>
+										<p class="logo_img_div">
+											<c:if test="${not empty pDto.companyLogo} ">
+												<img src="resources/static/images/${pDto.companyLogo }"
+													alt="ZEN 로고">
+											</c:if>
+										</p>
+									</div>
+
 								</div>
 								<div class="contents item brand">
 									<div class="tit_div tit_div2">
@@ -62,7 +73,8 @@
 
 											<h4 class="mt">Brand Identity Diagnosis Process</h4>
 											<div class="img_div">
-												<img src="resources/static/images/product/${pDto.productImg }"
+												<img
+													src="resources/static/images/product/${pDto.productImg }"
 													alt="">
 											</div>
 										</div>
@@ -70,7 +82,8 @@
 									</div>
 								</div>
 								<div class="num_div">
-									<span class="num num0">0</span> <span class="num num${status.count }">${status.count }</span>
+									<span class="num num0">0</span> <span
+										class="num num${status.count }">${status.count }</span>
 								</div>
 							</div>
 						</c:if>
@@ -92,16 +105,13 @@
 				<div class="modal_wrap">
 					<div class="modal_cont">
 						<div class="m_content">
-							<div class="tit_div2 mo">
-								<h3>${pDto.brandExplain }</h3>
-							</div>
 							<div class="conts_div">
-								<p>${pDto.brandContents }<br>
-									<br>
+								<p>${pDto.brandContents }<br> <br>
 								</p>
 								<h4 class="mt20">Brand Identity Diagnosis Process</h4>
 								<div class="img_div">
-									<img src="resources/static/images/product/${pDto.productImg }" alt="">
+									<img src="resources/static/images/product/${pDto.productImg }"
+										alt="">
 								</div>
 							</div>
 						</div>

@@ -14,12 +14,13 @@
 <link rel="stylesheet" href="resources/static/css/common.css">
 <link rel="stylesheet" href="resources/static/css/style.css">
 <link rel="stylesheet" href="resources/static/css/notice/notice.css">
+<link rel="stylesheet" href="resources/static/css/product/product.css">
+
 <script src="resources/static/js/jquery-3.2.1.min.js"></script>
 <script src="resources/static/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resources/static/js/common.js"></script>
 <script src="https://kit.fontawesome.com/070c967850.js"
 	crossorigin="anonymous"></script>
-
 </head>
 <body class="sb-nav-fixed">
 	<div class="wrapper" id="mainWrapper">
@@ -42,7 +43,6 @@
 			</nav>
 		</header>
 
-
 		<div class="container item">
 
 			<div class="swiper-container">
@@ -54,14 +54,14 @@
 
 						</div>
 						<div class="notice_div">
-							<span class="notice_span">${MenuParents}</span>
+							<span class="notice_span">${menuContents}</span>
 							<table class="notice_table">
 								<tr>
 									<!-- 검색행 -->
 
 								</tr>
 								<tr style="display: none">
-									<td><input type="text" value=${MenuContents }
+									<td><input type="text" value=${menuContents }
 										class="menuContents"></td>
 								</tr>
 								<tr class="notice-tr top-tr">
@@ -78,10 +78,14 @@
 									</c:when>
 									<c:otherwise>
 										<c:forEach var="pDto" items="${list}">
+											<tr>
+												<td><input style="display: none" type="text"
+													name="productCode" value="${pDto.productCode }"></td>
+											</tr>
 											<tr class="notice_tr">
-												<td class="notice_td">${pDto.productCode}</td>
+												<td class="notice_td pCode_td">${pDto.productCode}</td>
 												<td class="notice_td">${pDto.companyName}</td>
-												<td class="notice_td"><a
+												<td class="notice_td"><a class="pName_a"
 													href="product_content?productCode=${pDto.productCode}">${pDto.productName}</a></td>
 												<td class="notice_td"><input type="checkbox"
 													name="deleteChk" class="deleteChk"

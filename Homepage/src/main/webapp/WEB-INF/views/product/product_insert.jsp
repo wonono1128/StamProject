@@ -36,8 +36,12 @@
 			</button>
 			<button class="btn_back mo"></button>
 			<nav class="navi_wrap">
-				<jsp:include page="../customer_menu.jsp" />
-				<jsp:include page="../manager_menu.jsp" />
+				<c:if test="${level != 1 }">
+					<jsp:include page="../customer_menu.jsp" />
+				</c:if>
+				<c:if test="${level == 1 }">
+					<jsp:include page="../manager_menu.jsp" />
+				</c:if>
 			</nav>
 		</header>
 		<div class="container item">
@@ -50,7 +54,7 @@
 						</div>
 						<div class="insert_div">
 							<div class="insert_title_div">
-								<span class="insert_title_span">IT Portfolio</span>
+								<span class="insert_title_span">${menuContents }</span>
 							</div>
 							<div class="insert_contain">
 								<form method="post" action="product_insert_ok"enctype="multipart/form-data">
@@ -89,11 +93,7 @@
 													<option value="Edit">Edit</option>
 											</select></td>
 										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">브랜드 설명</td>
-											<td class="insert_td_input"><input type="text"
-												name="brandExplain"></td>
-										</tr>
+									
 										<tr class="insert_tr">
 											<td class="insert_td_name">브랜드 내용</td>
 											<td class="insert_td_input"><input type="text"

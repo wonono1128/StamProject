@@ -36,8 +36,12 @@
 			</button>
 			<button class="btn_back mo"></button>
 			<nav class="navi_wrap">
-
-				<jsp:include page="../manager_menu.jsp" />
+				<c:if test="${level != 1 }">
+					<jsp:include page="../customer_menu.jsp" />
+				</c:if>
+				<c:if test="${level == 1 }">
+					<jsp:include page="../manager_menu.jsp" />
+				</c:if>
 			</nav>
 		</header>
 
@@ -61,14 +65,12 @@
 									</tr>
 									<tr class="insert_tr">
 										<td class="insert_td_name">메뉴명</td>
-										<td class="insert_td_input">	
-											<select name="menuParents">
-													<option value="ABOUT" selected>ABOUT</option>
-													<option value="PORTFOLIO">PORTFOLIO</option>
-													<option value="BRAND">BRAND</option>
-													<option value="SOLUTION">SOLUTION</option>
-											</select>
-										</td>
+										<td class="insert_td_input"><select name="menuParents">
+												<option value="ABOUT" selected>ABOUT</option>
+												<option value="PORTFOLIO">PORTFOLIO</option>
+												<option value="BRAND">BRAND</option>
+												<option value="SOLUTION">SOLUTION</option>
+										</select></td>
 									</tr>
 									<tr class="insert_tr">
 										<td class="insert_td_name">소제목</td>

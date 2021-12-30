@@ -41,7 +41,7 @@ public class MainController {
 
 		String menuContents = year;
 		ArrayList<ProductDto> list = pd.list(menuContents);
-		session.setAttribute("MenuContents", menuContents);
+		session.setAttribute("menuContents", menuContents);
 
 		Integer listCount = pd.listCount(menuContents);
 		model.addAttribute("list", list);

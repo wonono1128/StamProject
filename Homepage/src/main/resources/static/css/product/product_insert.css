@@ -35,11 +35,13 @@ body{
 	color: black; 
 	border: 1px solid black;
 	margin-left: 950px;
-	margin-top: -127px;
+	margin-top: -120px;
 }
 
 .insert_td_name{
 	margin-right: 95px;
+	width: 150px;
+    text-align: center;
 }
 
 .insert_td_input{
@@ -48,11 +50,11 @@ body{
 
 .insert_td_input > input {
 	height: 30px;
+	font-size: 15px;
 }
 
 .insert_td_input > select {
 	height: 30px;
-	margin-left: 20px;
 }
 
 .insert_div{

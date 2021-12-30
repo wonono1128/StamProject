@@ -28,11 +28,11 @@
 		parameterType="kr.stam.homepage.dto.ProductDto">
 		insert into product(companyName, productName,
 		productContents, companyLogo,
-		menuContents, brandExplain,
+		menuContents,
 		brandContents, productImg)
 		values(#{companyName}, #{productName},
 		#{productContents},
-		#{companyLogo}, #{menuContents}, #{brandExplain},
+		#{companyLogo}, #{menuContents},
 		#{brandContents},
 		#{productImg})
 	</insert>
@@ -56,8 +56,9 @@
 		update product set companyName = #{companyName} ,
 		productName = #{productName}, productContents=#{productContents} ,
 		companyLogo=#{companyLogo}, menuContents=#{menuContents},
-		brandExplain=#{brandExplain} , brandContents=#{brandContents},
-		productImg=#{productImg} where productCode =
+		brandContents=#{brandContents},
+		productImg=#{productImg} where
+		productCode =
 		#{productCode}
 	</update>
 </mapper>

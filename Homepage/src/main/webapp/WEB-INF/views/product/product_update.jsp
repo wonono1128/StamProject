@@ -50,10 +50,11 @@
 						</div>
 						<div class="insert_div">
 							<div class="insert_title_div">
-								<span class="insert_title_span">IT Portfolio</span>
+								<span class="insert_title_span">${menuContents }</span>
 							</div>
 							<div class="insert_contain">
-								<form method="post" action="product_update_ok"enctype="multipart/form-data">
+								<form method="post" action="product_update_ok"
+									enctype="multipart/form-data">
 									<table class="insert_table">
 										<tr class="insert_tr">
 											<td class="insert_td_name">기업명</td>
@@ -68,12 +69,12 @@
 										<tr class="insert_tr">
 											<td class="insert_td_name">제품 설명</td>
 											<td class="insert_td_input"><textarea
-													name="productContents" class="pcInput" >${pDto.productContents }</textarea></td>
+													name="productContents" class="pcInput">${pDto.productContents }</textarea></td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">기업 로고</td>
 											<td class="insert_td_input"><input type="file"
-												name="pLogo" ></td>
+												name="pLogo"></td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">메뉴</td>
@@ -89,11 +90,7 @@
 													<option value="Edit">Edit</option>
 											</select></td>
 										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">브랜드 설명</td>
-											<td class="insert_td_input"><input type="text"
-												name="brandExplain" value="${pDto.brandExplain }"></td>
-										</tr>
+
 										<tr class="insert_tr">
 											<td class="insert_td_name">브랜드 내용</td>
 											<td class="insert_td_input"><input type="text"
@@ -101,8 +98,8 @@
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">제품 이미지</td>
-											<td class="insert_td_input" ><input type="file"
-												name="pImg" ></td>
+											<td class="insert_td_input"><input type="file"
+												name="pImg"></td>
 										</tr>
 										<tr class="insert_tr">
 											<td><button class="insert_td_btn">수정</button></td>
@@ -126,4 +123,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

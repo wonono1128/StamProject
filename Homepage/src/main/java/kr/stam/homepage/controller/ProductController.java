@@ -45,7 +45,7 @@ public class ProductController {
 			model.addAttribute("Flist", Flist);
 
 			ArrayList<ProductDto> list = pd.list(menuContents);
-			session.setAttribute("MenuContents", menuContents);
+			session.setAttribute("menuContents", menuContents);
 			session.setAttribute("menuParents", menuParents);
 			model.addAttribute("list", list);
 
