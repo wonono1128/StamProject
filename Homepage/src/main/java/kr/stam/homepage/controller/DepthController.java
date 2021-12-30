@@ -69,6 +69,7 @@ public class DepthController {
 			dLDto.setMenuCode(DepthNextNum + 1);
 		}
 		model.addAttribute("ndto", dDto);
+		dDto.setMenuParents(menuParents);
 		dDao.insert(dDto);
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
@@ -125,7 +126,7 @@ public class DepthController {
 	}
 
 	@RequestMapping("/depth_update_ok")
-	public String depth_update_ok(HttpServletRequest request, Model model, HttpSession session, DepthDto dDto,
+	public String depth_update_ok(HttpServletRequest request, Model model, String menuParents, HttpSession session, DepthDto dDto,
 			DepthLogDto dLDto, int menuCode) {
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
@@ -133,8 +134,8 @@ public class DepthController {
 			int nextNum = (int) session.getAttribute("nextNum");
 
 		}
-		String MenuParents = (String) session.getAttribute("MenuParents");
-
+		
+		dDto.setMenuParents(menuParents);
 		model.addAttribute("ndto", dDto);
 
 		dDao.update(dDto);
@@ -143,7 +144,7 @@ public class DepthController {
 		dLDto.setManagerName(managerName);
 		dLDto.setLogType("Update");
 		dLDao.insert(dLDto);
-		return "redirect:depth?MenuParents=" + MenuParents;
+		return "redirect:depth?MenuParents=" + menuParents;
 	}
 
 }

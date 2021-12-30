@@ -54,9 +54,11 @@
 							<div class="description">
 								<pre style="font-size:15px;">${pDto.productContents }</pre>
 								<p class="logo_img_div">
-									<img
-										src="resources/static/images/logo/${pDto.companyLogo }"
-										alt="CJ 로고">
+									<c:if test="${pDto.companyLogo != '' }">
+										<img
+											src="resources/static/images/logo/${pDto.companyLogo }"
+											>
+									</c:if>
 								</p>
 								<div class="product_div_btn">
 									<input type="hidden" placeholder="메뉴명을 입력해주세요"

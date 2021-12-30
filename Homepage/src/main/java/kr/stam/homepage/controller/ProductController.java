@@ -73,8 +73,8 @@ public class ProductController {
 
 	@RequestMapping(value = "/product_insert_ok", method = RequestMethod.POST)
 	public String product_insert_ok(ProductDto pdto, ProductLogDto pLdto, HttpSession session, MultipartFile[] pLogo,
-			MultipartFile[] pImg) {
-		String menuContents = (String) session.getAttribute("menuContents");
+			MultipartFile[] pImg,String menuContents) {
+	
 		
 		if (session.getAttribute("ProductnextNum") != null) {
 			int ProductnextNum = (int) session.getAttribute("ProductnextNum");
@@ -208,6 +208,8 @@ public class ProductController {
 
 		for (MultipartFile multipartFile : pLogo) {
 			System.out.println("---------------------------로고 파일------------------------------------");
+			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size : " + multipartFile.getSize());
 			pDto.setCompanyLogo(multipartFile.getOriginalFilename());
 			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
 
@@ -221,6 +223,8 @@ public class ProductController {
 
 		for (MultipartFile multipartFile : pImg) {
 			System.out.println("---------------------------제품이미지 파일------------------------------------");
+			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size : " + multipartFile.getSize());
 			pDto.setProductImg(multipartFile.getOriginalFilename());
 			File saveFile = new File(uploadFolder2, multipartFile.getOriginalFilename());
 

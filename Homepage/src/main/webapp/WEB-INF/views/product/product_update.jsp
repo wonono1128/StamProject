@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,15 +80,20 @@
 										<tr class="insert_tr">
 											<td class="insert_td_name">메뉴</td>
 											<td class="insert_td_input"><select name="menuContents">
-													<option value="2021" selected>2021</option>
-													<option value="2020">2020</option>
-													<option value="2019">2019</option>
-													<option value="2018">2018</option>
-													<option value="2017">2017</option>
-													<option value="-2016">-2016</option>
-													<option value="Brand">Brand</option>
-													<option value="Promotion">Promotion</option>
-													<option value="Edit">Edit</option>
+													<c:forEach var="dDto" items="${Flist}">
+														<c:if test="${dDto.menuState == 1 }">
+															<c:if test="${dDto.menuParents != 'SOLUTION' }">
+																<c:if test="${dDto.menuParents != 'ABOUT' }">
+																	<c:set var="menuContents" value="${dDto.menuContents}" />
+																	<c:set var="menuContents2"
+																		value="${fn:replace(menuContents,' ','')}" />
+																	<c:set var="menuContents3"
+																		value="${fn:replace(menuContents2,'-','')}" />
+																	<option value="${menuContents3 }" selected>${menuContents3 }</option>
+																</c:if>
+															</c:if>
+														</c:if>
+													</c:forEach>
 											</select></td>
 										</tr>
 

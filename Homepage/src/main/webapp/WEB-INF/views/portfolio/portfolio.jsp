@@ -58,8 +58,10 @@
 									<div class="description">
 										<pre style="font-size: 15px;">${pDto.productContents }</pre>
 										<p class="logo_img_div">
+										<c:if test="${pDto.companyLogo != '' }">
 											<img src="resources/static/images/logo/${pDto.companyLogo }"
-												alt="CJ 로고">
+												>
+										</c:if>
 										</p>
 									</div>
 								</div>
