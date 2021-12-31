@@ -88,16 +88,17 @@
 								</tr>
 								<c:if test="${pagecnt != 0 }">
 									<c:forEach var="ndto" items="${nlist}">
-										<tr class="notice_tr">
-											<td class="notice_td">${ndto.noticeNum }</td>
+
+										<tr class="notice_tr" onClick="go_content()">
+											<td class="notice_td" id="notice_Num">${ndto.noticeNum }</td>
 											<td class="notice_td">${ndto.managerName }</td>
-											<td colspan="2" class="notice_td notice_select_td"><a
-												href="content?noticeNum=${ndto.noticeNum }"
-												class="notice_td_a"> <span id="notice_td_a_first">${ndto.noticeTitle}</span>
-													<span id="notice_td_a_span">${ndto.noticeTitle }</span>
-											</a></td>
+											<td colspan="2" class="notice_td notice_select_td"><span
+												id="notice_td_a_first">${ndto.noticeTitle}</span> <span
+												id="notice_td_a_span">${ndto.noticeTitle }</span></td>
 											<td class="notice_td notice_td_day">${ndto.noticeDay }</td>
+
 										</tr>
+
 									</c:forEach>
 								</c:if>
 								<c:if test="${pagecnt == 0 }">
@@ -192,9 +193,14 @@
 		</div>
 	</div>
 
-
+	
 </body>
-
+<script>
+	function go_content() {
+		const noticeNum = document.querySelector("#notice_Num").innerText;
+		location.href = "/homepage/content?noticeNum="+noticeNum;
+	}
+</script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>

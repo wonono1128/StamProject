@@ -57,12 +57,12 @@
 							<div class="notice_content_div">
 								<table class="notice_table">
 									<tr class="notice_content_tr ">
-										<td class="notice_content_td" colspan="2">${ndto.noticeTitle}</td>
-
+										<td class="notice_content_td" ><span>${ndto.noticeTitle}</span></td>
+										<td class="notice_td_day notice_content_td" >${ndto.noticeDay }</td>
 									</tr>
 									<tr class="notice_content_tr ">
 
-										<td class="notice_td_day notice_content_td" colspan="2">${ndto.noticeDay }</td>
+										
 									</tr>
 									<tr>
 

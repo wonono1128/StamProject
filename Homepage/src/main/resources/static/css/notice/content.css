@@ -38,11 +38,13 @@ body{
 .notice_content_textarea{
 	height: 600px;
     position: relative;
-    overflow: auto;
+    
 }
 .notice_content_pre{
 	position: absolute;
     top: 0;
+    overflow: auto;
+    white-space: pre-wrap;
 }
 .notice_td_day{
 	border-bottom:1px solid rgba(0,0,0,0.3);
