@@ -74,8 +74,13 @@
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">기업 로고</td>
-											<td class="insert_td_input"><input type="file"
-												name="pLogo"></td>
+											<td class="insert_td_input">
+												<input type="file" id="1jpg" style="display:none"
+												name="pLogo" >
+												<label id="4jpg" onclick="cancle()" style="display:none">취소</label>
+												<label for="1jpg" id="2jpg">${pDto.companyLogo } 수정</label>
+											
+												</td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">메뉴</td>
@@ -129,5 +134,36 @@
 		</div>
 	</div>
 </body>
+<script>
+	let j1jpg = document.getElementById("1jpg");
+	let j2jpg = document.getElementById("2jpg");
+	let j4jpg = document.getElementById("4jpg");
+	let cancleflag = 0;  // 0 = >유지   1=> 변경
+	let j3jpg ;
+	function change(){
+		if(!j1jpg.value){
+			alert(typeof j3jpg);
+			
+			j1jpg.value = j3jpg;
+			alert(j1jpg);
+		}else{
+			j1jpg.style.display = "";
+			j2jpg.style.display = "none";
+			j3jpg=j1jpg.value;
+			j4jpg.style.display= "";
+			cancleflag = 1;
+			alert(typeof j1jpg.value);
+		}
 
+	}
+	j1jpg.addEventListener('change',change);
+	
+	function cancle(){
+		cancleflag = 0;
+		j1jpg.style.display = "none";
+		j2jpg.style.display = "";
+		j3jpg=j1jpg.value;
+		j4jpg.style.display= "none";
+	}
+</script>
 </html>
