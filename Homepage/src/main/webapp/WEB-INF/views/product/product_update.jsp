@@ -119,7 +119,7 @@
 									</table>
 								</form>
 								<button class="delete_btn"
-									onclick="location.href='./product?menuContents=${menuContents}';">목록</button>
+									onclick="location.href='./product?menuContents=${pDto.menuContents}';">목록</button>
 							</div>
 						</div>
 						<!-- //swiper-wrapper -->
