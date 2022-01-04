@@ -87,6 +87,10 @@ body{
 	height: 300px;
 }
 
+.label_td{
+	display:flex;
+	justify-content: space-between;
+}
 
 
 @media (max-width: 817px)   { 

@@ -11,7 +11,7 @@
 <title>STAM</title>
 <link rel="stylesheet"
 	href="resources/static/plugins/swiper/swiper-bundle.min.css" />
-<link rel="stylesheet" href="resources/static/css/common.css">
+<link rel="stylesheet" href="resources/static/css/notice/common.css">
 <link rel="stylesheet" href="resources/static/css/style.css">
 <link rel="stylesheet" href="resources/static/css/notice/notice.css">
 <script src="resources/static/js/jquery-3.2.1.min.js"></script>
@@ -71,9 +71,9 @@
 													</select>
 												</div>
 												<div>
-													<span>검색어</span> <input type="text"
-														style="width: auto; height: auto;" name="sword"> <input
-														type="submit" value="검색">
+													<span style="margin-left: 10px;">검색어</span> <input
+														type="text" style="width: auto; height: auto;"
+														name="sword"> <input type="submit" value="검색">
 												</div>
 											</div>
 										</form>
@@ -89,10 +89,10 @@
 								<c:if test="${pagecnt != 0 }">
 									<c:forEach var="ndto" items="${nlist}">
 
-										<tr class="notice_tr" onClick="go_content()">
+										<tr class="notice_tr" id="${ndto.noticeNum }" onClick="go_content(this)">
 											<td class="notice_td" id="notice_Num">${ndto.noticeNum }</td>
 											<td class="notice_td">${ndto.managerName }</td>
-											<td colspan="2" class="notice_td notice_select_td"><span
+											<td colspan="2" class="notice_td notice_select_td notice_span_td" onMouseover="mousehover(this)"><span
 												id="notice_td_a_first">${ndto.noticeTitle}</span> <span
 												id="notice_td_a_span">${ndto.noticeTitle }</span></td>
 											<td class="notice_td notice_td_day">${ndto.noticeDay }</td>
@@ -115,7 +115,8 @@
 											<c:choose>
 												<c:when test="${pagecnt >= 11 }">
 													<c:if test="${pstart != 1}">
-														<a href="notice?page=${pstart-1}&sword=${sword}"> << </a>
+														<a href="notice?page=${pstart-1}&sword=${sword}"
+															class="paging_btn"> << </a>
 													</c:if>
 													<c:if test="${pstart == 1}">
 						           <<
@@ -125,27 +126,30 @@
 												<c:when test="${pagecnt != 0 }">
 													<!-- 1페이지 이전 이동 (현재페이지에서 1페이지 이전) -->
 													<c:if test="${page > 1}">
-														<a href="notice?page=${page-1}&sword=${sword}"> < </a>
+														<a href="notice?page=${page-1}&sword=${sword}"
+															class="paging_btn"> < </a>
 													</c:if>
-													<c:if test="${page == 1}"> 
-						          <      
-						         </c:if>
+													<c:if test="${page == 1}">
+														<span class="paging_btn"><</span>
+													</c:if>
 													<!-- 1페이지 이전 이동 끝 -->
 													<!-- 이전 페이지 이동 끝 -->
 													<c:forEach begin="${pstart}" end="${pend}" var="i">
 														<c:if test="${page == i}">
 															<a href="notice?page=${i}&sword=${sword}"
-																style="color: red;"> ${i} </a>
+																style="color: red;" class="paging_btn"> ${i} </a>
 														</c:if>
 														<c:if test="${page != i}">
-															<a href="notice?page=${i}&sword=${sword}"> ${i} </a>
+															<a href="notice?page=${i}&sword=${sword}"
+																class="paging_btn"> ${i} </a>
 														</c:if>
 													</c:forEach>
 
 													<!-- 다음 페이지 이동 -->
 													<!-- 다음 1페이지 이동 -->
 													<c:if test="${page != pagecnt }">
-														<a href="notice?page=${page+1}&sword=${sword}"> > </a>
+														<a href="notice?page=${page+1}&sword=${sword}"
+															class="paging_btn"> > </a>
 													</c:if>
 													<c:if test="${page == pagecnt}"> 
 						         >
@@ -155,11 +159,12 @@
 												<c:when test="${pagecnt >= 11 }">
 													<!-- 다음 10페이지 이동 시작 -->
 													<c:if test="${pend != pagecnt }">
-														<a href="notice?page=${pend+1}&sword=${sword}"> >> </a>
+														<a href="notice?page=${pend+1}&sword=${sword}"
+															class="paging_btn"> >> </a>
 													</c:if>
 													<c:if test="${pend == pagecnt}">
-						          >>
-						        </c:if>
+														<span class="paging_btn">>></span>
+													</c:if>
 													<!-- 다음 10페이지 이동 끝 -->
 													<!-- 다음 페이지 이동 끝 -->
 												</c:when>
@@ -167,11 +172,10 @@
 										</div>
 									</td>
 									<c:if test="${level == 1 }">
-										<td class="notice_insert_td">
-											<div class="notice_flex_insert">
-												<a href="insert" class="notice_insert_a"><span
-													class="notice_insert_span">추가</span></a>
-											</div>
+										<td colspan="2"
+											style="display: flex; justify-content: end; width: 203px; align-items: center; position: absolute;">
+											<button onclick="go_insert()"
+												style="margin-top: 20px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid rgba(0, 0, 0, 0.3);">추가</button>
 										</td>
 									</c:if>
 								</tr>
@@ -193,19 +197,37 @@
 		</div>
 	</div>
 
-	
+
 </body>
 <script>
-	function go_content() {
-		const noticeNum = document.querySelector("#notice_Num").innerText;
-		location.href = "/homepage/content?noticeNum="+noticeNum;
+
+
+	
+	function go_insert(){
+		location.href = "insert";
 	}
+	function go_content(e) {
+		let Id = document.getElementById(e.getAttribute('id')).getAttribute('id');
+
+		location.href = "/homepage/content?noticeNum=" + Id;
+	}
+	
+	function mousehover(e){
+		let Id = document.getElementById(e.getAttribute('id')).getAttribute('id');
+	   
+	    $( e.getAttribute('id') ).children( '.notice_td_a_span' ).css( 'display', '' );
+	    $( e ).children( '.notice_td_a_first' ).css( 'display', 'none' );
+   
+	}
+
 </script>
+<style>
+
+</style>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-	crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
+
+
 </html>

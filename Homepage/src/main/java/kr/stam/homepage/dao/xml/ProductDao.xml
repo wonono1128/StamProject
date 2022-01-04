@@ -7,7 +7,8 @@
 
 	<!-- 다음 게시판 글 번호 알아보기 -->
 	<select id="ProductnextNum" resultType="Integer">
-		select max(productCode) from
+		select max(productCode)
+		from
 		product
 	</select>
 
@@ -32,7 +33,8 @@
 		brandContents, productImg)
 		values(#{companyName}, #{productName},
 		#{productContents},
-		#{companyLogo}, #{menuContents},
+		#{companyLogo},
+		#{menuContents},
 		#{brandContents},
 		#{productImg})
 	</insert>

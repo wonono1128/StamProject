@@ -1,195 +1,198 @@
 @charset "UTF-8";
 
-body{
-	width:100vw;
-	height:100vh;
-	
+body {
+	width: 100vw;
+	height: 100vh;
 }
-.notice_span{
-	font-size:60px;
+
+.notice_span {
+	font-size: 60px;
 	white-space: nowrap
 }
 
-.notice_div{
+#notice_content_title {
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.notice_div {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
-	width:100vw;
+	flex-direction: column;
+	align-items: center;
+	width: 100vw;
 	margin-top: 30px;
 }
-.notice_content_td{
-	color:rgba(0,0,0,0.5)
+
+.notice_content_td {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	color: rgba(0, 0, 0, 0.5)
 }
 
-  .notice_content_textarea::-webkit-scrollbar {
-    width: 10px;
-    height:10px;
-  }
-  .notice_content_textarea::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-    border-radius: 10px;
-  }
-  .notice_content_textarea::-webkit-scrollbar-track {
-    background-color: grey;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
-  }
+.notice_content_textarea::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
 
-.notice_content_textarea{
+.notice_content_textarea::-webkit-scrollbar-thumb {
+	background-color: #2f3542;
+	border-radius: 10px;
+}
+
+.notice_content_textarea::-webkit-scrollbar-track {
+	background-color: grey;
+	border-radius: 10px;
+	box-shadow: inset 0px 0px 5px white;
+}
+
+.notice_content_textarea {
+	overflow-wrap: anywhere;
 	height: 600px;
-    position: relative;
-    
-}
-.notice_content_pre{
-	position: absolute;
-    top: 0;
-    overflow: auto;
-    white-space: pre-wrap;
-}
-.notice_td_day{
-	border-bottom:1px solid rgba(0,0,0,0.3);
-	text-align: end;
-}
-
-.notice_table{
-	position: absolute;
-    height: 80vh;
-	
-}
-.notice_content_div{
-    position: relative;
-    width: 50vw;
-}
-.notice_content_tr{
-	height: 50px;
-}
-.notice_btn_td{
 	position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 50vw;
-    height: 100px;
-    padding-top: 30px;
-    padding-right: 20px;
-}
-.notice_flex_insert {
-	border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid rgba(0,0,0,0.3);
-    top: 20px;
-    width: 150px;
-    height: 50px;
-    margin-left: 100px;
-}
-.notice_btn_a{
-	height:50px;
-	padding-top:10px;
+	overflow-y: auto;
 }
 
-.notice_btn_otherwise{
-	
-	border-radius: 30px;
-    border: 1px solid rgba(0,0,0,0.3);
-    width: 150px;
-    height: 50px;
-    text-align: center;
-    position: relative;
-    margin-right: 600px;
-    margin-top: 40px;
-}
-
-
- /* 816px보다 작은 화면 일경우 동작*/
-@media  (max-width: 1190px) { 
-	
-	.notice_div {
-    display: flex;
-    flex-direction: column;
-    width: 50vw;
-    margin-top: 30px;
-    margin-left: 90px;
-}
-	
-	.notice_btn_td {
-   position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-
-}
-.notice_flex_insert {
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid rgba(0,0,0,0.3);
-    top: 20px;
-    width: 100px;
-    height: 50px;
-    margin-left:0px;
-
-}
-
-}
-
- /* 816px보다 작은 화면 일경우 동작*/
-@media  (max-width: 817px) { 
-	.notice_span {
-    font-size: 30px;
-    white-space: nowrap;
-}
-	.notice_content_textarea {
-    height: 50vh;
-    position: relative;
-    overflow: scroll;
-}
-
-.notice_btn_span{
+.notice_content_pre {
 	position: absolute;
-    top: 5px;
-    left: 20px;
-
+	top: 0;
+	overflow: auto;
+	white-space: pre-wrap;
 }
-.notice_btn_a{
-    border-radius: 30px;
-    width: 80px;
-    height: 40px;
-    text-align: center;
-    position: relative;
 
-    top: 3px;
-    right: -3px;
+.notice_td_day {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	text-align: end;
+	vertical-align: bottom;
 }
+
+.notice_table {
+	position: absolute;
+	height: 80vh;
+}
+
+.notice_content_div {
+	position: relative;
+	width: 50vw;
+}
+
+.notice_content_tr {
+	height: 17px;
+}
+
 .notice_btn_td {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	width: 51vw;
+	height: 100px;
+	padding-top: 30px;
 }
-.notice_flex_insert {
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid rgba(0,0,0,0.3);
-    top: 20px;
-    width: 150px;
-    height: 50px;
-    margin-left: 40px;
-}
-.notice_btn_otherwise{
-	
-	border-radius: 30px;
-    border: 1px solid rgba(0,0,0,0.3);
-    width: 80px;
-    height: 40px;
-    text-align: center;
-    position: relative;
-    margin-right: 180px;
 
+.notice_flex_insert {
+	border-radius: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	top: 20px;
+	width: 150px;
+	height: 50px;
+	margin-right: 20px;
 }
+
+.notice_btn_a {
+	height: 50px;
+	padding-top: 10px;
 }
- 
+
+.notice_btn_otherwise {
+	border-radius: 30px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	position: relative;
+	margin-right: 600px;
+	margin-top: 40px;
+}
+
+/* 816px보다 작은 화면 일경우 동작*/
+@media ( max-width : 1190px) {
+	.notice_div {
+		display: flex;
+		flex-direction: column;
+		width: 50vw;
+		margin-top: 30px;
+		margin-left: 90px;
+	}
+	.notice_btn_td {
+		position: relative;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	.notice_flex_insert {
+		border-radius: 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border: 1px solid rgba(0, 0, 0, 0.3);
+		top: 20px;
+		width: 100px;
+		height: 50px;
+		margin-left: 0px;
+	}
+}
+
+/* 816px보다 작은 화면 일경우 동작*/
+@media ( max-width : 817px) {
+	.notice_span {
+		font-size: 30px;
+		white-space: nowrap;
+	}
+	.notice_content_textarea {
+		height: 50vh;
+		position: relative;
+		overflow: scroll;
+	}
+	.notice_btn_span {
+		position: absolute;
+		top: 5px;
+		left: 20px;
+	}
+	.notice_btn_a {
+		border-radius: 30px;
+		width: 80px;
+		height: 40px;
+		text-align: center;
+		position: relative;
+		top: 3px;
+		right: -3px;
+	}
+	.notice_btn_td {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.notice_flex_insert {
+		border-radius: 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border: 1px solid rgba(0, 0, 0, 0.3);
+		top: 20px;
+		width: 150px;
+		height: 50px;
+		margin-left: 40px;
+	}
+	.notice_btn_otherwise {
+		border-radius: 30px;
+		border: 1px solid rgba(0, 0, 0, 0.3);
+		width: 80px;
+		height: 40px;
+		text-align: center;
+		position: relative;
+		margin-right: 180px;
+	}
+}

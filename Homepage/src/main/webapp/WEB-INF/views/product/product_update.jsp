@@ -75,11 +75,14 @@
 										<tr class="insert_tr">
 											<td class="insert_td_name">기업 로고</td>
 											<td class="insert_td_input">
-												<input type="file" id="1jpg" style="display:none"
+												<input type="file" id="log_img" style="display:none"
 												name="pLogo" >
-												<label id="4jpg" onclick="cancle()" style="display:none">취소</label>
-												<label for="1jpg" id="2jpg">${pDto.companyLogo } 수정</label>
-											
+												
+												<label for="log_img" id=log_img_update>${pDto.companyLogo } 수정</label>
+												<label id="log_img_cancle" onclick="cancle()" style="display:none">취소</label>
+												<label id="log_img_delete" onclick="delete_img()">삭제</label>
+												<input type="hidden" id="cancleflag" name="logoCancleflag" value="0">
+												<input type="hidden" name="companyLogo" value="${pDto.companyLogo }">
 												</td>
 										</tr>
 										<tr class="insert_tr">
@@ -109,8 +112,14 @@
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">제품 이미지</td>
-											<td class="insert_td_input"><input type="file"
-												name="pImg"></td>
+											<td class="insert_td_input"><input type="file" id="product_img" style="display:none"
+												name="pImg">
+												<label for="product_img" id=product_img_update>${pDto.productImg } 수정</label>
+												<label id="product_img_cancle" onclick="product_cancle()" style="display:none">취소</label>
+												<label id="product_img_delete" onclick="product_delete_img()">삭제</label>
+												<input type="hidden" id="productcancleflag" name="productCancleflag" value="0">
+												<input type="hidden" name="productImg" value="${pDto.productImg }">
+												</td>
 										</tr>
 										<tr class="insert_tr">
 											<td><button class="insert_td_btn">수정</button></td>
@@ -135,35 +144,93 @@
 	</div>
 </body>
 <script>
-	let j1jpg = document.getElementById("1jpg");
-	let j2jpg = document.getElementById("2jpg");
-	let j4jpg = document.getElementById("4jpg");
-	let cancleflag = 0;  // 0 = >유지   1=> 변경
-	let j3jpg ;
+	let log_img = document.getElementById("log_img");
+	let log_img_update = document.getElementById("log_img_update");
+	let log_img_cancle = document.getElementById("log_img_cancle");
+	let log_cancleflag = 0;  // 0 = >유지   1=> 새로운 이미지로 변경 2=>이미지를 아예없앰
+	let log_img_after ;
+	
+
+// 회사 로고 첨부파일 동작	
 	function change(){
-		if(!j1jpg.value){
-			alert(typeof j3jpg);
-			
-			j1jpg.value = j3jpg;
-			alert(j1jpg);
+		if(!log_img.value){
+			log_img.value = log_img_after;
+			document.getElementById("cancleflag").value = log_cancleflag;
 		}else{
-			j1jpg.style.display = "";
-			j2jpg.style.display = "none";
-			j3jpg=j1jpg.value;
-			j4jpg.style.display= "";
+			log_img.style.display = "";
+			log_img_update.style.display = "none";
+			log_img_after=log_img.value;
+			log_img_cancle.style.display= "";
 			cancleflag = 1;
-			alert(typeof j1jpg.value);
+			document.getElementById("cancleflag").value = log_cancleflag;
 		}
 
 	}
-	j1jpg.addEventListener('change',change);
+	log_img.addEventListener('change',change);
 	
 	function cancle(){
 		cancleflag = 0;
-		j1jpg.style.display = "none";
-		j2jpg.style.display = "";
-		j3jpg=j1jpg.value;
-		j4jpg.style.display= "none";
+		
+		log_img.style.display = "none";
+		log_img_update.style.display = "";
+		log_img_after=log_img.value;
+		log_img_cancle.style.display= "none";
+		document.getElementById("cancleflag").value = log_cancleflag;
+	}
+	
+	function delete_img(){
+		 
+		$("#log_img").val(""); //파일 초기화
+		log_img.style.display = "";
+		log_img_update.style.display = "none";
+		log_img_after=log_img.value;
+		log_img_cancle.style.display= "";
+		cancleflag = 2;
+		document.getElementById("cancleflag").value = log_cancleflag;
+	}
+
+// 제품 첨부파일 동작
+	let product_img = document.getElementById("product_img");
+	let product_img_update = document.getElementById("product_img_update");
+	let product_img_cancle = document.getElementById("product_img_cancle");
+	let product_cancleflag = 0;  // 0 = >유지   1=> 새로운 이미지로 변경 2=>이미지를 아예없앰
+	let product_img_after ;
+	
+	function change_product(){
+		if(!product_img.value){
+			product_img.value = product_img_after;
+			document.getElementById("productcancleflag").value = product_cancleflag;
+		}else{
+			product_img.style.display = "";
+			product_img_update.style.display = "none";
+			product_img_after=product_img.value;
+			product_img_cancle.style.display= "";
+			product_cancleflag = 1;
+			document.getElementById("productcancleflag").value = product_cancleflag;
+		}
+
+	}
+	product_img.addEventListener('change',change_product);
+	
+	function product_cancle(){
+		product_cancleflag = 0;
+		
+		product_img.style.display = "none";
+		product_img_update.style.display = "";
+		product_img_after=product_img.value;
+		product_img_cancle.style.display= "none";
+		document.getElementById("productcancleflag").value = product_cancleflag;
+	}
+	
+	function product_delete_img(){
+		 
+		$("#product_img").val(""); //파일 초기화
+		product_img.style.display = "";
+		product_img_update.style.display = "none";
+		product_img_after=product_img.value;
+		product_img_cancle.style.display= "";
+		product_cancleflag = 2;
+		document.getElementById("productcancleflag").value = product_cancleflag;
 	}
 </script>
 </html>

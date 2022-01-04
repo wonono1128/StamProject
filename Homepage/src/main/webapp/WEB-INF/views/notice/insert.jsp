@@ -62,7 +62,7 @@
 										<td class="notice_insert_td">제목</td>
 										<td colspan="2"><input type="text"
 											placeholder="제품명을 입력해주세요." name="noticeTitle"
-											id="notice_insert_title" required maxlength="30"></td>
+											id="notice_insert_title" required maxlength="25"></td>
 									</tr>
 									<tr class="notice-insert-tr">
 										<td class="notice_insert_td">내용</td>

@@ -1,6 +1,7 @@
 package kr.stam.homepage.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.stam.homepage.dao.DepthDao;
 import kr.stam.homepage.dao.ProductDao;
@@ -72,54 +74,62 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/product_insert_ok", method = RequestMethod.POST)
-	public String product_insert_ok(ProductDto pdto, ProductLogDto pLdto, HttpSession session, MultipartFile[] pLogo,
-			MultipartFile[] pImg,String menuContents) {
-	
-		
+	public String product_insert_ok(ProductDto pdto, ProductLogDto pLdto, HttpSession session,
+			MultipartHttpServletRequest mRequest, String menuContents) throws Exception, IOException {
+
 		if (session.getAttribute("ProductnextNum") != null) {
 			int ProductnextNum = (int) session.getAttribute("ProductnextNum");
 			System.out.println("인서터 세션 :" + ProductnextNum);
 			pLdto.setProductCode(ProductnextNum + 1);
-		}else {
+		} else {
 			int ProductnextNum = 1;
 			pLdto.setProductCode(ProductnextNum);
 		}
-		
-		
-		
-		
-		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
-		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
 
-//		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-//		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-		for (MultipartFile multipartFile : pLogo) {
-			System.out.println("---------------------------로고 파일------------------------------------");
-			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
-			System.out.println("Upload File Size : " + multipartFile.getSize());
-			pdto.setCompanyLogo(multipartFile.getOriginalFilename());
-			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+//		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
+//		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
 
-			try {
-				multipartFile.transferTo(saveFile);
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+		MultipartFile multipartFileLogo = mRequest.getFile("pLogo");
+		MultipartFile multipartFileProduct = mRequest.getFile("pImg");
+		System.out.println("확인용 : " + multipartFileLogo + multipartFileProduct);
+		if (!multipartFileLogo.isEmpty() && !multipartFileProduct.isEmpty()) { // 로고, 제품사진 모두 있을경우
+			pdto.setCompanyLogo(multipartFileLogo.getOriginalFilename());
+			File saveFileLogo = new File(uploadFolder, multipartFileLogo.getOriginalFilename());
+			multipartFileLogo.transferTo(saveFileLogo);
 
-			} catch (Exception e) {
-				System.out.println("저장 실패");
-			}
-		}
-
-		for (MultipartFile multipartFile : pImg) {
-			System.out.println("---------------------------제품이미지 파일------------------------------------");
-			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
-			System.out.println("Upload File Size : " + multipartFile.getSize());
-			pdto.setProductImg(multipartFile.getOriginalFilename());
-			File saveFile = new File(uploadFolder2, multipartFile.getOriginalFilename());
+			pdto.setProductImg(multipartFileProduct.getOriginalFilename());
+			File saveFileProduct = new File(uploadFolder2, multipartFileProduct.getOriginalFilename());
 
 			try {
-				multipartFile.transferTo(saveFile);
+				multipartFileProduct.transferTo(saveFileProduct);
 			} catch (Exception e) {
-				System.out.println("저장 실패");
+				System.out.println("둘다  저장 실패");
 			}
+		} else if (!multipartFileLogo.isEmpty() && multipartFileProduct.isEmpty()) { // 로고 사진만 있을경우
+
+			pdto.setCompanyLogo(multipartFileLogo.getOriginalFilename());
+			File saveFileLogo = new File(uploadFolder, multipartFileLogo.getOriginalFilename());
+
+			try {
+
+				multipartFileLogo.transferTo(saveFileLogo);
+				pdto.setCompanyLogoData(multipartFileLogo);
+			} catch (Exception e) {
+				System.out.println("로고 저장 실패");
+			}
+
+			pdto.setProductImg(" ");
+		} else if (multipartFileLogo.isEmpty() && !multipartFileProduct.isEmpty()) { // 제품 사진만있을경우
+			pdto.setCompanyLogo(multipartFileLogo.getOriginalFilename());
+			File saveFileLogo = new File(uploadFolder, multipartFileLogo.getOriginalFilename());
+
+			multipartFileLogo.transferTo(saveFileLogo);
+			pdto.setCompanyLogo(" ");
+		} else { // 둘다 없을경우
+			pdto.setCompanyLogo(" ");
+			pdto.setProductImg(" ");
 		}
 
 		pd.insert(pdto);
@@ -131,7 +141,7 @@ public class ProductController {
 		pLdto.setManagerName(managerName);
 
 		pLdto.setPLogType("Insert");
-		
+
 		pLDao.insert(pLdto);
 		return "redirect:/product?menuContents=" + menuContents;
 	}
@@ -141,7 +151,7 @@ public class ProductController {
 	public int product_delete(HttpSession session, ProductLogDto pLdto,
 			@RequestParam(value = "chbox[]") List<String> chArr, ProductDto pDto) throws Exception {
 		int result = 0;
-		
+
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
 		for (String i : chArr) {
@@ -200,46 +210,53 @@ public class ProductController {
 
 	@RequestMapping("product_update_ok")
 	public String update_ok(HttpServletRequest request, ProductLogDto pLdto, ProductDto pDto, HttpSession session,
-			MultipartFile[] pLogo, MultipartFile[] pImg) {
+			MultipartHttpServletRequest mRequest) throws Exception, IOException {
 
 		int productCode = (int) session.getAttribute("productCode");
 		pDto.setProductCode(productCode);
 		String menuContents = request.getParameter("menuContents");
-		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
-		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+//		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\portfolio";
 //		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-//		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-		if(pLogo != null) {
-			
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+		MultipartFile multipartFileLogo = mRequest.getFile("pLogo");
+		MultipartFile multipartFileProduct = mRequest.getFile("pImg");
+//로고
+		int logoCancleflag = Integer.parseInt(request.getParameter("logoCancleflag"));
+
+		if (logoCancleflag == 0) { // 이전 이미지 그대로 사용
+			String companyLogo = request.getParameter("companyLogo");
+			System.out.println(companyLogo);
+			pDto.setCompanyLogo(companyLogo);
+
+		} else if (logoCancleflag == 1) { // 새로운 이미지 사용
+
+			pDto.setCompanyLogo(multipartFileLogo.getOriginalFilename());
+			File saveFileLogo = new File(uploadFolder, multipartFileLogo.getOriginalFilename());
+			multipartFileLogo.transferTo(saveFileLogo);
+
+		} else { // 이미지 사용안함
+
+			pDto.setCompanyLogo(" ");
 		}
-		for (MultipartFile multipartFile : pLogo) {
-			System.out.println("---------------------------로고 파일------------------------------------");
-			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
-			System.out.println("Upload File Size : " + multipartFile.getSize());
-			pDto.setCompanyLogo(multipartFile.getOriginalFilename());
-			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+// 제품
+		int productCancleFlag = Integer.parseInt(request.getParameter("productCancleflag"));
+		if (productCancleFlag == 0) { // 이전 이미지 그대로 사용
+			String productImg = request.getParameter("productImg");
+			pDto.setProductImg(productImg);
 
-			try {
-				multipartFile.transferTo(saveFile);
+		} else if (productCancleFlag == 1) { // 새로운 이미지 사용
 
-			} catch (Exception e) {
-				System.out.println("저장 실패");
-			}
+			pDto.setProductImg(multipartFileProduct.getOriginalFilename());
+			File saveFileProduct = new File(uploadFolder2, multipartFileProduct.getOriginalFilename());
+			multipartFileProduct.transferTo(saveFileProduct);
+
+		} else { // 이미지 사용안함
+
+			pDto.setProductImg(" ");
 		}
 
-		for (MultipartFile multipartFile : pImg) {
-			System.out.println("---------------------------제품이미지 파일------------------------------------");
-			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
-			System.out.println("Upload File Size : " + multipartFile.getSize());
-			pDto.setProductImg(multipartFile.getOriginalFilename());
-			File saveFile = new File(uploadFolder2, multipartFile.getOriginalFilename());
 
-			try {
-				multipartFile.transferTo(saveFile);
-			} catch (Exception e) {
-				System.out.println("저장 실패");
-			}
-		}
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
 		pd.update(pDto);

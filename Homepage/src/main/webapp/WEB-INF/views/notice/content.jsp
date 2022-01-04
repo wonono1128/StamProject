@@ -56,16 +56,14 @@
 							<span class="notice_span">Notice Content</span>
 							<div class="notice_content_div">
 								<table class="notice_table">
-									<tr class="notice_content_tr ">
-										<td class="notice_content_td" ><span>${ndto.noticeTitle}</span></td>
-										<td class="notice_td_day notice_content_td" >${ndto.noticeDay }</td>
+									<tr class="notice_content_tr " style="height: 80px;">
+										<td class="notice_content_td"><span
+											id="notice_content_title">${ndto.noticeTitle}</span></td>
+										<td class="notice_td_day notice_content_td">${ndto.noticeDay }</td>
 									</tr>
 									<tr class="notice_content_tr ">
-
-										
 									</tr>
 									<tr>
-
 										<td colspan="2"
 											class="notice_content_td notice_content_textarea"><pre
 												class="notice_content_pre">${ndto.noticeContents}</pre></td>
@@ -78,30 +76,21 @@
 														<a href="update?noticeNum=${ndto.noticeNum }"
 															class="notice_btn_a"><span class="notice_btn_span">수정</span></a>
 													</div>
-
-
 													<div class="notice_flex_insert">
 														<a href="delete?noticeNum=${ndto.noticeNum }"
 															class="notice_btn_a"><span class="notice_btn_span">삭제</span></a>
 													</div>
-
-
 													<div class="notice_flex_insert">
 														<a href="notice" class="notice_btn_a"><span
 															class="notice_btn_span">목록</span></a>
 													</div>
-
 												</c:when>
-
 												<c:otherwise>
-
 													<div class="notice_btn_otherwise">
 														<a href="notice" class="notice_btn_a"><span
 															class="notice_btn_span">목록</span></a>
 													</div>
-
 												</c:otherwise>
-
 											</c:choose></td>
 									</tr>
 								</table>
