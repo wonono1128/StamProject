@@ -72,8 +72,6 @@ public class NoticeController {
 
 		ArrayList<NoticeDto> nlist = ndao.nlist(cla, sword, index);
 
-		System.out.println(nlist);
-
 		model.addAttribute("nlist", nlist);
 		model.addAttribute("pstart", pstart);
 		model.addAttribute("page", page);

@@ -177,6 +177,11 @@ body {
 }
 
 @media ( max-width : 817px) {
+	
+	table{
+	table-layout:fixed;
+	
+	}
 	.notice_div {
 		display: flex;
 		flex-direction: column;
