@@ -67,7 +67,7 @@
 												<option value="BRAND">BRAND</option>
 												<option value="SOLUTION">SOLUTION</option>
 										</select></td>
-										<!--<td class="insert_td_input" style="display:none;"><input type="hidden" placeholder="메뉴명을 입력해주세요"  class="MenuParents" name="menuParents" value=${MenuParents }></td>   -->
+										<td class="insert_td_input" style="display:none;"><input type="hidden" placeholder="메뉴명을 입력해주세요"  class="MenuParents" name="menuParents" value=${MenuParents }></td>   
 									</tr>
 									<tr class="insert_tr">
 										<td class="insert_td_name">소제목</td>
@@ -107,6 +107,7 @@
 <script type="text/javascript">
 	function depth_go(event) {
 		event.preventDefault();
+		
 		const MenuParents = document.querySelector(".MenuParents").value;
 		location.href = "/homepage/depth?MenuParents=" + MenuParents;
 	}
