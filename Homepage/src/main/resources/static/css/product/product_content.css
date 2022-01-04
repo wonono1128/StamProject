@@ -6,7 +6,16 @@ body{
 }
 .product_div_btn{
 	display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     position: relative;
+}
+
+.content_update, .content_content{
+	margin: 5px 5px; 
+	width: 100px; 
+	border-radius: 20px; 
+	background-color: white; 
+	color: black; 
+	border: 1px solid black;
 }

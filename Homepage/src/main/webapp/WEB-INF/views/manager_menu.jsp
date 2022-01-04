@@ -64,7 +64,7 @@
 		var url = $(ths).text();
 		url = url.replace(/ /g, "");
 
-		location.href = "product?menuContents=" + url;
+		location.href = "product?menuParents=BRAND&menuContents=" + url;
 	}
 
 	function port_click(ths) {

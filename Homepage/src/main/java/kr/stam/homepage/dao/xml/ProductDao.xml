@@ -25,19 +25,18 @@
 	</select>
 
 	<!-- 제품 추가 -->
-	<insert id="insert"
-		parameterType="kr.stam.homepage.dto.ProductDto">
-		insert into product(companyName, productName,
-		productContents, companyLogo,
-		menuContents,
-		brandContents, productImg)
-		values(#{companyName}, #{productName},
-		#{productContents},
-		#{companyLogo},
-		#{menuContents},
-		#{brandContents},
-		#{productImg})
-	</insert>
+   <insert id="insert"
+      parameterType="kr.stam.homepage.dto.ProductDto">
+      insert into product(companyName, productName,
+      productContents, companyLogo,
+      menuContents,
+      brandContents, productLogo, productImg)
+      values(#{companyName}, #{productName},
+      #{productContents},
+      #{companyLogo}, #{menuContents},
+      #{brandContents},
+      #{productLogo}, #{productImg})
+   </insert>
 
 	<!-- 제품 삭제 -->
 	<update id="delete"
@@ -53,14 +52,13 @@
 	</select>
 
 	<!-- 제품 수정 -->
-	<update id="update"
-		parameterType="kr.stam.homepage.dto.ProductDto">
-		update product set companyName = #{companyName} ,
-		productName = #{productName}, productContents=#{productContents} ,
-		companyLogo=#{companyLogo}, menuContents=#{menuContents},
-		brandContents=#{brandContents},
-		productImg=#{productImg} where
-		productCode =
-		#{productCode}
-	</update>
+   <update id="update"
+      parameterType="kr.stam.homepage.dto.ProductDto">
+      update product set companyName = #{companyName} ,
+      productName = #{productName}, productContents=#{productContents} ,
+      companyLogo=#{companyLogo}, menuContents=#{menuContents},
+      brandContents=#{brandContents},
+      productLogo=#{productLogo}, productImg=#{productImg} 
+      where productCode = #{productCode}
+   </update>
 </mapper>

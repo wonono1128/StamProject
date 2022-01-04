@@ -57,36 +57,8 @@
 								<form method="post" action="product_update_ok"
 									enctype="multipart/form-data">
 									<table class="insert_table">
-										<tr class="insert_tr">
-											<td class="insert_td_name">기업명</td>
-											<td class="insert_td_input"><input type="text"
-												name="companyName" value="${pDto.companyName }"></td>
-										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">제품명</td>
-											<td class="insert_td_input"><input type="text"
-												name="productName" value="${pDto.productName }"></td>
-										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">제품 설명</td>
-											<td class="insert_td_input"><textarea
-													name="productContents" class="pcInput">${pDto.productContents }</textarea></td>
-										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">기업 로고</td>
-											<td class="insert_td_input">
-												<input type="file" id="log_img" style="display:none"
-												name="pLogo" >
-												
-												<label for="log_img" id=log_img_update>${pDto.companyLogo } 수정</label>
-												<label id="log_img_cancle" onclick="cancle()" style="display:none">취소</label>
-												<label id="log_img_delete" onclick="delete_img()">삭제</label>
-												<input type="hidden" id="cancleflag" name="logoCancleflag" value="0">
-												<input type="hidden" name="companyLogo" value="${pDto.companyLogo }">
-												</td>
-										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">메뉴</td>
+									<tr class="insert_tr">
+											<td class="insert_td_name">메뉴 선택</td>
 											<td class="insert_td_input"><select name="menuContents">
 													<c:forEach var="dDto" items="${Flist}">
 														<c:if test="${dDto.menuState == 1 }">
@@ -104,31 +76,76 @@
 													</c:forEach>
 											</select></td>
 										</tr>
-
 										<tr class="insert_tr">
-											<td class="insert_td_name">브랜드 내용</td>
+											<td class="insert_td_name">고객명</td>
 											<td class="insert_td_input"><input type="text"
-												name="brandContents" value="${pDto.brandContents }"></td>
+												name="companyName" value="${pDto.companyName }"></td>
 										</tr>
 										<tr class="insert_tr">
-											<td class="insert_td_name">제품 이미지</td>
-											<td class="insert_td_input"><input type="file" id="product_img" style="display:none"
-												name="pImg">
-												<label for="product_img" id=product_img_update>${pDto.productImg } 수정</label>
-												<label id="product_img_cancle" onclick="product_cancle()" style="display:none">취소</label>
-												<label id="product_img_delete" onclick="product_delete_img()">삭제</label>
-												<input type="hidden" id="productcancleflag" name="productCancleflag" value="0">
-												<input type="hidden" name="productImg" value="${pDto.productImg }">
-												</td>
+											<td class="insert_td_name">사업명</td>
+											<td class="insert_td_input"><input type="text"
+												name="productName" value="${pDto.productName }"></td>
 										</tr>
 										<tr class="insert_tr">
-											<td><button class="insert_td_btn">수정</button></td>
+											<td class="insert_td_name">사업 설명</td>
+											<td class="insert_td_input"><textarea
+													name="productContents" class="pcInput">${pDto.productContents }</textarea></td>
+										</tr>
+									
+											
+											<tr class="insert_tr">
+											<c:if test="${menuParents == 'BRAND'}">
+												<td class="insert_td_name">브랜드 내용</td>
+												<td class="insert_td_input"><input type="text"
+													name="brandContents" value="${pDto.brandContents }"></td>
+											</c:if>
+										</tr>
+											<tr class="insert_tr">
+											<td class="insert_td_name">고객 로고</td>
+											<td class="insert_td_input"><input type="file"
+												id="log_img" style="display: none" name="pLogo"> <label
+												for="log_img" id=log_img_update>${pDto.companyLogo }
+													수정</label> <label id="log_img_cancle" onclick="cancle()"
+												style="display: none">취소</label> <label id="log_img_delete"
+												onclick="delete_img()">삭제</label> <input type="hidden"
+												id="cancleflag" name="logoCancleflag" value="0"> <input
+												type="hidden" name="companyLogo"
+												value="${pDto.companyLogo }"></td>
+										</tr>
+									
+										<tr class="insert_tr">
+											<td class="insert_td_name">사업 로고</td>
+											<td class="insert_td_input"><input type="file"
+												name="yearLogo"></td>
+										</tr>	
 
+										<tr class="insert_tr">
+											<td class="insert_td_name">화면 이미지</td>
+											<td class="insert_td_input"><input type="file"
+												id="product_img" style="display: none" name="pImg">
+												<label for="product_img" id=product_img_update>${pDto.productImg }
+													수정</label> <label id="product_img_cancle"
+												onclick="product_cancle()" style="display: none">취소</label>
+												<label id="product_img_delete"
+												onclick="product_delete_img()">삭제</label> <input
+												type="hidden" id="productcancleflag"
+												name="productCancleflag" value="0"> <input
+												type="hidden" name="productImg" value="${pDto.productImg }">
+											</td>
+										</tr>
+										<tr class="insert_tr insert_update_tr">
+											<td>
+												<button class="delete_btn" onclick="prev_btn(event)">이전</button>
+											</td>
+											<td>
+												<button class="delete_btn" onclick="content_btn(event)">목록</button>
+											</td>
+
+											<td><button>완료</button></td>
 										</tr>
 									</table>
 								</form>
-								<button class="delete_btn"
-									onclick="location.href='./product?menuContents=${pDto.menuContents}';">목록</button>
+
 							</div>
 						</div>
 						<!-- //swiper-wrapper -->
@@ -147,90 +164,110 @@
 	let log_img = document.getElementById("log_img");
 	let log_img_update = document.getElementById("log_img_update");
 	let log_img_cancle = document.getElementById("log_img_cancle");
-	let log_cancleflag = 0;  // 0 = >유지   1=> 새로운 이미지로 변경 2=>이미지를 아예없앰
-	let log_img_after ;
-	
+	let log_cancleflag = 0; // 0 = >유지   1=> 새로운 이미지로 변경 2=>이미지를 아예없앰
+	let log_img_after;
 
-// 회사 로고 첨부파일 동작	
-	function change(){
-		if(!log_img.value){
+	// 회사 로고 첨부파일 동작	
+	function change() {
+		if (!log_img.value) {
 			log_img.value = log_img_after;
 			document.getElementById("cancleflag").value = log_cancleflag;
-		}else{
+		} else {
 			log_img.style.display = "";
 			log_img_update.style.display = "none";
-			log_img_after=log_img.value;
-			log_img_cancle.style.display= "";
+			log_img_after = log_img.value;
+			log_img_cancle.style.display = "";
 			cancleflag = 1;
 			document.getElementById("cancleflag").value = log_cancleflag;
 		}
 
 	}
-	log_img.addEventListener('change',change);
-	
-	function cancle(){
+	log_img.addEventListener('change', change);
+
+	function cancle() {
 		cancleflag = 0;
-		
+
 		log_img.style.display = "none";
 		log_img_update.style.display = "";
-		log_img_after=log_img.value;
-		log_img_cancle.style.display= "none";
+		log_img_after = log_img.value;
+		log_img_cancle.style.display = "none";
 		document.getElementById("cancleflag").value = log_cancleflag;
 	}
-	
-	function delete_img(){
-		 
+
+	function delete_img() {
+
 		$("#log_img").val(""); //파일 초기화
 		log_img.style.display = "";
 		log_img_update.style.display = "none";
-		log_img_after=log_img.value;
-		log_img_cancle.style.display= "";
+		log_img_after = log_img.value;
+		log_img_cancle.style.display = "";
 		cancleflag = 2;
 		document.getElementById("cancleflag").value = log_cancleflag;
 	}
 
-// 제품 첨부파일 동작
+	// 제품 첨부파일 동작
 	let product_img = document.getElementById("product_img");
 	let product_img_update = document.getElementById("product_img_update");
 	let product_img_cancle = document.getElementById("product_img_cancle");
-	let product_cancleflag = 0;  // 0 = >유지   1=> 새로운 이미지로 변경 2=>이미지를 아예없앰
-	let product_img_after ;
-	
-	function change_product(){
-		if(!product_img.value){
+	let product_cancleflag = 0; // 0 = >유지   1=> 새로운 이미지로 변경 2=>이미지를 아예없앰
+	let product_img_after;
+
+	function change_product() {
+		if (!product_img.value) {
 			product_img.value = product_img_after;
 			document.getElementById("productcancleflag").value = product_cancleflag;
-		}else{
+		} else {
 			product_img.style.display = "";
 			product_img_update.style.display = "none";
-			product_img_after=product_img.value;
-			product_img_cancle.style.display= "";
+			product_img_after = product_img.value;
+			product_img_cancle.style.display = "";
 			product_cancleflag = 1;
 			document.getElementById("productcancleflag").value = product_cancleflag;
 		}
 
 	}
-	product_img.addEventListener('change',change_product);
-	
-	function product_cancle(){
+	product_img.addEventListener('change', change_product);
+
+	function product_cancle() {
 		product_cancleflag = 0;
-		
+
 		product_img.style.display = "none";
 		product_img_update.style.display = "";
-		product_img_after=product_img.value;
-		product_img_cancle.style.display= "none";
+		product_img_after = product_img.value;
+		product_img_cancle.style.display = "none";
 		document.getElementById("productcancleflag").value = product_cancleflag;
 	}
-	
-	function product_delete_img(){
-		 
+
+	function product_delete_img() {
+
 		$("#product_img").val(""); //파일 초기화
 		product_img.style.display = "";
 		product_img_update.style.display = "none";
-		product_img_after=product_img.value;
-		product_img_cancle.style.display= "";
+		product_img_after = product_img.value;
+		product_img_cancle.style.display = "";
 		product_cancleflag = 2;
 		document.getElementById("productcancleflag").value = product_cancleflag;
+	}
+	function prev_btn(event) {
+		event.preventDefault();
+		const productCode = $
+		{
+			productCode
+		}
+		;
+
+		location.href = "/homepage/product_content?productCode=" + productCode;
+	}
+
+	function content_btn(event) {
+		event.preventDefault();
+		const menuContents = $
+		{
+			menuContents
+		}
+		;
+
+		location.href = "/homepage/product?menuContents=" + menuContents;
 	}
 </script>
 </html>

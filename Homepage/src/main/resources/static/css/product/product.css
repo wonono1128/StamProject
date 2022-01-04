@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 body {
 	width: 100vw;
 	height: 100vh;
@@ -7,8 +6,8 @@ body {
 
 .product_insert_btn, .product_delete_btn {
 	margin-top: 20px;
-	margin-right: 25px;
-	width: 150px;
+	margin-right: 10px;
+	width: 100px;
 	border-radius: 20px;
 	background-color: white;
 	color: black;

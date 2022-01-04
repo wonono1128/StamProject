@@ -17,7 +17,7 @@ body{
     margin-bottom: 20px;
 }
 
-.insert_td_btn {
+ .insert_td_btn > td > button{
 	margin-right: 25px; 
 	width: 120px; 
 	border-radius: 20px; 
@@ -27,15 +27,21 @@ body{
 	
 }
 
-.delete_btn{
-	margin-left: 300px; 
+.insert_td_btn{
+	margin-left: 276px;
+}
+
+.insert_tr > td > button{
+	margin-right: 10px;
 	width: 120px; 
 	border-radius: 20px; 
 	background-color: white; 
 	color: black; 
 	border: 1px solid black;
-	margin-left: 950px;
-	margin-top: -120px;
+}
+
+.insert_update_tr{
+	margin-left: 207px;
 }
 
 .insert_td_name{
@@ -79,18 +85,11 @@ body{
     font-weight: 600;
 }
 
-.insert_td_btn{
-	margin-left:250px;
-}
 
 .pcInput{
 	height: 300px;
 }
 
-.label_td{
-	display:flex;
-	justify-content: space-between;
-}
 
 
 @media (max-width: 817px)   { 
