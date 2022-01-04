@@ -62,27 +62,7 @@
 									enctype="multipart/form-data">
 									<table class="insert_table">
 										<tr class="insert_tr">
-											<td class="insert_td_name">기업명</td>
-											<td class="insert_td_input"><input type="text"
-												name="companyName"></td>
-										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">제품명</td>
-											<td class="insert_td_input"><input type="text"
-												name="productName"></td>
-										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">제품 설명</td>
-											<td class="insert_td_input"><textarea
-													name="productContents" class="pcInput"></textarea></td>
-										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">기업 로고</td>
-											<td class="insert_td_input"><input type="file"
-												name="pLogo"></td>
-										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">메뉴</td>
+											<td class="insert_td_name">메뉴 선택</td>
 											<td class="insert_td_input"><select name="menuContents">
 													<c:forEach var="dDto" items="${Flist}">
 														<c:if test="${dDto.menuState == 1 }">
@@ -100,25 +80,52 @@
 													</c:forEach>
 											</select></td>
 										</tr>
-
+										<tr class="insert_tr">
+											<td class="insert_td_name">고객명</td>
+											<td class="insert_td_input"><input type="text"
+												name="companyName"></td>
+										</tr>
+										<tr class="insert_tr">
+											<td class="insert_td_name">사업명</td>
+											<td class="insert_td_input"><input type="text"
+												name="productName"></td>
+										</tr>
+										<tr class="insert_tr">
+											<td class="insert_td_name">사업 설명</td>
+											<td class="insert_td_input"><textarea
+													name="productContents" class="pcInput"></textarea></td>
+										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">브랜드 내용</td>
 											<td class="insert_td_input"><input type="text"
 												name="brandContents"></td>
 										</tr>
 										<tr class="insert_tr">
-											<td class="insert_td_name">제품 이미지</td>
+											<td class="insert_td_name">고객 로고</td>
+											<td class="insert_td_input"><input type="file"
+												name="pLogo"></td>
+										</tr>
+										<tr class="insert_tr">
+											<td class="insert_td_name">사업 로고</td>
+											<td class="insert_td_input"><input type="file"
+												name="yearLogo"></td>
+										</tr>
+										<tr class="insert_tr">
+											<td class="insert_td_name">화면 이미지</td>
 											<td class="insert_td_input"><input type="file"
 												name="pImg"></td>
 										</tr>
 										<tr class="insert_tr">
-											<td><button class="insert_td_btn">추가</button></td>
-
+											<td>
+												<button class="insert_td_btn">추가</button>
+											</td>
+											<td>
+												<button onclick="insert_contentBtn(event)">목록</button>
+											</td>
 										</tr>
 									</table>
 								</form>
-								<button class="delete_btn"
-									onclick="location.href='./product?menuContents=${menuContents}';">목록</button>
+
 							</div>
 						</div>
 						<!-- //swiper-wrapper -->
@@ -133,4 +140,12 @@
 		</div>
 	</div>
 </body>
+<script>
+	function insert_contentBtn(event) {
+		event.preventDefault();
+		const menuContents = ${referMenuContents};
+
+		location.href = "/homepage/product?menuContents=" + menuContents;
+	}
+</script>
 </html>

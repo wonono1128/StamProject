@@ -6,7 +6,7 @@ body {
 
 .product_insert_btn, .product_delete_btn {
 	margin-top: 20px;
-	margin-right: 10px;
+	margin-left: 10px;
 	width: 100px;
 	border-radius: 20px;
 	background-color: white;

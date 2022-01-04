@@ -52,12 +52,10 @@
 						<div class="subtitle_section item">
 							<h2>${pDto.companyName }<br>${pDto.productName }</h2>
 							<div class="description">
-								<pre style="font-size:15px;">${pDto.productContents }</pre>
+								<pre style="font-size: 15px;">${pDto.productContents }</pre>
 								<p class="logo_img_div">
 									<c:if test="${pDto.companyLogo != '' }">
-										<img
-											src="resources/static/images/logo/${pDto.companyLogo }"
-											>
+										<img src="resources/static/images/logo/${pDto.companyLogo }">
 									</c:if>
 								</p>
 								<div class="product_div_btn">
@@ -74,14 +72,13 @@
 						</div>
 						<div class="contents item">
 							<div class="tit_div s_num_div">
-								<span class="s_num s_num2021"> ${pDto.menuContents }</span> <a
-									href="javascript:void(0);" class="btn_open mo"
+								<img src="resources/static/images/${pDto.productLogo }" alt="">
+								<a href="javascript:void(0);" class="btn_open mo"
 									data-target="portfolio2021_1"></a>
 							</div>
 							<div class="cont">
 								<div class="conts_div">
-									<img
-										src="resources/static/images/product/${pDto.productImg }"
+									<img src="resources/static/images/product/${pDto.productImg }"
 										alt="">
 								</div>
 								<a href="#" class="mo close_layer">닫기</a>
@@ -132,11 +129,14 @@
 		location.href = "/homepage/product?menuContents=" + menuContents;
 	}
 	function product_update() {
-		const productCode = ${pDto.productCode};
-		
+		const productCode = $
+		{
+			pDto.productCode
+		}
+		;
+
 		location.href = "/homepage/product_update?productCode=" + productCode;
 	}
-	contentsHeight();
 </script>
 <script src="resources/static/plugins/swiper/swiper-bundle.min.js"></script>
 <script src="resources/static/js/common.js"></script>

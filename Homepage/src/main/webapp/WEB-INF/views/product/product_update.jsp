@@ -250,23 +250,13 @@
 	}
 	function prev_btn(event) {
 		event.preventDefault();
-		const productCode = $
-		{
-			productCode
-		}
-		;
-
+		const productCode = ${productCode};
 		location.href = "/homepage/product_content?productCode=" + productCode;
 	}
 
 	function content_btn(event) {
 		event.preventDefault();
-		const menuContents = $
-		{
-			menuContents
-		}
-		;
-
+		const menuContents = "${pDto.menuContents}";
 		location.href = "/homepage/product?menuContents=" + menuContents;
 	}
 </script>
