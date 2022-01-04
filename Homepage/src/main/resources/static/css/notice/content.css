@@ -7,11 +7,11 @@ body {
 
 .notice_span {
 	font-size: 60px;
-	white-space: nowrap
+	white-space: nowrap;
 }
 
 #notice_content_title {
-	font-size: 30px;
+	font-size: 27px;
 	font-weight: 600;
 }
 
@@ -24,6 +24,7 @@ body {
 }
 
 .notice_content_td {
+	overflow-wrap: anywhere;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 	color: rgba(0, 0, 0, 0.5)
 }
@@ -46,6 +47,7 @@ body {
 
 .notice_content_textarea {
 	overflow-wrap: anywhere;
+	overflow-wrap: anywhere;
 	height: 600px;
 	position: relative;
 	overflow-y: auto;
@@ -59,6 +61,7 @@ body {
 }
 
 .notice_td_day {
+	width: 10vw;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 	text-align: end;
 	vertical-align: bottom;
@@ -67,6 +70,7 @@ body {
 .notice_table {
 	position: absolute;
 	height: 80vh;
+	min-width: 300px;
 }
 
 .notice_content_div {

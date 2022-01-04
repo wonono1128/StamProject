@@ -66,7 +66,7 @@
 										<td class="notice_insert_td">제목</td>
 										<td colspan="2"><input type="text"
 											value="${ndto.noticeTitle }" name="noticeTitle"
-											id="notice_insert_title" required maxlength="30"></td>
+											id="notice_insert_title" required maxlength="20"></td>
 									</tr>
 									<tr class="notice-insert-tr">
 										<td class="notice_insert_td">내용</td>

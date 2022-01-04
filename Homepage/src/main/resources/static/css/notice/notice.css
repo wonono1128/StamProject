@@ -13,18 +13,20 @@ body {
 }
 
 .notice_table {
-	width: 70%;
+	width: 58vw;
 	text-align: center;
 }
 
 .notice_insert_td {
 	position: relative;
 	display: flex;
-    justify-content: end;
+	justify-content: end;
 }
-.paging_btn{
-	margin:0px 10px;
+
+.paging_btn {
+	margin: 0px 10px;
 }
+
 .notice_flex_insert {
 	border-radius: 30px;
 	display: flex;
@@ -41,15 +43,19 @@ body {
 	height: 50px;
 	padding-top: 10px;
 }
-.notice_tr{
+
+.notice_tr {
 	cursor: pointer;
 }
+
 .notice_th {
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	height: 60px;
 }
 
 .notice_td {
+	text-overflow: ellipsis;
+	overflow: hidden;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	height: 50px;
 	color: rgba(0, 0, 0, 0.5);
@@ -123,9 +129,9 @@ body {
 }
 
 .notice_paging_div {
-	position: absolute;
-	right: 250px;
-	top: 30px;
+	white-space: nowrap;
+	margin-top: 15px;
+	padding-left: 40px;
 }
 
 .no_notice_page {
@@ -156,11 +162,6 @@ body {
 		position: absolute;
 		right: 30px;
 		white-space: nowrap;
-	}
-	.notice_paging_div {
-		position: absolute;
-		right: 120px;
-		top: 20px;
 	}
 	.notice_flex_insert {
 		border-radius: 30px;
@@ -203,11 +204,6 @@ body {
 	}
 	.select_box {
 		height: auto;
-	}
-	.notice_paging_div {
-		position: absolute;
-		right: 120px;
-		top: 20px;
 	}
 	.notice_flex_insert {
 		border-radius: 30px;

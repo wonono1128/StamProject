@@ -89,10 +89,13 @@
 								<c:if test="${pagecnt != 0 }">
 									<c:forEach var="ndto" items="${nlist}">
 
-										<tr class="notice_tr" id="${ndto.noticeNum }" onClick="go_content(this)">
+										<tr class="notice_tr" id="${ndto.noticeNum }"
+											onClick="go_content(this)">
 											<td class="notice_td" id="notice_Num">${ndto.noticeNum }</td>
 											<td class="notice_td">${ndto.managerName }</td>
-											<td colspan="2" class="notice_td notice_select_td notice_span_td" onMouseover="mousehover(this)"><span
+											<td colspan="2"
+												class="notice_td notice_select_td notice_span_td"
+												onMouseover="mousehover(this)"><span
 												id="notice_td_a_first">${ndto.noticeTitle}</span> <span
 												id="notice_td_a_span">${ndto.noticeTitle }</span></td>
 											<td class="notice_td notice_td_day">${ndto.noticeDay }</td>
@@ -173,9 +176,9 @@
 									</td>
 									<c:if test="${level == 1 }">
 										<td colspan="2"
-											style="display: flex; justify-content: end; width: 203px; align-items: center; position: absolute;">
+											style="display: flex; justify-content: end; align-items: center;">
 											<button onclick="go_insert()"
-												style="margin-top: 20px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid rgba(0, 0, 0, 0.3);">추가</button>
+												style="margin-top: 20px; width: 8vw; min-width: 50px; border-radius: 20px; background-color: white; color: black; border: 1px solid rgba(0, 0, 0, 0.3);">추가</button>
 										</td>
 									</c:if>
 								</tr>
@@ -200,29 +203,27 @@
 
 </body>
 <script>
-
-
-	
-	function go_insert(){
+	function go_insert() {
 		location.href = "insert";
 	}
 	function go_content(e) {
-		let Id = document.getElementById(e.getAttribute('id')).getAttribute('id');
+		let Id = document.getElementById(e.getAttribute('id')).getAttribute(
+				'id');
 
 		location.href = "/homepage/content?noticeNum=" + Id;
 	}
-	
-	function mousehover(e){
-		let Id = document.getElementById(e.getAttribute('id')).getAttribute('id');
-	   
-	    $( e.getAttribute('id') ).children( '.notice_td_a_span' ).css( 'display', '' );
-	    $( e ).children( '.notice_td_a_first' ).css( 'display', 'none' );
-   
-	}
 
+	function mousehover(e) {
+		let Id = document.getElementById(e.getAttribute('id')).getAttribute(
+				'id');
+
+		$(e.getAttribute('id')).children('.notice_td_a_span')
+				.css('display', '');
+		$(e).children('.notice_td_a_first').css('display', 'none');
+
+	}
 </script>
 <style>
-
 </style>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
