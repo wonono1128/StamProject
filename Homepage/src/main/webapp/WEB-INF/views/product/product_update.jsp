@@ -57,7 +57,7 @@
 								<form method="post" action="product_update_ok"
 									enctype="multipart/form-data">
 									<table class="insert_table">
-									<tr class="insert_tr">
+										<tr class="insert_tr">
 											<td class="insert_td_name">메뉴 선택</td>
 											<td class="insert_td_input"><select name="menuContents">
 													<c:forEach var="dDto" items="${Flist}">
@@ -91,16 +91,16 @@
 											<td class="insert_td_input"><textarea
 													name="productContents" class="pcInput">${pDto.productContents }</textarea></td>
 										</tr>
-									
-											
-											<tr class="insert_tr">
+
+
+										<tr class="insert_tr">
 											<c:if test="${menuParents == 'BRAND'}">
 												<td class="insert_td_name">브랜드 내용</td>
 												<td class="insert_td_input"><input type="text"
 													name="brandContents" value="${pDto.brandContents }"></td>
 											</c:if>
 										</tr>
-											<tr class="insert_tr">
+										<tr class="insert_tr">
 											<td class="insert_td_name">고객 로고</td>
 											<td class="insert_td_input"><input type="file"
 												id="log_img" style="display: none" name="pLogo"> <label
@@ -112,12 +112,21 @@
 												type="hidden" name="companyLogo"
 												value="${pDto.companyLogo }"></td>
 										</tr>
-									
+
 										<tr class="insert_tr">
 											<td class="insert_td_name">사업 로고</td>
 											<td class="insert_td_input"><input type="file"
-												name="yearLogo"></td>
-										</tr>	
+												id="year_img" style="display: none" name="yearLogo"><label
+												for="year_img" id=year_img_update>${pDto.productLogo }
+													수정</label> <label id="year_img_cancle"
+												onclick="year_cancle()" style="display: none">취소</label>
+												<label id="year_img_delete"
+												onclick="year_delete_img()">삭제</label> <input
+												type="hidden" id="yearcancleflag"
+												name="yearCancleflag" value="0"> <input
+												type="hidden" name="yearImg" value="${pDto.productLogo }">
+											</td>
+										</tr>
 
 										<tr class="insert_tr">
 											<td class="insert_td_name">화면 이미지</td>
@@ -161,6 +170,7 @@
 	</div>
 </body>
 <script>
+//고객 로고
 	let log_img = document.getElementById("log_img");
 	let log_img_update = document.getElementById("log_img_update");
 	let log_img_cancle = document.getElementById("log_img_cancle");
@@ -204,7 +214,7 @@
 		cancleflag = 2;
 		document.getElementById("cancleflag").value = log_cancleflag;
 	}
-
+// 사업 이미지
 	// 제품 첨부파일 동작
 	let product_img = document.getElementById("product_img");
 	let product_img_update = document.getElementById("product_img_update");
@@ -248,12 +258,62 @@
 		product_cancleflag = 2;
 		document.getElementById("productcancleflag").value = product_cancleflag;
 	}
-	function prev_btn(event) {
-		event.preventDefault();
-		const productCode = ${productCode};
-		location.href = "/homepage/product_content?productCode=" + productCode;
+	
+// 사업 주제
+	// 제품 첨부파일 동작
+	let year_img = document.getElementById("year_img");
+	let year_img_update = document.getElementById("year_img_update");
+	let year_img_cancle = document.getElementById("year_img_cancle");
+	let year_cancleflag = 0; // 0 = >유지   1=> 새로운 이미지로 변경 2=>이미지를 아예없앰
+	let year_img_after;
+
+	function change_year() {
+		if (!year_img) {
+			year_img.value = year_img_after;
+			document.getElementById("yearcancleflag").value = year_cancleflag;
+		} else {
+			year_img.style.display = "";
+			year_img_update.style.display = "none";
+			year_img_after = product_img.value;
+			year_img_cancle.style.display = "";
+			year_cancleflag = 1;
+			document.getElementById("yearcancleflag").value = year_cancleflag;
+		}
+
+	}
+	year_img.addEventListener('change', change_year);
+
+	function year_cancle() {
+		year_cancleflag = 0;
+
+		year_img.style.display = "none";
+		year_img_update.style.display = "";
+		year_img_after = year_img.value;
+		year_img_cancle.style.display = "none";
+		document.getElementById("yearcancleflag").value = year_cancleflag;
 	}
 
+	function product_delete_img() {
+
+		$("#product_img").val(""); //파일 초기화
+		year_img.style.display = "";
+		year_img_update.style.display = "none";
+		year_img_after = year_img.value;
+		year_img_cancle.style.display = "";
+		year_cancleflag = 2;
+		document.getElementById("yearcancleflag").value = year_cancleflag;
+	}	
+	//이전페이지
+	function prev_btn(event) {
+		event.preventDefault();
+		const productCode = $
+		{
+			productCode
+		}
+		;
+		location.href = "/homepage/product_content?productCode=" + productCode;
+	}
+	//목록페이지
 	function content_btn(event) {
 		event.preventDefault();
 		const menuContents = "${pDto.menuContents}";

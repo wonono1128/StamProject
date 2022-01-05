@@ -91,13 +91,13 @@ public class ProductController {
 			int ProductnextNum = 1;
 		}
 		
-//		String uploadFolder = "C:\\Users\\stam\\git\\StamProject_main\\Homepage\\src\\main\\resources\\static\\images\\logo";
-//		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject_main\\Homepage\\src\\main\\resources\\static\\images\\product";
-//		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject_main\\Homepage\\src\\main\\resources\\static\\images";
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
 
-		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-		String uploadFolder3 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+//		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+//		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+//		String uploadFolder3 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
 		for (MultipartFile multipartFile : pLogo) {
 			System.out.println("---------------------------로고 파일------------------------------------");
 			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
@@ -226,13 +226,16 @@ public class ProductController {
 		int productCode = (int) session.getAttribute("productCode");
 		pDto.setProductCode(productCode);
 		String menuContents = request.getParameter("menuContents");
-		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-//		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-//		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+//		String uploadFolder3 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+//		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+//		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
 		MultipartFile multipartFileLogo = mRequest.getFile("pLogo");
 		MultipartFile multipartFileProduct = mRequest.getFile("pImg");
-//로고
+		MultipartFile multipartFileYear = mRequest.getFile("yearLogo");
+//고객 로고
 		int logoCancleflag = Integer.parseInt(request.getParameter("logoCancleflag"));
 
 		if (logoCancleflag == 0) { // 이전 이미지 그대로 사용
@@ -250,7 +253,7 @@ public class ProductController {
 
 			pDto.setCompanyLogo(" ");
 		}
-// 제품
+// 화면이미지
 		int productCancleFlag = Integer.parseInt(request.getParameter("productCancleflag"));
 		if (productCancleFlag == 0) { // 이전 이미지 그대로 사용
 			String productImg = request.getParameter("productImg");
@@ -266,7 +269,24 @@ public class ProductController {
 
 			pDto.setProductImg(" ");
 		}
+// 사업종류
+		int yearCancleFlag = Integer.parseInt(request.getParameter("yearCancleflag"));
+		if (yearCancleFlag == 0) { // 이전 이미지 그대로 사용
+			String yearImg = request.getParameter("yearImg");
+			pDto.setProductImg(yearImg);
 
+		} else if (yearCancleFlag == 1) { // 새로운 이미지 사용
+
+			pDto.setProductImg(multipartFileYear.getOriginalFilename());
+			File saveFileYear = new File(uploadFolder3, multipartFileYear.getOriginalFilename());
+			multipartFileYear.transferTo(saveFileYear);
+
+		} else { // 이미지 사용안함
+
+			pDto.setProductImg(" ");
+		}
+		
+		
 
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
