@@ -1,103 +1,151 @@
 @charset "UTF-8";
 
-body{
-	width:100vw;
-	height:100vh;
+body {
+	width: 100vw;
+	height: 100vh;
 }
 
-.insert_table{
+.insert_table {
 	border-collapse: separate;
 }
 
-.insert_tr{
+.insert_tr {
 	display: flex;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-    margin-bottom: 20px;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
+	margin-bottom: 20px;
 }
 
- .insert_td_btn > td > button{
-	margin-right: 25px; 
-	width: 120px; 
-	border-radius: 20px; 
-	background-color: white; 
-	color: black; 
-	border: 1px solid black;
-	
-}
-
-.insert_td_btn{
+.insert_td_btn {
 	margin-left: 276px;
 }
 
-.insert_tr > td > button{
+.insert_tr > td > button {
 	margin-right: 10px;
-	width: 120px; 
-	border-radius: 20px; 
-	background-color: white; 
-	color: black; 
+	width: 120px;
+	border-radius: 20px;
+	background-color: white;
+	color: black;
 	border: 1px solid black;
 }
 
-.insert_update_tr{
+.insert_update_tr {
 	margin-left: 207px;
 }
 
-.insert_td_name{
+.insert_td_name {
 	margin-right: 95px;
 	width: 150px;
-    text-align: center;
+	text-align: center;
 }
 
-.insert_td_input{
+ .insert_td_input {
 	width: 35%;
-}
+} 
 
-.insert_td_input > input {
+.insert_td_input>input {
 	height: 30px;
 	font-size: 15px;
 }
 
-.insert_td_input > select {
+.insert_td_input>select {
 	height: 30px;
 }
 
-.insert_div{
+.insert_div {
 	position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 900px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 900px;
 }
 
 .insert_contain {
 	margin-top: 150px;
 }
 
-.insert_title_div{
+.insert_title_div {
 	position: absolute;
-    top: 40px;
+	top: 40px;
 }
-.insert_title_span{
-	
+
+.insert_title_span {
 	font-size: xxx-large;
-    font-weight: 600;
+	font-weight: 600;
 }
 
-
-.pcInput{
+.pcInput {
 	height: 300px;
-	resize:none;
 }
 
-
-
-@media (max-width: 817px)   { 
-	.insert_td_input {
-    	width: 45%;
+@media ( max-width : 1320px) {
+	.insert_table {
+		display: flex;
+		flex-direction: column;
+		border-spacing: 0px 30px;
 	}
 	.insert_td_btn {
-   		margin-left: 0px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		width: 600px;
 	}
+
+	.insert_div {
+		display: flex;
+		flex-direction: column;
+		width: 75vw;
+		justify-content: center;
+	}
+	
+	.insert_td_input {
+		width: 420px;
+} 
+	.insert_td_name{
+	    width: 75px;
+		margin-right: 50px;
+	}
+	
+	.insert_update_tr {
+    margin-left: 82px;
+}
+
+}
+
+@media (max-width: 817px)   { 
+	#insert_contents {
+    resize: none;
+    height: 450px;
+}
+
+.insert_td_btn  {
+    width: 100px;
+    text-align: center;
+    border-radius: 40px;
+    margin-right: 20px;
+    margin-bottom: 4vh;
+}
+.insert_table {
+    display: flex;
+    flex-direction: column;
+    border-spacing: 0px 30px;
+    margin-top: -110px;
+}
+
+.insert_title_div{
+	position: absolute;
+	top: -21px;
+}
+.swiper-slide {
+    display: block;
+    padding-top: 20px;
+    padding-left: 12px;
+    overflow: scroll;
+}
+
+.insert_update_tr{
+	margin-left: 81px;
+}
 }

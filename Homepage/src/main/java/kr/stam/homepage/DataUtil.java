@@ -24,8 +24,8 @@ public @Configuration @EnableTransactionManagement class DataUtil {
 	        dataSourceBuilder.url("jdbc:mysql://localhost:3306/stam?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true");
 	        dataSourceBuilder.username("root");
 //	        dataSourceBuilder.password("1234");
-	        dataSourceBuilder.password("px6546px!");
-//	        dataSourceBuilder.password("asdzxc12!@");
+//	        dataSourceBuilder.password("px6546px!");
+	        dataSourceBuilder.password("asdzxc12!@");
 	        return dataSourceBuilder.build();
 	    }
     @Bean
