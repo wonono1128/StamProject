@@ -95,7 +95,7 @@
 														name="update_name" class="update_title" required
 														maxlength="15">
 													</td>
-													<td class="notice_td">
+													<td class="notice_td notice_checkbox">
 														<input type="checkbox"
 														value=${dDto.menuCode } name="delete_chk"
 														data-cartNum="${dDto.menuCode}" class="delete_chk">
@@ -154,7 +154,10 @@
 		ths.style.display = "none";
 		$(ths).next().css("display", "");
 		
+		var parent_title = ths.parentNode.parentNode;
 		
+		$(parent_title).children('.notice_checkbox').children('.delete_chk').attr('checked', true);
+	
 
 	}
 
@@ -172,9 +175,13 @@
 									function() {
 										updateTitleArray.push($(this).val());
 										alert($(this).val());
+									
+									});
+							$("input[class='delete_chk']:checked").each(
+									function() {
 										updateNumArray.push($(this).attr(
-												"data-cartNum"));
-										alert($(this).attr("data-cartNum"));
+										"data-cartNum"));
+								alert($(this).attr("data-cartNum"));
 									});
 
 							$

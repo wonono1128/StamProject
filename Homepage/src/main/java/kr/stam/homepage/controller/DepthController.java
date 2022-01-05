@@ -1,7 +1,9 @@
 package kr.stam.homepage.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -52,7 +54,7 @@ public class DepthController {
 		System.out.println("인서트페이지");
 
 		if (session.getAttribute("level") != null) {
-			
+
 			session.getAttribute("MenuParents");
 			ArrayList<DepthDto> Flist = dDao.Flist();
 			model.addAttribute("Flist", Flist);
@@ -62,48 +64,40 @@ public class DepthController {
 		}
 	}
 
-
 	@RequestMapping(value = "/depth_insert_ok", method = RequestMethod.POST)
 	@ResponseBody
-	public int depth_insert_ok(HttpSession session, @RequestParam(value = "insertTitle[]") List<String> insertArray, DepthDto dDto,HttpServletRequest request,
-			DepthLogDto dLDto) throws Exception {
+	public int depth_insert_ok(HttpSession session, @RequestParam(value = "insertTitle[]") List<String> insertArray,
+			DepthDto dDto, HttpServletRequest request, DepthLogDto dLDto) throws Exception {
 
 		int result = 0;
-		String menuParents=request.getParameter("menuParents");
+		String menuParents = request.getParameter("menuParents");
 		String menuContents = "";
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
-		
-		
-		if(!insertArray.isEmpty()) {
+
+		if (!insertArray.isEmpty()) {
 			for (String i : insertArray) {
 				menuContents = i;
-				if(menuContents != "") {
+				if (menuContents != "") {
 					System.out.println("메뉴콘텐츠는 값이있다!");
 					dDto.setMenuParents(menuParents);
 					dDto.setMenuContents(menuContents);
 					dDao.insert(dDto);
 					result = 1;
-				}else {
+				} else {
 					System.out.println("메뉴콘텐츠는 값이없다!");
 					result = 2;
 				}
 				System.out.println("메뉴콘텐츠는 if문끝났다!");
 			}
-		}
-		else{
+		} else {
 			System.out.println("전부 널이다.");
 			result = 2;
 		}
-		
-
-
 
 		return result;
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/depth_delete", method = RequestMethod.POST)
 	@ResponseBody
 	public int deleteCart(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, DepthDto dDto,
@@ -148,15 +142,15 @@ public class DepthController {
 	}
 
 	@RequestMapping("/depth_update_ok2")
-	public String depth_update_ok2(HttpServletRequest request, Model model, String menuParents, HttpSession session, DepthDto dDto,
-			DepthLogDto dLDto, int menuCode) {
+	public String depth_update_ok2(HttpServletRequest request, Model model, String menuParents, HttpSession session,
+			DepthDto dDto, DepthLogDto dLDto, int menuCode) {
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
 		if (session.getAttribute("nextNum") != null) {
 			int nextNum = (int) session.getAttribute("nextNum");
 
 		}
-		
+
 		dDto.setMenuParents(menuParents);
 		model.addAttribute("ndto", dDto);
 
@@ -168,53 +162,49 @@ public class DepthController {
 		dLDao.insert(dLDto);
 		return "redirect:depth?MenuParents=" + menuParents;
 	}
-	
+
 	@RequestMapping(value = "/depth_update_ok", method = RequestMethod.POST)
 	@ResponseBody
-	public int depth_update_ok2(HttpSession session,Model model, @RequestParam(value = "updateTitle[]") List<String> updateArray, @RequestParam(value = "updateNum[]") List<String> updateNumArray, DepthDto dDto,HttpServletRequest request,
+	public int depth_update_ok2(HttpSession session, Model model,
+			@RequestParam(value = "updateTitle[]") List<String> updateTitleArray,
+			@RequestParam(value = "updateNum[]") List<String> updateNumArray, DepthDto dDto, HttpServletRequest request,
 			DepthLogDto dLDto) throws Exception {
 
 		int result = 0;
-		String menuParents=request.getParameter("menuParents");
+		String menuParents = request.getParameter("menuParents");
 		String menuContents = "";
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
-		
+
 		int menuCode = 0;
-		if(!updateArray.isEmpty()) {
-			
-				System.out.println("수정값은"+menuCode);
-				for (String i : updateArray) {
-					
-					menuContents = i;
-					System.out.println("수정값은"+menuContents);
-					for(String j : updateNumArray) {
-						menuCode = Integer.parseInt(j);
-					if(menuContents != "") {
-						System.out.println("메뉴콘텐츠는 값이있다!");
-						dDto.setMenuCode(menuCode);
-						dDto.setMenuParents(menuParents);
-						dDto.setMenuContents(menuContents);
-						model.addAttribute("ndto", dDto);
-						dDao.update(dDto);
-						result = 1;
-					}else {
-						System.out.println("메뉴콘텐츠는 값이없다!");
-						result = 2;
+
+		if (!updateTitleArray.isEmpty()) {
+
+
+			for (String i : updateNumArray) {
+				Map<String, Object> paramMap = new HashMap<String, Object>();
+				if (!updateTitleArray.isEmpty()) {
+					for (int t = 0; t < updateNumArray.size(); t++) {
+						paramMap.put(updateNumArray.get(t), updateTitleArray.get(t));
 					}
-					System.out.println("메뉴콘텐츠는 if문끝났다!");
+					menuCode = Integer.parseInt(i);
+					menuContents = (String) paramMap.get(i);
+					System.out.println("수정코드는" + menuCode);
+					System.out.println("수정값은" + menuContents);
+				dDto.setMenuContents(menuContents);
+				dDto.setMenuCode(menuCode);
+				dDto.setMenuParents(menuParents);
+
+				dDao.update(dDto);
+				model.addAttribute("ndto", dDto);
+					result = 1;
 				}
 			}
-		}
-		else{
-			System.out.println("전부 널이다.");
+		} else {
 			result = 2;
 		}
-		
-
-
 
 		return result;
 	}
-	
+
 }
