@@ -147,8 +147,8 @@ public class DepthController {
 		}
 	}
 
-	@RequestMapping("/depth_update_ok")
-	public String depth_update_ok(HttpServletRequest request, Model model, String menuParents, HttpSession session, DepthDto dDto,
+	@RequestMapping("/depth_update_ok2")
+	public String depth_update_ok2(HttpServletRequest request, Model model, String menuParents, HttpSession session, DepthDto dDto,
 			DepthLogDto dLDto, int menuCode) {
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
@@ -168,5 +168,53 @@ public class DepthController {
 		dLDao.insert(dLDto);
 		return "redirect:depth?MenuParents=" + menuParents;
 	}
+	
+	@RequestMapping(value = "/depth_update_ok", method = RequestMethod.POST)
+	@ResponseBody
+	public int depth_update_ok2(HttpSession session,Model model, @RequestParam(value = "updateTitle[]") List<String> updateArray, @RequestParam(value = "updateNum[]") List<String> updateNumArray, DepthDto dDto,HttpServletRequest request,
+			DepthLogDto dLDto) throws Exception {
 
+		int result = 0;
+		String menuParents=request.getParameter("menuParents");
+		String menuContents = "";
+		String managerId = (String) session.getAttribute("mId");
+		String managerName = (String) session.getAttribute("mName");
+		
+		int menuCode = 0;
+		if(!updateArray.isEmpty()) {
+			
+				System.out.println("수정값은"+menuCode);
+				for (String i : updateArray) {
+					
+					menuContents = i;
+					System.out.println("수정값은"+menuContents);
+					for(String j : updateNumArray) {
+						menuCode = Integer.parseInt(j);
+					if(menuContents != "") {
+						System.out.println("메뉴콘텐츠는 값이있다!");
+						dDto.setMenuCode(menuCode);
+						dDto.setMenuParents(menuParents);
+						dDto.setMenuContents(menuContents);
+						model.addAttribute("ndto", dDto);
+						dDao.update(dDto);
+						result = 1;
+					}else {
+						System.out.println("메뉴콘텐츠는 값이없다!");
+						result = 2;
+					}
+					System.out.println("메뉴콘텐츠는 if문끝났다!");
+				}
+			}
+		}
+		else{
+			System.out.println("전부 널이다.");
+			result = 2;
+		}
+		
+
+
+
+		return result;
+	}
+	
 }

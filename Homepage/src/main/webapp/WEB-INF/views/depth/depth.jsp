@@ -87,18 +87,23 @@
 													<td class="notice_td">${dDto.menuCode}</td>
 													<td class="notice_td notice_select_td"
 														style="display: flex; justify-content: space-between; align-items: center;">
-														<span class="depth_menuContents" onClick="update_click()">${dDto.menuContents}</span>
-														<input type="text" style="display:none;"placeholder="제목을 입력해주세요" name="update_name" class="update_title" required maxlength="15">
-														<a href="depth_update?menuCode=${dDto.menuCode }"
-														id="img_btn" class="icon-left-padding update_btn"
-														style="margin-left: 20px;"> <i class="far fa-edit"></i>
-													</a>
+														<span class="depth_menuContents"
+														onClick="update_click(this)">${dDto.menuContents}</span> 
+														<input
+														type="text" style="display: none;"
+														placeholder="제목을 입력해주세요" data-cartNum="${dDto.menuCode}"
+														name="update_name" class="update_title" required
+														maxlength="15">
 													</td>
-													<td class="notice_td"><input type="checkbox"
+													<td class="notice_td">
+														<input type="checkbox"
 														value=${dDto.menuCode } name="delete_chk"
-														data-cartNum="${dDto.menuCode}" class="delete_chk"></td>
-													<td style="display: none"><input type="text" value=""
-														id="chk_num"></td>
+														data-cartNum="${dDto.menuCode}" class="delete_chk">
+													</td>
+													<td style="display: none">
+														<input type="text" value=""
+														id="chk_num">
+													</td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -112,6 +117,8 @@
 										<button onclick="addRow()" id="add_btn"
 											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가</button>
 										<button id="insert_finish"
+											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black; display: none;">완료</button>
+										<button id="update_finish"
 											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black; display: none;">완료</button>
 										<button class="delete_btn" id="delete_btn"
 											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">삭제</button>
@@ -138,6 +145,63 @@
 </body>
 
 <script>
+	//수정
+	function update_click(ths) {
+		const update_title = document.querySelector(".update_title");
+		document.querySelector(".delete_btn").style.display = "none";
+		document.querySelector("#add_btn").style.display = "none";
+		document.querySelector("#update_finish").style.display = "";
+		ths.style.display = "none";
+		$(ths).next().css("display", "");
+		
+		
+
+	}
+
+	//수정완료버튼 클릭시
+	$("#update_finish")
+			.click(
+					function() {
+						const MenuParents = document
+								.querySelector(".MenuParents").value;
+						var confirm_val = confirm("정말 수정하시겠습니까?");
+						if (confirm_val) {
+							var updateTitleArray = new Array();
+							var updateNumArray = new Array();
+							$("input[class='update_title']").each(
+									function() {
+										updateTitleArray.push($(this).val());
+										alert($(this).val());
+										updateNumArray.push($(this).attr(
+												"data-cartNum"));
+										alert($(this).attr("data-cartNum"));
+									});
+
+							$
+									.ajax({
+										url : "/homepage/depth_update_ok?menuParents="
+												+ MenuParents,
+										type : "post",
+										data : {
+											updateTitle : updateTitleArray,
+											updateNum : updateNumArray
+										},
+										success : function(result) {
+											if (result == 1) {
+												alert("입력 성공");
+												location.href = "/homepage/depth?MenuParents="
+														+ MenuParents;
+											} else if (result == 2) {
+												alert("빈값입니다.");
+											} else {
+												alert("입력 실패");
+											}
+										}
+									});
+						}
+					});
+
+	//추가
 	function addRow() {
 		// table element 찾기
 		const table = document.getElementById('notice_table');
@@ -168,13 +232,8 @@
 		document.getElementById('delete_btn').style.display = "none";
 		document.getElementById('insert_finish').style.display = "";
 	}
-	function go_insert() {
-		location.href = "depth_insert";
-	}
-	function depth_update(event) {
-		event.preventDefault();
 
-	}
+	//추가완료버튼 클릭시
 	$("#insert_finish")
 			.click(
 					function() {
@@ -209,6 +268,7 @@
 									});
 						}
 					});
+	//삭제버튼 클릭시 동작					
 	$(".delete_btn")
 			.click(
 					function() {
