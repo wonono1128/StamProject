@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="resources/static/css/style.css">
 <link rel="stylesheet"
 	href="resources/static/css/product/product_insert.css">
+	
 
 <script src="https://kit.fontawesome.com/070c967850.js"
 	crossorigin="anonymous"></script>
@@ -82,23 +83,25 @@
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">고객명</td>
-											<td class="insert_td_input"><input type="text"
+											<td class="insert_td_input"><input type="text" onkeyup="fn_checkByte(this)" required
 												name="companyName"></td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">사업명</td>
-											<td class="insert_td_input"><input type="text"
+											<td class="insert_td_input"><input type="text" required maxlength="25"
 												name="productName"></td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">사업 설명</td>
-											<td class="insert_td_input"><textarea
+											<td class="insert_td_input"><textarea required maxlength="100"
 													name="productContents" class="pcInput"></textarea></td>
 										</tr>
 										<tr class="insert_tr">
+										<c:if test="${menuParents == 'BRAND'}">
 											<td class="insert_td_name">브랜드 내용</td>
 											<td class="insert_td_input"><input type="text"
 												name="brandContents"></td>
+										</c:if>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">고객 로고</td>
@@ -115,7 +118,7 @@
 											<td class="insert_td_input"><input type="file"
 												name="pImg"></td>
 										</tr>
-										<tr class="insert_tr">
+										<tr class="insert_tr insert_td_btn">
 											<td>
 												<button class="insert_td_btn">추가</button>
 											</td>
@@ -141,11 +144,12 @@
 	</div>
 </body>
 <script>
-	function insert_contentBtn(event) {
-		event.preventDefault();
-		const menuContents = ${referMenuContents};
+function insert_contentBtn(event) {
+	event.preventDefault();
+	const menuContents = ${referMenuContents};
 
-		location.href = "/homepage/product?menuContents=" + menuContents;
-	}
+	location.href = "/homepage/product?menuContents=" + menuContents;
+}
 </script>
+<script src="resources/static/js/product.js"></script>
 </html>

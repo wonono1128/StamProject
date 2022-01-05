@@ -64,9 +64,9 @@
 										value=${pDto.menuContents }>
 
 									<button onclick="product_update()"
-										style="margin: 100px 50px; width: 100px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">수정</button>
+										class="content_update">수정</button>
 									<button onclick="product_go()"
-										style="margin-right: 25px; width: 100px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">목록</button>
+										class="content_content">목록</button>
 								</div>
 							</div>
 						</div>

@@ -47,7 +47,6 @@ body {
 
 .notice_content_textarea {
 	overflow-wrap: anywhere;
-	overflow-wrap: anywhere;
 	height: 600px;
 	position: relative;
 	overflow-y: auto;

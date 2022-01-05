@@ -273,17 +273,17 @@ public class ProductController {
 		int yearCancleFlag = Integer.parseInt(request.getParameter("yearCancleflag"));
 		if (yearCancleFlag == 0) { // 이전 이미지 그대로 사용
 			String yearImg = request.getParameter("yearImg");
-			pDto.setProductImg(yearImg);
+			pDto.setProductLogo(yearImg);
 
 		} else if (yearCancleFlag == 1) { // 새로운 이미지 사용
 
-			pDto.setProductImg(multipartFileYear.getOriginalFilename());
+			pDto.setProductLogo(multipartFileYear.getOriginalFilename());
 			File saveFileYear = new File(uploadFolder3, multipartFileYear.getOriginalFilename());
 			multipartFileYear.transferTo(saveFileYear);
 
 		} else { // 이미지 사용안함
 
-			pDto.setProductImg(" ");
+			pDto.setProductLogo(" ");
 		}
 		
 		
