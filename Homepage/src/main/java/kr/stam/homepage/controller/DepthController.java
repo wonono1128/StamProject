@@ -180,24 +180,27 @@ public class DepthController {
 
 		if (!updateTitleArray.isEmpty()) {
 
-
 			for (String i : updateNumArray) {
 				Map<String, Object> paramMap = new HashMap<String, Object>();
 				if (!updateTitleArray.isEmpty()) {
 					for (int t = 0; t < updateNumArray.size(); t++) {
 						paramMap.put(updateNumArray.get(t), updateTitleArray.get(t));
 					}
-					menuCode = Integer.parseInt(i);
-					menuContents = (String) paramMap.get(i);
-					System.out.println("수정코드는" + menuCode);
-					System.out.println("수정값은" + menuContents);
-				dDto.setMenuContents(menuContents);
-				dDto.setMenuCode(menuCode);
-				dDto.setMenuParents(menuParents);
+					if (menuContents != "") {
+						menuCode = Integer.parseInt(i);
+						menuContents = (String) paramMap.get(i);
+						System.out.println("수정코드는" + menuCode);
+						System.out.println("수정값은" + menuContents);
+						dDto.setMenuContents(menuContents);
+						dDto.setMenuCode(menuCode);
+						dDto.setMenuParents(menuParents);
 
-				dDao.update(dDto);
-				model.addAttribute("ndto", dDto);
-					result = 1;
+						dDao.update(dDto);
+						model.addAttribute("ndto", dDto);
+						result = 1;
+					}else {
+						result=2;
+					}
 				}
 			}
 		} else {
