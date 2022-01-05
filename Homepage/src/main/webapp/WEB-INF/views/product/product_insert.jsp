@@ -99,7 +99,7 @@
 										<tr class="insert_tr">
 										<c:if test="${menuParents == 'BRAND'}">
 											<td class="insert_td_name">브랜드 내용</td>
-											<td class="insert_td_input"><input type="text"
+											<td class="insert_td_input"><input type="text" required maxlength="20"
 												name="brandContents"></td>
 										</c:if>
 										</tr>

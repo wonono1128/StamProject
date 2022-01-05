@@ -78,17 +78,17 @@
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">고객명</td>
-											<td class="insert_td_input"><input type="text"
+											<td class="insert_td_input"><input type="text" onkeyup="fn_checkByte(this)" required
 												name="companyName" value="${pDto.companyName }"></td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">사업명</td>
-											<td class="insert_td_input"><input type="text"
+											<td class="insert_td_input"><input type="text" required maxlength="25"
 												name="productName" value="${pDto.productName }"></td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">사업 설명</td>
-											<td class="insert_td_input"><textarea
+											<td class="insert_td_input"><textarea required maxlength="100"
 													name="productContents" class="pcInput">${pDto.productContents }</textarea></td>
 										</tr>
 
@@ -96,7 +96,7 @@
 										<tr class="insert_tr">
 											<c:if test="${menuParents == 'BRAND'}">
 												<td class="insert_td_name">브랜드 내용</td>
-												<td class="insert_td_input"><input type="text"
+												<td class="insert_td_input"><input type="text" required maxlength="20"
 													name="brandContents" value="${pDto.brandContents }"></td>
 											</c:if>
 										</tr>
@@ -185,4 +185,5 @@ function content_btn(event) {
 }
 </script>
 <script src="resources/static/js/productupdate.js"></script>
+<script src="resources/static/js/product.js"></script>
 </html>
