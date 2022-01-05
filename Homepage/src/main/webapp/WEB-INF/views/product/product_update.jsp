@@ -59,7 +59,7 @@
 									<table class="insert_table">
 										<tr class="insert_tr">
 											<td class="insert_td_name">메뉴 선택</td>
-											<td class="insert_td_input"><select name="menuContents">
+											<td class="insert_td_input"><select name="menuContents" id="menu_contents">
 													<c:forEach var="dDto" items="${Flist}">
 														<c:if test="${dDto.menuState == 1 }">
 															<c:if test="${dDto.menuParents != 'SOLUTION' }">
@@ -170,7 +170,12 @@
 	</div>
 </body>
 <script>
-
+window.onload = function() {
+	//페이지 입장시 자신이 입장한 뎁스가 자동으로 선택
+	let menu_contents = "${pDto.menuContents}";
+	$("#menu_contents").val(menu_contents)
+			.attr("selected", "selected");
+}
 //이전페이지
 function prev_btn(event) {
 	event.preventDefault();

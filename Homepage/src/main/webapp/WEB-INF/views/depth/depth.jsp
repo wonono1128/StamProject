@@ -61,7 +61,7 @@
 						<div class="notice_div">
 							<span class="notice_span">${MenuParents }</span>
 
-							<table class="notice_table">
+							<table class="notice_table" id="notice_table">
 								<tr>
 									<!-- 검색행 -->
 								</tr>
@@ -87,10 +87,9 @@
 													<td class="notice_td">${dDto.menuCode}</td>
 													<td class="notice_td notice_select_td"
 														style="display: flex; justify-content: space-between; align-items: center;">
+														<span class="depth_menuContents" onClick="update_click()">${dDto.menuContents}</span>
+														<input type="text" style="display:none;"placeholder="제목을 입력해주세요" name="update_name" class="update_title" required maxlength="15">
 														<a href="depth_update?menuCode=${dDto.menuCode }"
-														class="notice_td_a" id="${dDto.menuContents}"> <span
-															class="depth_menuContents">${dDto.menuContents}</span>
-													</a> <a href="depth_update?menuCode=${dDto.menuCode }"
 														id="img_btn" class="icon-left-padding update_btn"
 														style="margin-left: 20px;"> <i class="far fa-edit"></i>
 													</a>
@@ -110,9 +109,11 @@
 									<td></td>
 									<td colspan="2"
 										style="display: flex; justify-content: end; width: 450px; align-items: center; position: absolute; right: 0px;">
-										<button onclick="go_insert()"
+										<button onclick="addRow()" id="add_btn"
 											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가</button>
-										<button class="delete_btn"
+										<button id="insert_finish"
+											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black; display: none;">완료</button>
+										<button class="delete_btn" id="delete_btn"
 											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">삭제</button>
 									</td>
 								</tr>
@@ -137,6 +138,36 @@
 </body>
 
 <script>
+	function addRow() {
+		// table element 찾기
+		const table = document.getElementById('notice_table');
+
+		// 새 행(Row) 추가
+		const newRow = table.insertRow(3);
+
+		// 새 행(Row)에 Cell 추가
+		const newCell1 = newRow.insertCell(0);
+		const newCell2 = newRow.insertCell(1);
+		const newCell3 = newRow.insertCell(2);
+
+		// Cell에 텍스트 추가
+
+		var DepthNextNum = $
+		{
+			DepthNextNum
+		}
+		;
+		newCell1.innerHTML = '번호는 자동추가';
+		newCell2.innerHTML = '<input type="text" placeholder="제목을 입력해주세요" name="input_name" class="input_title" required maxlength="15"> ';
+		newCell3.innerHTML = '<input type="checkbox" value="'+DepthNextNum+'" name="delete_chk" data-cartNum="'+DepthNextNum+'" class="delete_chk">'
+		newCell1.classList.toggle('notice_td');
+		newCell2.classList.toggle('notice_td');
+		newCell2.classList.toggle('notice_title_td');
+		newCell3.classList.toggle('notice_td');
+
+		document.getElementById('delete_btn').style.display = "none";
+		document.getElementById('insert_finish').style.display = "";
+	}
 	function go_insert() {
 		location.href = "depth_insert";
 	}
@@ -144,7 +175,40 @@
 		event.preventDefault();
 
 	}
+	$("#insert_finish")
+			.click(
+					function() {
+						const MenuParents = document
+								.querySelector(".MenuParents").value;
+						var confirm_val = confirm("정말 추가하시겠습니까?");
+						if (confirm_val) {
+							var insertArray = new Array();
 
+							$("input[class='input_title']").each(function() {
+								insertArray.push($(this).val());
+							});
+							$
+									.ajax({
+										url : "/homepage/depth_insert_ok?menuParents="
+												+ MenuParents,
+										type : "post",
+										data : {
+											insertTitle : insertArray
+										},
+										success : function(result) {
+											if (result == 1) {
+												alert("입력 성공");
+												location.href = "/homepage/depth?MenuParents="
+														+ MenuParents;
+											} else if (result == 2) {
+												alert("빈값입니다.");
+											} else {
+												alert("입력 실패");
+											}
+										}
+									});
+						}
+					});
 	$(".delete_btn")
 			.click(
 					function() {

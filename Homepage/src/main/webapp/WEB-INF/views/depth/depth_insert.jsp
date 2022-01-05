@@ -61,13 +61,16 @@
 								<table class="insert_table">
 									<tr class="insert_tr">
 										<td class="insert_td_name">메뉴명</td>
-										<td class="insert_td_input"><select name="menuParents">
-												<option value="ABOUT" selected>ABOUT</option>
+										<td class="insert_td_input"><select name="menuParents"
+											id="menu_parents_select">
+												<option value="ABOUT">ABOUT</option>
 												<option value="PORTFOLIO">PORTFOLIO</option>
 												<option value="BRAND">BRAND</option>
 												<option value="SOLUTION">SOLUTION</option>
 										</select></td>
-										<td class="insert_td_input" style="display:none;"><input type="hidden" placeholder="메뉴명을 입력해주세요"  class="MenuParents" name="menuParents" value=${MenuParents }></td>   
+										<td class="insert_td_input" style="display: none;"><input
+											type="hidden" placeholder="메뉴명을 입력해주세요" class="MenuParents"
+											name="menuParents" value=${MenuParents }></td>
 									</tr>
 									<tr class="insert_tr">
 										<td class="insert_td_name">소제목</td>
@@ -105,9 +108,16 @@
 
 </body>
 <script type="text/javascript">
+	window.onload = function() {
+		//페이지 입장시 자신이 입장한 뎁스가 자동으로 선택
+		const menu_parents = document.querySelector(".MenuParents").value;
+		$("#menu_parents_select").val(menu_parents)
+				.attr("selected", "selected");
+	}
+
 	function depth_go(event) {
 		event.preventDefault();
-		
+
 		const MenuParents = document.querySelector(".MenuParents").value;
 		location.href = "/homepage/depth?MenuParents=" + MenuParents;
 	}

@@ -52,6 +52,8 @@ public class DepthController {
 		System.out.println("인서트페이지");
 
 		if (session.getAttribute("level") != null) {
+			
+			session.getAttribute("MenuParents");
 			ArrayList<DepthDto> Flist = dDao.Flist();
 			model.addAttribute("Flist", Flist);
 			return "depth/depth_insert";
@@ -60,31 +62,48 @@ public class DepthController {
 		}
 	}
 
-	@RequestMapping("/depth_insert_ok")
-	public String depth_insert_ok(HttpServletRequest request, Model model, HttpSession session, DepthDto dDto,
-			String menuParents, DepthLogDto dLDto) {
 
-		if (session.getAttribute("DepthNextNum") != null) {
-			int DepthNextNum = (int) session.getAttribute("DepthNextNum");
-			dLDto.setMenuCode(DepthNextNum + 1);
-		}else {
-			int DepthNextNum = 1;
-			dLDto.setMenuCode(DepthNextNum);
-		}
-		model.addAttribute("ndto", dDto);
-		dDto.setMenuParents(menuParents);
-		dDao.insert(dDto);
+	@RequestMapping(value = "/depth_insert_ok", method = RequestMethod.POST)
+	@ResponseBody
+	public int depth_insert_ok(HttpSession session, @RequestParam(value = "insertTitle[]") List<String> insertArray, DepthDto dDto,HttpServletRequest request,
+			DepthLogDto dLDto) throws Exception {
+
+		int result = 0;
+		String menuParents=request.getParameter("menuParents");
+		String menuContents = "";
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
+		
+		
+		if(!insertArray.isEmpty()) {
+			for (String i : insertArray) {
+				menuContents = i;
+				if(menuContents != "") {
+					System.out.println("메뉴콘텐츠는 값이있다!");
+					dDto.setMenuParents(menuParents);
+					dDto.setMenuContents(menuContents);
+					dDao.insert(dDto);
+					result = 1;
+				}else {
+					System.out.println("메뉴콘텐츠는 값이없다!");
+					result = 2;
+				}
+				System.out.println("메뉴콘텐츠는 if문끝났다!");
+			}
+		}
+		else{
+			System.out.println("전부 널이다.");
+			result = 2;
+		}
+		
 
-		dLDto.setManagerId(managerId);
-		dLDto.setManagerName(managerName);
-		dLDto.setLogType("Insert");
-		dLDao.insert(dLDto);
 
-		return "redirect:depth?MenuParents=" + menuParents;
+
+		return result;
 	}
-
+	
+	
+	
 	@RequestMapping(value = "/depth_delete", method = RequestMethod.POST)
 	@ResponseBody
 	public int deleteCart(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, DepthDto dDto,
