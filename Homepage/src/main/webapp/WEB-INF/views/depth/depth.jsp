@@ -91,19 +91,15 @@
 														onClick="update_click(this)">${dDto.menuContents}</span> 
 														<input
 														type="text" style="display: none;"
-														placeholder="제목을 입력해주세요" data-cartNum="${dDto.menuCode}"
-														name="update_name" class="update_title" required
-														maxlength="15">
+														placeholder="제목을 입력해주세요" name="update_name"
+														class="update_title" required maxlength="15">
 													</td>
-													<td class="notice_td notice_checkbox">
-														<input type="checkbox"
-														value=${dDto.menuCode } name="delete_chk"
+													<td class="notice_td notice_checkbox"><input
+														type="checkbox" value=${dDto.menuCode } name="delete_chk"
 														data-cartNum="${dDto.menuCode}" class="delete_chk">
 													</td>
-													<td style="display: none">
-														<input type="text" value=""
-														id="chk_num">
-													</td>
+													<td style="display: none"><input type="text" value=""
+														id="chk_num"></td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -147,45 +143,40 @@
 <script>
 	//수정
 	function update_click(ths) {
-		const update_title = document.querySelector(".update_title");
+
 		document.querySelector(".delete_btn").style.display = "none";
 		document.querySelector("#add_btn").style.display = "none";
 		document.querySelector("#update_finish").style.display = "";
+		
 		ths.style.display = "none";
 		$(ths).next().css("display", "");
-		
-		var parent_title = ths.parentNode.parentNode;
-		
-		$(parent_title).children('.notice_checkbox').children('.delete_chk').attr('checked', true);
-	
 
+		var parent_title = ths.parentNode.parentNode;
+		var delete_chk =  document.querySelectorAll(".delete_chk");
+		$(parent_title).children('.notice_checkbox').children('.delete_chk').attr('checked', true);
+		$(delete_chk).attr("disabled",true);
 	}
 
 	//수정완료버튼 클릭시
 	$("#update_finish")
 			.click(
 					function() {
-						const MenuParents = document
-								.querySelector(".MenuParents").value;
+						const MenuParents = document.querySelector(".MenuParents").value;
 						var confirm_val = confirm("정말 수정하시겠습니까?");
 						if (confirm_val) {
 							var updateTitleArray = new Array();
 							var updateNumArray = new Array();
-							$("input[class='update_title']").each(
-									function() {
-										updateTitleArray.push($(this).val());
-										alert($(this).val());
-									
-									});
+							$("input[class='update_title']").each(function() {
+								updateTitleArray.push($(this).val());
+							
+							});
 							$("input[class='delete_chk']:checked").each(
 									function() {
 										updateNumArray.push($(this).attr(
-										"data-cartNum"));
-								alert($(this).attr("data-cartNum"));
+												"data-cartNum"));
 									});
 
-							$
-									.ajax({
+							$.ajax({
 										url : "/homepage/depth_update_ok?menuParents="
 												+ MenuParents,
 										type : "post",
@@ -199,7 +190,7 @@
 												location.href = "/homepage/depth?MenuParents="
 														+ MenuParents;
 											} else if (result == 2) {
-												alert("빈값입니다.");
+												alert("빈값입니다. 값을 입력해주세요.");
 											} else {
 												alert("입력 실패");
 											}
