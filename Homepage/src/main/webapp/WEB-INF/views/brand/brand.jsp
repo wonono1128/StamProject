@@ -63,9 +63,7 @@
 								</div>
 								<div class="contents item brand">
 									<div class="tit_div tit_div2">
-										<h3>${pDto.menuContents }</h3>
-										<a href="javascript:void(0);" class="btn_open mo"
-											data-target="brand01"></a>
+										<img src="resources/static/images/${pDto.productLogo }" alt="">
 									</div>
 									<div class="cont">
 										<div class="conts_div">

@@ -67,9 +67,8 @@
 								</div>
 								<div class="contents item">
 									<div class="tit_div s_num_div">
-										<span class="s_num">${pDto.menuContents }</span> <a
-											href="javascript:void(0);" class="btn_open mo"
-											data-target="portfolio2021_1"></a>
+										<span class="s_num"><img src="resources/static/images/${pDto.productLogo }"
+										alt=""></span>
 									</div>
 									<div class="cont">
 										<div class="conts_div">
