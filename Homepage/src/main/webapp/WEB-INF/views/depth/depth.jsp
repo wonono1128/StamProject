@@ -62,14 +62,14 @@
 							<span class="notice_span">${MenuParents }</span>
 
 							<table class="notice_table" id="notice_table">
-								<tr>
+								<tr class="notice_tr">
 									<!-- 검색행 -->
 								</tr>
-								<tr style="display: none">
+								<tr class="notice_tr" style="display: none">
 									<td><input type="text" value=${MenuParents }
 										class="MenuParents"></td>
 								</tr>
-								<tr class="notice-tr top-tr">
+								<tr class="notice_tr top-tr">
 									<td class="notice_th td_num">번호</td>
 									<td class="notice_th td_mangager">소제목</td>
 									<td class="notice_th td_chk">선택</td>
@@ -110,6 +110,8 @@
 									<td></td>
 									<td colspan="2"
 										style="display: flex; justify-content: end; width: 450px; align-items: center; position: absolute; right: 0px;">
+										<button onclick="before(0)" id="before_btn" 
+											style="margin-top: 20px; display: none; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">취소</button>
 										<button onclick="addRow()" id="add_btn"
 											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가</button>
 										<button id="insert_finish"
@@ -141,10 +143,18 @@
 </body>
 
 <script>
+	//취소
+	function before(){
+		const MenuParents = document.querySelector(".MenuParents").value;
+		location.href = "/homepage/depth?MenuParents=" + MenuParents;
+		
+	}
+
 	//수정
 	function update_click(ths) {
-
+		
 		document.querySelector(".delete_btn").style.display = "none";
+		document.querySelector("#before_btn").style.display = "";
 		document.querySelector("#add_btn").style.display = "none";
 		document.querySelector("#update_finish").style.display = "";
 		
@@ -220,15 +230,25 @@
 		}
 		;
 		newCell1.innerHTML = '번호는 자동추가';
-		newCell2.innerHTML = '<input type="text" placeholder="제목을 입력해주세요" name="input_name" class="input_title" required maxlength="15"> ';
+		newCell2.innerHTML = '<input type="text" placeholder="제목을 입력해주세요" name="input_name" id="input_title"class="input_title" required maxlength="15"> <input type="button"value="X" onClick="input_cancle(this)"> ';
 		newCell3.innerHTML = '<input type="checkbox" value="'+DepthNextNum+'" name="delete_chk" data-cartNum="'+DepthNextNum+'" class="delete_chk">'
+		newRow.classList.toggle('notice_tr');
 		newCell1.classList.toggle('notice_td');
 		newCell2.classList.toggle('notice_td');
 		newCell2.classList.toggle('notice_title_td');
 		newCell3.classList.toggle('notice_td');
-
+		document.querySelector("#before_btn").style.display = "";
 		document.getElementById('delete_btn').style.display = "none";
 		document.getElementById('insert_finish').style.display = "";
+	}
+	
+	function input_cancle(ths){
+		const table = document.getElementById('notice_table');
+		const notice_tr = document.querySelectorAll(".notice_tr");
+		var parent_title = ths.parentNode.parentNode;
+		var index = $( notice_tr ).index( parent_title );
+
+		table.deleteRow(index);
 	}
 
 	//추가완료버튼 클릭시
