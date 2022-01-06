@@ -29,14 +29,14 @@ public class LoginController {
 	public String login(Model model, HttpSession session, HttpServletRequest request) {
 		String referer = (String) request.getHeader("REFERER");
 		referer = referer.substring(referer.length() - 5, referer.length());
-		System.out.println(referer);
+		
 		if (referer.equals("login")) {
-			System.out.println("같다");
+			
 		} else {
 			String error = (String) session.getAttribute("error");
-			System.out.println("에러내용은?" + error);
+			
 			session.removeAttribute("error");
-			System.out.println("이전페이지가 로그인이아님");
+			
 		}
 		return "login/login";
 	}
@@ -50,7 +50,7 @@ public class LoginController {
 
 			String MenuParent = Flist.get(i).getMenuParents();
 			session.setAttribute("MenuParent", MenuParent);
-			System.out.println("로그인시 동작" + Flist.get(i).getMenuParents());
+			
 		}
 
 		// 암호화
@@ -62,7 +62,7 @@ public class LoginController {
 		// 로그인 성공 여부
 		// maname으로 불러와서 체크하기
 		String mName = ld.getList(managerId, managerPw);
-		System.out.println("겟리스트 성공");
+		
 		session.setAttribute("mName", mName);
 		if (mName != null) {
 			ldto.setManagerName(ld.getName());
@@ -72,10 +72,10 @@ public class LoginController {
 			ld.addLog(ldto);
 			return "redirect:/main";
 		} else {
-			System.out.println("else문 동작");
+		
 			String error = "error";
 			session.setAttribute("error", error);
-			System.out.println("에러내용은?" + error);
+	
 			return "redirect:/login";
 		}
 

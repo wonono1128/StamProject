@@ -33,13 +33,9 @@
 							var updateNumArray = new Array();
 							$("input[class='update_title']").each(function() {
 								updateTitleArray.push($(this).val());
-							
+								updateNumArray.push($(this).attr("data-cartNum"));
 							});
-							$("input[class='delete_chk']:checked").each(
-									function() {
-										updateNumArray.push($(this).attr(
-												"data-cartNum"));
-									});
+						
 
 							$.ajax({
 										url : "/homepage/depth_update_ok?menuParents="

@@ -28,10 +28,19 @@ public class NoticeController {
 	@Autowired
 	private DepthDao dDao;
 
-	/*
-	 * nextNum = 다음 글 번호 cla = 검색 주제 sword = 검색단어 pagecnt = 페이지 계산한 값
-	 * index,page,pstart,pend = 페이징 변수
-	 */
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  NoticeController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:51:00 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param ndto			=>noticeDto
+	  @param request
+	  @param model
+	  @param session
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping("/notice")
 	public String notice(NoticeDto ndto, HttpServletRequest request, Model model, HttpSession session) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
@@ -78,7 +87,7 @@ public class NoticeController {
 
 		model.addAttribute("sword", sword);
 		Integer pagecnt = ndao.get_pagecnt(cla, sword); // cla,sword적용
-		System.out.println("총 페이지는" + pagecnt);
+		
 		session.setAttribute("pagecnt", pagecnt);
 		model.addAttribute("pagecnt", pagecnt);
 		// 출력될 pend값이 총페이지보다 클경우는 pend에 총페이지값을 전달

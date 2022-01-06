@@ -23,16 +23,40 @@ public class MainController {
 	@Autowired
 	private DepthDao dDao;
 
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:49:53 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param session
+	  @param model
+	  @param request
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping({ "/", "main" })
 	public String main(HttpSession session, Model model, HttpServletRequest request) {
-		System.out.println("메인");
+		
 		ArrayList<DepthDto> Flist = dDao.Flist();
-
 		model.addAttribute("Flist", Flist);
 
 		return "/main";
 	}
 
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:01 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param year
+	  @param session
+	  @param model
+	  @param request
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping({ "/portfolio_{year}" })
 	public String portfolio(@PathVariable String year, HttpSession session, Model model, HttpServletRequest request) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
@@ -49,6 +73,18 @@ public class MainController {
 		return "portfolio/portfolio";
 	}
 
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:08 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param about
+	  @param session
+	  @param model
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping("/about_{about}")
 	public String about(@PathVariable String about, HttpSession session, Model model) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
@@ -58,6 +94,19 @@ public class MainController {
 
 	}
 
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:11 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param brand
+	  @param session
+	  @param model
+	  @param request
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping("/brand_{brand}")
 	public String brand(@PathVariable String brand, HttpSession session, Model model, HttpServletRequest request) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
@@ -72,6 +121,28 @@ public class MainController {
 		return "brand/brand";
 	}
 
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:14 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param session
+	  @param model
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:21 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param session
+	  @param model
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping("/solution_A.Drive")
 	public String solution_ADrvie(HttpSession session, Model model) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
@@ -80,6 +151,17 @@ public class MainController {
 		return "solution/solution_Adrive";
 	}
 
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:26 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param session
+	  @param model
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping("/solution_STFramework")
 	public String solution_STFramework(HttpSession session, Model model) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
@@ -88,6 +170,17 @@ public class MainController {
 		return "solution/solution_ST_framework";
 	}
 
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:30 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param session
+	  @param model
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping("/solution_통합SNS관리시스템")
 	public String solution_통합SNS관리시스템(HttpSession session, Model model) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
@@ -96,6 +189,28 @@ public class MainController {
 		return "solution/solution_System1";
 	}
 
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:32 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param session
+	  @param model
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
+	/**
+	  2022. 1. 6. : Current date (현재 날짜)
+	  MainController : The type enclosing the method (선택된 메소드의 타입)
+	  오후 10:50:35 : Current time (현재 시간)
+	  woonho : User name (사용자 이름)
+	  2022 : Current year (현재 연도)
+	  @param session
+	  @param model
+	  @return : Generated Javadoc tags (@param, @return...) (Javedoc 태그 생성)
+	
+	*/
 	@RequestMapping("/solution_구간별암호화시스템")
 	public String solution_구간별암호화시스템(HttpSession session, Model model) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
@@ -104,10 +219,5 @@ public class MainController {
 		return "solution/solution_System2";
 	}
 
-	@RequestMapping("/test")
-	public String test() {
-
-		return "/test";
-	}
 
 }

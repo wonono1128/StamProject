@@ -91,7 +91,7 @@
 														onClick="update_click(this)">${dDto.menuContents}</span> 
 														<input
 														type="text" style="display: none;"
-														placeholder="제목을 입력해주세요" name="update_name"
+														placeholder="제목을 입력해주세요" name="update_name" data-cartNum="${dDto.menuCode }"
 														class="update_title" required maxlength="15">
 													</td>
 													<td class="notice_td notice_checkbox"><input
