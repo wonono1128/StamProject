@@ -203,25 +203,7 @@
 
 </body>
 <script>
-	function go_insert() {
-		location.href = "insert";
-	}
-	function go_content(e) {
-		let Id = document.getElementById(e.getAttribute('id')).getAttribute(
-				'id');
 
-		location.href = "/homepage/content?noticeNum=" + Id;
-	}
-
-	function mousehover(e) {
-		let Id = document.getElementById(e.getAttribute('id')).getAttribute(
-				'id');
-
-		$(e.getAttribute('id')).children('.notice_td_a_span')
-				.css('display', '');
-		$(e).children('.notice_td_a_first').css('display', 'none');
-
-	}
 </script>
 <style>
 </style>
@@ -229,6 +211,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
-
+<script src="resources/static/js/notice/notice.js"></script>
 
 </html>

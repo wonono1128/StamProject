@@ -120,49 +120,5 @@
 		</div>
 	</div>
 </body>
-
-<script>
-	$(".product_delete_btn")
-			.click(
-					function() {
-						const menuContents = document
-								.querySelector(".menuContents").value;
-						var confirm_val = confirm("정말 삭제하시겠습니까?");
-
-						if (confirm_val) {
-							var checkArr = new Array();
-
-							$("input[class='deleteChk']:checked").each(
-									function() {
-										checkArr.push($(this).attr(
-												"data-cartNum"));
-									});
-							$
-									.ajax({
-										url : "/homepage/product_delete",
-										type : "post",
-										data : {
-											chbox : checkArr
-										},
-										success : function(result) {
-											if (result == 1) {
-												alert("삭제 성공");
-												location.href = "/homepage/product?menuContents="
-														+ menuContents;
-											} else {
-												alert("삭제 실패");
-											}
-										}
-									});
-						}
-					});
-</script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
-	crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
-
+<script src="resources/static/js/product/product.js"></script>
 </html>

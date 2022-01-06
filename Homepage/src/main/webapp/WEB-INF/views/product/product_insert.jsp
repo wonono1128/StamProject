@@ -157,5 +157,5 @@ function insert_contentBtn(event) {
 	location.href = "/homepage/product?menuContents=" + menuContents;
 }
 </script>
-<script src="resources/static/js/product.js"></script>
+<script src="resources/static/js/product/productTextChk.js"></script>
 </html>
