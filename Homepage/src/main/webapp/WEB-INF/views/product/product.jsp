@@ -66,8 +66,8 @@
 								</tr>
 								<tr class="notice-tr top-tr">
 									<td class="notice_th td_num">번호</td>
-									<td class="notice_th td_company_name">회사명</td>
-									<td class="notice_th td_mangager">제품명</td>
+									<td class="notice_th td_company_name">고객명</td>
+									<td class="notice_th td_mangager">사업명</td>
 									<td class="notice_th td_mangager">선택</td>
 								</tr>
 								<c:choose>

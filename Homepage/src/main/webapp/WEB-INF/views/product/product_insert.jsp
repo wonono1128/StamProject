@@ -88,7 +88,7 @@
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">사업명</td>
-											<td class="insert_td_input"><input type="text" required maxlength="25"
+											<td class="insert_td_input"><input type="text" required maxlength="30"
 												name="productName"></td>
 										</tr>
 										<tr class="insert_tr">
@@ -99,7 +99,7 @@
 										<tr class="insert_tr">
 										<c:if test="${menuParents == 'BRAND'}">
 											<td class="insert_td_name">브랜드 내용</td>
-											<td class="insert_td_input"><input type="text" required maxlength="20"
+											<td class="insert_td_input"><input type="text" required maxlength="100"
 												name="brandContents"></td>
 										</c:if>
 										</tr>

@@ -66,7 +66,7 @@
 					</c:if>
 				</c:forEach>
 			</ul></li>
-		<li><a href="solution_A.Drvie" class="depth1">SOLUTION</a>
+		<li><a href="solution_A.Drive" class="depth1">SOLUTION</a>
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'SOLUTION' }">
