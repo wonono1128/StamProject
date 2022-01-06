@@ -72,7 +72,7 @@ public class MainController {
 		return "brand/brand";
 	}
 
-	@RequestMapping("/solution_A.Drvie")
+	@RequestMapping("/solution_A.Drive")
 	public String solution_ADrvie(HttpSession session, Model model) {
 		ArrayList<DepthDto> Flist = dDao.Flist();
 		model.addAttribute("Flist", Flist);
