@@ -11,7 +11,7 @@
 <title>STAM</title>
 <link rel="stylesheet"
 	href="resources/static/plugins/swiper/swiper-bundle.min.css" />
-<link rel="stylesheet" href="resources/static/css/common.css">
+<link rel="stylesheet" href="resources/static/css/product/product_common.css">
 <link rel="stylesheet" href="resources/static/css/style.css">
 <link rel="stylesheet" href="resources/static/css/notice/notice.css">
 <link rel="stylesheet" href="resources/static/css/product/product.css">
@@ -66,7 +66,7 @@
 								</tr>
 								<tr class="notice-tr top-tr">
 									<td class="notice_th td_num">번호</td>
-									<td class="notice_th td_mangager">회사명</td>
+									<td class="notice_th td_company_name">회사명</td>
 									<td class="notice_th td_mangager">제품명</td>
 									<td class="notice_th td_mangager">선택</td>
 								</tr>
@@ -82,12 +82,10 @@
 												<td><input style="display: none" type="text"
 													name="productCode" value="${pDto.productCode }"></td>
 											</tr>
-											<tr class="notice_tr">
+											<tr class="notice_tr" id="${pDto.productCode }" onClick="go_content(this)">
 												<td class="notice_td pCode_td">${pDto.productCode}</td>
 												<td class="notice_td">${pDto.companyName}</td>
-												<td class="notice_td"><a class="pName_a"
-													href="product_content?productCode=${pDto.productCode}">${pDto.productName}</a>
-												</td>
+												<td class="notice_td"><a class="pName_a">${pDto.productName}</a></td>
 												<td class="notice_td"><input type="checkbox"
 													name="deleteChk" class="deleteChk"
 													data-cartNum="${pDto.productCode}"

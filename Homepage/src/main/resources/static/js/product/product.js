@@ -32,3 +32,11 @@ $(".product_delete_btn")
 									});
 						}
 					}); 
+					
+
+	function go_content(e) {
+		let Id = document.getElementById(e.getAttribute('id')).getAttribute(
+				'id');
+
+		location.href = "/homepage/product_content?productCode=" + Id;
+	}

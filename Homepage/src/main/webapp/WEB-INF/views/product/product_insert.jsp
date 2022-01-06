@@ -119,12 +119,11 @@
 												name="pImg"></td>
 										</tr>
 										<tr class="insert_tr insert_td_btn">
-											<td>
-												<button class="insert_td_btn">추가</button>
-											</td>
-											<td>
-												<button onclick="insert_contentBtn(event)">목록</button>
-											</td>
+											<td class="product_insert_input"
+													id="product_insert_btn"><button>추가</button></td>
+											<td class="product_insert_input"><button
+													id="product_insert_list"
+													onclick="insert_contentBtn(event)">목록</button></td>
 										</tr>
 									</table>
 								</form>
