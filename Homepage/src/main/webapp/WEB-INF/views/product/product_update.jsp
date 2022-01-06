@@ -59,7 +59,8 @@
 									<table class="insert_table">
 										<tr class="insert_tr">
 											<td class="insert_td_name">메뉴 선택</td>
-											<td class="insert_td_input"><select name="menuContents" id="menu_contents">
+											<td class="insert_td_input"><select name="menuContents"
+												id="menu_contents">
 													<c:forEach var="dDto" items="${Flist}">
 														<c:if test="${dDto.menuState == 1 }">
 															<c:if test="${dDto.menuParents != 'SOLUTION' }">
@@ -78,26 +79,29 @@
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">고객명</td>
-											<td class="insert_td_input"><input type="text" onkeyup="fn_checkByte(this)" required
-												name="companyName" value="${pDto.companyName }"></td>
+											<td class="insert_td_input"><input type="text"
+												onkeyup="fn_checkByte(this)" required name="companyName"
+												value="${pDto.companyName }"></td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">사업명</td>
-											<td class="insert_td_input"><input type="text" required maxlength="25"
-												name="productName" value="${pDto.productName }"></td>
+											<td class="insert_td_input"><input type="text" required
+												maxlength="25" name="productName"
+												value="${pDto.productName }"></td>
 										</tr>
 										<tr class="insert_tr">
 											<td class="insert_td_name">사업 설명</td>
-											<td class="insert_td_input"><textarea required maxlength="100"
-													name="productContents" class="pcInput">${pDto.productContents }</textarea></td>
+											<td class="insert_td_input"><textarea required
+													maxlength="100" name="productContents" class="pcInput">${pDto.productContents }</textarea></td>
 										</tr>
 
 
 										<tr class="insert_tr">
 											<c:if test="${menuParents == 'BRAND'}">
 												<td class="insert_td_name">브랜드 내용</td>
-												<td class="insert_td_input"><input type="text" required maxlength="20"
-													name="brandContents" value="${pDto.brandContents }"></td>
+												<td class="insert_td_input"><input type="text" 
+													 name="brandContents"
+													value="${pDto.brandContents }"></td>
 											</c:if>
 										</tr>
 										<tr class="insert_tr">
@@ -112,21 +116,31 @@
 												type="hidden" name="companyLogo"
 												value="${pDto.companyLogo }"></td>
 										</tr>
+										<c:choose>
+											<c:when test="${menuParents != 'BRAND'}">
+												<tr class="insert_tr">
+													<td class="insert_td_name">사업 로고</td>
+													<td class="insert_td_input"><input type="file"
+														id="year_img" style="display: none" name="yearLogo"><label
+														for="year_img" id=year_img_update>${pDto.productLogo }
+															수정</label> <label id="year_img_cancle" onclick="year_cancle()"
+														style="display: none">취소</label> <label
+														id="year_img_delete" onclick="year_delete_img()">삭제</label>
+														<input type="hidden" id="yearcancleflag"
+														name="yearCancleflag" value="0"> <input
+														type="hidden" name="yearImg" value="${pDto.productLogo }">
+													</td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<tr class="insert_tr">
+													<td class="insert_td_name">사업 키워드</td>
+													<td class="insert_td_input"><input type="text" required maxlength="15";
+														name="yearKeyword" value="${pDto.productLogo }"></td>
+												</tr>
+											</c:otherwise>
+										</c:choose>
 
-										<tr class="insert_tr">
-											<td class="insert_td_name">사업 로고</td>
-											<td class="insert_td_input"><input type="file"
-												id="year_img" style="display: none" name="yearLogo"><label
-												for="year_img" id=year_img_update>${pDto.productLogo }
-													수정</label> <label id="year_img_cancle"
-												onclick="year_cancle()" style="display: none">취소</label>
-												<label id="year_img_delete"
-												onclick="year_delete_img()">삭제</label> <input
-												type="hidden" id="yearcancleflag"
-												name="yearCancleflag" value="0"> <input
-												type="hidden" name="yearImg" value="${pDto.productLogo }">
-											</td>
-										</tr>
 
 										<tr class="insert_tr">
 											<td class="insert_td_name">화면 이미지</td>
@@ -169,26 +183,33 @@
 		</div>
 	</div>
 </body>
-<script>
-window.onload = function() {
-	//페이지 입장시 자신이 입장한 뎁스가 자동으로 선택
-	let menu_contents = "${pDto.menuContents}";
-	$("#menu_contents").val(menu_contents)
-			.attr("selected", "selected");
-}
-//이전페이지
-function prev_btn(event) {
-	event.preventDefault();
-	const productCode = ${productCode};
-	location.href = "/homepage/product_content?productCode=" + productCode;
-}
-//목록페이지
-function content_btn(event) {
-	event.preventDefault();
-	const menuContents = "${pDto.menuContents}";
-	location.href = "/homepage/product?menuContents=" + menuContents;
-}
-</script>
 <script src="resources/static/js/product/productupdate.js"></script>
 <script src="resources/static/js/product/productTextChk.js"></script>
+<script>
+	window.onload = function() {
+		//페이지 입장시 자신이 입장한 뎁스가 자동으로 선택
+		let menu_contents = "${pDto.menuContents}";
+		$("#menu_contents").val(menu_contents).attr("selected", "selected");
+	}
+	//이전페이지
+	function prev_btn(event) {
+		event.preventDefault();
+		const productCode = ${productCode};
+		location.href = "/homepage/product_content?productCode=" + productCode;
+	}
+	//목록페이지
+	function content_btn(event) {
+		event.preventDefault();
+		const menuContents = "${pDto.menuContents}";
+		const menuParents = "${menuParents}";
+		
+		if(menuParents == "BRAND"){
+			location.href = "/homepage/product?menuParents="+menuParents+ "&menuContents=" + menuContents;
+		}else{
+			location.href = "/homepage/product?menuContents=" + menuContents;
+		}
+
+	}
+</script>
+
 </html>

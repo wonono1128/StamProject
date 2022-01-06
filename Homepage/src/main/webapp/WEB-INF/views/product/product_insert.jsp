@@ -108,11 +108,23 @@
 											<td class="insert_td_input"><input type="file"
 												name="pLogo"></td>
 										</tr>
-										<tr class="insert_tr">
-											<td class="insert_td_name">사업 로고</td>
-											<td class="insert_td_input"><input type="file"
-												name="yearLogo"></td>
-										</tr>
+										<c:choose>
+											<c:when test="${menuParents != 'BRAND'}">
+												<tr class="insert_tr">
+													<td class="insert_td_name">사업 로고</td>
+													<td class="insert_td_input"><input type="file"
+														name="yearLogo"></td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<tr class="insert_tr">
+													<td class="insert_td_name">사업 키워드</td>
+													<td class="insert_td_input">
+													<input type="text" name="yearKeyword">
+													</td>
+												</tr>
+											</c:otherwise>
+										</c:choose>
 										<tr class="insert_tr">
 											<td class="insert_td_name">화면 이미지</td>
 											<td class="insert_td_input"><input type="file"
@@ -146,14 +158,13 @@
 <script>
 window.onload = function() {
 	//페이지 입장시 자신이 입장한 뎁스가 자동으로 선택
-	const menu_contents = ${referMenuContents};
-	$("#menu_contents").val(menu_contents)
-			.attr("selected", "selected");
+	const menu_contents = "${referMenuContents}";
+	$("#menu_contents").val(menu_contents).attr("selected", "selected");
 }
 function insert_contentBtn(event) {
 	event.preventDefault();
-	const menuContents = ${referMenuContents};
-
+	const menuContents = "${referMenuContents}";
+	
 	location.href = "/homepage/product?menuContents=" + menuContents;
 }
 </script>

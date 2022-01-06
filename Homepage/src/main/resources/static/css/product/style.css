@@ -465,6 +465,8 @@ h1.logo.on a {
 .contents .tit_div.tit_div2 {
 	padding: 0;
 	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 
 .tit_div2 h3 {
@@ -475,6 +477,7 @@ h1.logo.on a {
 	display: inline-block;
 	letter-spacing: -0.03em;
 	text-align: left;
+
 }
 
 #mainWrapper .tit_div2 h3 {

@@ -80,7 +80,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/product_insert_ok", method = RequestMethod.POST)
 	public String product_insert_ok(ProductDto pdto, ProductLogDto pLdto, HttpSession session, MultipartFile[] pLogo,
-			MultipartFile[] pImg, MultipartFile[] yearLogo, String menuContents) {
+			MultipartFile[] pImg, MultipartFile[] yearLogo, String menuContents,String yearKeyword) {
 	
 		
 		if (session.getAttribute("ProductnextNum") != null) {
@@ -90,7 +90,9 @@ public class ProductController {
 		}else {
 			int ProductnextNum = 1;
 		}
-		
+
+	
+
 		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
 		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
 		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
@@ -98,6 +100,7 @@ public class ProductController {
 //		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
 //		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
 //		String uploadFolder3 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+		System.out.println("사업키워드 값은 존재하냐?"+yearKeyword);
 		for (MultipartFile multipartFile : pLogo) {
 			System.out.println("---------------------------로고 파일------------------------------------");
 			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
@@ -113,19 +116,23 @@ public class ProductController {
 			}
 		}
 
-		for (MultipartFile multipartFile : yearLogo) {
-			System.out.println("---------------------------년도 로고 파일------------------------------------");
-			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
-			System.out.println("Upload File Size : " + multipartFile.getSize());
-			pdto.setProductLogo(multipartFile.getOriginalFilename());
-			File saveFile = new File(uploadFolder3, multipartFile.getOriginalFilename());
-
-			try {
-				multipartFile.transferTo(saveFile);
-
-			} catch (Exception e) {
-				System.out.println("저장 실패");
+		if(yearKeyword == null) {//브랜드인지 포트폴리오인지 구분
+			for (MultipartFile multipartFile : yearLogo) {
+				System.out.println("---------------------------년도 로고 파일------------------------------------");
+				System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+				System.out.println("Upload File Size : " + multipartFile.getSize());
+				pdto.setProductLogo(multipartFile.getOriginalFilename());
+				File saveFile = new File(uploadFolder3, multipartFile.getOriginalFilename());
+	
+				try {
+					multipartFile.transferTo(saveFile);
+	
+				} catch (Exception e) {
+					System.out.println("저장 실패");
+				}
 			}
+		}else {//브랜드는 사업로고가 없고 텍스트가존재한다.
+			pdto.setProductLogo(yearKeyword);
 		}
 		
 		for (MultipartFile multipartFile : pImg) {
@@ -146,14 +153,21 @@ public class ProductController {
 
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
-
+		String menuParents = (String) session.getAttribute("menuParents");
+		System.out.println("부모"+menuParents);
 		pLdto.setManagerId(managerId);
 		pLdto.setManagerName(managerName);
 
 		pLdto.setPLogType("Insert");
 
 		pLDao.insert(pLdto);
-		return "redirect:/product?menuContents=" + menuContents;
+		if(menuParents.equals("BRAND")) {
+			return "redirect:/product?menuParents="+menuParents+"&menuContents=" + menuContents;
+		}else {
+			return "redirect:/product?menuContents=" + menuContents;
+		}
+		
+	
 	}
 
 
@@ -187,6 +201,7 @@ public class ProductController {
 		if (session.getAttribute("level") != null) {
 			int productCode = Integer.parseInt(request.getParameter("productCode"));
 			String menuContents = (String) session.getAttribute("menuContents");
+
 			Integer listCount = pd.listCount(menuContents);
 			pDto.setListCount(listCount);
 			ArrayList<DepthDto> Flist = dDao.Flist();
@@ -209,6 +224,7 @@ public class ProductController {
 
 			pDto = pd.content(productCode);
 			session.setAttribute("productCode", productCode);
+			System.out.println(productCode);
 			model.addAttribute("pDto", pDto);
 			return "product/product_update";
 		}
@@ -220,7 +236,7 @@ public class ProductController {
 	}
 
 	@RequestMapping("product_update_ok")
-	public String update_ok(HttpServletRequest request, ProductLogDto pLdto, ProductDto pDto, HttpSession session,
+	public String update_ok(HttpServletRequest request, ProductLogDto pLdto, ProductDto pDto, HttpSession session,String yearKeyword,
 			MultipartHttpServletRequest mRequest) throws Exception, IOException {
 
 		int productCode = (int) session.getAttribute("productCode");
@@ -240,11 +256,11 @@ public class ProductController {
 
 		if (logoCancleflag == 0) { // 이전 이미지 그대로 사용
 			String companyLogo = request.getParameter("companyLogo");
-			System.out.println(companyLogo);
+			System.out.println("회사로고 " + companyLogo);
 			pDto.setCompanyLogo(companyLogo);
 
 		} else if (logoCancleflag == 1) { // 새로운 이미지 사용
-
+			System.out.println("회사로고 새이미지 ");
 			pDto.setCompanyLogo(multipartFileLogo.getOriginalFilename());
 			File saveFileLogo = new File(uploadFolder, multipartFileLogo.getOriginalFilename());
 			multipartFileLogo.transferTo(saveFileLogo);
@@ -270,6 +286,8 @@ public class ProductController {
 			pDto.setProductImg(" ");
 		}
 // 사업종류
+		System.out.println("키워드 값확인"+yearKeyword);
+if(yearKeyword == null) {//브랜드인지 포트폴리오인지 구분
 		int yearCancleFlag = Integer.parseInt(request.getParameter("yearCancleflag"));
 		if (yearCancleFlag == 0) { // 이전 이미지 그대로 사용
 			String yearImg = request.getParameter("yearImg");
@@ -285,17 +303,28 @@ public class ProductController {
 
 			pDto.setProductLogo(" ");
 		}
+}else {//브랜드는 사업로고가 없고 텍스트가존재한다.
+	pDto.setProductLogo(yearKeyword);
+}
 		
 		
 
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
+		String menuParents = (String) session.getAttribute("menuParents");
+		System.out.println("부모확인"+menuParents);
 		pd.update(pDto);
 		pLdto.setProductCode(productCode);
 		pLdto.setManagerId(managerId);
 		pLdto.setManagerName(managerName);
 		pLdto.setPLogType("update");
 		pLDao.insert(pLdto);
-		return "redirect:/product?menuContents=" + menuContents;
+		
+		if(menuParents.equals("BRAND") ) {
+			return "redirect:/product?menuParents="+menuParents+"&menuContents=" + menuContents;
+		}else {
+			return "redirect:/product?menuContents=" + menuContents;
+		}
+		
 	}
 }

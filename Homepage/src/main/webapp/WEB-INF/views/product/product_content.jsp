@@ -11,7 +11,7 @@
 <title>?</title>
 <link rel="stylesheet"
 	href="resources/static/plugins/swiper/swiper-bundle.min.css" />
-<link rel="stylesheet" href="resources/static/css/common.css">
+<link rel="stylesheet" href="resources/static/css/product/common.css">
 <link rel="stylesheet" href="resources/static/css/product/style.css">
 <link rel="stylesheet"
 	href="resources/static/css/product/product_content.css">
@@ -63,23 +63,40 @@
 										class="menuContents" name="menuContents"
 										value=${pDto.menuContents }>
 
-									<button onclick="product_update()"
-										class="content_update">수정</button>
-									<button onclick="product_go()"
-										class="content_content">목록</button>
+									<button onclick="product_update()" class="content_update">수정</button>
+									<button onclick="product_go()" class="content_content">목록</button>
 								</div>
 							</div>
 						</div>
 						<div class="contents item">
-							<div class="tit_div s_num_div">
-								<img src="resources/static/images/${pDto.productLogo }" alt="">
-								<a href="javascript:void(0);" class="btn_open mo"
-									data-target="portfolio2021_1"></a>
-							</div>
+						<input type="hidden" value="${menuParents }" class="menuParents_hidden">
+							<c:choose>
+								<c:when test="${menuParents != 'BRAND'}">
+									<div class="tit_div s_num_div">
+										<img src="resources/static/images/${pDto.productLogo }" alt="">
+										<a href="javascript:void(0);" class="btn_open mo"
+											data-target="portfolio2021_1"></a>
+									</div>
+								</c:when>
+										
+ 								<c:otherwise>
+									<div class="tit_div tit_div2">
+										<h3 class="brand_productLogo">
+											<pre class="brand_pre brand_productLogo">
+												
+											</pre>
+										</h3>
+									</div>
+								</c:otherwise>
+							
+							</c:choose>
+							
 							<div class="cont">
 								<div class="conts_div">
-									<img src="resources/static/images/product/${pDto.productImg }"
+									${pDto.brandContents }
+									<div class="img_div"><img src="resources/static/images/product/${pDto.productImg }"
 										alt="">
+										</div>
 								</div>
 								<a href="#" class="mo close_layer">닫기</a>
 							</div>
@@ -124,13 +141,30 @@
 
 </body>
 <script type="text/javascript">
+window.onload = function() {
+	var brand_productLogo = "${pDto.productLogo }";
+	var blank_pattern = /[\s]/g;
+	if(blank_pattern.test(brand_productLogo) == true){ //문자열에 공백여부 체크
+		
+		brand_productLogo = brand_productLogo.replace(/ /g, "\n");
+		document.querySelector(".brand_pre").innerHTML = brand_productLogo;
+	}else{
+		document.querySelector(".brand_pre").innerHTML = brand_productLogo;
+	}
+
+}
 	function product_go() {
 		const menuContents = document.querySelector(".menuContents").value;
-		location.href = "/homepage/product?menuContents=" + menuContents;
+		const menuParents = "${menuParents}";
+		
+		if(menuParents == "BRAND"){
+			location.href = "/homepage/product?menuParents="+menuParents+ "&menuContents=" + menuContents;
+		}else{
+			location.href = "/homepage/product?menuContents=" + menuContents;
+		}
 	}
 	function product_update() {
 		const productCode = ${pDto.productCode};
-
 		location.href = "/homepage/product_update?productCode=" + productCode;
 	}
 </script>

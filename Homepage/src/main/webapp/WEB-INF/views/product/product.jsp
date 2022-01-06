@@ -61,8 +61,8 @@
 
 								</tr>
 								<tr style="display: none">
-									<td><input type="text" value=${menuContents }
-										class="menuContents"></td>
+									<td><input type="text" value="${menuContents}"class="menuContents">
+										<input type="text" value="${menuParents}" class="menuParents"></td>
 								</tr>
 								<tr class="notice-tr top-tr">
 									<td class="notice_th td_num">번호</td>

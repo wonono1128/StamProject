@@ -8,15 +8,16 @@
 
 	// 회사 로고 첨부파일 동작	
 	function change() {
-		if (!log_img.value) {
+		if (!log_img.value) { 
 			log_img.value = log_img_after;
 			document.getElementById("cancleflag").value = log_cancleflag;
 		} else {
+		
 			log_img.style.display = "";
 			log_img_update.style.display = "none";
 			log_img_after = log_img.value;
 			log_img_cancle.style.display = "";
-			cancleflag = 1;
+			log_cancleflag = 1;
 			document.getElementById("cancleflag").value = log_cancleflag;
 		}
 
@@ -24,7 +25,7 @@
 	log_img.addEventListener('change', change);
 
 	function cancle() {
-		cancleflag = 0;
+		log_cancleflag = 0;
 
 		log_img.style.display = "none";
 		log_img_update.style.display = "";
@@ -40,7 +41,7 @@
 		log_img_update.style.display = "none";
 		log_img_after = log_img.value;
 		log_img_cancle.style.display = "";
-		cancleflag = 2;
+		log_cancleflag = 2;
 		document.getElementById("cancleflag").value = log_cancleflag;
 	}
 // 사업 이미지
