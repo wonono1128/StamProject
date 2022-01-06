@@ -1,6 +1,7 @@
 package kr.stam.homepage.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,28 +142,6 @@ public class DepthController {
 		}
 	}
 
-	@RequestMapping("/depth_update_ok2")
-	public String depth_update_ok2(HttpServletRequest request, Model model, String menuParents, HttpSession session,
-			DepthDto dDto, DepthLogDto dLDto, int menuCode) {
-		String managerId = (String) session.getAttribute("mId");
-		String managerName = (String) session.getAttribute("mName");
-		if (session.getAttribute("nextNum") != null) {
-			int nextNum = (int) session.getAttribute("nextNum");
-
-		}
-
-		dDto.setMenuParents(menuParents);
-		model.addAttribute("ndto", dDto);
-
-		dDao.update(dDto);
-		dLDto.setMenuCode(menuCode);
-		dLDto.setManagerId(managerId);
-		dLDto.setManagerName(managerName);
-		dLDto.setLogType("Update");
-		dLDao.insert(dLDto);
-		return "redirect:depth?MenuParents=" + menuParents;
-	}
-
 	@RequestMapping(value = "/depth_update_ok", method = RequestMethod.POST)
 	@ResponseBody
 	public int depth_update_ok(HttpSession session, Model model,
@@ -177,17 +156,23 @@ public class DepthController {
 		String managerName = (String) session.getAttribute("mName");
 
 		int menuCode = 0;
-
+		updateTitleArray.removeAll(Arrays.asList("", null));
+		updateNumArray.removeAll(Arrays.asList("", null));
 		for (String i : updateNumArray) {
 			Map<String, Object> paramMap = new HashMap<String, Object>();
+
 			if (!updateTitleArray.isEmpty()) {
+		
 				for (int t = 0; t < updateNumArray.size(); t++) {
+					
 					paramMap.put(updateNumArray.get(t), updateTitleArray.get(t));
 				}
+
 				menuContents = (String) paramMap.get(i);
+
 				if (menuContents != "") {
 					menuCode = Integer.parseInt(i);
-					
+
 					System.out.println("수정코드는" + menuCode);
 					System.out.println("수정값은" + menuContents);
 					dDto.setMenuContents(menuContents);

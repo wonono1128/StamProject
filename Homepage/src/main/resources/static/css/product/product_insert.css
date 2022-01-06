@@ -16,31 +16,19 @@ body{
     align-items: center;
     margin-bottom: 20px;
 }
-
- .insert_td_btn > td > button{
-	margin-right: 25px; 
-	width: 120px; 
-	border-radius: 20px; 
-	background-color: white; 
-	color: black; 
-	border: 1px solid black;
-	
+.insert_tr > td > button {
+    margin-right: 10px;
+    width: 120px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
 }
-
-.insert_td_btn{
+.insert_td_btn {
 	margin-left: 276px;
 }
 
-.insert_tr > td > button{
-	margin-right: 10px;
-	width: 120px; 
-	border-radius: 20px; 
-	background-color: white; 
-	color: black; 
-	border: 1px solid black;
-}
-
-.insert_update_tr{
+.insert_update_tr {
 	margin-left: 207px;
 }
 
@@ -92,12 +80,95 @@ body{
 }
 
 
+@media ( max-width : 1320px) {
+   .insert_table {
+      display: flex;
+      flex-direction: column;
+      border-spacing: 0px 30px;
+   }
+   .insert_td_btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 600px;
+   }
+
+   .insert_div {
+      display: flex;
+      flex-direction: column;
+      width: 75vw;
+      justify-content: center;
+   }
+   
+   .insert_td_input {
+      width: 420px;
+} 
+   .insert_td_name{
+       width: 75px;
+      margin-right: 50px;
+   }
+   
+   .insert_update_tr {
+    margin-left: 82px;
+}
+
+}
 
 @media (max-width: 817px)   { 
-	.insert_td_input {
-    	width: 45%;
-	}
-	.insert_td_btn {
-   		margin-left: 0px;
-	}
+   #insert_contents {
+    resize: none;
+    height: 450px;
+}
+
+.insert_td_btn  {
+    width: 100px;
+    text-align: center;
+    border-radius: 40px;
+    margin-bottom: 4vh;
+    padding-right: 20vh;
+}
+
+   .insert_div {
+      display: flex;
+      flex-direction: column;
+      width: 75vw;
+      justify-content: center;
+   }
+   
+.insert_table {
+    display: flex;
+    flex-direction: column;
+    border-spacing: 0px 30px;
+    margin-top: -110px;
+}
+
+.insert_title_div{
+   position: absolute;
+   top: -21px;
+}
+
+   .insert_td_input {
+      width: 300px;
+} 
+   .insert_td_name{
+       width: 109px;
+       margin-right: 4px;
+       font-size: 15px;
+   }
+   
+.swiper-slide {
+    display: block;
+    padding-top: 20px;
+    padding-left: 12px;
+    overflow: scroll;
+}
+
+.insert_update_tr{
+   padding-right: 81px;
+}
+
+.insert_tr > td > button {
+       width: 88px;
+}
 }

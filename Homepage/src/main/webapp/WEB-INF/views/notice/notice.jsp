@@ -94,10 +94,9 @@
 											<td class="notice_td" id="notice_Num">${ndto.noticeNum }</td>
 											<td class="notice_td">${ndto.managerName }</td>
 											<td colspan="2"
-												class="notice_td notice_select_td notice_span_td"
+												class="notice_td notice_select_td notice_span_td notice_title_td"
 												onMouseover="mousehover(this)"><span
-												id="notice_td_a_first">${ndto.noticeTitle}</span> <span
-												id="notice_td_a_span">${ndto.noticeTitle }</span></td>
+												id="notice_td_a_first">${ndto.noticeTitle}</span> </td>
 											<td class="notice_td notice_td_day">${ndto.noticeDay }</td>
 
 										</tr>

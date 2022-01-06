@@ -45,12 +45,17 @@ public class ProductController {
 
 			ArrayList<DepthDto> Flist = dDao.Flist();
 			model.addAttribute("Flist", Flist);
+			
 
+					
 			ArrayList<ProductDto> list = pd.list(menuContents);
+			if(menuParents == null || menuParents.length() == 0) {
+				menuParents = "PORTFOLIO";
+			}
 			session.setAttribute("menuContents", menuContents);
 			session.setAttribute("menuParents", menuParents);
 			model.addAttribute("list", list);
-
+			System.out.println(menuParents);
 			return "product/product";
 		} else {
 			return "redirect:/main";
@@ -161,7 +166,8 @@ public class ProductController {
 		pLdto.setPLogType("Insert");
 
 		pLDao.insert(pLdto);
-		if(menuParents.equals("BRAND")) {
+		
+		if(!menuParents.isEmpty() &&menuParents.equals("BRAND")  ) {
 			return "redirect:/product?menuParents="+menuParents+"&menuContents=" + menuContents;
 		}else {
 			return "redirect:/product?menuContents=" + menuContents;
@@ -320,7 +326,7 @@ if(yearKeyword == null) {//브랜드인지 포트폴리오인지 구분
 		pLdto.setPLogType("update");
 		pLDao.insert(pLdto);
 		
-		if(menuParents.equals("BRAND") ) {
+		if(menuParents.equals("BRAND")&& !menuParents.isEmpty() ) {
 			return "redirect:/product?menuParents="+menuParents+"&menuContents=" + menuContents;
 		}else {
 			return "redirect:/product?menuContents=" + menuContents;

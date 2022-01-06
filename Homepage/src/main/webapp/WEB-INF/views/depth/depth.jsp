@@ -111,15 +111,15 @@
 									<td colspan="2"
 										style="display: flex; justify-content: end; width: 450px; align-items: center; position: absolute; right: 0px;">
 										<button onclick="before(0)" id="before_btn" 
-											style="margin-top: 20px; display: none; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">취소</button>
+											style="margin-top: 20px; display: none;  width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">취소</button>
 										<button onclick="addRow()" id="add_btn"
-											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가</button>
+											style="margin-top: 20px; margin-left: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">추가</button>
 										<button id="insert_finish"
-											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black; display: none;">완료</button>
+											style="margin-top: 20px; margin-left: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black; display: none;">완료</button>
 										<button id="update_finish"
-											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black; display: none;">완료</button>
+											style="margin-top: 20px; margin-left: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black; display: none;">완료</button>
 										<button class="delete_btn" id="delete_btn"
-											style="margin-top: 20px; margin-right: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">삭제</button>
+											style="margin-top: 20px; margin-left: 25px; width: 150px; border-radius: 20px; background-color: white; color: black; border: 1px solid black;">삭제</button>
 									</td>
 								</tr>
 

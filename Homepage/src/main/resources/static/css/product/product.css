@@ -39,3 +39,8 @@ body {
 	overflow: visible;
 	font-weight: 600;
 }
+
+.notice_productname{
+	text-align:left;
+	padding-left:10px;
+}
