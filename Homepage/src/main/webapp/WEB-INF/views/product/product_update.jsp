@@ -202,11 +202,11 @@
 		event.preventDefault();
 		const menuContents = "${pDto.menuContents}";
 		const menuParents = "${menuParents}";
-		
+		const menuCode = "${menuCode}";
 		if(menuParents == "BRAND"){
-			location.href = "/homepage/product?menuParents="+menuParents+ "&menuContents=" + menuContents;
+			location.href = "product?menuParents=BRAND&menuCode=" +menuCode +"&menuContents="+menuContents;
 		}else{
-			location.href = "/homepage/product?menuContents=" + menuContents;
+			location.href = "product?menuCode=" + menuCode+"&menuContents="+menuContents;
 		}
 
 	}

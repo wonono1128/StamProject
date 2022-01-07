@@ -39,8 +39,7 @@
 	<!-- 뎁스 수정 -->
 	<update id="update"
 		parameterType="kr.stam.homepage.dto.DepthDto">
-		update menu set menuParents = #{menuParents}
-		,menuContents = #{menuContents} where menuCode = #{menuCode}
+		update menu set menuParents = #{menuParents} ,menuContents = #{menuContents} where menuCode = #{menuCode}
 	</update>
 
 	<!-- 뎁스 상세페이지 -->

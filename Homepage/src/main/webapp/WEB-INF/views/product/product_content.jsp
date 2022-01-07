@@ -142,6 +142,9 @@
 </body>
 <script type="text/javascript">
 window.onload = function() {
+	if("${pDto.productLogo }" != ""){
+		
+
 	var brand_productLogo = "${pDto.productLogo }";
 	var blank_pattern = /[\s]/g;
 	if(blank_pattern.test(brand_productLogo) == true){ //문자열에 공백여부 체크
@@ -151,16 +154,18 @@ window.onload = function() {
 	}else{
 		document.querySelector(".brand_pre").innerHTML = brand_productLogo;
 	}
+	}
 
 }
 	function product_go() {
 		const menuContents = document.querySelector(".menuContents").value;
 		const menuParents = "${menuParents}";
+		const menuCode = "${menuCode}";
 		
 		if(menuParents == "BRAND"){
-			location.href = "/homepage/product?menuParents="+menuParents+ "&menuContents=" + menuContents;
+			location.href = "product?menuParents=BRAND&menuCode=" +menuCode +"&menuContents="+menuContents;
 		}else{
-			location.href = "/homepage/product?menuContents=" + menuContents;
+			location.href = "product?menuCode=" + menuCode+"&menuContents="+menuContents;
 		}
 	}
 	function product_update() {

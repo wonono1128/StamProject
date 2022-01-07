@@ -65,18 +65,16 @@
 	function brand_click(ths) {
 		var url = $(ths).text();
 		var menuCode = $(ths).attr('id');
-		alert(menuCode);
 		url = url.replace(/ /g, "");
 
-		location.href = "product?menuParents=BRAND&menuContents=" +url +"&menuCode="+menuCode;
+		location.href = "product?menuParents=BRAND&menuCode=" +menuCode +"&menuContents="+url;
 	}
 
 	function port_click(ths) {
 		var url = $(ths).text();
-		var menuCode = $(ths).attr('id'); ;
-		alert(menuCode);
+		var menuCode = $(ths).attr('id'); 
 		url = url.replace(/ /g, "");
 		url = url.replace("-", "");
-		location.href = "product?menuContents=" + url+"&menuCode="+menuCode;;
+		location.href = "product?menuCode=" + menuCode+"&menuContents="+url;
 	}
 </script>

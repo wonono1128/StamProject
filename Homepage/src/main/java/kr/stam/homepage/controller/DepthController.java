@@ -138,11 +138,11 @@ public class DepthController {
 					dLDto.setLogType("Insert");
 					dLDao.insert(dLDto);				//뎁스로그테이블 입력
 				} else {
-					result = 2;				//변경실패
+							
 				}
 			}
 		} else {
-			result = 2;
+			result = 2;//변경실패
 		}
 		return result;
 	}

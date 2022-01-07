@@ -53,8 +53,14 @@ public class ProductController {
 	@RequestMapping("product")
 	public String product(HttpServletRequest request, Model model, HttpSession session, String menuContents,
 			String menuParents) {
-		int menuCode = Integer.parseInt(request.getParameter("menuCode"));
-		System.out.println(menuCode);
+		if(request.getParameter("menuCode") != null) {
+			int menuCode = Integer.parseInt(request.getParameter("menuCode"));
+			session.setAttribute("menuCode", menuCode);
+			ArrayList<ProductDto> list = pd.listDepth(menuCode);		//우측 사업디비에서 불러옴
+			model.addAttribute("list", list);
+			System.out.println(menuCode);
+		}
+		
 		if (session.getAttribute("level") != null) {			//로그인 확인
 			Integer ProductnextNum = pd.ProductnextNum();
 			session.setAttribute("ProductnextNum", ProductnextNum + 1);
@@ -62,13 +68,13 @@ public class ProductController {
 			ArrayList<DepthDto> Flist = dDao.Flist();			//좌측 메뉴 디비에서 불러옴
 			model.addAttribute("Flist", Flist);	
 			
-			ArrayList<ProductDto> list = pd.listDepth(menuCode);		//우측 사업디비에서 불러옴
+			
 			if(menuParents == null || menuParents.length() == 0) {		//menuParents에 내용이 없을경우 지정(브랜드의 경우 메뉴탭에서 미리지정해줬음)
 				menuParents = "PORTFOLIO";
 			}
 			session.setAttribute("menuContents", menuContents);
 			session.setAttribute("menuParents", menuParents);
-			model.addAttribute("list", list);
+		
 			
 			return "product/product";
 		} else {
@@ -191,7 +197,8 @@ public class ProductController {
 				System.out.println("저장 실패");
 			}
 		}
-
+		int menuCode = (int) session.getAttribute("menuCode");
+		pdto.setMenuCode(menuCode);
 		pd.insert(pdto);
 
 		String managerId = (String) session.getAttribute("mId");
@@ -205,9 +212,9 @@ public class ProductController {
 		pLDao.insert(pLdto);
 		
 		if(!menuParents.isEmpty() &&menuParents.equals("BRAND")  ) {			//menuParents가 공백이 아니면서 값이 BRAND일경우 동작
-			return "redirect:/product?menuParents="+menuParents+"&menuContents=" + menuContents;
+			return "redirect:/product?menuCode=" + menuCode+"&menuParents="+menuParents+"&menuContents=" + menuContents;
 		}else {
-			return "redirect:/product?menuContents=" + menuContents;
+			return "redirect:/product?menuCode=" + menuCode+"&menuContents=" + menuContents;
 		}
 		
 	
@@ -414,11 +421,11 @@ if(yearKeyword == null) {//브랜드인지 포트폴리오인지 구분
 		pLdto.setManagerName(managerName);
 		pLdto.setPLogType("update");
 		pLDao.insert(pLdto);
-		
+		int menuCode = (int) session.getAttribute("menuCode");
 		if(menuParents.equals("BRAND")&& !menuParents.isEmpty() ) {
-			return "redirect:/product?menuParents="+menuParents+"&menuContents=" + menuContents;
+			return "redirect:/product?menuCode=" + menuCode+"&menuParents="+menuParents+"&menuContents=" + menuContents;
 		}else {
-			return "redirect:/product?menuContents=" + menuContents;
+			return "redirect:/product?menuCode=" + menuCode+"&menuContents=" + menuContents;
 		}
 		
 	}
