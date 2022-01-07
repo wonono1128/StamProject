@@ -61,6 +61,8 @@ public class ProductController {
 			System.out.println(menuCode);
 		}
 		
+		
+		
 		if (session.getAttribute("level") != null) {			//로그인 확인
 			Integer ProductnextNum = pd.ProductnextNum();
 			session.setAttribute("ProductnextNum", ProductnextNum + 1);

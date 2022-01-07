@@ -72,7 +72,7 @@
 							<c:set var="menuContents" value="${dDto.menuContents}" />
 							<c:set var="menuContents2"
 								value="${fn:replace(menuContents,' ','')}" />
-
+								
 							<li <c:if test="${menuContents2 eq url }">class="on" </c:if>><a
 								href="#" onclick="sol_click(this)">${dDto.menuContents}</a></li>
 						</c:if>

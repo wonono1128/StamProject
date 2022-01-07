@@ -161,8 +161,8 @@ window.onload = function() {
 function insert_contentBtn(event) {
 	event.preventDefault();
 	const menuContents = "${referMenuContents}";
-	
-	location.href = "/homepage/product?menuContents=" + menuContents;
+	const menuCode = "${menuCode}";
+	location.href = "/homepage/product?menuCode="+ menuCode + "&menuContents=" + menuContents;
 }
 </script>
 <script src="resources/static/js/product/productTextChk.js"></script>
