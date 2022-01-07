@@ -146,9 +146,9 @@ public class ProductController {
 
 	
 
-		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject2\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject2\\Homepage\\src\\main\\resources\\static\\images\\product";
+		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject2\\Homepage\\src\\main\\resources\\static\\images";
 
 		for (MultipartFile multipartFile : pLogo) {
 			System.out.println("---------------------------로고 파일------------------------------------");
@@ -347,9 +347,9 @@ public class ProductController {
 		int productCode = (int) session.getAttribute("productCode");
 		pDto.setProductCode(productCode);
 		String menuContents = request.getParameter("menuContents");
-		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject2\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject2\\Homepage\\src\\main\\resources\\static\\images\\product";
+		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject2\\Homepage\\src\\main\\resources\\static\\images";
 		MultipartFile multipartFileLogo = mRequest.getFile("pLogo");
 		MultipartFile multipartFileProduct = mRequest.getFile("pImg");
 		MultipartFile multipartFileYear = mRequest.getFile("yearLogo");
