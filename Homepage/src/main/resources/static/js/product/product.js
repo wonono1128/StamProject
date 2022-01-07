@@ -3,6 +3,7 @@ $(".product_delete_btn")
 					function() {
 						const menuContents = document.querySelector(".menuContents").value;
 						const menuParents = document.querySelector(".menuParents").value;
+						const menuCode = document.querySelector(".menuCode").value;
 						var confirm_val = confirm("정말 삭제하시겠습니까?");
 
 						if (confirm_val) {
@@ -24,10 +25,10 @@ $(".product_delete_btn")
 											if (result == 1) {
 												alert("삭제 성공");
 												if(menuParents == "BRAND"){
-													location.href = "/homepage/product?menuParents=" + menuParents + "&menuContents="
+													location.href = "/homepage/product?menuCode=" + menuCode+"&menuParents=" + menuParents + "&menuContents="
 														+ menuContents;
 														}else{
-														location.href = "/homepage/product?menuContents="
+														location.href = "/homepage/product?menuCode=" + menuCode+"&menuContents="
 														+ menuContents;
 														}
 											

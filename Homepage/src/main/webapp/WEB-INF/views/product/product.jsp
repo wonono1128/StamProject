@@ -61,8 +61,11 @@
 
 								</tr>
 								<tr style="display: none">
-									<td><input type="text" value="${menuContents}"class="menuContents">
-										<input type="text" value="${menuParents}" class="menuParents"></td>
+									<td>
+										<input type="text" value="${menuContents}"class="menuContents">
+										<input type="text" value="${menuParents}" class="menuParents">
+										<input type="text" value="${menuCode}" class="menuCode">
+									</td>
 								</tr>
 								<tr class="notice-tr top-tr">
 									<td class="notice_th td_num">번호</td>
