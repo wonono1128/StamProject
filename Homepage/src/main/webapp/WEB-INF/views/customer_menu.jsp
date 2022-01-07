@@ -20,8 +20,6 @@
 								value="${fn:replace(menuContents,' ','')}" />
 							<c:set var="menuContents2"
 								value="${fn:replace(menuContents2,'+Vision&Business','')}" />
-
-
 							<input type="hidden" class="${dDto.menuParents }"
 								value="${dDto.menuParents}">
 							<li <c:if test="${menuContents2 eq url }">class="on" </c:if>>

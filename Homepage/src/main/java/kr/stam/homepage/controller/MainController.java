@@ -40,7 +40,10 @@ public class MainController {
 		
 		ArrayList<DepthDto> Flist = dDao.Flist();
 		model.addAttribute("Flist", Flist);
+	
 
+
+		
 		return "/main";
 	}
 

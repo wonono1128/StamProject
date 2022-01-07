@@ -10,8 +10,8 @@
 			<ul class="depth2">
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'ABOUT' }">
-						<c:if test="${dDto.menuState ==1 }">
-							<li><a href="#">${dDto.menuContents}</a></li>
+						<c:if test="${dDto.menuState == 1 }">
+							<li><a href="#" id="${dDto.menuCode }">${dDto.menuContents}</a></li>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -23,7 +23,7 @@
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'PORTFOLIO' }">
 						<c:if test="${dDto.menuState ==1 }">
-							<li><a href="#" onclick="port_click(this)">${dDto.menuContents}</a></li>
+							<li><a href="#" onclick="port_click(this)" id="${dDto.menuCode }">${dDto.menuContents}</a></li>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -35,7 +35,7 @@
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'BRAND' }">
 						<c:if test="${dDto.menuState ==1 }">
-							<li><a href="#" onclick="brand_click(this)">${dDto.menuContents}</a></li>
+							<li><a href="#" onclick="brand_click(this)" id="${dDto.menuCode }">${dDto.menuContents}</a></li>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -47,7 +47,7 @@
 				<c:forEach var="dDto" items="${Flist}">
 					<c:if test="${dDto.menuParents == 'SOLUTION' }">
 						<c:if test="${dDto.menuState ==1 }">
-							<li><a href="#">${dDto.menuContents}</a></li>
+							<li><a href="#" id="${dDto.menuCode }">${dDto.menuContents}</a></li>
 						</c:if>
 					</c:if>
 				</c:forEach>
@@ -60,17 +60,23 @@
 	</ul>
 </c:if>
 <script>
+
+
 	function brand_click(ths) {
 		var url = $(ths).text();
+		var menuCode = $(ths).attr('id');
+		alert(menuCode);
 		url = url.replace(/ /g, "");
 
-		location.href = "product?menuParents=BRAND&menuContents=" + url;
+		location.href = "product?menuParents=BRAND&menuContents=" +url +"&menuCode="+menuCode;
 	}
 
 	function port_click(ths) {
 		var url = $(ths).text();
+		var menuCode = $(ths).attr('id'); ;
+		alert(menuCode);
 		url = url.replace(/ /g, "");
 		url = url.replace("-", "");
-		location.href = "product?menuContents=" + url;
+		location.href = "product?menuContents=" + url+"&menuCode="+menuCode;;
 	}
 </script>

@@ -20,7 +20,7 @@
 	<select id="Flist" resultType="kr.stam.homepage.dto.DepthDto">
 		select * from menu order by menuCode desc
 	</select>
-
+	
 	<!-- 메뉴 수정페이지 불러오기 -->
 	<select id="list" resultType="kr.stam.homepage.dto.DepthDto">
 		select * from menu where menuParents=#{MenuParents} order by menuCode desc

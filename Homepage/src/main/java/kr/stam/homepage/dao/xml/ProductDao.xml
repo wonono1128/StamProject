@@ -12,17 +12,19 @@
 		product
 	</select>
 
-	<select id="list" resultType="kr.stam.homepage.dto.ProductDto">
-		select * from product where
-		menuContents=#{menuContents} and productState = 1
+	<select id="listDepth" resultType="kr.stam.homepage.dto.ProductDto">
+		select * from product where menuCode = #{menuCode} and productState = 1
 	</select>
 
-
+	<select id="list" resultType="kr.stam.homepage.dto.ProductDto">
+		select * from product where menuContents = #{menuContents} and productState = 1
+	</select>
 	<!-- 상세페이지 -->
 	<select id="content"
 		resultType="kr.stam.homepage.dto.ProductDto">
 		select * from product where productCode = #{productCode}
 	</select>
+
 
 	<!-- 제품 추가 -->
    <insert id="insert"
@@ -50,6 +52,16 @@
 		select count(*) from product
 		where menuContents=#{menuContents}
 	</select>
+
+
+<!-- 제품 수정 -->
+   <update id="updateContents"
+      parameterType="kr.stam.homepage.dto.ProductDto">
+      update product set menuContents=#{menuContents} where menuCode = #{menuCode} and menuContents = #{beforeContents}
+   </update>
+
+
+
 
 	<!-- 제품 수정 -->
    <update id="update"

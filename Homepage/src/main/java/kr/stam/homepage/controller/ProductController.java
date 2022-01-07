@@ -53,6 +53,8 @@ public class ProductController {
 	@RequestMapping("product")
 	public String product(HttpServletRequest request, Model model, HttpSession session, String menuContents,
 			String menuParents) {
+		int menuCode = Integer.parseInt(request.getParameter("menuCode"));
+		System.out.println(menuCode);
 		if (session.getAttribute("level") != null) {			//로그인 확인
 			Integer ProductnextNum = pd.ProductnextNum();
 			session.setAttribute("ProductnextNum", ProductnextNum + 1);
@@ -60,7 +62,7 @@ public class ProductController {
 			ArrayList<DepthDto> Flist = dDao.Flist();			//좌측 메뉴 디비에서 불러옴
 			model.addAttribute("Flist", Flist);	
 			
-			ArrayList<ProductDto> list = pd.list(menuContents);		//우측 사업디비에서 불러옴
+			ArrayList<ProductDto> list = pd.listDepth(menuCode);		//우측 사업디비에서 불러옴
 			if(menuParents == null || menuParents.length() == 0) {		//menuParents에 내용이 없을경우 지정(브랜드의 경우 메뉴탭에서 미리지정해줬음)
 				menuParents = "PORTFOLIO";
 			}
@@ -138,14 +140,10 @@ public class ProductController {
 
 	
 
-//		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-//		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-//		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
 
-		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-		String uploadFolder3 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
-		
 		for (MultipartFile multipartFile : pLogo) {
 			System.out.println("---------------------------로고 파일------------------------------------");
 			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
@@ -342,12 +340,9 @@ public class ProductController {
 		int productCode = (int) session.getAttribute("productCode");
 		pDto.setProductCode(productCode);
 		String menuContents = request.getParameter("menuContents");
-		String uploadFolder3 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
-		String uploadFolder2 = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-		String uploadFolder = "C:\\Users\\woonho\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-//		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
-//		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
-//		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
+		String uploadFolder = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\logo";
+		String uploadFolder2 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images\\product";
+		String uploadFolder3 = "C:\\Users\\stam\\git\\StamProject\\Homepage\\src\\main\\resources\\static\\images";
 		MultipartFile multipartFileLogo = mRequest.getFile("pLogo");
 		MultipartFile multipartFileProduct = mRequest.getFile("pImg");
 		MultipartFile multipartFileYear = mRequest.getFile("yearLogo");

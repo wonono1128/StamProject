@@ -6,8 +6,11 @@
 	}
 
 	//수정
+	const test="";
 	function update_click(ths) {
-		
+	
+		const test = $(ths).html();
+		alert("확인"+test);
 		document.querySelector(".delete_btn").style.display = "none";
 		document.querySelector("#before_btn").style.display = "";
 		document.querySelector("#add_btn").style.display = "none";
@@ -31,19 +34,24 @@
 						if (confirm_val) {
 							var updateTitleArray = new Array();
 							var updateNumArray = new Array();
+							var updatebeforeName = new Array();
 							$("input[class='update_title']").each(function() {
 								updateTitleArray.push($(this).val());
 								updateNumArray.push($(this).attr("data-cartNum"));
 							});
 						
-
+							$("span[class='depth_menuContents']").each(function() {
+												updatebeforeName.push($(this).html());
+															
+														});
 							$.ajax({
 										url : "/homepage/depth_update_ok?menuParents="
 												+ MenuParents,
 										type : "post",
 										data : {
 											updateTitle : updateTitleArray,
-											updateNum : updateNumArray
+											updateNum : updateNumArray,
+											updatebeforeName : updatebeforeName
 										},
 										success : function(result) {
 											if (result == 1) {

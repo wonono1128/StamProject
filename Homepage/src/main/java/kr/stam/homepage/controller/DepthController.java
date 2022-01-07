@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.stam.homepage.dao.DepthDao;
 import kr.stam.homepage.dao.DepthLogDao;
+import kr.stam.homepage.dao.ProductDao;
 import kr.stam.homepage.dto.DepthDto;
 import kr.stam.homepage.dto.DepthLogDto;
+import kr.stam.homepage.dto.ProductDto;
 
 @Controller
 public class DepthController {
@@ -30,6 +32,8 @@ public class DepthController {
 	@Autowired
 	private DepthLogDao dLDao;
 
+	@Autowired
+	private ProductDao pDao;
 	
 	/**
 	  2022. 1. 6. : Current date (현재 날짜)
@@ -237,13 +241,16 @@ public class DepthController {
 	@RequestMapping(value = "/depth_update_ok", method = RequestMethod.POST)
 	@ResponseBody
 	public int depth_update_ok(HttpSession session, Model model,
-			@RequestParam(value = "updateTitle[]") List<String> updateTitleArray,
-			@RequestParam(value = "updateNum[]") List<String> updateNumArray, DepthDto dDto, HttpServletRequest request,
+			@RequestParam(value = "updateTitle[]") List<String> updateTitleArray, ProductDto pDto,
+			@RequestParam(value = "updateNum[]") List<String> updateNumArray, 
+			@RequestParam(value = "updatebeforeName[]") List<String> updatebeforeName,
+			DepthDto dDto, HttpServletRequest request,
 			DepthLogDto dLDto) throws Exception {
 
 		int result = 0;
 		String menuParents = request.getParameter("menuParents");
 		String menuContents = "";
+		String beforeContents = "";
 		String managerId = (String) session.getAttribute("mId");
 		String managerName = (String) session.getAttribute("mName");
 
@@ -251,11 +258,13 @@ public class DepthController {
 		
 		for (String i : updateNumArray) {
 			Map<String, String> paramMap = new HashMap<String, String>();
-
+			Map<String, String> beforeMap = new HashMap<String, String>();
 				for (int t = 0; t < updateTitleArray.size(); t++) {
 					paramMap.put(updateNumArray.get(t), updateTitleArray.get(t));
+					beforeMap.put(updateNumArray.get(t), updatebeforeName.get(t));
 				}
 					menuContents = (String) paramMap.get(i);
+					beforeContents = (String) beforeMap.get(i);
 					if(menuContents.equals("")) {
 						
 					}else {
@@ -272,6 +281,10 @@ public class DepthController {
 						dLDao.insert(dLDto);
 						model.addAttribute("ndto", dDto);
 						result = 1;
+						pDto.setMenuCode(menuCode);
+						pDto.setBeforeContents(beforeContents);
+						pDto.setMenuContents(menuContents);
+						pDao.updateContents(pDto);
 					}
 		}
 
