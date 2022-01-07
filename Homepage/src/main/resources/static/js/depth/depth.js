@@ -10,7 +10,6 @@
 	function update_click(ths) {
 	
 		const test = $(ths).html();
-		alert("확인"+test);
 		document.querySelector(".delete_btn").style.display = "none";
 		document.querySelector("#before_btn").style.display = "";
 		document.querySelector("#add_btn").style.display = "none";
